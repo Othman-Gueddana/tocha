@@ -24,7 +24,7 @@
             <div class="nav-tabs-navigation">
                 <div class="nav-tabs-wrapper">
                     <ngb-tabset [justify]="'center'">
-                        <ngb-tab title="Follows">
+                        <ngb-tab title="Your Products">
                             <ng-template ngbTabContent >
                                 <div class="row following" id="follows">
                                     <div class="col-md-6 ml-auto mr-auto">
@@ -71,11 +71,83 @@
                                 </div>
                             </ng-template>
                         </ngb-tab>
-                        <ngb-tab title="Following">
+                        <ngb-tab title="Add a product">
                             <ng-template ngbTabContent>
-                                <h3 class="text-muted">Not following anyone yet :(</h3>
-                                <br>
-                                <button class="btn btn-warning btn-round">Find artists</button>
+                                <form role="form">
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label">Title:</label>
+                                        <div class="col-lg-9">
+                                            <input class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label">Description:</label>
+                                        <div class="col-lg-9">
+                                            <input class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label">Image:</label>
+                                        <div class="col-lg-9">
+                                            <input type="URL" name="myURL" placeholder="insert image URL here">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label">Old Price:</label>
+                                        <div class="col-lg-9">
+                                            <input class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label">New Price:</label>
+                                        <div class="col-lg-9">
+                                            <input class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label"></label>
+                                        <div class="col-lg-9">
+                                            <input type="button" class="btn btn-primary" value="Add">
+                                            <input type="reset" class="btn btn-secondary" value="Cancel">
+                                        </div>
+                                    </div>
+                                </form>
+                            </ng-template>
+                        </ngb-tab>
+                        <ngb-tab title="Cart">
+                            <ng-template ngbTabContent>
+                                <form role="form">
+                                    <div class="wrap cf">
+                                        <div class="cart">
+                                          <ul class="cartWrap">
+                                            <li class="items odd">
+                                            <div class="infoWrap"> 
+                                                <div class="cartSection">
+                                                <img src="http://lorempixel.com/output/technics-q-c-300-300-4.jpg" alt="" class="itemImg" />
+                                                    <h3>Item Name</h3>
+                                                </div>  
+                                                <div class="prodTotal cartSection">
+                                                    <p>$15.00</p>
+                                                </div>
+                                                <div class="cartSection removeWrap">
+                                                    <a href="#" class="remove">x</a>
+                                                </div>
+                                            </div>
+                                            </li>
+                                          </ul>
+                                        </div>
+                                        <div class="subtotal cf">
+                                            <ul>        
+                                                <li class="totalRow final">
+                                                    <span class="label">Total</span>
+                                                    <span class="value">$44.00</span>
+                                                </li>
+                                                <a href="#" class="btn continue">Checkout</a>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </form>
                             </ng-template>
                         </ngb-tab>
                     </ngb-tabset>

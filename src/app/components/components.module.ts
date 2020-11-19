@@ -26,10 +26,10 @@ import { NgbdModalContent } from './modal/modal.component';
         ComponentsComponent,
         BasicelementsComponent,
         NavigationComponent,
-       TypographyComponent,
+        TypographyComponent,
         NucleoiconsComponent,
-       NotificationComponent,
-       NgbdModalComponent,
+        NotificationComponent,
+        NgbdModalComponent,
         NgbdModalContent
     ],
     entryComponents: [NgbdModalContent],
