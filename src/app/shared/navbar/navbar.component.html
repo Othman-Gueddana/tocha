@@ -40,14 +40,17 @@
                     </span>
                 </li>
                 <li class="nav-item" *ngIf="isHome()">
-                    <a href="https://www.creative-tim.com/product/paper-kit-2-pro-angular?ref=pk2-angular-free-local" target="_blank" class="btn btn-danger btn-round">{{'Sign in' | translate}}</a>
+
+                    <a  [routerLink]="['/signup']" class="btn btn-danger btn-round"> Register </a>
                 </li>
                 <li class="nav-item" *ngIf="isHome()">
-                    <a href="https://www.creative-tim.com/product/paper-kit-2-pro-angular?ref=pk2-angular-free-local" target="_blank" class="btn btn-danger btn-round">{{'Sign up' | translate}}</a>
-                </li>
+                    <a  [routerLink]="['/signin']" class="btn btn-danger btn-round"> Log In </a>
+                </li>      
                 <li class="nav-item" *ngIf="!isHome()">
-                    <a [routerLink]="['/home']" *ngIf="!isDocumentation()" class="nav-link"><i class="nc-icon nc-layout-11"></i>{{'My cart' | translate}}</a>
-                    <!-- <a [routerLink]="['/home']" *ngIf="isDocumentation()" class="nav-link">Back to Kit</a> -->
+
+                    <a [routerLink]="['/cart']" *ngIf="!isDocumentation()" class="nav-link"><i class="nc-icon nc-layout-11"></i>{{'My cart' | translate}}</a>
+                    <a [routerLink]="['/home']" *ngIf="isDocumentation()" class="nav-link">Back to Kit</a>
+
                 </li>
                 <li class="nav-item" *ngIf="isDocumentation()">
                     <a href="https://github.com/creativetimofficial/paper-kit-2-angular/issues?ref=pk2-free-local" target="_blank" class="nav-link">{{'Have an issue' | translate}}</a>
