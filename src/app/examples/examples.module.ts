@@ -22,11 +22,8 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
         LandingComponent,
         SignupComponent,
         ProfileComponent,
-
-        SigninComponent
-
+        SigninComponent,
         ShoppingCartComponent
-
     ]
 })
 export class ExamplesModule { }
