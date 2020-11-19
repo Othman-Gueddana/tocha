@@ -5,8 +5,8 @@
                 <div class="row">
                     <div class="col-lg-4 col-sm-6 mr-auto ml-auto">
                       <div class="card card-register">
-   
-                          <h3 class="title" style="color:white;"> {{'Welcome' | translate}} </h3> 
+                     <!-- <h3 class="title" style="color:white;"> {{'Welcome' | translate}} </h3>-->   
+                          <h3 class="title" style="color:white;"> Welcome </h3> 
                           <form class="register-form" #f="ngForm" (ngSubmit)="onSubmit(f)">
                             <label>First Name</label>
                             <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
@@ -26,8 +26,8 @@
                               </div>
                                 <input type="text" class="form-control" placeholder="Last Name" (focus)="focus=true" (blur)="focus=false"  ngModel required  #lastName="ngModel" name="lastName" />
                             </div>
-                              <label>{{'Email' | translate}}</label>
-
+                              <label>Email</label>
+                                  <!-- <label>{{'Email' | translate}}</label>-->
                               <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
                                 <div class="input-group-prepend">
                                   <span class="input-group-text">
@@ -37,8 +37,8 @@
                                   <input type="text" class="form-control" placeholder="Email" (focus)="focus=true" (blur)="focus=false"  ngModel required  #email="ngModel" name="email"/>
                               </div>
 
-
-                              <label>{{'Password' | translate}}</label>
+                              <!--   <label>{{'Password' | translate}}</label>-->
+                              <label>Password</label>
 
                          
                               <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus1===true}">
@@ -77,10 +77,11 @@
                                   <input type="text" class="form-control" placeholder="Phone Number" (focus)="focus=true" (blur)="focus=false"  ngModel  #phoneNumber="ngModel" name="phoneNumber"/>
                               </div>
 
-                              <button type="submit" [disabled]="f.invalid" class="btn btn-danger btn-block btn-round"> {{'Register' | translate}} </button>
+                              <button type="submit" [disabled]="f.invalid" class="btn btn-danger btn-block btn-round"> Register </button>
                           </form>
                                <div class="forgot">
-                              <a href="#" class="btn btn-link btn-danger">{{'Forgot password' | translate}}</a>
+                             <!--  <a href="#" class="btn btn-link btn-danger">{{'Forgot password' | translate}}</a>-->  
+                              <a href="#" class="btn btn-link btn-danger"> Forgot password</a>
                           </div>
                       </div>
                     </div>
