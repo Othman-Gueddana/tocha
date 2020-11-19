@@ -11,8 +11,9 @@
     }
   },
   "scripts": {
+    "heroku-prebuild": "export NPM_CONFIG_PRODUCTION=false; export NODE_ENV=; NPM_CONFIG_PRODUCTION=false NODE_ENV=development npm install --only=dev --dev",
     "heroku-postbuild": "ng build --prod",
-    "start": "cd Backend && npm run start",
+    "start": "nodemon Backend/server.js ",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -45,6 +46,7 @@
     "jw-bootstrap-switch-ng2": "2.0.1",
     "lodash-es": "^4.17.15",
     "ng2-translate": "^5.0.0",
+    "nodemon": "^2.0.6",
     "path": "^0.12.7",
     "popper.js": "1.14.4",
     "rxjs": "6.5.4",
