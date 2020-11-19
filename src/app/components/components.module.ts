@@ -13,6 +13,7 @@ import { ComponentsComponent } from './components.component';
 import { NotificationComponent } from './notification/notification.component';//
 import { NgbdModalComponent } from './modal/modal.component';
 import { NgbdModalContent } from './modal/modal.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
     imports: [
@@ -20,7 +21,8 @@ import { NgbdModalContent } from './modal/modal.component';
         FormsModule,
         NgbModule,
         RouterModule,
-        JwBootstrapSwitchNg2Module
+        JwBootstrapSwitchNg2Module,
+        TranslateModule
     ],
     declarations: [
         ComponentsComponent,
