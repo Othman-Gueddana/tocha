@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
-
+import { TranslateService } from '@ngx-translate/core';
 @Component({
     selector: 'app-navbar',
     templateUrl: './navbar.component.html',
@@ -10,8 +10,11 @@ export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
     loggedIn: boolean = false;
-    constructor(public location: Location, private element : ElementRef) {
+    constructor(public location: Location, private element: ElementRef, public translate: TranslateService) {
+
         this.sidebarVisible = false;
+        translate.addLangs(['english', 'francais', 'عربي']);
+        translate.setDefaultLang('english');
     }
 
     ngOnInit() {
@@ -69,5 +72,8 @@ export class NavbarComponent implements OnInit {
             return false;
         }
     }
-  
+
+    switchLang(lang: string) {
+        this.translate.use(lang);
+    }
 }

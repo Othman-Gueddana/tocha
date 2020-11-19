@@ -13,24 +13,31 @@
                 <li class="nav-item" *ngIf="!isDocumentation()">
                     <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/CreativeTim" target="_blank">
                         <i class="fa fa-twitter"></i>
-                        <p class="d-lg-none">Twitter</p>
+                        <p class="d-lg-none">{{'Twitter' | translate}}</p>
                     </a>
                 </li>
                 <li class="nav-item" *ngIf="!isDocumentation()">
                     <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.facebook.com/CreativeTim" target="_blank">
                         <i class="fa fa-facebook-square"></i>
-                        <p class="d-lg-none">Facebook</p>
+                        <p class="d-lg-none">{{'Facebook' | translate}}</p>
                     </a>
                 </li>
                 <li class="nav-item" *ngIf="!isDocumentation()">
                     <a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom" href="https://www.instagram.com/CreativeTimOfficial" target="_blank">
                         <i class="fa fa-instagram"></i>
-                        <p class="d-lg-none">Instagram</p>
+                        <p class="d-lg-none">{{'Instagram' | translate}}</p>
                     </a>
                 </li>
                
-                <li class="nav-item" *ngIf="!isDocumentation()">
-                    <a href="http://pk2-angular.creative-tim.com/documentation/tutorial" class="nav-link" target="_blank"><i class="nc-icon nc-book-bookmark"></i> traduction </a>
+                <li class="nav-item">
+                    <span class="form-inline">
+                        <select class="btn btn-danger btn-round" #selectedLang (change)="switchLang(selectedLang.value)">
+                            <option *ngFor="let language of translate.getLangs()" [value]="language"
+                                [selected]="language === translate.currentLang">
+                                {{ language }}
+                            </option>
+                        </select>
+                    </span>
                 </li>
                 <li class="nav-item" *ngIf="isHome()">
 
@@ -38,16 +45,16 @@
                 </li>
                 <li class="nav-item" *ngIf="isHome()">
                     <a  [routerLink]="['/signin']" class="btn btn-danger btn-round"> Log In </a>
-
-                </li>
-               
+                </li>      
                 <li class="nav-item" *ngIf="!isHome()">
-                    <a [routerLink]="['/cart']" *ngIf="!isDocumentation()" class="nav-link"><i class="nc-icon nc-layout-11"></i>My cart</a>
+
+                    <a [routerLink]="['/cart']" *ngIf="!isDocumentation()" class="nav-link"><i class="nc-icon nc-layout-11"></i>{{'My cart' | translate}}</a>
                     <a [routerLink]="['/home']" *ngIf="isDocumentation()" class="nav-link">Back to Kit</a>
+
                 </li>
               
                 <li class="nav-item" *ngIf="isDocumentation()">
-                    <a href="https://github.com/creativetimofficial/paper-kit-2-angular/issues?ref=pk2-free-local" target="_blank" class="nav-link">Have an issue</a>
+                    <a href="https://github.com/creativetimofficial/paper-kit-2-angular/issues?ref=pk2-free-local" target="_blank" class="nav-link">{{'Have an issue' | translate}}</a>
                 </li>
             </ul>
         </div>
