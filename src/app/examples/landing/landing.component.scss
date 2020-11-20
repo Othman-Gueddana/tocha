@@ -38,3 +38,23 @@ body {
   .card{
     height: 500px;
   }
+  .card image {
+    padding : 40%
+  }
+  .card-title{
+    font-style: italic;
+    font-weight: bold;
+
+  }
+  .cover {
+    background-color: rgb(8, 7, 6);
+    margin-top: 0%;
+    max-width: 25px;
+  }
+  .dropdown-menu > li{
+  display: inline-block;
+    float: left;
+ }
+.open> ul {
+    display: inline-flex !important;
+}
