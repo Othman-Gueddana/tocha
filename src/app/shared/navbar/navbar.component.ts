@@ -26,15 +26,12 @@ export class NavbarComponent implements OnInit {
     }
     clearStorage() {
         localStorage.clear();
-        location.reload();
       }
-
     sidebarOpen() {
         const toggleButton = this.toggleButton;
         const html = document.getElementsByTagName('html')[0];
         // console.log(html);
         // console.log(toggleButton, 'toggle');
-
         setTimeout(function(){
             toggleButton.classList.add('toggled');
         }, 500);
