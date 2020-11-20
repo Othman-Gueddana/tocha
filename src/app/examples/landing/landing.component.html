@@ -1,6 +1,64 @@
-
-
-<div class="page-header" data-parallax="true" style="background-image: url('./assets/img/daniel-olahh.jpg');">
-        <div class="container">
+<!-- <ul>
+<li class="card " style="width: 18rem;" *ngFor="let item of products">
+                <img class="card-img-top" src="{{item.image}}" alt="Card image cap">
+                <div class="card-body">
+                        <h5 class="card-title">{{item.name}}</h5>
+                        <p class="card-text">{{item.description}} </p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+</li>
+</ul> -->
+<div class="container">
+        <div class="row">
+                <div class="col-md-4" *ngFor="let item of products">
+                        <div class="card">
+                                <div class="card-img">
+                                        <img class="img-fluid rounded-circle w-80 sm-3" src="{{item.image}}">
+                                </div>
+                                <div class="card-body">
+                                        <h3><del>{{item.name}}</del></h3>
+                                        <!-- <h5>{{item.description}}</h5> -->
+                                        <!-- <h5>{{item.}}</h5>-->
+                                        <button>Check more</button>
+                                </div>
+                        </div>
+                </div>
         </div>
 </div>
+<!-- <div class="card-group" *ngFor="let item of products">
+        <div class="card">
+                <img class="card-img-top" src="..." alt="Card image cap">
+                <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                                additional content. This content is a little bit longer.</p>
+                </div>
+                <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+        </div>
+        <div class="card">
+                <img class="card-img-top" src="..." alt="Card image cap">
+                <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This card has supporting text below as a natural lead-in to additional
+                                content.</p>
+                </div>
+                <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+        </div>
+        <div class="card">
+                <img class="card-img-top" src="..." alt="Card image cap">
+                <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                                additional content. This card has even longer content than the first to show that equal
+                                height action.</p>
+                </div>
+                <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+        </div>
+        
+</div> -->

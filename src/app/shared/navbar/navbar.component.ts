@@ -26,6 +26,7 @@ export class NavbarComponent implements OnInit {
     }
     clearStorage() {
         localStorage.clear();
+     
       }
     sidebarOpen() {
         const toggleButton = this.toggleButton;
@@ -45,30 +46,30 @@ export class NavbarComponent implements OnInit {
         this.sidebarVisible = false;
         html.classList.remove('nav-open');
     };
-    isHome() {
-      var titlee = this.location.prepareExternalUrl(this.location.path());
-      if(titlee.charAt(0) === '#'){
-          titlee = titlee.slice( 1 );
-      }
-        if( titlee === '/home' ) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-    isDocumentation() {
-      var titlee = this.location.prepareExternalUrl(this.location.path());
-      if(titlee.charAt(0) === '#'){
-          titlee = titlee.slice( 1 );
-      }
-        if( titlee === '/documentation' ) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
+    // isHome() {
+    //   var titlee = this.location.prepareExternalUrl(this.location.path());
+    //   if(titlee.charAt(0) === '#'){
+    //       titlee = titlee.slice( 1 );
+    //   }
+    //     if( titlee === '/home' ) {
+    //         return true;
+    //     }
+    //     else {
+    //         return false;
+    //     }
+    // }
+    // isDocumentation() {
+    //   var titlee = this.location.prepareExternalUrl(this.location.path());
+    //   if(titlee.charAt(0) === '#'){
+    //       titlee = titlee.slice( 1 );
+    //   }
+    //     if( titlee === '/documentation' ) {
+    //         return true;
+    //     }
+    //     else {
+    //         return false;
+    //     }
+    // }
 
     switchLang(lang: string) {
         this.translate.use(lang);
