@@ -13,7 +13,6 @@ export class ClientService {
   createLogin(data): Observable<any> {
     return this.http.post(baseUrl + 'login', data);
   }
-
   createRegister(data): Observable<any> {
     let obj = {
       firstName: data.firstName,
@@ -26,7 +25,5 @@ export class ClientService {
     console.log(obj)
     console.log(baseUrl + 'register');
     return this.http.post(baseUrl + 'register', data);
-    
   }
-
 }
