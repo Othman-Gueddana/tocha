@@ -10,9 +10,9 @@ app.use(cors());
 
 app.use(express.static('../dist/bekhteff'))
 
-app.get("/*", function(req, res){
-  res.sendFile(path.join(__dirname + "../dist/bekhteff/index.html"));
-});
+// app.get("/*", function(req, res){
+//   res.sendFile(path.join(__dirname + "../dist/bekhteff/index.html"));
+// });
 
 // Routes 
 app.use("/clients",require('./Routes/ClientRoute.js'))
