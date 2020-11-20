@@ -15,9 +15,9 @@ export class ProfileComponent implements OnInit {
     constructor( private ProductService: ProductService,
         private router: Router) { }
 
+
     ngOnInit() {}
     onSubmit(f: NgForm) {
         
     }
-
 }
