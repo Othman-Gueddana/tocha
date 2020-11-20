@@ -26,6 +26,7 @@ export class NavbarComponent implements OnInit {
     }
     clearStorage() {
         localStorage.clear();
+     
       }
     sidebarOpen() {
         const toggleButton = this.toggleButton;
