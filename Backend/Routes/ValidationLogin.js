@@ -2,8 +2,8 @@ const joi = require('@hapi/joi')
 
 const loginValidation = data =>{
     const validation = joi.object({
-        email:joi.string().required().email(),
-        password:joi.string().min(8).required(),
+        email:joi.string().email(),
+        password:joi.string()
 
     })
     return validation.validate(data);

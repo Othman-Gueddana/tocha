@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-profile',

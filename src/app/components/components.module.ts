@@ -28,10 +28,10 @@ import { TranslateModule } from '@ngx-translate/core';
         ComponentsComponent,
         BasicelementsComponent,
         NavigationComponent,
-       TypographyComponent,
+        TypographyComponent,
         NucleoiconsComponent,
-       NotificationComponent,
-       NgbdModalComponent,
+        NotificationComponent,
+        NgbdModalComponent,
         NgbdModalContent
     ],
     entryComponents: [NgbdModalContent],

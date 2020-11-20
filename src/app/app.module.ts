@@ -8,11 +8,18 @@ import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
+
 import { ComponentsModule } from './components/components.module';
 import { ExamplesModule } from './examples/examples.module';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+
+
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -28,6 +35,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     ComponentsModule,
     ExamplesModule,
     AppRoutingModule,
+
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {
@@ -36,11 +44,10 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
         deps: [HttpClient]
       }
     }),
-    TranslateModule
-
+    TranslateModule,
   ],
   providers: [],
-  bootstrap: [AppComponent, NavbarComponent, FooterComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
 

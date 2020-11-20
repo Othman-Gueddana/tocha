@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject, Renderer2, ElementRef, ViewChild } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
-import  { filter } from 'rxjs/operators';
+import {filter} from 'rxjs/operators';
 import { DOCUMENT } from '@angular/common';
 import { LocationStrategy, PlatformLocation, Location } from '@angular/common';
 import { NavbarComponent } from './shared/navbar/navbar.component';
@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
     }
     ngOnInit() {
         var navbar : HTMLElement = this.element.nativeElement.children[0].children[0];
-        this._router = this.router.events.pipe(filter((event)=> event instanceof NavigationEnd)).subscribe((event) => {
+        this._router = this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event: NavigationEnd) => {
             if (window.outerWidth > 991) {
                 window.document.children[0].scrollTop = 0;
             }else{
