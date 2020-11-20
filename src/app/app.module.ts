@@ -17,10 +17,6 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +40,6 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
         deps: [HttpClient]
       }
     }),
-    TranslateModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -30,8 +30,9 @@ export class NavbarComponent implements OnInit {
 
     clearStorage() {
         localStorage.clear();
-        this.router.navigateByUrl('/home');
+    this.router.navigateByUrl('/home');
     }
+      }
 
     sidebarOpen() {
         const toggleButton = this.toggleButton;
