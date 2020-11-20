@@ -14,7 +14,7 @@
     "Register": "Register",
     "Forgot password": "Forgot password ?",
     "Title1": "The first  tunisian platform",
-    "title2": "Bekhteff, save more and spend less",
+    "Title2": "Bekhteff, save more and spend less",
     "Description": "With the economic conditions in which we live today, 'smart consumption' is a human matter and beneficial to all people, there are those who have things that are no longer valid for them or are more available than necessary, or even before the expiration date of their validity and wants to sell them, of course there are other people who desperately need them .",
     "Description1": "Here more than just an online  website",
     "Description2": "This site buys used goods that are in excellent condition and then sells them at greatly discounted prices. You can be sure that each item has been inspected before being put up for sale, that you will be getting exactly what has been described, and that the condition is guaranteed.",
@@ -31,6 +31,8 @@
     "Send": "Send",
     "location": "Tunis, Technopole Ghazela",
     "Feedback": "Feedback",
-    "Have an issue": "you Have an issue ?"
-
+    "Have an issue": "you Have an issue ?",
+    "Food Waste" : " FOOD WASTE, A WORLDWIDE ISSUE",
+    "AN UNKNOWN REALITY":"AN UNKNOWN REALITY",
+    "Description5": "Each year, 1/3 of food produced in the world goes to waste, and it is responsible for 8% of all greenhouse gas emissions. We are on a mission to change that - are you with us ?"
 }
