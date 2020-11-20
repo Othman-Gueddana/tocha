@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as $ from 'jquery';
+import { ProductService } from '../services/product.service';
 @Component({
     selector: 'app-landing',
     templateUrl: './landing.component.html',
@@ -9,18 +9,30 @@ import * as $ from 'jquery';
 export class LandingComponent implements OnInit {
   focus: any;
   focus1: any;
-  title = 'angularbootstrap';
-
-  constructor() { }
-
+  products:any=[]
+  constructor(private server:ProductService) { }
   ngOnInit() {
-    $("#menu-toggle").click(function(e) {
-      e.preventDefault();
-      $("#wrapper").toggleClass("toggled");
-    });
   }
-
-  }
-
-
-
+// getProducts(){
+//   this.server.getProducts().then((response:any)=>{
+//     for(let res of response ){
+//       this.products.push({
+//         title:res.title,
+//         oldPrice:res.oldPrice,
+//         newPrice:res.newPrice,
+//         description:res.description,
+//         category:res.category,
+//         image:res.image,
+//         ownerId:res.ownerId,
+//         expireddate:res.expireddate,
+//         creationDate:res.creationDate,
+//         quantity:res.quantity,
+//         device:res.device,
+//         humanKind:res.humanKind,
+//         type:res.type,
+//       });
+//     }
+//   })
+//   console.log(this.products)
+// }
+}
