@@ -9,7 +9,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 app.use(express.static('../dist/bekhteff'))
-
 // Routes 
 app.use("/clients",require('./Routes/ClientRoute.js'))
 app.use("/companys",require('./Routes/CompanyRoute.js'))
