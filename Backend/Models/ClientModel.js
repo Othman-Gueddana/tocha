@@ -8,7 +8,6 @@ Clients.init({
   password: Sequelize.STRING,
   address : Sequelize.STRING,
   phoneNumber: Sequelize.INTEGER,
-
 }, { sequelize, modelName: 'clients' });
 
 module.exports = Clients;
