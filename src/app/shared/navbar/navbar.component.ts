@@ -9,17 +9,26 @@ import { TranslateService } from '@ngx-translate/core';
 export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
-
+    loggedIn: boolean = false;
     constructor(public location: Location, private element: ElementRef, public translate: TranslateService) {
+
         this.sidebarVisible = false;
         translate.addLangs(['english', 'francais', 'عربي']);
         translate.setDefaultLang('english');
     }
 
     ngOnInit() {
+        if (typeof localStorage.getItem('token') === 'string') {
+            this.loggedIn = true;
+          }
         const navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
     }
+    clearStorage() {
+        localStorage.clear();
+        location.reload();
+      }
+
     sidebarOpen() {
         const toggleButton = this.toggleButton;
         const html = document.getElementsByTagName('html')[0];
@@ -30,24 +39,14 @@ export class NavbarComponent implements OnInit {
             toggleButton.classList.add('toggled');
         }, 500);
         html.classList.add('nav-open');
-
         this.sidebarVisible = true;
     };
-    sidebarClose() {
+    sidebarClose(){
         const html = document.getElementsByTagName('html')[0];
         // console.log(html);
         this.toggleButton.classList.remove('toggled');
         this.sidebarVisible = false;
         html.classList.remove('nav-open');
-    };
-    sidebarToggle() {
-        // const toggleButton = this.toggleButton;
-        // const body = document.getElementsByTagName('body')[0];
-        if (this.sidebarVisible === false) {
-            this.sidebarOpen();
-        } else {
-            this.sidebarClose();
-        }
     };
     isHome() {
       var titlee = this.location.prepareExternalUrl(this.location.path());
@@ -73,6 +72,7 @@ export class NavbarComponent implements OnInit {
             return false;
         }
     }
+
     switchLang(lang: string) {
         this.translate.use(lang);
     }
