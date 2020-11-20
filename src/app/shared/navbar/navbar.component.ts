@@ -27,48 +27,48 @@ export class NavbarComponent implements OnInit {
     clearStorage() {
         localStorage.clear();
       }
-    sidebarOpen() {
-        const toggleButton = this.toggleButton;
-        const html = document.getElementsByTagName('html')[0];
-        // console.log(html);
-        // console.log(toggleButton, 'toggle');
-        setTimeout(function(){
-            toggleButton.classList.add('toggled');
-        }, 500);
-        html.classList.add('nav-open');
-        this.sidebarVisible = true;
-    };
-    sidebarClose(){
-        const html = document.getElementsByTagName('html')[0];
-        // console.log(html);
-        this.toggleButton.classList.remove('toggled');
-        this.sidebarVisible = false;
-        html.classList.remove('nav-open');
-    };
-    isHome() {
-      var titlee = this.location.prepareExternalUrl(this.location.path());
-      if(titlee.charAt(0) === '#'){
-          titlee = titlee.slice( 1 );
-      }
-        if( titlee === '/home' ) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-    isDocumentation() {
-      var titlee = this.location.prepareExternalUrl(this.location.path());
-      if(titlee.charAt(0) === '#'){
-          titlee = titlee.slice( 1 );
-      }
-        if( titlee === '/documentation' ) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
+    // sidebarOpen() {
+    //     const toggleButton = this.toggleButton;
+    //     const html = document.getElementsByTagName('html')[0];
+    //     // console.log(html);
+    //     // console.log(toggleButton, 'toggle');
+    //     setTimeout(function(){
+    //         toggleButton.classList.add('toggled');
+    //     }, 500);
+    //     html.classList.add('nav-open');
+    //     this.sidebarVisible = true;
+    // };
+    // sidebarClose(){
+    //     const html = document.getElementsByTagName('html')[0];
+    //     // console.log(html);
+    //     this.toggleButton.classList.remove('toggled');
+    //     this.sidebarVisible = false;
+    //     html.classList.remove('nav-open');
+    // };
+    // isHome() {
+    //   var titlee = this.location.prepareExternalUrl(this.location.path());
+    //   if(titlee.charAt(0) === '#'){
+    //       titlee = titlee.slice( 1 );
+    //   }
+    //     if( titlee === '/home' ) {
+    //         return true;
+    //     }
+    //     else {
+    //         return false;
+    //     }
+    // }
+    // isDocumentation() {
+    //   var titlee = this.location.prepareExternalUrl(this.location.path());
+    //   if(titlee.charAt(0) === '#'){
+    //       titlee = titlee.slice( 1 );
+    //   }
+    //     if( titlee === '/documentation' ) {
+    //         return true;
+    //     }
+    //     else {
+    //         return false;
+    //     }
+    // }
 
     switchLang(lang: string) {
         this.translate.use(lang);
