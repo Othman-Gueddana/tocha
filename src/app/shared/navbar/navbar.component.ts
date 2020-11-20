@@ -30,8 +30,7 @@ export class NavbarComponent implements OnInit {
 
     clearStorage() {
         localStorage.clear();
-    this.router.navigateByUrl('/home');
-    }
+  this.router.navigateByUrl('/home');
       }
 
     sidebarOpen() {
@@ -52,6 +51,7 @@ export class NavbarComponent implements OnInit {
         this.sidebarVisible = false;
         html.classList.remove('nav-open');
     };
+
     // isHome() {
     //   var titlee = this.location.prepareExternalUrl(this.location.path());
     //   if(titlee.charAt(0) === '#'){
@@ -76,6 +76,7 @@ export class NavbarComponent implements OnInit {
     //         return false;
     //     }
     // }
+
 
     switchLang(lang: string) {
         this.translate.use(lang);
