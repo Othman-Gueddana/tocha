@@ -75,36 +75,67 @@
                             <ng-template ngbTabContent>
                                 <form role="form">
                                     <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label">Title:</label>
+                                        <label class="col-lg-3 col-form-label form-control-label" >Title:</label>
                                         <div class="col-lg-9">
-                                            <input class="form-control" type="text">
+                                            <input class="form-control" type="text" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label">Category:</label>
+                                        <div class="col-lg-9">
+                                            <select id="product" name="products" required>
+                                              <option value="----------------------">----------------------</option>
+                                              <option value="Food">Food</option>
+                                              <option value="Clothes">Clothes</option>
+                                              <option value="Fourniture">Fourniture</option>
+                                              <option value="Electronics">Electronics</option>
+                                              <option value="House Hold">House Hold</option>
+                                              <option value="Cleaning Products">Cleaning Products</option>
+                                            </select> 
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label">Description:</label>
                                         <div class="col-lg-9">
-                                            <input class="form-control" type="text">
+                                            <input class="form-control" type="text" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label">Image:</label>
                                         <div class="col-lg-9">
-                                            <input type="URL" name="myURL" placeholder="insert image URL here">
+                                            <input type="URL" name="myURL" placeholder="insert image URL here" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label">Old Price:</label>
                                         <div class="col-lg-9">
-                                            <input class="form-control" type="text">
+                                            <input class="form-control" type="text" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label">New Price:</label>
                                         <div class="col-lg-9">
-                                            <input class="form-control" type="text">
+                                            <input class="form-control" type="text" required>
                                         </div>
                                     </div>
-                                    
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label">Expiration date:</label>
+                                        <div class="col-lg-9">
+                                            <input class="form-control" type="text" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label">Creation date:</label>
+                                        <div class="col-lg-9">
+                                            <input class="form-control" type="text" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label">Quantity:</label>
+                                        <div class="col-lg-9">
+                                            <input class="form-control" type="text" required>
+                                        </div>
+                                    </div>
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label"></label>
                                         <div class="col-lg-9">
