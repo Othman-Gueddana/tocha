@@ -1,25 +1,21 @@
 import { Injectable } from '@angular/core';
 import { retry, catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { throwError , Observable} from 'rxjs';
 
 import {
   HttpClient,
   HttpErrorResponse,
   HttpParams,
 } from '@angular/common/http';
+
+const baseUrl = 'http://localhost:5000/products/';
+
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
   constructor(private http: HttpClient) { }
 
-
-  private async request(method: string, url: string, data?: any) {
-    const result = this.http.request(method, url, { body: data, responseType: 'json', observe: 'body' });
-    return new Promise((resolve, reject) => {
-      result.subscribe(resolve, reject);
-    });
-  }
   handleError(error: HttpErrorResponse) {
     let errorMessage = 'Unknown error!';
     if (error.error instanceof ErrorEvent) {
@@ -35,5 +31,102 @@ export class ProductService {
   getProducts() {
     return  this.http
       .get('http://localhost:5000/products').pipe(retry(3), catchError(this.handleError));
+  }
+  addFood(data):Observable<any>{
+    let obj = {
+     name:data.name,
+     oldPrice:data.oldPrice,
+     newPrice: data.newPrice,
+     description: data.description,
+     category: data.category,
+     image: data.image,
+     ownerId: data.ownerId,
+     expireddate: data.expireddate,
+     creationDate: data.creationDate,
+     quantity: data.quantity,
+    };
+    console.log(obj)
+    return this.http.post(baseUrl + 'food', data);
+  }
+  addClean(data):Observable<any>{
+    let obj = {
+     name:data.name,
+     oldPrice:data.oldPrice,
+     newPrice: data.newPrice,
+     description: data.description,
+     category: data.category,
+     image: data.image,
+     ownerId: data.ownerId,
+     expireddate: data.expireddate,
+     creationDate: data.creationDate,
+     quantity: data.quantity,
+     
+    };
+    console.log(obj)
+    return this.http.post(baseUrl + 'clean', data);
+  }
+  addElec(data):Observable<any>{
+    let obj = {
+     name:data.name,
+     oldPrice:data.oldPrice,
+     newPrice: data.newPrice,
+     description: data.description,
+     category: data.category,
+     image: data.image,
+     ownerId: data.ownerId,
+     creationDate: data.creationDate,
+     quantity: data.quantity,
+     device: data.device,
+    
+    };
+    console.log(obj)
+    return this.http.post(baseUrl + 'elec', data);
+  }
+  addHouse(data):Observable<any>{
+    let obj = {
+     name:data.name,
+     oldPrice:data.oldPrice,
+     newPrice: data.newPrice,
+     description: data.description,
+     category: data.category,
+     image: data.image,
+     ownerId: data.ownerId,
+     creationDate: data.creationDate,
+     quantity: data.quantity,
+     device: data.device,
+    
+    };
+    console.log(obj)
+    return this.http.post(baseUrl + 'house', data);
+  }
+  addClothes(data):Observable<any>{
+    let obj = {
+     name:data.name,
+     oldPrice:data.oldPrice,
+     newPrice: data.newPrice,
+     description: data.description,
+     category: data.category,
+     image: data.image,
+     ownerId: data.ownerId,
+     quantity: data.quantity,
+     humanKind: data.humanKind,
+    };
+    console.log(obj)
+    return this.http.post(baseUrl + 'clothes', data);
+  }
+  addFourni(data):Observable<any>{
+    let obj = {
+     name:data.name,
+     oldPrice:data.oldPrice,
+     newPrice: data.newPrice,
+     description: data.description,
+     category: data.category,
+     image: data.image,
+     ownerId: data.ownerId,
+     quantity: data.quantity,
+     type: data.type
+    };
+    console.log(obj)
+    return this.http.post(baseUrl + 'fourni', data);
   }
 }
