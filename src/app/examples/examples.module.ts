@@ -7,6 +7,7 @@ import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
         SignupComponent,
         ProfileComponent,
         SigninComponent,
-        ShoppingCartComponent
+        ShoppingCartComponent,
+        FeedbackComponent
     ]
 })
 export class ExamplesModule { }
