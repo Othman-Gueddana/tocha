@@ -35,11 +35,11 @@ body {
     }
   }
 
-  .card{
+  .card-holder{
     height: 500px;
   }
-  .card image {
-    padding : 40%
+  .card-image {
+    padding : 20%
   }
   .card-title{
     font-style: italic;
@@ -51,10 +51,12 @@ body {
     margin-top: 0%;
     max-width: 25px;
   }
-  .dropdown-menu > li{
-  display: inline-block;
-    float: left;
- }
-.open> ul {
-    display: inline-flex !important;
-}
+
+
+//   .dropdown-menu > li{
+//   display: inline-block;
+//     float: left;
+//  }
+// .open> ul {
+//     display: inline-flex !important;
+// }
