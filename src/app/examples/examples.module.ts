@@ -8,13 +8,16 @@ import { SigninComponent } from './signin/signin.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FeedbackComponent } from './feedback/feedback.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
-        NgbModule
+        NgbModule,
+        ReactiveFormsModule
     ],
     declarations: [
         LandingComponent,
