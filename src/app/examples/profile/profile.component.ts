@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
+import { ProductService } from '../services/product.service';
 
 @Component({
     selector: 'app-profile',
@@ -9,8 +12,12 @@ import { } from '@ng-bootstrap/ng-bootstrap';
 
 export class ProfileComponent implements OnInit {
 
-    constructor() { }
+    constructor( private ProductService: ProductService,
+        private router: Router) { }
+
 
     ngOnInit() {}
-
+    onSubmit(f: NgForm) {
+        
+    }
 }
