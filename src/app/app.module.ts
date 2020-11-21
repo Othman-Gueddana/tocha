@@ -31,7 +31,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     ComponentsModule,
     ExamplesModule,
     AppRoutingModule,
-
+  
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {
