@@ -6,17 +6,15 @@
         <div class="container">
             <div class="owner">
                 <div class="avatar">
-                    <img src="./assets/img/faces/joe-gardner-2.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                    <img src="./assets/img/giphy.webp" alt="Circle Image" class="img-circle img-no-padding img-responsive">
                 </div>
                 <div class="name">
-                    <h4 class="title">Jane Faker<br /></h4>
+                    <h4 class="title">Jane Faker<br/></h4>
                     <h6 class="description">Music Producer</h6>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6 ml-auto mr-auto text-center">
-                    <p>An artist of considerable range, Jane Faker — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. </p>
-                    <br />
                     <button class="btn btn-outline-default btn-round"><i class="fa fa-cog"></i> Settings</button>
                 </div>
             </div>
@@ -73,78 +71,113 @@
                         </ngb-tab>
                         <ngb-tab title="Add a product">
                             <ng-template ngbTabContent>
-                                <form role="form">
+                                <form role="form" #f="ngForm" (ngSubmit)="onSubmit(f)">
+                                    
                                     <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label">Title:</label>
+                                        <label class="col-lg-3 col-form-label form-control-label" >Title:</label>
                                         <div class="col-lg-9">
-                                            <input class="form-control" type="text">
+                                            <input class="form-control" type="text" required name="title" ngModel #title="ngModel" />
                                         </div>
                                     </div>
+                                   
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label">Description:</label>
                                         <div class="col-lg-9">
-                                            <input class="form-control" type="text">
+                                            <input class="form-control" type="text" required name="description" ngModel #description="ngModel"/>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label">Image:</label>
-                                        <div class="col-lg-9">
-                                            <input type="URL" name="myURL" placeholder="insert image URL here">
-                                        </div>
-                                    </div>
+                                   
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label">Old Price:</label>
                                         <div class="col-lg-9">
-                                            <input class="form-control" type="text">
+                                            <input class="form-control" type="text" required name="oldPrice" ngModel #oldPrice="ngModel"/>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label">New Price:</label>
                                         <div class="col-lg-9">
-                                            <input class="form-control" type="text">
+                                            <input class="form-control" type="text" required name="newPrice" ngModel #oldPrice="ngModel"/>
                                         </div>
                                     </div>
-                                    
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label">Expiration date:</label>
+                                        <div class="col-lg-9">
+                                            <input class="form-control" type="text" required name="exppireddate" ngModel #exppireddate="ngModel"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label">Creation date:</label>
+                                        <div class="col-lg-9">
+                                            <input class="form-control" type="text" required name="creationDate" ngModel #creationDate="ngModel"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label">Quantity:</label>
+                                        <div class="col-lg-9">
+                                            <input class="form-control" type="text" required name="quantity">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label"> Devices:</label>
+                                        <div class="col-lg-9">
+                                            <select id="devices" name="devices" required class="form-control" >
+                                              <option value="computer"> Computer </option>
+                                              <option value="printer"> Printer </option>
+                                              <option value="projector"> Projector</option>
+                                              <option value="speaker"> Speaker</option>
+                                              <option value="camera">Camera</option>
+                                              <option value="other">Other</option>
+                                            </select> 
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label">Human Kind:</label>
+                                        <div class="col-lg-9">
+                                            <select id="humankind" name="humankind" required class="form-control">
+                                              <option value="homme">Men </option>
+                                              <option value="woman">Woman </option>
+                                              <option value="kids">Kids</option>
+                                              <option value="other">Other</option>
+
+                                            </select> 
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label">Category:</label>
+                                        <div class="col-lg-9">
+                                            <select id="product" required name="category"class="form-control">
+                                              <option value="food">Food</option>
+                                              <option value="clothes">Clothes</option>
+                                              <option value="fourniture">Fourniture</option>
+                                              <option value="electronics">Electronics</option>
+                                              <option value="houseHold">House Hold</option>
+                                              <option value="cleaning">Cleaning Products</option>
+                                              <option value="other">Other</option>
+
+                                            </select> 
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label">Type:</label>
+                                        <div class="col-lg-9">
+                                            <select id="humankind" name="humankind" required class="form-control">
+                                              <option value="table">Table </option>
+                                              <option value="bed">Beb </option>
+                                              <option value="chair">Chair</option>
+                                              <option value="other">Other</option>
+                                            </select> 
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label">Quantity:</label>
+                                        <div class="col-lg-9">
+                                            <input class="form-control" type="number" required name="quantity" ngModel #quantity="ngModel" min="1" max="100"/>
+                                        </div>
+                                    </div>
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label"></label>
                                         <div class="col-lg-9">
-                                            <input type="button" class="btn btn-primary" value="Add">
-                                            <input type="reset" class="btn btn-secondary" value="Cancel">
-                                        </div>
-                                    </div>
-                                </form>
-                            </ng-template>
-                        </ngb-tab>
-                        <ngb-tab title="Cart">
-                            <ng-template ngbTabContent>
-                                <form role="form">
-                                    <div class="wrap cf">
-                                        <div class="cart">
-                                          <ul class="cartWrap">
-                                            <li class="items odd">
-                                            <div class="infoWrap"> 
-                                                <div class="cartSection">
-                                                <img src="http://lorempixel.com/output/technics-q-c-300-300-4.jpg" alt="" class="itemImg" />
-                                                    <h3>Item Name</h3>
-                                                </div>  
-                                                <div class="prodTotal cartSection">
-                                                    <p>$15.00</p>
-                                                </div>
-                                                <div class="cartSection removeWrap">
-                                                    <a href="#" class="remove">x</a>
-                                                </div>
-                                            </div>
-                                            </li>
-                                          </ul>
-                                        </div>
-                                        <div class="subtotal cf">
-                                            <ul>        
-                                                <li class="totalRow final">
-                                                    <span class="label">Total</span>
-                                                    <span class="value">$44.00</span>
-                                                </li>
-                                                <a href="#" class="btn continue">Checkout</a>
-                                            </ul>
+                                            <input type="submit" [disabled]="f.invalid" class="btn btn-danger btn-block btn-round" value="Add">  
                                         </div>
                                     </div>
                                 </form>

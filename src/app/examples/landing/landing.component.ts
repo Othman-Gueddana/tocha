@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ProductService } from '../services/product.service';
 @Component({
     selector: 'app-landing',
     templateUrl: './landing.component.html',
@@ -9,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 export class LandingComponent implements OnInit {
   focus: any;
   focus1: any;
+  products:[]
+  constructor(private server:ProductService) { }
 
-  constructor() { }
-
-  ngOnInit() {}
-
+  ngOnInit() {
+      this.server.getProducts().subscribe(( data: any) => {
+          this.products=data
+        console.log(this.products)
+      })
+  }
 }

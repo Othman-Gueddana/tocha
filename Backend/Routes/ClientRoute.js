@@ -8,7 +8,7 @@ const verify = require("./VerificationToken.js");
 const nodemailer = require("nodemailer");
 const smtpTransport = require("nodemailer-smtp-transport");
 const { emailAccount, pass } = require("./MyAccountGmail.js");
-const loginValidation = require('./ValidationLogin.js')
+const {loginValidation} = require('./ValidationLogin.js')
 dotenv.config();
 
 router.get("/", async (req, res) => {
@@ -72,7 +72,7 @@ router.post("/login", async (req, res) => {
   const token = jwt.sign({ id: user.id }, process.env.SECRET_TOKEN);
   res
     .header("auth_token", token)
-    .send({ token: token, id: user.id, email: req.body.email });
+    .send({ token: token, id: user.id, email: req.body.email, status:"logged" });
 });
 
 router.put("/:id", async (req, res) => {
