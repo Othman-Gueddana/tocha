@@ -23,7 +23,18 @@
                                       <i class="nc-icon nc-key-25"></i>
                                   </span>
                                 </div>
-                                  <input type="text" class="form-control" placeholder="Password" (focus)="focus1=true" (blur)="focus1=false" required  [(ngModel)]="user.password" name="password" id="password"/>
+                                
+                                  <input class="form-control" placeholder="Password" (focus)="focus1=true" (blur)="focus1=false" required  [(ngModel)]="user.password" name="password" id="password" [type]="fieldTextType ? 'text' : 'password'"/>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">
+                                      <i class="fa"
+                                      [ngClass]="{
+                                        'fa-eye-slash': !fieldTextType,
+                                        'fa-eye': fieldTextType
+                                      }"
+                                      (click)="toggleFieldTextType()"></i>
+                                    </span>
+                                </div>
                               </div>
                               <button class="btn btn-danger btn-block btn-round" (click)="login()" type="submit"> Login </button>
                           </form>
