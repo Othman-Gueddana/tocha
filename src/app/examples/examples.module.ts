@@ -7,6 +7,8 @@ import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbdModalComponent } from './modal/modal.component';
+import { NgbdModalContent } from './modal/modal.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -25,7 +27,10 @@ import { ReactiveFormsModule } from '@angular/forms';
         ProfileComponent,
         SigninComponent,
         ShoppingCartComponent,
-        FeedbackComponent
-    ]
+        FeedbackComponent,
+        NgbdModalComponent,
+        NgbdModalContent
+    ],
+    entryComponents: [NgbdModalContent],
 })
 export class ExamplesModule { }

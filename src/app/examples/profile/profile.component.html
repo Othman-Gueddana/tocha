@@ -1,6 +1,6 @@
 <div class="wrapper">
     <div class="page-header page-header-xs" data-parallax="true"
-        style="background-image: url('./assets/img/fabio-mangione.jpg');">
+        style="background-image: url('./assets/img/header.jpg');">
         <div class="filter"></div>
     </div>
     <div class="section profile-content">
@@ -30,48 +30,18 @@
                                     <div class="col-md-6 ml-auto mr-auto">
                                         <ul class="list-unstyled follows">
                                             <li>
-                                                <div class="row">
+                                                <div class="row" *ngFor="let item of products ">
                                                     <div class="col-md-2 col-sm-2 ml-auto mr-auto">
-                                                        <img src="./assets/img/faces/clem-onojeghuo-2.jpg"
+                                                        <img  src="{{item.image}}"
                                                             alt="Circle Image"
                                                             class="img-circle img-no-padding img-responsive">
                                                     </div>
                                                     <div class="col-md-7 col-sm-4 ml-auto">
-                                                        <h6>Flume<br /><small>Musical Producer</small></h6>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-2 ml-auto mr-auto">
-                                                        <div class="form-check">
-                                                            <label class="form-check-label">
-                                                                <input class="form-check-input" type="checkbox" value=""
-                                                                    checked="">
-                                                                <span class="form-check-sign"></span>
-                                                            </label>
-                                                        </div>
+                                                        <h6>{{item.name}}<br /><small>{{item.newPrice}}</small></h6>
                                                     </div>
                                                 </div>
                                             </li>
                                             <hr />
-                                            <li>
-                                                <div class="row">
-                                                    <div class="col-md-2 col-sm-2 ml-auto mr-auto">
-                                                        <img src="./assets/img/faces/ayo-ogunseinde-2.jpg"
-                                                            alt="Circle Image"
-                                                            class="img-circle img-no-padding img-responsive">
-                                                    </div>
-                                                    <div class="col-md-7 col-sm-4 ml-auto">
-                                                        <h6>Banks<br /><small>Singer</small></h6>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-2 ml-auto mr-auto">
-                                                        <div class="form-check">
-                                                            <label class="form-check-label">
-                                                                <input class="form-check-input" type="checkbox" value=""
-                                                                    checked="">
-                                                                <span class="form-check-sign"></span>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -199,19 +169,30 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <input name="img" type="file" name="filename" (change)="selectedFile($event)"
-                                            accept=".png,.jpg" required class="btn btn-danger btn-block btn-round" />
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-striped-bg-success" role="progressbar"
-                                                [style.width]="(uploadProgress | async) + '%'"
-                                                [attr.aria-valuenow]="(uploadProgress | async) + '%'" aria-valuemin="0"
-                                                aria-valuemax="100"></div>
-                                        </div>
-                                        <a [href]="downloadURL | async" name="download">{{
-                                                        downloadURL | async
-                                                            }}</a>
+                                        <input
+                                        name="img"
+                                        type="file"
+                                        name="filename"
+                                        (change)="selectedFile($event)"
+                                        accept=".png,.jpg"
+                                        required
+                                      />
+                                      <div class="progress">
+                                        <div
+                                          class="progress-bar progress-bar-striped-bg-success"
+                                          role="progressbar"
+                                          [style.width]="(uploadProgress | async) + '%'"
+                                          [attr.aria-valuenow]="(uploadProgress | async) + '%'"
+                                          aria-valuemin="0"
+                                          aria-valuemax="100"
+                                        ></div>
+                                      </div>
+                                      <a [href]="downloadURL | async" name="download">{{
+                                        downloadURL | async
+                                      }}</a>
+                                      <p></p>
                                     </div>
-                                    <img sref="C:\Users\ASUS\Desktop" />
+                                        <img sref="C:\Users\ASUS\Desktop" />
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label"></label>
                                         <div class="col-lg-9">
@@ -219,7 +200,9 @@
                                                 class="btn btn-danger btn-block btn-round" value="Add">
                                         </div>
                                     </div>
+                              
                                 </form>
+                            
                             </ng-template>
                         </ngb-tab>
                     </ngb-tabset>
