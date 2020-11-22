@@ -22,16 +22,19 @@
                 <div class="row" style="margin-top: 37px">
                         <div class="cover">
                         </div>
-                        <div class="col-md-4" *ngFor="let item of products ">
+                        <div class="col-md-4" *ngFor="let item of products">
                                 <div class="card">
                                         <div class="card-img">
                                                 <img class="img-no-padding" style="max-height:200px;margin-left:8%;"
-                                                        src="{{item.image}}">
+                                                        src="{{item.image}}" >
                                         </div>
                                         <div class="card-body">
                                                 <h3 class="card-title">{{item.name}}</h3>
                                                 <h5><del>{{item.oldPrice}}</del></h5>
                                                 <h5>{{item.newPrice}}</h5>
+                                
+                                             <button class="btn btn-outline-danger btn-round" (click)="open(item)">Launch demo modal</button> 
+                                        <!-- <app-modal-component></app-modal-component>-->
                                         </div>
                                 </div>
                         </div>
@@ -55,6 +58,8 @@
                                 </ul>
                         </nav>
                 </div>
+                
         </div>
-        <!-- Modal -->
+     
+        
 </div>
