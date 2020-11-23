@@ -25,13 +25,23 @@ export class ProfileComponent implements OnInit {
     status: string = "";
     products:any = [];
     user: any ;
+    firstName: any ;
+    lastName: any ;
     constructor( private ProductService: ProductService, private fileStorage: AngularFireStorage,
         private router: Router) { }
 
     ngOnInit() {
-      let user = JSON.parse(window.localStorage.getItem('id'));
-      this.user = user ;
+       let user = JSON.parse(window.localStorage.getItem('id'));
+       let firstName  =  JSON.parse(JSON.stringify(window.localStorage.getItem('firstName')))
+      //  let lastName   =  JSON.parse(window.localStorage.getItem('lastName'));
+      
+       this.firstName = firstName ;
+      //  this.lastName = lastName ;      
+       this.user = user ;
+
       console.log(user)
+      console.log(firstName)
+      // console.log(lastName)
       this.ProductService.getProducts().subscribe(( data: any) => {
         for(var i=0 ; i< data.length; i++) {
            if(data[i].ownerId === user ){
