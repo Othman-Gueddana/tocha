@@ -8,7 +8,8 @@ import { ClientService } from '../services/client.service';
     styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-  
+  focus: any;
+  focus1: any;
     constructor( private ClientService: ClientService,
         private router: Router) { }
 
