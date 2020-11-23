@@ -24,11 +24,13 @@ export class ProfileComponent implements OnInit {
     category: string = "";
     status: string = "";
     products:any = [];
+    user: any ;
     constructor( private ProductService: ProductService, private fileStorage: AngularFireStorage,
         private router: Router) { }
 
     ngOnInit() {
       let user = JSON.parse(window.localStorage.getItem('id'));
+      this.user = user ;
       console.log(user)
       this.ProductService.getProducts().subscribe(( data: any) => {
         for(var i=0 ; i< data.length; i++) {
@@ -126,5 +128,8 @@ export class ProfileComponent implements OnInit {
                 console.log(error)
             })
         }
+    }
+    changeInfo(){
+      this.router.navigateByUrl('/settings');
     }
 }
