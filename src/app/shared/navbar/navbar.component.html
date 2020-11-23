@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="500">
     <div class="container">
         <div class="navbar-translate">
-            <a class="navbar-brand" [routerLink]="['/landing']"> <img src="assets/img/logo.png" style="max-width: 200px;
+            <a class="navbar-brand" [routerLink]="['/landing']"> <img src="assets/img/logo.png" style="max-width:200px;
                 max-height: 80px;"></a>
             <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
                 <span class="navbar-toggler-bar"></span>
@@ -9,7 +9,7 @@
                 <span class="navbar-toggler-bar"></span>
             </button>
         </div>
-        <div class="navbar-collapse" id="navbarToggler">
+        <div class="collapse navbar-collapse" id="navbarToggler">
             <ul class="navbar-nav ml-auto" >
                 <li class="nav-item"  *ngIf="!loggedIn" >
                     <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/CreativeTim" target="_blank">
@@ -31,29 +31,38 @@
                 </li>
                
                 <li class="nav-item" *ngIf="!loggedIn" >
-                    <span class="form-inline">
+                    <span class="select">
                         <select class="btn btn-danger btn-round" #selectedLang (change)="switchLang(selectedLang.value)">
-                            <option *ngFor="let language of translate.getLangs()" [value]="language"
+                            <option class="dropdown-item " *ngFor="let language of translate.getLangs()" [value]="language"
                                 [selected]="language === translate.currentLang">
                                 {{ language }}
                             </option>
                         </select>
                     </span>
                 </li>
-                <li class="nav-item" *ngIf="!loggedIn">
-                  <a  [routerLink]="['/signup']" class="btn btn-danger btn-round"> Register </a>
-            <!-- <span class="form-inline">
-                    <select class="btn btn-danger btn-round"  ">
-                        <option ><a  [routerLink]="['/signup']" class="btn btn-danger btn-round"> Register </a>
-                        </option>
 
-                    </select>
-                </span> -->    
-
+                 <li class="nav-item"  *ngIf="!loggedIn">
+                    <div ngbDropdown class="d-inline-block dropdown">
+                        <a class="btn btn-danger btn-round" id="dropdownBasic1" ngbDropdownToggle>Register</a>
+                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-primary">
+                            <a class="dropdown-item " [routerLink]="['/signup']"> Register as client </a>
+                            <a class="dropdown-item " [routerLink]="['/signupComp']"> Register as company </a>
+                            
+                        </div>
+                    </div>
                 </li>
                 <li class="nav-item" *ngIf="!loggedIn">
+                    <div ngbDropdown class="d-inline-block dropdown">
+                        <a class="btn btn-danger btn-round" id="dropdownBasic2" ngbDropdownToggle>Log In</a>
+                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-primary">
+                            <a class="dropdown-item " [routerLink]="['/signin']"> Log In as client </a>  
+                            <a class="dropdown-item " [routerLink]="['/signinComp']"> Log In as company </a>         
+                        </div>
+                    </div>
+                </li>
+           <!--  <li class="nav-item" *ngIf="!loggedIn">
                     <a  [routerLink]="['/signin']" class="btn btn-danger btn-round"> Log In </a>
-                </li>      
+                </li>      -->    
                 <li class="nav-item" *ngIf="loggedIn" >
                     <a [routerLink]="['/cart']" class="btn btn-danger btn-round"> My Cart </a>
                 </li>

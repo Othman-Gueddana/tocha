@@ -11,7 +11,9 @@ import { NgbdModalComponent } from './modal/modal.component';
 import { NgbdModalContent } from './modal/modal.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { SettingsComponent } from './settings/settings.component';
+import { SignupCompComponent } from './signup-comp/signup-comp.component';
+import { SigninCompComponent } from './signin-comp/signin-comp.component'
 
 
 @NgModule({
@@ -29,7 +31,10 @@ import { ReactiveFormsModule } from '@angular/forms';
         ShoppingCartComponent,
         FeedbackComponent,
         NgbdModalComponent,
-        NgbdModalContent
+        NgbdModalContent,
+        SettingsComponent,
+        SignupCompComponent,
+        SigninCompComponent
     ],
     entryComponents: [NgbdModalContent],
 })

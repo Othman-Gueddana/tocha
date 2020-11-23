@@ -13,7 +13,8 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AngularFireStorageModule } from '@angular/fire/storage'
-import { AngularFireModule } from '@angular/fire'
+import { AngularFireModule } from '@angular/fire';
+
 
 @NgModule({
   declarations: [
