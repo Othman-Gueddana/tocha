@@ -15,6 +15,8 @@ export class SigninComponent implements OnInit {
     email: '',
     password: '',
   };
+  focus: any;
+  focus1: any;
   constructor( private ClientService: ClientService,
     private router: Router, private formbuilder: FormBuilder) {}
 

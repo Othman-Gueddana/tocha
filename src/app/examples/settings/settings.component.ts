@@ -7,6 +7,8 @@ import { ClientService } from '../services/client.service';
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
+  focus: any;
+  focus1: any;
   phoneNumber: string = '';
   address: string = '';
   constructor(private ClientService: ClientService,
