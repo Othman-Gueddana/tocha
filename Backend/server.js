@@ -16,6 +16,7 @@ app.use("/feedbacks",require('./Routes/FeedbackRoute.js'))
 app.use("/livraisons",require('./Routes/LivraisonRoute.js'))
 app.use("/messages",require('./Routes/MessageRoute.js'))
 app.use("/products",require('./Routes/ProductRoute.js'))
+app.use("/purchases",require('./Routes/PurchaseRoute.js'))
 
 // Server listening
 const PORT = process.env.PORT || 5000
