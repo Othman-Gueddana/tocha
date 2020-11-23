@@ -10,6 +10,7 @@ import { LandingComponent } from './examples/landing/landing.component';
 import { ShoppingCartComponent } from './examples/shopping-cart/shopping-cart.component';
 import { FeedbackComponent } from './examples/feedback/feedback.component';
 import { SettingsComponent } from './examples/settings/settings.component';
+import { ForgotComponent } from './examples/forgot/forgot.component';
 
 const routes: Routes =[
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -20,8 +21,8 @@ const routes: Routes =[
     { path: 'feedback',         component: FeedbackComponent},
     { path: 'signin',           component: SigninComponent },
     { path: 'cart',             component: ShoppingCartComponent},
-    { path: 'settings',         component: SettingsComponent }
-
+    { path: 'settings',         component: SettingsComponent },
+    { path: 'forgot',           component: ForgotComponent },
 ];
 
 @NgModule({
@@ -32,7 +33,6 @@ const routes: Routes =[
       useHash: true
     })
   ],
-  exports: [
-  ],
+  exports: [],
 })
 export class AppRoutingModule { }
