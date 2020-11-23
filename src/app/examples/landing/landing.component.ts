@@ -26,7 +26,6 @@ export class LandingComponent implements OnInit {
         console.log(this.products)
       })}
       open(item) {
-        debugger;
        console.log(item)
         const modalRef = this.modalService.open(NgbdModalContent);
         modalRef.componentInstance.item = item;
