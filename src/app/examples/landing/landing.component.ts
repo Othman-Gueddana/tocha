@@ -61,6 +61,17 @@ export class LandingComponent implements OnInit {
       }
      
   }
+  getPricedata(value: string) {
+    let filtered1 = this.allProducts.filter(item => 
+      console.log(item.newPrice)
+      // item.newPrice <= value
+       );
+   
+          this.products.concat(filtered1)
+       if (value ==="Required price"){
+         this.products = this.allProducts
+       }
+  }
 }
 
 //   open(content) {
