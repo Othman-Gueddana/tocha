@@ -3,8 +3,7 @@ import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-modal-content',
-    template: `
-    <div class="modal-header" id="modalSocial">
+    template: `  <div class="modal-header" id="modalSocial">
         <h3 class="modal-title text-center">{{item.name}}</h3>
         <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
@@ -24,11 +23,11 @@ import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
     </div>
     <div class="modal-footer">
         <div class="left-side">
-            <button type="button" class="btn btn-default btn-link (click)="activeModal.close('Close click')">Add to my cart </button>
+            <button type="button" class="btn btn-default btn-link" (click)="activeModal.close('Close click')" > Add to my cart </button>
         </div>
         <div class="divider"></div>
         <div class="right-side">
-            <button type="button" class="btn btn-danger btn-link" (click)="activeModal.close('Close click')">No ,thank you</button>
+            <button type="button" class="btn btn-danger btn-link" (click)="activeModal.close('Close click')"> No ,thank you</button>
         </div>
     </div>
     `

@@ -14,6 +14,10 @@ export class LandingComponent implements OnInit {
   focus: any;
   focus1: any;
   products:[];
+  startIndex = 0;
+  endIndex = 9;
+  $: any
+  page = 1
  
   constructor(private server: ProductService , private modalService: NgbModal) { }
 
@@ -23,7 +27,6 @@ export class LandingComponent implements OnInit {
         console.log(this.products)
       })}
       open(item) {
-        debugger;
        console.log(item)
         const modalRef = this.modalService.open(NgbdModalContent);
         modalRef.componentInstance.item = item;
@@ -34,6 +37,16 @@ export class LandingComponent implements OnInit {
         });
        
     }
+  updateIndex(pageIndex) {
+    this.startIndex = pageIndex * 9;
+    this.endIndex = this.startIndex + 9
+    document.documentElement.scrollTop = 0;
+    this.page = Math.ceil(this.endIndex / 9)
+  }
+  getArrayFromNumber(length) {
+    console.log(length)
+    return new Array(Math.floor(length / 10))
+  }
     
 }
 
