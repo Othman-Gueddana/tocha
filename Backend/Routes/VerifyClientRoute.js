@@ -1,0 +1,35 @@
+const express = require("express");
+const router = express.Router();
+const VerifyClients = require("../Models/ClientVerifyModel.js");
+
+
+router.get("/", async (req, res) => {
+  await VerifyClients.findAll().then((verifyClients) => res.json(verifyClients));
+});
+
+router.get("/:id", async (req, res) => {
+  await VerifyClients.findByPk(req.params.id).then((verifyClients) => res.json(verifyClients));
+});
+
+router.post("/register", async (req, res) => {
+  await VerifyClients.create({
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    password: req.body.password,
+    email: req.body.email,
+    address: req.body.address,
+    phoneNumber: req.body.phoneNumber,
+  })
+});
+
+router.delete("/:id", async (req, res) => {
+  await VerifyClients.findByPk(req.params.id)
+    .then((verifyClients) => {
+      verifyClients.destroy();
+    })
+    .then(() => {
+      res.json("deleted");
+    });
+});
+
+module.exports = router;

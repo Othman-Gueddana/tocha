@@ -19,15 +19,15 @@ export class SignupComponent implements OnInit {
         this.ClientService.createRegister(f.value).subscribe(
             (res) => {
               console.log(res);
-              this.router.navigateByUrl('/signin');
             },
             (error) => {
               console.log(error);
             }
           );
-       }else 
-        f.value.passwordConf = "" ;
-       alert("Repeat again please")
-        
+        alert("your request to create a new account is succsesfuly done , wait for email of acceptation")
+          this.router.navigateByUrl('/signin');
+       }else {
+        alert("Repeat again please")
+       }
       }
 }
