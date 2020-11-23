@@ -27,7 +27,6 @@ export class LandingComponent implements OnInit {
         console.log(this.products)
       })}
       open(item) {
-        debugger;
        console.log(item)
         const modalRef = this.modalService.open(NgbdModalContent);
         modalRef.componentInstance.item = item;
@@ -45,7 +44,6 @@ export class LandingComponent implements OnInit {
     this.page = Math.ceil(this.endIndex / 9)
   }
   getArrayFromNumber(length) {
-    console.log(length)
     return new Array(Math.floor(length / 10))
   }
     

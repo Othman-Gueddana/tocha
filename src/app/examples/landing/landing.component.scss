@@ -52,11 +52,17 @@ body {
     max-width: 25px;
   }
 
+  .container{
+    position: relative;
+    right: 55px;
+    top: 10px;
+  }
 
-//   .dropdown-menu > li{
-//   display: inline-block;
-//     float: left;
-//  }
-// .open> ul {
-//     display: inline-flex !important;
-// }
+
+#menu {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  width: 12em;
+  margin-top: -2.5em;
+}
