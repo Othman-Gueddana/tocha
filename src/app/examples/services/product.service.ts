@@ -8,7 +8,7 @@ import {
   HttpParams,
 } from '@angular/common/http';
 
-const baseUrl = 'http://localhost:5000/products/';
+const baseUrl = 'http://localhost:5000/verifyProducts/';
 
 @Injectable({
   providedIn: 'root'

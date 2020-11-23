@@ -17,7 +17,9 @@ app.use("/livraisons",require('./Routes/LivraisonRoute.js'))
 app.use("/messages",require('./Routes/MessageRoute.js'))
 app.use("/products",require('./Routes/ProductRoute.js'))
 app.use("/purchases",require('./Routes/PurchaseRoute.js'))
-
+app.use("/verifyProducts",require('./Routes/VerifyProductRoute.js'))
+app.use("/verifyClients",require('./Routes/VerifyClientRoute.js'))
+app.use("/verifyCompanys",require('./Routes/VerifyCompanyRoute.js'))
 // Server listening
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => {

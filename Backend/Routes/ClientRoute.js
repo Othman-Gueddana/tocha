@@ -72,23 +72,33 @@ router.post("/login", async (req, res) => {
   const token = jwt.sign({ id: user.id }, process.env.SECRET_TOKEN);
   res
     .header("auth_token", token)
-    .send({ token: token, id: user.id, email: req.body.email, status:"logged" });
+    .send({ token: token, id: user.id,firstName : user.firstName , lastName : user.lastName, status:"logged" });
 });
 
 router.put("/:id", async (req, res) => {
-  Clients.findByPk(req.params.id).then((clients) => {
+  await Clients.findByPk(req.params.id).then((clients) => {
     clients
-      .update({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        password: req.body.password,
-        email: req.body.email,
+    .update({
         address: req.body.address,
         phoneNumber: req.body.phoneNumber,
       })
       .then((clients) => {
         res.json(clients);
-      });
+      }).catch((err) => console.log(err))
+  });
+});
+
+router.patch("/password", async (req, res) => {
+  const salt = await bcrypt.genSalt(10);
+  const hashPassword = await bcrypt.hash(req.body.newPassword, salt);
+  await Clients.findOne({ where: { email: req.body.email } }).then((clients) => {
+    clients
+    .update({
+       password: hashPassword
+      })
+      .then((clients) => {
+        res.json(clients);
+      }).catch((err) => console.log(err))
   });
 });
 

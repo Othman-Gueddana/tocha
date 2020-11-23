@@ -72,17 +72,13 @@ router.post("/login", async (req, res) => {
   const token = jwt.sign({ id: user.id }, process.env.SECRET_TOKEN);
   res
     .header("auth_token", token)
-    .send({ token: token, id: user.id, email: req.body.email });
+    .send({ token: token, id: user.id});
 });
 
 router.put("/:id", async (req, res) => {
   Companys.findByPk(req.params.id).then((companys) => {
     companys
       .update({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        password: req.body.password,
-        email: req.body.email,
         address: req.body.address,
         phoneNumber: req.body.phoneNumber,
       })
@@ -91,6 +87,20 @@ router.put("/:id", async (req, res) => {
       });
   });
 });
+router.put("/updatePass", async (req, res) => {
+  const user = await Companys.findOne({ where: { email: req.body.email } });
+  if (!user) return res.send({ status: 404 });
+  const validPass = await bcrypt.compare(req.body.password, user.password);
+  if (!validPass) return res.send({ status: 500 });
+  const salt = await bcrypt.genSalt(10);
+  const hashPassword = await bcrypt.hash(req.body.NewPassword, salt);
+  Companys.update({
+        password:hashPassword,
+      })
+      .then((companys) => {
+        res.json(companys);
+      });
+  });
 
 router.delete("/:id", async (req, res) => {
   await Companys.findByPk(req.params.id)
