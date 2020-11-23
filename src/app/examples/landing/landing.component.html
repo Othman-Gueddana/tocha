@@ -3,28 +3,19 @@
                 style="background-image: url('./assets/img/Capture1.PNG'); max-height:500px;">
         </div>
 </div>
-        <div id=menu>
-                <select  class="btn btn-outline-danger btn-round" id="inputGroupSelect01">
-                        <option selected>Category...</option>
-                        <option value="3"><strong>Food</strong></option>
-                        <option value="3"><strong>Clothes</strong></option>
-                        <option value="3"><strong>Fourniture</strong></option>
-                        <option value="3"><strong>Electronics</strong></option>
-                        <option value="3"><strong>House Hold</strong></option>
-                        <option value="3"><strong>Cleaning Products</strong></option>
-                        <option value="3"><strong>Other</strong></option>
-                </select>
+<div id=menu>
+        <select class="btn btn-outline-danger btn-round" #mySelect (change)=getCategoriesdata(mySelect.value)>
+                <option value="category" selected>Category..</option>
+                <option value="food">Food</option>
+                <option value="clothes">Clothes</option>
+                <option value="fourniture">Fourniture</option>
+                <option value="electronicDevices">Electronics</option>
+                <option value="houseHolds">House Hold</option>
+                <option value="cleaningProduct">Cleaning Products</option>
+                <option value="other">Other</option>
+        </select>
 
-                <select  class="btn btn-outline-danger btn-round" id="inputGroupSelect02">
-                        <option selected>Required price</option>
-                        <option value="1">[0 - 10,000]dt.</option>
-                        <option value="2">[10,000 - 50,000]dt.</option>
-                        <option value="3">[50 - 200,000]dt.</option>
-                        <option value="3">[200,000 - 500,000]dt.</option>
-                        <option value="3">[500,00 & More]dt.</option>
-
-                </select>
-        </div>
+</div>
 
 <!-- <ul id=menu>
         <li><a href="#L384">Section 1</a>
@@ -47,8 +38,8 @@
                                         <h5><del>{{item.oldPrice}}</del></h5>
                                         <h5>{{item.newPrice}}</h5>
 
-                                        <button class="btn btn-outline-danger btn-round" (click)="open(item)">Launch
-                                                demo modal</button>
+                                        <button class="btn btn-outline-danger btn-round" (click)="open(item)">See More About
+                                                </button>
                                         <!-- <app-modal-component></app-modal-component>-->
                                 </div>
                         </div>
@@ -56,7 +47,7 @@
                 <div class="">
                         <nav aria-label="...">
                                 <ul class="pagination"
-                                        *ngFor="let item of getArrayFromNumber(products.length); let i =index ">
+                                        *ngFor="let item of getArrayFromNumber(products.length) ; let i =index ">
 
                                         <li class="page-item ">
                                                 <a class="page-link " (click)="updateIndex(i)">{{i+1}}</a>

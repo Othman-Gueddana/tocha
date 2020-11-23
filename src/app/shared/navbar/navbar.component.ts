@@ -30,7 +30,7 @@ export class NavbarComponent implements OnInit {
 
     clearStorage() {
         localStorage.clear();
-  this.router.navigateByUrl('/home');
+        this.router.navigateByUrl('/home');
       }
 
     sidebarOpen() {
@@ -80,5 +80,12 @@ export class NavbarComponent implements OnInit {
 
     switchLang(lang: string) {
         this.translate.use(lang);
+    }
+    
+    switchRoute(route) {
+        if (route === '/signin'){
+             this.router.navigateByUrl('/signin');
+        }
+       
     }
 }
