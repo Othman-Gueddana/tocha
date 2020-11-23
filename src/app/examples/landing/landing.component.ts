@@ -45,7 +45,6 @@ export class LandingComponent implements OnInit {
     this.page = Math.ceil(this.endIndex / 9)
   }
   getArrayFromNumber(length) {
-    console.log(length)
     return new Array(Math.floor(length / 10))
   }
     
