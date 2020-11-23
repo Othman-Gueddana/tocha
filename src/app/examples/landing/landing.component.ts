@@ -16,7 +16,6 @@ export class LandingComponent implements OnInit {
   products:[];
   startIndex = 0;
   endIndex = 9;
-  $: any
   page = 1
  
   constructor(private server: ProductService , private modalService: NgbModal) { }
