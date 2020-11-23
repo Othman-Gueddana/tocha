@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
-
+  focus: any;
+  focus1: any;
   constructor() { }
 
   ngOnInit(): void {
