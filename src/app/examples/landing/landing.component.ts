@@ -4,8 +4,6 @@ import { ProductService } from '../services/product.service';
 import { NgbdModalComponent } from '../modal/modal.component';
 import { NgbdModalContent } from '../modal/modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { PurchaseService } from '../services/purchase.service';
-
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
@@ -13,59 +11,35 @@ import { PurchaseService } from '../services/purchase.service';
 })
 
 export class LandingComponent implements OnInit {
-  user: any ;
   focus: any;
   focus1: any;
   allProducts: Array<any> = [];
   products: Array<any> =[];
-  selected: Array<any> =[];
   startIndex = 0;
   endIndex = 9;
   page = 1
   productSelected: Number
 
-  searchData: Array<string> =[]
-  title = 'angular-text-search-highlight';
-  searchText = '';
-
- constructor(private server: ProductService, private modalService: NgbModal, private PurchaseService:PurchaseService) { }
-
+  constructor(private server: ProductService, private modalService: NgbModal) { }
 
   ngOnInit() {
     this.server.getProducts().subscribe((data: any) => {
       this.allProducts = data
       console.log(this.products)
       this.products = this.allProducts
-      this.user = JSON.parse(window.localStorage.getItem('id'));
-        for(let i =0 ; i < this.products.length ; i++ ){ 
-      this.searchData.push(this.products[i].name) 
-        }
     })
+     
   }
- 
   open(item) {
     console.log(item)
     const modalRef = this.modalService.open(NgbdModalContent);
     modalRef.componentInstance.item = item;
     modalRef.result.then((result) => {
-         let obj = {
-                productId:result,
-                clientId:this.user,
-              }
-          if (typeof(result) === "number" && this.selected.includes(result) === false ) {
-              console.log(obj)
-              console.log(result)
-                this.PurchaseService.addPurchase(obj).subscribe(
-                    (res) => {
-                        console.log(res);
-                      },
-                      (error) => {
-                        console.log(error);
-                      }
-                )
-          }
-      this.selected.push(result)
-        });
+      if (result) {
+        console.log(result);
+      }
+    });
+
   }
   updateIndex(pageIndex) {
     this.startIndex = pageIndex * 9;
@@ -86,17 +60,6 @@ export class LandingComponent implements OnInit {
         this.products = this.allProducts
       }
      
-  }
-  getPricedata(value: string) {
-    let filtered1 = this.allProducts.filter(item => 
-      // console.log(item.newPrice)
-      item.newPrice <= value
-       );
-   
-          this.products = filtered1
-       if (value ==="Required price"){
-         this.products = this.allProducts
-       }
   }
 }
 
