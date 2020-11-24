@@ -28,9 +28,11 @@ export class ProductService {
     window.alert(errorMessage);
     return throwError(errorMessage);
   }
-  getProducts() {
+ 
+  getProducts(): Observable<any>{
+    const url = 'http://localhost:5000/products'
     return  this.http
-      .get('http://localhost:5000/products').pipe(retry(3), catchError(this.handleError));
+      .get(url).pipe(retry(3), catchError(this.handleError));
   }
   addFood(data):Observable<any>{
     let obj = {

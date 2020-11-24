@@ -1,64 +1,60 @@
-<!-- <ul>
-<li class="card " style="width: 18rem;" *ngFor="let item of products">
-                <img class="card-img-top" src="{{item.image}}" alt="Card image cap">
-                <div class="card-body">
-                        <h5 class="card-title">{{item.name}}</h5>
-                        <p class="card-text">{{item.description}} </p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-</li>
+<div class="wrapper">
+        <div class="page-header page-header-xs" data-parallax="true"
+                style="background-image: url('./assets/img/Capture1.PNG'); max-height:500px;">
+        </div>
+</div>
+<div id=menu>
+        <select class="btn btn-outline-danger btn-round" #mySelect (change)=getCategoriesdata(mySelect.value)>
+                <option value="category" selected>Category..</option>
+                <option value="food">Food</option>
+                <option value="clothes">Clothes</option>
+                <option value="fourniture">Fourniture</option>
+                <option value="electronicDevices">Electronics</option>
+                <option value="houseHolds">House Hold</option>
+                <option value="cleaningProduct">Cleaning Products</option>
+                <option value="other">Other</option>
+        </select>
+
+</div>
+
+<!-- <ul id=menu>
+        <li><a href="#L384">Section 1</a>
+        <li><a href="#details">Section 2</a>
+        <li><a href="#FAQ">Section 3</a>
 </ul> -->
 <div class="container">
-        <div class="row">
-                <div class="col-md-4" *ngFor="let item of products">
+
+        <div class="row" style="margin-top: 37px">
+                <div class="cover">
+                </div>
+                <div class="col-md-4" *ngFor="let item of products | slice:startIndex:endIndex">
                         <div class="card">
                                 <div class="card-img">
-                                        <img class="img-fluid rounded-circle w-80 sm-3" src="{{item.image}}">
+                                        <img class="img-no-padding" style="max-height:200px;margin-left:8%;"
+                                                src="{{item.image}}">
                                 </div>
                                 <div class="card-body">
-                                        <h3><del>{{item.name}}</del></h3>
-                                        <!-- <h5>{{item.description}}</h5> -->
-                                        <!-- <h5>{{item.}}</h5>-->
-                                        <button>Check more</button>
+                                        <h3 class="card-title">{{item.name}}</h3>
+                                        <h5><del>{{item.oldPrice}}</del></h5>
+                                        <h5>{{item.newPrice}}</h5>
+
+                                        <button class="btn btn-outline-danger btn-round" (click)="open(item)">See More About
+                                                </button>
+                                        <!-- <app-modal-component></app-modal-component>-->
                                 </div>
                         </div>
                 </div>
-        </div>
-</div>
-<!-- <div class="card-group" *ngFor="let item of products">
-        <div class="card">
-                <img class="card-img-top" src="..." alt="Card image cap">
-                <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
-                </div>
-                <div class="card-footer">
-                        <small class="text-muted">Last updated 3 mins ago</small>
-                </div>
-        </div>
-        <div class="card">
-                <img class="card-img-top" src="..." alt="Card image cap">
-                <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This card has supporting text below as a natural lead-in to additional
-                                content.</p>
-                </div>
-                <div class="card-footer">
-                        <small class="text-muted">Last updated 3 mins ago</small>
+                <div class="">
+                        <nav aria-label="...">
+                                <ul class="pagination"
+                                        *ngFor="let item of getArrayFromNumber(products.length) ; let i =index ">
+
+                                        <li class="page-item ">
+                                                <a class="page-link " (click)="updateIndex(i)">{{i+1}}</a>
+                                        </li>
+                                </ul>
+                                <h5>Page n°:{{page}}</h5>
+                        </nav>
                 </div>
         </div>
-        <div class="card">
-                <img class="card-img-top" src="..." alt="Card image cap">
-                <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This card has even longer content than the first to show that equal
-                                height action.</p>
-                </div>
-                <div class="card-footer">
-                        <small class="text-muted">Last updated 3 mins ago</small>
-                </div>
-        </div>
-        
-</div> -->
+</div><br><br><br><br>

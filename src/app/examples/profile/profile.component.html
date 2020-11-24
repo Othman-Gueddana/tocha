@@ -1,69 +1,46 @@
 <div class="wrapper">
-    <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('./assets/img/fabio-mangione.jpg');">
+    <div class="page-header page-header-xs" data-parallax="true"
+        style="background-image: url('./assets/img/header.jpg');">
         <div class="filter"></div>
     </div>
     <div class="section profile-content">
         <div class="container">
             <div class="owner">
                 <div class="avatar">
-                    <img src="./assets/img/giphy.webp" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                    <img src="./assets/img/giphy.webp" alt="Circle Image"
+                        class="img-circle img-no-padding img-responsive">
                 </div>
                 <div class="name">
-                    <h4 class="title">Jane Faker<br/></h4>
-                    <h6 class="description">Music Producer</h6>
+                    <h4 class="title">{{user}}<br /></h4>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6 ml-auto mr-auto text-center">
-                    <button class="btn btn-outline-default btn-round"><i class="fa fa-cog"></i> Settings</button>
+                    <button class="btn btn-outline-default btn-round" (click)="changeInfo()"><i class="fa fa-cog"></i> Settings</button>
                 </div>
             </div>
-            <br/>
+            <br />
             <div class="nav-tabs-navigation">
                 <div class="nav-tabs-wrapper">
                     <ngb-tabset [justify]="'center'">
                         <ngb-tab title="Your Products">
-                            <ng-template ngbTabContent >
+                            <ng-template ngbTabContent>
                                 <div class="row following" id="follows">
                                     <div class="col-md-6 ml-auto mr-auto">
                                         <ul class="list-unstyled follows">
                                             <li>
-                                                <div class="row">
+                                                <div class="row" *ngFor="let item of products ">
                                                     <div class="col-md-2 col-sm-2 ml-auto mr-auto">
-                                                        <img src="./assets/img/faces/clem-onojeghuo-2.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                                        <img  src="{{item.image}}"
+                                                            alt="Circle Image"
+                                                            class="img-circle img-no-padding img-responsive">
                                                     </div>
                                                     <div class="col-md-7 col-sm-4 ml-auto">
-                                                        <h6>Flume<br/><small>Musical Producer</small></h6>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-2 ml-auto mr-auto">
-                                                        <div class="form-check">
-                                                          <label class="form-check-label">
-                                                            <input class="form-check-input" type="checkbox" value="" checked="">
-                                                            <span class="form-check-sign"></span>
-                                                          </label>
-                                                        </div>
+                                                        <h6>{{item.name}}<br /><small>{{item.newPrice}}</small></h6>
                                                     </div>
                                                 </div>
                                             </li>
                                             <hr />
-                                            <li>
-                                                <div class="row">
-                                                    <div class="col-md-2 col-sm-2 ml-auto mr-auto">
-                                                        <img src="./assets/img/faces/ayo-ogunseinde-2.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
-                                                    </div>
-                                                    <div class="col-md-7 col-sm-4 ml-auto">
-                                                        <h6>Banks<br /><small>Singer</small></h6>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-2 ml-auto mr-auto">
-                                                        <div class="form-check">
-                                                          <label class="form-check-label">
-                                                            <input class="form-check-input" type="checkbox" value="" checked="">
-                                                            <span class="form-check-sign"></span>
-                                                          </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -71,116 +48,160 @@
                         </ngb-tab>
                         <ngb-tab title="Add a product">
                             <ng-template ngbTabContent>
-                                <form role="form" #f="ngForm" (ngSubmit)="onSubmit(f)">
-                                    
-                                    <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label" >Title:</label>
-                                        <div class="col-lg-9">
-                                            <input class="form-control" type="text" required name="title" ngModel #title="ngModel" />
-                                        </div>
-                                    </div>
-                                   
-                                    <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label">Description:</label>
-                                        <div class="col-lg-9">
-                                            <input class="form-control" type="text" required name="description" ngModel #description="ngModel"/>
-                                        </div>
-                                    </div>
-                                   
-                                    <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label">Old Price:</label>
-                                        <div class="col-lg-9">
-                                            <input class="form-control" type="text" required name="oldPrice" ngModel #oldPrice="ngModel"/>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label">New Price:</label>
-                                        <div class="col-lg-9">
-                                            <input class="form-control" type="text" required name="newPrice" ngModel #oldPrice="ngModel"/>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label">Expiration date:</label>
-                                        <div class="col-lg-9">
-                                            <input class="form-control" type="text" required name="exppireddate" ngModel #exppireddate="ngModel"/>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label">Creation date:</label>
-                                        <div class="col-lg-9">
-                                            <input class="form-control" type="text" required name="creationDate" ngModel #creationDate="ngModel"/>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label">Quantity:</label>
-                                        <div class="col-lg-9">
-                                            <input class="form-control" type="text" required name="quantity">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label"> Devices:</label>
-                                        <div class="col-lg-9">
-                                            <select id="devices" name="devices" required class="form-control" >
-                                              <option value="computer"> Computer </option>
-                                              <option value="printer"> Printer </option>
-                                              <option value="projector"> Projector</option>
-                                              <option value="speaker"> Speaker</option>
-                                              <option value="camera">Camera</option>
-                                              <option value="other">Other</option>
-                                            </select> 
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label">Human Kind:</label>
-                                        <div class="col-lg-9">
-                                            <select id="humankind" name="humankind" required class="form-control">
-                                              <option value="homme">Men </option>
-                                              <option value="woman">Woman </option>
-                                              <option value="kids">Kids</option>
-                                              <option value="other">Other</option>
-
-                                            </select> 
-                                        </div>
-                                    </div>
+                                <form role="form" #f="ngForm" (ngSubmit)="addCategory(f)" *ngIf="status === '' ">
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label">Category:</label>
                                         <div class="col-lg-9">
-                                            <select id="product" required name="category"class="form-control">
-                                              <option value="food">Food</option>
-                                              <option value="clothes">Clothes</option>
-                                              <option value="fourniture">Fourniture</option>
-                                              <option value="electronics">Electronics</option>
-                                              <option value="houseHold">House Hold</option>
-                                              <option value="cleaning">Cleaning Products</option>
-                                              <option value="other">Other</option>
+                                            <select id="product" name="category" class="form-control" ngModel
+                                                #category="ngModel">
+                                                <option value="food">Food</option>
+                                                <option value="clothes">Clothes</option>
+                                                <option value="fourniture">Fourniture</option>
+                                                <option value="electronics">Electronics</option>
+                                                <option value="houseHold">House Hold</option>
+                                                <option value="cleaning">Cleaning Products</option>
+                                                <option value="other">Other</option>
 
-                                            </select> 
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label">Type:</label>
-                                        <div class="col-lg-9">
-                                            <select id="humankind" name="humankind" required class="form-control">
-                                              <option value="table">Table </option>
-                                              <option value="bed">Beb </option>
-                                              <option value="chair">Chair</option>
-                                              <option value="other">Other</option>
-                                            </select> 
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label">Quantity:</label>
-                                        <div class="col-lg-9">
-                                            <input class="form-control" type="number" required name="quantity" ngModel #quantity="ngModel" min="1" max="100"/>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label"></label>
                                         <div class="col-lg-9">
-                                            <input type="submit" [disabled]="f.invalid" class="btn btn-danger btn-block btn-round" value="Add">  
+                                            <input type="submit" [disabled]="f.invalid"
+                                                class="btn btn-danger btn-block btn-round" value="Choose category">
                                         </div>
                                     </div>
                                 </form>
+                                <form role="form" #f="ngForm" (ngSubmit)="onSubmit(f)" *ngIf="status !== '' ">
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label">Title:</label>
+                                        <div class="col-lg-9">
+                                            <input class="form-control" type="text" name="title" ngModel
+                                                #title="ngModel" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label">Description:</label>
+                                        <div class="col-lg-9">
+                                            <input class="form-control" type="text" name="description" ngModel
+                                                #description="ngModel" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label">Old Price:</label>
+                                        <div class="col-lg-9">
+                                            <input class="form-control" type="text" name="oldPrice" ngModel
+                                                #oldPrice="ngModel" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label">New Price:</label>
+                                        <div class="col-lg-9">
+                                            <input class="form-control" type="text" name="newPrice" ngModel
+                                                #oldPrice="ngModel" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row"
+                                        *ngIf="(category === 'food' || category === 'cleaning')">
+                                        <label class="col-lg-3 col-form-label form-control-label">Expiration
+                                            date:</label>
+                                        <div class="col-lg-9">
+                                            <input class="form-control" type="text" name="exppireddate" ngModel
+                                                #exppireddate="ngModel" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row"
+                                        *ngIf="(category === 'food' || category === 'cleaning' || category === 'houseHold' || category === 'electronics')">
+                                        <label class="col-lg-3 col-form-label form-control-label">Creation date:</label>
+                                        <div class="col-lg-9">
+                                            <input class="form-control" type="text" name="creationDate" ngModel
+                                                #creationDate="ngModel" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row"
+                                        *ngIf="( category === 'houseHold' || category === 'electronics')">
+                                        <label class="col-lg-3 col-form-label form-control-label"> Devices:</label>
+                                        <div class="col-lg-9">
+                                            <select id="devices" name="device" class="form-control" ngModel
+                                                #device="ngModel">
+                                                <option value="computer"> Computer </option>
+                                                <option value="printer"> Printer </option>
+                                                <option value="projector"> Projector</option>
+                                                <option value="speaker"> Speaker</option>
+                                                <option value="camera">Camera</option>
+                                                <option value="other">Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row" *ngIf="category === 'clothes'">
+                                        <label class="col-lg-3 col-form-label form-control-label">Human Kind:</label>
+                                        <div class="col-lg-9">
+                                            <select id="humankind" name="humankind" class="form-control" ngModel
+                                                #humanKind="ngModel">
+                                                <option value="homme">Men </option>
+                                                <option value="woman">Woman </option>
+                                                <option value="kids">Kids</option>
+                                                <option value="other">Other</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row" *ngIf="category === 'fourniture'">
+                                        <label class="col-lg-3 col-form-label form-control-label">Type:</label>
+                                        <div class="col-lg-9">
+                                            <select id="type" name="type" class="form-control" ngModel #type="ngModel">
+                                                <option value="table">Table</option>
+                                                <option value="bed">Beb</option>
+                                                <option value="chair">Chair</option>
+                                                <option value="other">Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label">Quantity:</label>
+                                        <div class="col-lg-9">
+                                            <input class="form-control" type="number" name="quantity" ngModel
+                                                #quantity="ngModel" min="1" max="100" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <input
+                                        name="img"
+                                        type="file"
+                                        name="filename"
+                                        (change)="selectedFile($event)"
+                                        accept=".png,.jpg"
+                                        required
+                                      />
+                                      <div class="progress">
+                                        <div
+                                          class="progress-bar progress-bar-striped-bg-success"
+                                          role="progressbar"
+                                          [style.width]="(uploadProgress | async) + '%'"
+                                          [attr.aria-valuenow]="(uploadProgress | async) + '%'"
+                                          aria-valuemin="0"
+                                          aria-valuemax="100"
+                                        ></div>
+                                      </div>
+                                      <a [href]="downloadURL | async" name="download">{{
+                                        downloadURL | async
+                                      }}</a>
+                                      <p></p>
+                                    </div>
+                                        <img sref="C:\Users\ASUS\Desktop" />
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label"></label>
+                                        <div class="col-lg-9">
+                                            <input type="submit" [disabled]="f.invalid"
+                                                class="btn btn-danger btn-block btn-round" value="Add">
+                                        </div>
+                                    </div>
+                              
+                                </form>
+                            
                             </ng-template>
                         </ngb-tab>
                     </ngb-tabset>

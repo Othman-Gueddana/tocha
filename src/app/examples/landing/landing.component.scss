@@ -35,6 +35,34 @@ body {
     }
   }
 
-  .card{
+  .card-holder{
     height: 500px;
   }
+  .card-image {
+    padding : 20%
+  }
+  .card-title{
+    font-style: italic;
+    font-weight: bold;
+
+  }
+  .cover {
+    background-color: rgb(8, 7, 6);
+    margin-top: 0%;
+    max-width: 25px;
+  }
+
+  .container{
+    position: relative;
+    right: 55px;
+    top: 10px;
+  }
+
+
+#menu {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  width: 12em;
+  margin-top: -2.5em;
+}

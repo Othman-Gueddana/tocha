@@ -3,7 +3,13 @@ import { } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { ProductService } from '../services/product.service';
-
+import {
+    AngularFireStorage,
+    AngularFireStorageReference,
+    AngularFireUploadTask,
+  } from '@angular/fire/storage';
+  import { Observable } from 'rxjs';
+  import { finalize } from 'rxjs/operators';
 @Component({
     selector: 'app-profile',
     templateUrl: './profile.component.html',
@@ -11,82 +17,119 @@ import { ProductService } from '../services/product.service';
 })
 
 export class ProfileComponent implements OnInit {
+    ref: AngularFireStorageReference;
+    task: AngularFireUploadTask;
+    uploadProgress: Observable<number>;
+    downloadURL: Observable<string>;
     category: string = "";
-    food: string = "";
-    clothes: string = "";
-    four: string = "";
-    elec: string = "";
-    house: string = "";
-    clean: string = "";
-
-
-    constructor( private ProductService: ProductService,
+    status: string = "";
+    products:any = [];
+    user: any ;
+    constructor( private ProductService: ProductService, private fileStorage: AngularFireStorage,
         private router: Router) { }
 
-    ngOnInit() {}
+    ngOnInit() {
+      let user = JSON.parse(window.localStorage.getItem('id'));
+      this.user = user ;
+      console.log(user)
+      this.ProductService.getProducts().subscribe(( data: any) => {
+        for(var i=0 ; i< data.length; i++) {
+           if(data[i].ownerId === user ){
+             console.log(data[i].ownerId)
+             console.log(data[i])
+             this.products.push(data[i])
+        }
+      }
+    })
+  }
+
+    addCategory(f:NgForm) {
+      this.category = f.value.category
+      this.status = f.value.category
+    }
+    selectedFile(event) {
+        const id = Math.random().toString(36).substring(2);
+        this.ref = this.fileStorage.ref(id);
+        this.task = this.ref.put(event.target.files[0]);
+        this.uploadProgress = this.task.percentageChanges();
+        this.task
+          .snapshotChanges()
+          .pipe(finalize(() => (this.downloadURL = this.ref.getDownloadURL())))
+          .subscribe();
+      }
     onSubmit(f: NgForm) {
-        if(f.value.category === 'food'){
-            this.ProductService.addFood(f.value).subscribe((res)=>{
-             this.food= "y";
+        var img = document.getElementsByTagName('a');
+        var imageUrl = img[img.length - 1].innerHTML;
+    
+        let user = JSON.parse(window.localStorage.getItem('id'));
+        console.log(user)
+        console.log(f.value)
+        const obj = {
+           name:f.value.name,
+           oldPrice:f.value.oldPrice,
+           newPrice:f.value.newPrice,
+           description:f.value.description,
+           category:this.category,
+           image:imageUrl,
+           ownerId:user,
+           expireddate:f.value.expireddate,
+           creationDate:f.value.creationDate,
+           quantity:f.value.quantity,
+           device:f.value.device,
+           humanKind:f.value.humanKind,
+           type:f.value.type,
+        }
+        if(this.category === 'food'){
+            this.ProductService.addFood(obj).subscribe((res)=>{
+                console.log(obj)
             console.log(res);
               },
               (error) => {
                 console.log(error)
             })
         }
-        if(f.value.category === 'clothes'){
-            this.ProductService.addClothes(f.value).subscribe((res)=>{
-                this.category = "y"
-                this.clothes = "y"
+         else if(this.category === 'clothes'){
+            this.ProductService.addClothes(obj).subscribe((res)=>{
                 console.log(res);
               },
               (error) => {
                 console.log(error)
             })
         }
-        if(f.value.category === 'fourniture'){
-            this.ProductService.addFourni(f.value).subscribe((res)=>{
-                this.category = "y"
-
-                this.four = "y"
+        else if(this.category === 'fourniture'){
+            this.ProductService.addFourni(obj).subscribe((res)=>{
                 console.log(res);
               },
               (error) => {
                 console.log(error)
             })
         }
-        if(f.value.category === 'electronics'){
-            this.ProductService.addElec(f.value).subscribe((res)=>{
-                this.category = "y"
-
-                this.elec = "y"
+        else if(this.category === 'electronics'){
+            this.ProductService.addElec(obj).subscribe((res)=>{
                 console.log(res);
               },
               (error) => {
                 console.log(error)
             })
         }
-        if(f.value.category === 'houseHold'){
-            this.ProductService.addHouse(f.value).subscribe((res)=>{
-                this.category = "y"
-
-                this.house = "y"
+        else if(this.category === 'houseHold'){
+            this.ProductService.addHouse(obj).subscribe((res)=>{
                 console.log(res);
               },
               (error) => {
                 console.log(error)
             })
         }
-        if(f.value.category === 'cleaning'){
-            this.ProductService.addClean(f.value).subscribe((res)=>{
-                this.category = "y"
-
-                this.clean = "y"
+        else if(this.category === 'cleaning'){
+            this.ProductService.addClean(obj).subscribe((res)=>{
                 console.log(res);
               },
               (error) => {
                 console.log(error)
             })
         }
+    }
+    changeInfo(){
+      this.router.navigateByUrl('/settings');
     }
 }
