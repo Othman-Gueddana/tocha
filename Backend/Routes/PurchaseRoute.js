@@ -11,7 +11,7 @@ router.get("/:id", async (req, res) => {
   await Purchases.findByPk(req.params.id).then((purchases) => res.json(purchases));
 });
 
-router.post("/register", async (req, res) => {
+router.post("/", async (req, res) => {
   await Purchases.create({
     clientId: req.body.clientId,
     productId: req.body.productId,
