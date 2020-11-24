@@ -23,7 +23,7 @@ export class LandingComponent implements OnInit {
   title = 'angular-text-search-highlight';
   searchText = '';
 
- constructor(private server: ProductService, private modalService: NgbModal, private PurchaseService:PurchaseService) { }
+ constructor(private server: ProductService, private modalService: NgbModal) { }
 
   ngAfterContentChecked() {
     if (!this.searchText){
@@ -37,7 +37,6 @@ export class LandingComponent implements OnInit {
       this.allProducts = data
       console.log(this.products)
       this.products = this.allProducts
-      this.user = JSON.parse(window.localStorage.getItem('id'));
     })
      
   }
