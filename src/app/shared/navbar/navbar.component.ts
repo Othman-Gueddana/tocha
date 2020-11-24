@@ -81,11 +81,5 @@ export class NavbarComponent implements OnInit {
     switchLang(lang: string) {
         this.translate.use(lang);
     }
-    
-    switchRoute(route) {
-        if (route === '/signin'){
-             this.router.navigateByUrl('/signin');
-        }
-       
+  
     }
-}
