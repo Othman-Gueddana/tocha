@@ -15,6 +15,8 @@ export class SigninComponent implements OnInit {
     email: '',
     password: '',
   };
+  focus: any;
+  focus1: any;
   constructor( private ClientService: ClientService,
     private router: Router, private formbuilder: FormBuilder) {}
 
@@ -36,7 +38,8 @@ export class SigninComponent implements OnInit {
           console.log(res);
           window.localStorage.setItem('token', res.token);
           window.localStorage.setItem('id', res.id);
-          window.localStorage.setItem('email', res.email);
+          window.localStorage.setItem('firstName', res.firstName);
+          window.localStorage.setItem('lastName', res.lastName);
           window.localStorage.setItem('status', res.status);
           this.router.navigateByUrl('/landing');
         }

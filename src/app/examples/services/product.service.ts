@@ -8,7 +8,7 @@ import {
   HttpParams,
 } from '@angular/common/http';
 
-const baseUrl = 'http://localhost:5000/products/';
+const baseUrl = 'http://localhost:5000/verifyProducts/';
 
 @Injectable({
   providedIn: 'root'
@@ -30,9 +30,14 @@ export class ProductService {
   }
  
   getProducts(): Observable<any>{
-    const url = 'http://localhost:5000/products'
+    const url = 'http://localhost:5000/products/'
     return  this.http
       .get(url).pipe(retry(3), catchError(this.handleError));
+  }
+  getById(id){
+    const url = 'http://localhost:5000/products/'
+    return  this.http
+      .get(url+`${id}`).pipe(retry(3), catchError(this.handleError));
   }
   addFood(data):Observable<any>{
     let obj = {
@@ -131,4 +136,5 @@ export class ProductService {
     console.log(obj)
     return this.http.post(baseUrl + 'fourni', data);
   }
+  
 }

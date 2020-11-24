@@ -3,6 +3,7 @@
                 style="background-image: url('./assets/img/Capture1.PNG'); max-height:500px;">
         </div>
 </div>
+
 <div id=menu>
         <select class="btn btn-outline-danger btn-round" #mySelect (change)=getCategoriesdata(mySelect.value)>
                 <option value="category" selected>Category..</option>
@@ -14,7 +15,17 @@
                 <option value="cleaningProduct">Cleaning Products</option>
                 <option value="other">Other</option>
         </select>
+<div class=""> 
+        <select class="btn btn-outline-danger btn-round" id="inputGroupSelect02" #selectedTag (change)=getPricedata(selectedTag.value) >
+                <option value="Required price"  selected>Required price</option>
+                <option value="10,000">[0 - 10,000]dt.</option>
+                <option value="10.000 & 50.000">[10,000 - 50,000]dt.</option>
+                <option value="50.000 & 200.000">[50,000 - 200,000]dt.</option>
+                <option value="200.000 & 500.000">[200,000 - 500,000]dt.</option>
+                <option value="500.001">[500,000 & More]dt.</option>
 
+        </select>
+        </div>
 </div>
 
 <!-- <ul id=menu>
@@ -23,7 +34,28 @@
         <li><a href="#FAQ">Section 3</a>
 </ul> -->
 <div class="container">
-
+        <div class="content" role="main">
+                <div class="card">
+                        <div class="form-group">
+                                <label for="search-text">Search Text</label>
+                                <input type="email" class="form-control" id="search-text" aria-describedby="search-text"
+                                        [(ngModel)]="searchText" placeholder="Enter text to search" autofocus>
+                        </div>
+                        <ul *ngIf=" searchText.length > 0" class="list-group list-group-flush">
+                                <!-- results of ngFor is passed to appFilter with argument searchText -->
+                                <li  class="list-group-item" *ngFor="let c of searchData | appFilter: searchText"  appHighlight [searchedWord]="searchText" [content]="c"  
+                   [classToApply]="'font-weight-bold'" [setTitle]="'true'">
+                                     {{c}}
+                                </li>
+                        </ul>
+                </div>
+        </div>
+        
+<div class="row">
+        <div class='title' style="margin-top: 37px ;">
+                <h1 style="font-family:'Nerko One',cursive;">Check Our Available Product</h1>
+        </div>
+</div>
         <div class="row" style="margin-top: 37px">
                 <div class="cover">
                 </div>
