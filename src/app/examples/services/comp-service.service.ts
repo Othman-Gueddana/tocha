@@ -12,15 +12,19 @@ export class CompServiceService {
   constructor(private http: HttpClient) { }
   createLogin(data): Observable<any> {
     return this.http.post(baseUrl + 'login', data);
+    console.log('logged in')
   }
   createRegister(data): Observable<any> {
     let obj = {
-      firstName: data.firstName,
-      lastName: data.lastName,
-      password: data.password,
-      email: data.email,
-      address: data.address,
-      phoneNumber: data.phoneNumber,
+    name: data.name,
+    email: data.email,
+    password: data.password,
+    address: data.address,
+    description: data.description,
+    phoneNumber1: data.phoneNumber1,
+    phoneNumber2: data.phoneNumber2,
+    numberPatent: data.numberPatent,
+    logo:data.logo,
     };
     console.log(obj)
     console.log(baseUrl2 + 'register');
