@@ -1,5 +1,7 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { NgForm } from '@angular/forms';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 
 @Component({
     selector: 'app-components',
@@ -19,7 +21,7 @@ export class ComponentsComponent implements OnInit {
     focus2;
     date: {year: number, month: number};
     model: NgbDateStruct;
-    constructor( private renderer : Renderer2) {}
+    constructor( private renderer : Renderer2, private http: HttpClient) {}
     isWeekend(date: NgbDateStruct) {
         const d = new Date(date.year, date.month - 1, date.day);
         return d.getDay() === 0 || d.getDay() === 6;
@@ -41,5 +43,17 @@ export class ComponentsComponent implements OnInit {
             });
         }
     }
-
+    onSubmit(contactForm: NgForm) {
+        if (contactForm.valid) {
+            const email = contactForm.value;
+            const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+            this.http.post('https://formspree.io/f/myybdzdb',
+            { name: email.name, email: email.email,subject: email.subject, message: email.message },
+            { 'headers': headers }).subscribe(
+              response => {
+                console.log(response);
+              }
+            );
+        }
+      }
 }
