@@ -20,7 +20,17 @@ export class LandingComponent implements OnInit {
   page = 1
   productSelected: Number
 
-  constructor(private server: ProductService, private modalService: NgbModal) { }
+  title = 'angular-text-search-highlight';
+  searchText = '';
+
+ constructor(private server: ProductService, private modalService: NgbModal) { }
+
+  ngAfterContentChecked() {
+    if (!this.searchText){
+        this.products = this.allProducts
+    }
+     
+  }
 
   ngOnInit() {
     this.server.getProducts().subscribe((data: any) => {
@@ -61,6 +71,24 @@ export class LandingComponent implements OnInit {
       }
      
   }
+
+  getPricedata(value: string) {
+    let filtered1 = this.allProducts.filter(item => 
+      // console.log(item.newPrice)
+      item.newPrice <= value
+       );
+   
+          this.products = filtered1
+       if (value ==="Required price"){
+         this.products = this.allProducts
+       }
+  }
+  async clickOnMe(item,target){
+    let filter = this.allProducts.filter(data =>  data.name === item.name)
+    this.products = filter;
+   
+  }
+    
 }
 
 //   open(content) {
