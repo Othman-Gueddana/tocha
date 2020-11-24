@@ -19,6 +19,9 @@ export class LandingComponent implements OnInit {
   endIndex = 9;
   page = 1
   productSelected: Number
+  searchData: Array<string> =[]
+  title = 'angular-text-search-highlight';
+  searchText = '';
 
   constructor(private server: ProductService, private modalService: NgbModal) { }
 
@@ -27,7 +30,12 @@ export class LandingComponent implements OnInit {
       this.allProducts = data
       console.log(this.products)
       this.products = this.allProducts
+        for(let i =0 ; i < this.products.length ; i++ ){ 
+      this.searchData.push(this.products[i].name) 
+        }
     })
+      
+
      
   }
   open(item) {
