@@ -23,23 +23,24 @@ export class LandingComponent implements OnInit {
   endIndex = 9;
   page = 1
   productSelected: Number
-
-  searchData: Array<string> =[]
   title = 'angular-text-search-highlight';
   searchText = '';
 
  constructor(private server: ProductService, private modalService: NgbModal, private PurchaseService:PurchaseService) { }
 
-
+  ngAfterContentChecked() {
+    if (!this.searchText){
+        this.products = this.allProducts
+    }
+     
+  }
   ngOnInit() {
     this.server.getProducts().subscribe((data: any) => {
       this.allProducts = data
       console.log(this.products)
       this.products = this.allProducts
       this.user = JSON.parse(window.localStorage.getItem('id'));
-        for(let i =0 ; i < this.products.length ; i++ ){ 
-      this.searchData.push(this.products[i].name) 
-        }
+      
     })
   }
  
@@ -98,6 +99,12 @@ export class LandingComponent implements OnInit {
          this.products = this.allProducts
        }
   }
+  async clickOnMe(item,target){
+    let filter = this.allProducts.filter(data =>  data.name === item.name)
+    this.products = filter;
+   
+  }
+    
 }
 
 //   open(content) {

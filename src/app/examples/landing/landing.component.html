@@ -28,11 +28,6 @@
         </div>
 </div>
 
-<!-- <ul id=menu>
-        <li><a href="#L384">Section 1</a>
-        <li><a href="#details">Section 2</a>
-        <li><a href="#FAQ">Section 3</a>
-</ul> -->
 <div class="container">
         <div class="content" role="main">
                 <div class="card">
@@ -43,9 +38,9 @@
                         </div>
                         <ul *ngIf=" searchText.length > 0" class="list-group list-group-flush">
                                 <!-- results of ngFor is passed to appFilter with argument searchText -->
-                                <li  class="list-group-item" *ngFor="let c of searchData | appFilter: searchText"  appHighlight [searchedWord]="searchText" [content]="c"  
+                                <li (click)="clickOnMe(item,target)" class="list-group-item" #target *ngFor="let item of products | appFilter: searchText"  appHighlight [searchedWord]="searchText" [content]="item.name"  
                    [classToApply]="'font-weight-bold'" [setTitle]="'true'">
-                                     {{c}}
+                                     {{item}}
                                 </li>
                         </ul>
                 </div>
