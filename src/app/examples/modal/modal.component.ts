@@ -23,12 +23,9 @@ import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
     </div>
     <div class="modal-footer">
         <div class="left-side">
-            <button type="button" class="btn btn-default btn-link" (click)="activeModal.close('Close click')" > Add to my cart </button>
+            <button type="button" class="btn btn-default btn-link" (click)="activeModal.close(item.id)" > Add to my cart </button>
         </div>
-        <div class="divider"></div>
-        <div class="right-side">
-            <button type="button" class="btn btn-danger btn-link" (click)="activeModal.close('Close click')"> No ,thank you</button>
-        </div>
+       
     </div>
     `
 })

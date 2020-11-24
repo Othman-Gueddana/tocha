@@ -1,137 +1,36 @@
 <div class="wrap cf">
-    <div class="heading cf">
-      <h1>My Cart</h1>
-      <a href="#" class="continue">Continue Shopping</a>
-    </div>
-    <div class="cart">
-      <ul class="cartWrap">
-        <li class="items odd">
-          
-      <div class="infoWrap"> 
+  <div class="heading cf">
+    <h1>My Cart</h1>
+    <a href="#" class="continue">Continue Shopping</a>
+  </div>
+  <div class="cart">
+    <ul class="cartWrap">
+      <li class="items odd"  >
+        <div class="infoWrap" *ngFor="let item of products">
           <div class="cartSection">
-          <img src="http://lorempixel.com/output/technics-q-c-300-300-4.jpg" alt="" class="itemImg" />
-            <p class="itemNumber">#QUE-007544-002</p>
-            <h3>Item Name 1</h3>
-          
-             <p> <input type="text"  class="qty" placeholder="3"/> x $5.00</p>
-          
-          </div>  
-      
-          
-          <div class="prodTotal cartSection">
-            <p>$15.00</p>
+            <img src={{item.image}} alt="" class="itemImg" />
+            <p class="itemNumber">{{item.id}}</p>
+            <h3>{{item.name}}</h3>
+            <p> <input type="text" class="qty" placeholder="3" /> x {{item.newPrice}}</p>
           </div>
-                <div class="cartSection removeWrap">
-             <a href="#" class="remove">x</a>
+          <div class="prodTotal cartSection">
+            <p>total</p>
+          </div>
+          <div class="cartSection removeWrap">
+            <a href="#" class="remove">Delete</a>
           </div>
         </div>
-        </li>
-        <li class="items even">
-          
-         <div class="infoWrap"> 
-          <div class="cartSection">
-           
-          <img src="http://lorempixel.com/output/technics-q-c-300-300-4.jpg" alt="" class="itemImg" />
-            <p class="itemNumber">#QUE-007544-002</p>
-            <h3>Item Name 1</h3>
-          
-             <p> <input type="text"  class="qty" placeholder="3"/> x $5.00</p>
-          
-          </div>  
-      
-          
-          <div class="prodTotal cartSection">
-            <p>$15.00</p>
-          </div>
-                <div class="cartSection removeWrap">
-             <a href="#" class="remove">x</a>
-          </div>
-        </div>
-        </li>
-        
-              <li class="items odd">
-               <div class="infoWrap"> 
-          <div class="cartSection">
-              
-          <img src="http://lorempixel.com/output/technics-q-c-300-300-4.jpg" alt="" class="itemImg" />
-            <p class="itemNumber">#QUE-007544-002</p>
-            <h3>Item Name 1</h3>
-          
-             <p> <input type="text"  class="qty" placeholder="3"/> x $5.00</p>
-          
-          </div>  
-      
-          
-          <div class="prodTotal cartSection">
-            <p>$15.00</p>
-          </div>
-            <div class="cartSection removeWrap">
-            <a href="#" class="remove">x</a>
-          </div>
-                </div>
-        </li>
-        <li class="items even">
-         <div class="infoWrap"> 
-          <div class="cartSection info">
-               
-          <img src="http://lorempixel.com/output/technics-q-c-300-300-4.jpg" alt="" class="itemImg" />
-            <p class="itemNumber">#QUE-007544-002</p>
-            <h3>Item Name 1</h3>
-          
-            <p> <input type="text"  class="qty" placeholder="3"/> x $5.00</p>
-          
-            
-          </div>  
-      
-          
-          <div class="prodTotal cartSection">
-            <p>$15.00</p>
-          </div>
-      
-              <div class="cartSection removeWrap">
-             <a href="#" class="remove">x</a>
-          </div>
-           </div>
-        </li>
-        
-        
-        <!--<li class="items even">Item 2</li>-->
-   
-      </ul>
-    </div>
-    
-    <div class="subtotal cf">
-        <ul>        
-            <li class="totalRow final">
-                <span class="label">Total</span>
-                <span class="value">$44.00</span>
-            </li>
-            <a href="#" class="btn continue">Checkout</a>
-        </ul>
-    </div>
-</div>
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-  Launch demo modal
-</button>
+      </li>
+    </ul>
+  </div>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+  <div class="subtotal cf">
+    <ul>
+      <div class="totalRow final">
+        <span class="label">Total</span>
+        <span class="value">$44.00</span>
       </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
+      <a href="#" class="btn continue">Checkout</a>
+    </ul>
   </div>
 </div>
