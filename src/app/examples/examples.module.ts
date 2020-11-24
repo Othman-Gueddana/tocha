@@ -15,8 +15,8 @@ import { SettingsComponent } from './settings/settings.component';
 import { ForgotComponent } from './forgot/forgot.component';
 import { SignupCompComponent } from './signup-comp/signup-comp.component';
 import { SigninCompComponent } from './signin-comp/signin-comp.component'
-
-
+import { FilterPipe } from './filter.pipe'
+import { HighlightDirective } from './highlight.pipe'
 
 @NgModule({
     imports: [
@@ -24,6 +24,7 @@ import { SigninCompComponent } from './signin-comp/signin-comp.component'
         FormsModule,
         NgbModule,
         ReactiveFormsModule
+       
     ],
     declarations: [
         LandingComponent,
@@ -37,7 +38,9 @@ import { SigninCompComponent } from './signin-comp/signin-comp.component'
         SettingsComponent,
         ForgotComponent,
         SignupCompComponent,
-        SigninCompComponent
+        SigninCompComponent,
+        HighlightDirective,
+        FilterPipe
     ],
     entryComponents: [NgbdModalContent],
 })
