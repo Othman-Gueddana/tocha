@@ -25,12 +25,16 @@ router.post("/register", async (req, res) => {
   const salt = await bcrypt.genSalt(10);
   const hashPassword = await bcrypt.hash(req.body.password, salt);
   await Companys.create({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
+    name: req.body.name,
+    email: req.body.email,
     password: hashPassword,
     email: req.body.email,
     address: req.body.address,
-    phoneNumber: req.body.phoneNumber,
+    description: req.body.description,
+    phoneNumber1: req.body.phoneNumber1,
+    phoneNumber2: req.body.phoneNumber2,
+    numberPatent: req.body.numberPatent,
+    logo: req.body.logo,
   }).then((user) => {
     nodemailer.createTestAccount((err, email) => {
       var transporter = nodemailer.createTransport(
