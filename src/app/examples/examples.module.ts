@@ -12,8 +12,12 @@ import { NgbdModalContent } from './modal/modal.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SettingsComponent } from './settings/settings.component';
+import { ForgotComponent } from './forgot/forgot.component';
 import { SignupCompComponent } from './signup-comp/signup-comp.component';
-import { SigninCompComponent } from './signin-comp/signin-comp.component'
+import { SigninCompComponent } from './signin-comp/signin-comp.component';
+import { LandingcompComponent } from './landingcomp/landingcomp.component';
+import { ProfileCompComponent } from './profile-comp/profile-comp.component'
+
 
 
 @NgModule({
@@ -33,8 +37,11 @@ import { SigninCompComponent } from './signin-comp/signin-comp.component'
         NgbdModalComponent,
         NgbdModalContent,
         SettingsComponent,
+        ForgotComponent,
         SignupCompComponent,
-        SigninCompComponent
+        SigninCompComponent,
+        LandingcompComponent,
+        ProfileCompComponent
     ],
     entryComponents: [NgbdModalContent],
 })
