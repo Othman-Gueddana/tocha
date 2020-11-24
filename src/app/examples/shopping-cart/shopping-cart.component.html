@@ -9,12 +9,12 @@
         <div class="infoWrap" *ngFor="let item of products">
           <div class="cartSection">
             <img src={{item.image}} alt="" class="itemImg" />
-            <p class="itemNumber">{{item.id}}</p>
+            <p class="itemNumber">product{{item.id}}</p>
             <h3>{{item.name}}</h3>
-            <p> <input type="text" class="qty" placeholder="3" /> x {{item.newPrice}}</p>
+            <p>  <input id={{item.id}} class="form-control" type="number" name="count" min=0 max={{item.quantity}} [(ngModel)]="count" value="count" #target (change)="changed(target.value,item)"/> x {{item.newPrice}}</p>
           </div>
-          <div class="prodTotal cartSection">
-            <p>total</p>
+          <div class="prodTotal cartSection" *ngFor="let i of array" >
+            <p> {{i}} </p>
           </div>
           <div class="cartSection removeWrap">
             <a href="#" class="remove">Delete</a>

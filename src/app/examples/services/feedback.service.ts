@@ -14,4 +14,13 @@ export class FeedbackService {
     console.log(baseUrl);
     return this.http.get(baseUrl)
   }
+  addFeedback(data):Observable<any>{
+    let obj = {
+      text: data.text,
+      clientName: data.clientName,
+      clientId: data.clientId,
+    }
+    console.log(data)
+    return this.http.post(baseUrl + 'register' , obj);
+  }
 }
