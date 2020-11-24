@@ -12,6 +12,8 @@ import { FeedbackComponent } from './examples/feedback/feedback.component';
 import { SettingsComponent } from './examples/settings/settings.component';
 import { ForgotComponent } from './examples/forgot/forgot.component';
 import { SignupCompComponent } from './examples/signup-comp/signup-comp.component';
+import { LandingcompComponent } from './examples/landingcomp/landingcomp.component';
+import { ProfileCompComponent } from './examples/profile-comp/profile-comp.component';
 
 
 const routes: Routes =[
@@ -26,7 +28,9 @@ const routes: Routes =[
     { path: 'settings',         component: SettingsComponent },
     { path: 'forgot',           component: ForgotComponent },
     { path: 'signupComp',       component: SignupCompComponent },
-    { path: 'signinComp',       component: SignupCompComponent }
+    { path: 'signinComp',       component: SignupCompComponent },
+    {path:'landingComp',        component:LandingcompComponent},
+    {path:'profileComp',        component:ProfileCompComponent}
 ];
 
 @NgModule({

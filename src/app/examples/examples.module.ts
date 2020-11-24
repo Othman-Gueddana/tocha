@@ -14,17 +14,19 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SettingsComponent } from './settings/settings.component';
 import { ForgotComponent } from './forgot/forgot.component';
 import { SignupCompComponent } from './signup-comp/signup-comp.component';
+import { LandingcompComponent } from './landingcomp/landingcomp.component';
+import { ProfileCompComponent } from './profile-comp/profile-comp.component'
 import { SigninCompComponent } from './signin-comp/signin-comp.component'
 import { FilterPipe } from './filter.pipe'
 import { HighlightDirective } from './highlight.pipe'
+
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
         NgbModule,
-        ReactiveFormsModule
-       
+        ReactiveFormsModule    
     ],
     declarations: [
         LandingComponent,
@@ -39,6 +41,8 @@ import { HighlightDirective } from './highlight.pipe'
         ForgotComponent,
         SignupCompComponent,
         SigninCompComponent,
+        LandingcompComponent,
+        ProfileCompComponent,
         HighlightDirective,
         FilterPipe
     ],
