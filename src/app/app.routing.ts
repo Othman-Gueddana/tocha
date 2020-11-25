@@ -15,6 +15,7 @@ import { SignupCompComponent } from './examples/signup-comp/signup-comp.componen
 import { LandingcompComponent } from './examples/landingcomp/landingcomp.component';
 import { ProfileCompComponent } from './examples/profile-comp/profile-comp.component';
 import { SigninCompComponent } from './examples/signin-comp/signin-comp.component';
+import { SettingsCompComponent } from './examples/settings-comp/settings-comp.component';
 
 
 const routes: Routes =[
@@ -31,7 +32,8 @@ const routes: Routes =[
     { path: 'signupComp',       component: SignupCompComponent },
     { path: 'signinComp',       component: SigninCompComponent },
     {path:'landingComp',        component:LandingcompComponent},
-    {path:'profileComp',        component:ProfileCompComponent}
+    {path:'profileComp',        component:ProfileCompComponent},
+    {path:'seetingsComp',       component:SettingsCompComponent}
 ];
 
 @NgModule({

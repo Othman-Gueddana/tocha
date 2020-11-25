@@ -1,36 +1,31 @@
 <div class="wrap cf">
   <div class="heading cf">
     <h1>My Cart</h1>
-    <a href="#" class="continue">Continue Shopping</a>
   </div>
   <div class="cart">
     <ul class="cartWrap">
       <li class="items odd"  >
-        <div class="infoWrap" *ngFor="let item of products">
-          <div class="cartSection">
+        <div class="infoWrap"*ngFor="let item of products" >
+          <div class="cartSection"  >
             <img src={{item.image}} alt="" class="itemImg" />
-            <p class="itemNumber">product{{item.id}}</p>
+            <p class="itemNumber">product id :{{item.id}}</p>
             <h3>{{item.name}}</h3>
-            <p>  <input id={{item.id}} class="form-control" type="number" name="count" min=0 max={{item.quantity}} [(ngModel)]="count" value="count" #target (change)="changed(target.value,item)"/> x {{item.newPrice}}</p>
-          </div>
-          <div class="prodTotal cartSection" *ngFor="let i of array" >
-            <p> {{i}} </p>
+            <p>  <input id={{item.id}} class="form-control" type="number" name="count" min=0 max={{item.quantity}}  #target (change)="changed(target.value,item)"/><strong>total :</strong> {{(target.value * item.newPrice)}} </p>
           </div>
           <div class="cartSection removeWrap">
             <a href="#" class="remove">Delete</a>
           </div>
-        </div>
+        </div> 
       </li>
     </ul>
   </div>
-
   <div class="subtotal cf">
     <ul>
       <div class="totalRow final">
-        <span class="label">Total</span>
-        <span class="value">$44.00</span>
+        <span class="label">Total :</span>
+        <span class="value">{{total}}</span>
       </div>
-      <a href="#" class="btn continue">Checkout</a>
+      <a  class="btn continue" (click)="confirm()">Checkout</a>
     </ul>
   </div>
 </div>
