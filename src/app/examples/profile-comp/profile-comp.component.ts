@@ -138,7 +138,7 @@ export class ProfileCompComponent implements OnInit {
        }
    }
    changeInfo(){
-     this.router.navigateByUrl('/settings');
+     this.router.navigateByUrl('/seetingsComp');
    }
 
 }
