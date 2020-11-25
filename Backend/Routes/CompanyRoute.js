@@ -83,7 +83,7 @@ router.put("/:id", async (req, res) => {
     companys
       .update({
         address: req.body.address,
-        phoneNumber: req.body.phoneNumber,
+        phoneNumber1: req.body.phoneNumber1,
       })
       .then((companys) => {
         res.json(companys);
