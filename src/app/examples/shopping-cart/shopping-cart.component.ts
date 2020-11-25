@@ -12,7 +12,7 @@ export class ShoppingCartComponent implements OnInit {
   selected: Array<any> =[];
   purchases: Array<any> =[];
   products: Array<any> =[];
-  results: any;
+  results: Array<any> =[];
   user: any;
   // count:number=0;
   total:number=0;
@@ -51,9 +51,21 @@ export class ShoppingCartComponent implements OnInit {
       let count = value
       let result=this.products[i].newPrice * count
       console.log(result)
+      if(typeof(this.results[i]) === 'number'){
+        this.results[i]=result
+      }else
+      this.results.push(result)
+     this.total = 0 ;
+      console.log(this.results)
     }
   }
+  
+  for(var i=0; i<this.results.length; i++){
+    this.total = this.total + this.results[i]
   }
+}
+ 
+    
   confirm(){
     if(this.total > 0){
       alert("your purchases is succsesfuly confirmed")
@@ -61,4 +73,15 @@ export class ShoppingCartComponent implements OnInit {
       this.router.navigateByUrl('/landing');
     }
   }
+  clear(id){
+    this.PurchaseService.deleteOne(id).subscribe((data: any) => {
+      console.log(data)
+  })
+  }
+  clearAll(){
+    this.PurchaseService.deleteAll().subscribe((data: any) => {
+      console.log(data)
+  })
+  }
 }
+
