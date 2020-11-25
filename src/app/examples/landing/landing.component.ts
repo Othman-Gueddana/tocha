@@ -23,8 +23,9 @@ export class LandingComponent implements OnInit {
   title = 'angular-text-search-highlight';
   searchText = '';
 
-// here we implement the imported materials of angular 
+
  constructor(private server: ProductService, private modalService: NgbModal) { }
+
 
 // this is  a life cycle method ruun after changing text in the search text 
   modelChangeFn(value) {
@@ -39,6 +40,7 @@ export class LandingComponent implements OnInit {
       this.allProducts = data
       console.log(this.products)
       this.products = this.allProducts
+     
     })
      
   }
