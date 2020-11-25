@@ -11,7 +11,11 @@ export class ShoppingCartComponent implements OnInit {
   selected: Array<any> =[];
   purchases: Array<any> =[];
   products: Array<any> =[];
+  array: Array<any> =[];
   user: any;
+  quantity:any;
+  count:number=0;
+  total:any;
   constructor( private PurchaseService:PurchaseService,private server: ProductService) { }
 
   ngOnInit(): void {
@@ -36,5 +40,10 @@ export class ShoppingCartComponent implements OnInit {
     }
     console.log(this.products)
     })
+  }
+  changed(value,item){
+    console.log(item)
+    console.log(value)
+   this.array.push(value)
   }
 }
