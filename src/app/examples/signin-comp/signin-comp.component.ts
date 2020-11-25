@@ -38,10 +38,9 @@ export class SigninCompComponent implements OnInit {
           console.log(res);
           window.localStorage.setItem('token', res.token);
           window.localStorage.setItem('id', res.id);
-          window.localStorage.setItem('firstName', res.firstName);
-          window.localStorage.setItem('lastName', res.lastName);
+        //  window.localStorage.setItem('name', res.name);
           window.localStorage.setItem('status', res.status);
-          this.router.navigateByUrl('/landing');
+          this.router.navigateByUrl('/landingComp');
         }
       },
       (error) => {

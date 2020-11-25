@@ -9,7 +9,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.scss']
 })
-
+// here start the component 
 export class LandingComponent implements OnInit {
   focus: any;
   focus1: any;
@@ -23,24 +23,26 @@ export class LandingComponent implements OnInit {
   title = 'angular-text-search-highlight';
   searchText = '';
 
- constructor(private server: ProductService, private modalService: NgbModal, private PurchaseService:PurchaseService) { }
+// here we implement the imported materials of angular 
+ constructor(private server: ProductService, private modalService: NgbModal) { }
 
-  ngAfterContentChecked() {
-    if (!this.searchText){
+// this is  a life cycle method ruun after changing text in the search text 
+  modelChangeFn(value) {
+      this.searchText = value
+    if (this.searchText.length < 1){
         this.products = this.allProducts
     }
-     
   }
-
+// here it runs this life cycle method when  we just refresh this page 
   ngOnInit() {
     this.server.getProducts().subscribe((data: any) => {
       this.allProducts = data
       console.log(this.products)
       this.products = this.allProducts
-      this.user = JSON.parse(window.localStorage.getItem('id'));
     })
      
   }
+  // this is for displaying the more information button  for each product 
   open(item) {
     console.log(item)
     const modalRef = this.modalService.open(NgbdModalContent);
@@ -52,6 +54,7 @@ export class LandingComponent implements OnInit {
     });
 
   }
+  // /here we are rendering pagination method
   updateIndex(pageIndex) {
     this.startIndex = pageIndex * 9;
     this.endIndex = this.startIndex + 9
@@ -62,31 +65,31 @@ export class LandingComponent implements OnInit {
   getArrayFromNumber(length) {
     return new Array(Math.floor(length / 10))
   }
-
+// this is where we are filtring categories  
   getCategoriesdata(value: string) {
     console.log(this.products)
-    let filtered = this.allProducts.filter(item => item.category === value )
+    const filtered = this.allProducts.filter(item => item.category === value )
       this.products = filtered
       if(value==="category"){
         this.products = this.allProducts
       }
      
   }
-
+// this where we are filtring Max price 
   getPricedata(value: string) {
-    let filtered1 = this.allProducts.filter(item => 
-      // console.log(item.newPrice)
+    console.log(value)
+    const filtered1 = this.allProducts.filter(item => 
       item.newPrice <= value
        );
-   
+     
           this.products = filtered1
        if (value ==="Required price"){
          this.products = this.allProducts
        }
   }
-  async clickOnMe(item,target){
+  clickOnMe(item){
     let filter = this.allProducts.filter(data =>  data.name === item.name)
-    this.products = filter;
+    this.products=filter;
    
   }
     

@@ -1,11 +1,14 @@
+// this is the nav image
 <div class="wrapper">
         <div class="page-header page-header-xs" data-parallax="true"
                 style="background-image: url('./assets/img/Capture1.PNG'); max-height:500px;">
         </div>
 </div>
 
+<!-- //this is the drop buttons of categories and requirement price -->
 <div id=menu>
-        <select class="btn btn-outline-danger btn-round" #mySelect (change)=getCategoriesdata(mySelect.value)>
+        <div class="">
+                <select class="btn btn-outline-danger btn-round" #mySelect (change)=getCategoriesdata(mySelect.value)>
                 <option value="category" selected>Category..</option>
                 <option value="food">Food</option>
                 <option value="clothes">Clothes</option>
@@ -14,46 +17,56 @@
                 <option value="houseHolds">House Hold</option>
                 <option value="cleaningProduct">Cleaning Products</option>
                 <option value="other">Other</option>
-        </select>
-<div class=""> 
-        <select class="btn btn-outline-danger btn-round" id="inputGroupSelect02" #selectedTag (change)=getPricedata(selectedTag.value) >
-                <option value="Required price"  selected>Required price</option>
-                <option value="10,000">[0 - 10,000]dt.</option>
-                <option value="10.000 & 50.000">[10,000 - 50,000]dt.</option>
-                <option value="50.000 & 200.000">[50,000 - 200,000]dt.</option>
-                <option value="200.000 & 500.000">[200,000 - 500,000]dt.</option>
-                <option value="500.001">[500,000 & More]dt.</option>
+                </select> 
+        </div>
+        
+        <div class="">
+                <select class="btn btn-outline-danger btn-round" id="inputGroupSelect02" #selectedTag
+                        (change)=getPricedata(selectedTag.value)>
+                        <option value="Required price" selected>Max Price</option>
+                        <option value="10.000">10,000 Dt.</option>
+                        <option value="50.000">50,000 Dt.</option>
+                        <option value="200.000">200,000 Dt.</option>
+                        <option value="500.000"> 500,000 Dt.</option>
+                        <option value="99999999.000">500,000++</option>
 
-        </select>
+                </select>
         </div>
 </div>
 
+<!-- // this is the search input text , with auto complete finding data -->
 <div class="container">
         <div class="content" role="main">
-                <div class="card">
+                <div class="">
                         <div class="form-group">
-                                <label for="search-text">Search Text</label>
+                                <label for="search-text" id="grey"><strong>Search Product Name: </strong></label>
                                 <input type="email" class="form-control" id="search-text" aria-describedby="search-text"
-                                        [(ngModel)]="searchText" placeholder="Enter text to search" autofocus>
+                                        [ngModel]="searchText"  (ngModelChange)="modelChangeFn($event)" placeholder="Enter text to search" value="" >
                         </div>
                         <ul *ngIf=" searchText.length > 0" class="list-group list-group-flush">
                                 <!-- results of ngFor is passed to appFilter with argument searchText -->
-                                <li (click)="clickOnMe(item,target)" class="list-group-item" #target *ngFor="let item of products | appFilter: searchText"  appHighlight [searchedWord]="searchText" [content]="item.name"  
-                   [classToApply]="'font-weight-bold'" [setTitle]="'true'">
-                                     {{item}}
+                                <li (click)="clickOnMe(item)" class="list-group-item"
+                                        *ngFor="let item of products | appFilter: searchText" appHighlight
+                                        [searchedWord]="searchText" [content]="item.name"
+                                        [classToApply]="'font-weight-bold'" [setTitle]="'true'">
+                                        {{item}}
                                 </li>
                         </ul>
                 </div>
         </div>
-        
-<div class="row">
-        <div class='title' style="margin-top: 37px ;">
-                <h1 style="font-family:'Nerko One',cursive;">Check Our Available Product</h1>
+
+<!-- // this is the title -->
+        <div class="row">
+                <div class='title' style="margin-top: 37px ;">
+                        <h1 style="font-family:'Nerko One',cursive;">Check Our Available Product</h1>
+                </div>
         </div>
-</div>
+
+<!-- //rendering data to our view , using *ngFor injection method of data in html -->
         <div class="row" style="margin-top: 37px">
                 <div class="cover">
                 </div>
+
                 <div class="col-md-4" *ngFor="let item of products | slice:startIndex:endIndex">
                         <div class="card">
                                 <div class="card-img">
@@ -62,15 +75,18 @@
                                 </div>
                                 <div class="card-body">
                                         <h3 class="card-title">{{item.name}}</h3>
-                                        <h5><del>{{item.oldPrice}}</del></h5>
+                                        <h5 id="red"><del>{{item.oldPrice}}</del></h5>
                                         <h5>{{item.newPrice}}</h5>
 
-                                        <button class="btn btn-outline-danger btn-round" (click)="open(item)">See More About
-                                                </button>
+                                        <button class="btn btn-outline-danger btn-round" (click)="open(item)">See More
+                                                About
+                                        </button>
                                         <!-- <app-modal-component></app-modal-component>-->
                                 </div>
                         </div>
                 </div>
+
+<!-- // here where we desplaying pagination buttons and a text of page -->
                 <div class="">
                         <nav aria-label="...">
                                 <ul class="pagination"
