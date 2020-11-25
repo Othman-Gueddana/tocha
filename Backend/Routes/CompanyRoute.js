@@ -8,7 +8,7 @@ const verify = require("./VerificationToken.js");
 const nodemailer = require("nodemailer");
 const smtpTransport = require("nodemailer-smtp-transport");
 const { emailAccount, pass } = require("./MyAccountGmail.js");
-const loginValidation = require('./ValidationLogin.js')
+// const loginValidation = require('./ValidationLogin.js')
 dotenv.config();
 
 router.get("/", async (req, res) => {
@@ -26,7 +26,6 @@ router.post("/register", async (req, res) => {
   const hashPassword = await bcrypt.hash(req.body.password, salt);
   await Companys.create({
     name: req.body.name,
-    email: req.body.email,
     password: hashPassword,
     email: req.body.email,
     address: req.body.address,
@@ -67,8 +66,8 @@ router.post("/register", async (req, res) => {
   });
 });
 router.post("/login", async (req, res) => {
-  const {error} = loginValidation(req.body)
-  if(error) return res.send(error.details[0].message)
+  // const {error} = loginValidation(req.body)
+  // if(error) return res.send(error.details[0].message)
   const user = await Companys.findOne({ where: { email: req.body.email } });
   if (!user) return res.send({ status: 404 });
   const validPass = await bcrypt.compare(req.body.password, user.password);
