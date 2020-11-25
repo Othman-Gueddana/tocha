@@ -1,23 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Directive, Component, OnInit, Output } from '@angular/core';
 import { PurchaseService } from '../services/purchase.service';
 import { ProductService } from '../services/product.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-shopping-cart',
   templateUrl: './shopping-cart.component.html',
   styleUrls: ['./shopping-cart.component.scss']
 })
+
 export class ShoppingCartComponent implements OnInit {
   selected: Array<any> =[];
   purchases: Array<any> =[];
   products: Array<any> =[];
-  array: Array<any> =[];
+  results: any;
   user: any;
-  quantity:any;
-  count:number=0;
-  total:any;
-  constructor( private PurchaseService:PurchaseService,private server: ProductService) { }
-
+  // count:number=0;
+  total:number=0;
+  
+  constructor( private PurchaseService:PurchaseService,private server: ProductService, private router: Router) { }
+ 
   ngOnInit(): void {
     this.user = JSON.parse(window.localStorage.getItem('id'));
     this.PurchaseService.getPurchase(this.user).subscribe((data: any) => {
@@ -44,6 +45,20 @@ export class ShoppingCartComponent implements OnInit {
   changed(value,item){
     console.log(item)
     console.log(value)
-   this.array.push(value)
+  for(var i = 0; i < this.products.length; i++){
+
+    if(item.id === this.products[i].id){
+      let count = value
+      let result=this.products[i].newPrice * count
+      console.log(result)
+    }
+  }
+  }
+  confirm(){
+    if(this.total > 0){
+      alert("your purchases is succsesfuly confirmed")
+    }else {
+      this.router.navigateByUrl('/landing');
+    }
   }
 }
