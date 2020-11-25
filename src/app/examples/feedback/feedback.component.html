@@ -1,5 +1,5 @@
 <div class="wrapper">
-    <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('./assets/img/fabio-mangione.jpg');">
+    <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('./assets/img/feedback.jpg');">
     </div>
     <div class="section landing-section">
         <div class="container">
@@ -13,16 +13,18 @@
                         <textarea class="form-control" rows="4" placeholder="Tell us your thoughts and feelings..." ngModel required  #text="ngModel"  name="text"></textarea>
                         <div class="row">
                             <div class="col-md-4 mr-auto ml-auto">
-                                <button type='submit' class="btn btn-danger btn-lg btn-fill" >Send FeedBack</button>
+                                <button type='submit' class="btn btn-danger btn-center btn-lg btn-fill" >Send FeedBack</button>
                             </div>
                         </div>
                     </div>
                     </form  >
-                    <div class="form-group row">
+                    <br><br>
+                    <div class="feedback-list">
                         <label>Other member's Feedback:</label>
-                        <div class="col-lg-9" *ngFor="let feedback of allFeedback ">
-                            <div class="card-body">
-                                <h5>{{feedback.clientName}}: {{feedback.text}}</h5>
+                        <div class="feedback" *ngFor="let feedback of allFeedback ">
+                            <br><br>
+                            <div class="feed-body">
+                                <h5 >◙  {{feedback.clientName}}: {{feedback.text}}</h5>
                             </div>
                         </div>
                     </div>

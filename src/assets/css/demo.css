@@ -681,7 +681,7 @@
     }
     .rotating-card .back {
         visibility: hidden;
-        -ms-transition: all 0.2s cubic-bezier(.92, .01, .83, .67);
+        /* -ms-transition: all 0.2s cubic-bezier(.92, .01, .83, .67) */
     }
     .rotating-card .front {
         z-index: 4;
@@ -726,7 +726,7 @@
 /* prettyprint */
 
 pre.prettyprint {
-    background-color: #eee !important;
+    background-color:cc!important;
     margin-bottom: 30px;
     margin-top: 30px;
     padding: 20px !important;

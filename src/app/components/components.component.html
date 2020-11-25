@@ -88,7 +88,7 @@
         <div class="section section-dark">
             <div class="container">
                 <!--Section: contact-->
-        <section id="contact" class="py-5" style="background-color: section-dark;">
+        <section id="contact" class="py-5" style="background-color: section-dark;" >
 
             <div class="container">
   
@@ -101,15 +101,17 @@
                     <!-- Grid column -->
                     <div class="col-md-9 mb-md-0 mb-5">
   
-                    <form>
-  
+                    <form
+                    action="https://formspree.io/f/myybdzdb"
+                    method="POST" (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm"
+                    >
                         <!-- Grid row -->
                         <div class="row">
-  
+
                         <!-- Grid column -->
                         <div class="col-md-6">
                             <div class="md-form mb-0">
-                            <input type="text" id="contact-name" class="form-control">
+                            <input type="text" id="contact-name" class="form-control" name='name' ngModel required #name="ngModel">
                             <label for="contact-name" class="" style='color: white'>{{'Your name' | translate}}</label>
                             </div>
                         </div>
@@ -118,12 +120,12 @@
                         <!-- Grid column -->
                         <div class="col-md-6">
                             <div class="md-form mb-0">
-                            <input type="text" id="contact-email" class="form-control">
+                            <input type="text" id="contact-email" class="form-control" name='email' ngModel required #email="ngModel">
                             <label for="contact-email" style='color: white' >{{'Your email' | translate}}</label>
                             </div>
                         </div>
                         <!-- Grid column -->
-  
+
                         </div>
                         <!-- Grid row -->
   
@@ -133,7 +135,7 @@
                         <!-- Grid column -->
                         <div class="col-md-12">
                             <div class="md-form mb-0">
-                            <input type="text" id="contact-Subject" class="form-control">
+                            <input type="text" id="contact-Subject" name='subject' ngModel required #subject="ngModel" class="form-control">
                             <label for="contact-Subject" style='color: white'>{{'Subject' | translate}}</label>
                             </div>
                         </div>
@@ -148,17 +150,18 @@
                         <!-- Grid column -->
                         <div class="col-md-12">
                             <div class="md-form">
-                            <textarea type="text" id="contact-message" class="form-control md-textarea" rows="3"></textarea>
+                            <textarea type="text" id="contact-message" name='message' class="form-control md-textarea" rows="3" ngModel required #message="ngModel"></textarea>
                             <label for="contact-message" style='color: white' >{{'Your message' | translate}}</label>
                             </div>
                         </div>
                         <!-- Grid column -->
                         </div>
                         <!-- Grid row -->
+                        <div id='button' class="text-center" >
+                            <button class="btn" type='submit' style='color: white ;background-color: black;'>{{'Send' | translate}}</button>
+                        </div>
                     </form>
-                    <div id='button' class="text-center" >
-                        <a class="btn" style='color: white ;background-color: black;'>{{'Send' | translate}}</a>
-                    </div>
+                    
                     </div>
                     <!-- Grid column -->
   
@@ -175,7 +178,7 @@
                         </li>
                         <li>
                         <i class="fa fa-envelope fa-2x mt-4 "></i>
-                        <p class="mb-0">bekhteff@gmail.com</p>
+                        <p class="mb-0">bekhteff2020@gmail.com</p>
                         </li>
                     </ul>
                     </div>

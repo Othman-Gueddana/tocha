@@ -23,23 +23,18 @@ export class ProfileCompComponent implements OnInit {
   status: string = "";
   products:any = [];
   user: any ;
-  firstName: any ;
-  lastName: any ;
+  name: any ;
   constructor(private ProductService: ProductService, private fileStorage: AngularFireStorage,
     private router: Router) { }
 
     ngOnInit() {
       let user = JSON.parse(window.localStorage.getItem('id'));
-      let firstName  =  JSON.parse(JSON.stringify(window.localStorage.getItem('firstName')))
-     //  let lastName   =  JSON.parse(window.localStorage.getItem('lastName'));
-     
-      this.firstName = firstName ;
-     //  this.lastName = lastName ;      
+      let name  =  JSON.parse(JSON.stringify(window.localStorage.getItem('name')))
+      this.name = name ;     
       this.user = user ;
 
      console.log(user)
-     console.log(firstName)
-     // console.log(lastName)
+     console.log(name)
      this.ProductService.getProducts().subscribe(( data: any) => {
        for(var i=0 ; i< data.length; i++) {
           if(data[i].ownerId === user ){
@@ -138,7 +133,7 @@ export class ProfileCompComponent implements OnInit {
        }
    }
    changeInfo(){
-     this.router.navigateByUrl('/settings');
+     this.router.navigateByUrl('/seetingsComp');
    }
 
 }
