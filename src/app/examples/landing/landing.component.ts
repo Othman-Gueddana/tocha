@@ -22,8 +22,9 @@ export class LandingComponent implements OnInit {
 
   title = 'angular-text-search-highlight';
   searchText = '';
-
-
+  selectedPrice: string = "0"
+  selectedCategory: string = "category";
+  
  constructor(private server: ProductService, private modalService: NgbModal) { }
 
 
@@ -63,38 +64,15 @@ export class LandingComponent implements OnInit {
     document.documentElement.scrollTop = 0;
     this.page = Math.ceil(this.endIndex / 9)
   }
-
   getArrayFromNumber(length) {
     return new Array(Math.floor(length / 10))
   }
-// this is where we are filtring categories  
-  getCategoriesdata(value: string) {
-    console.log(this.products)
-    const filtered = this.allProducts.filter(item => item.category === value )
-      this.products = filtered
-      if(value==="category"){
-        this.products = this.allProducts
-      }
-     
-  }
-// this where we are filtring Max price 
-  getPricedata(value: string) {
-    console.log(value)
-    const filtered1 = this.allProducts.filter(item => 
-      item.newPrice <= value
-       );
-     
-          this.products = filtered1
-       if (value ==="Required price"){
-         this.products = this.allProducts
-       }
-  }
+  // this is 
   clickOnMe(item){
     let filter = this.allProducts.filter(data =>  data.name === item.name)
     this.products=filter;
    
   }
-    
 }
 
 //   open(content) {
