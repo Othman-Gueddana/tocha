@@ -8,7 +8,7 @@ const verify = require("./VerificationToken.js");
 const nodemailer = require("nodemailer");
 const smtpTransport = require("nodemailer-smtp-transport");
 const { emailAccount, pass } = require("./MyAccountGmail.js");
-// const loginValidation = require('./ValidationLogin.js')
+// const {loginValidation} = require('./Validation.js')
 dotenv.config();
 
 router.get("/", async (req, res) => {
@@ -28,7 +28,9 @@ router.post("/register", async (req, res) => {
     name: req.body.name,
     password: hashPassword,
     email: req.body.email,
-    address: req.body.address,
+    street: req.body.street,
+    city: req.body.city,
+    zipCode: req.body.zipCode,
     description: req.body.description,
     phoneNumber1: req.body.phoneNumber1,
     phoneNumber2: req.body.phoneNumber2,
@@ -75,15 +77,17 @@ router.post("/login", async (req, res) => {
   const token = jwt.sign({ id: user.id }, process.env.SECRET_TOKEN);
   res
     .header("auth_token", token)
-    .send({ token: token, id: user.id});
+    .send({ token: token, id: user.id, name: user.name , status:"loggedComp" });
 });
 
 router.put("/:id", async (req, res) => {
   Companys.findByPk(req.params.id).then((companys) => {
     companys
       .update({
-        address: req.body.address,
-        phoneNumber: req.body.phoneNumber,
+       street: req.body.street,
+       city: req.body.city,
+       zipCode: req.body.zipCode,
+       phoneNumber1: req.body.phoneNumber1,
       })
       .then((companys) => {
         res.json(companys);

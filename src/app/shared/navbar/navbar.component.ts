@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
-    loggedIn: boolean = false;
+    status:string = '';
     constructor(public location: Location, private element: ElementRef, public translate: TranslateService,  private router: Router) {
 
         this.sidebarVisible = false;
@@ -22,10 +22,15 @@ export class NavbarComponent implements OnInit {
     ngAfterContentChecked() {
         const navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
-        if (localStorage.getItem('status') === 'logged') {
-            this.loggedIn = true;
-          }else 
-           this.loggedIn = false;
+        if (localStorage.getItem('status') === 'loggedClient') {
+            this.status = 'loggedClient'
+            console.log(this.status)
+          }else  if (localStorage.getItem('status') === 'loggedComp') {
+            this.status = 'loggedComp'
+            console.log(this.status)
+          }else
+            this.status = '' ;
+            console.log(this.status)
     }
 
     clearStorage() {

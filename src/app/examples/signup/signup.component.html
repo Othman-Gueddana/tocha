@@ -58,14 +58,32 @@
                                 </div>
                                   <input type="text" class="form-control" placeholder="Confirm your Password" (focus)="focus1=true" (blur)="focus1=false" ngModel required  #passwordConf="ngModel" name="passwordConf" />
                               </div>
-                              <label>Address</label>
+                              <label>Street</label>
                               <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
                                 <div class="input-group-prepend">
                                   <span class="input-group-text">
                                       <i class="nc-icon nc-map-big"></i>
                                   </span>
                                 </div>
-                                  <input type="text" class="form-control" placeholder="Address" (focus)="focus=true" (blur)="focus=false"  ngModel required  #address="ngModel" name="address"/>
+                                  <input type="text" class="form-control" placeholder="Street" (focus)="focus=true" (blur)="focus=false"  ngModel required  #street="ngModel" name="street"/>
+                              </div>
+                              <label>City</label>
+                              <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text">
+                                      <i class="nc-icon nc-map-big"></i>
+                                  </span>
+                                </div>
+                                  <input type="text" class="form-control" placeholder="City" (focus)="focus=true" (blur)="focus=false"  ngModel required  #city="ngModel" name="city"/>
+                              </div>
+                              <label>Zip Code</label>
+                              <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text">
+                                      <i class="nc-icon nc-map-big"></i>
+                                  </span>
+                                </div>
+                                  <input type="text" class="form-control" placeholder="Zip Code" (focus)="focus=true" (blur)="focus=false"  ngModel required  #zipCode="ngModel" name="zipCode"/>
                               </div>
                               <label>Phone Number</label>
                               <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">

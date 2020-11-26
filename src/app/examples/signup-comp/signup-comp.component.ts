@@ -15,8 +15,11 @@ export class SignupCompComponent implements OnInit {
     ngOnInit():void {}
     onSubmit(f: NgForm) {
        console.log(f.value)
-       if(f.value.passwordConf === f.value.password ){
-        this.CompServiceService.createRegister(f.value).subscribe(
+       const car = /[A-Z]/gi
+       const other = /[@,<,>,?,!,&,|,%,$,£]/
+       if(f.value.password.match(car)!== null && f.value.password.match(other)!==null ){
+             if(f.value.passwordConf === f.value.password ){
+                this.CompServiceService.createRegister(f.value).subscribe(
             (res) => {
               console.log(res);
             },
@@ -28,7 +31,10 @@ export class SignupCompComponent implements OnInit {
           this.router.navigateByUrl('/signinComp');
        }else {
         alert("Repeat again please")
+          }
+      }else {
+        alert("your password should contain speciel caractere")
        }
-      }
+     }
+ }
 
-}

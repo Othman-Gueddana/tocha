@@ -16,12 +16,17 @@ import { ForgotComponent } from './forgot/forgot.component';
 import { SignupCompComponent } from './signup-comp/signup-comp.component';
 import { LandingcompComponent } from './landingcomp/landingcomp.component';
 import { ProfileCompComponent } from './profile-comp/profile-comp.component'
-import { SigninCompComponent } from './signin-comp/signin-comp.component'
-import { FilterPipe } from './filter.pipe'
+import { SigninCompComponent } from './signin-comp/signin-comp.component';
+import { FilterPipe } from './filter.pipe';
 import { HighlightDirective } from './highlight.pipe';
-import { SettingsCompComponent } from './settings-comp/settings-comp.component'
 import { CategoryPipe}    from  "./category.pipe"
-import { MaxPricePipe} from './maxPrice.pipe'
+import { MaxPricePipe} from './maxPrice.pipe';
+import { ModalPurchaseComponent } from './modal-purchase/modal-purchase.component';
+import { SettingsCompComponent } from './settings-comp/settings-comp.component';
+import { FeedbackCompComponent } from './feedback-comp/feedback-comp.component';
+
+
+
 @NgModule({
     imports: [
         CommonModule,
@@ -46,9 +51,11 @@ import { MaxPricePipe} from './maxPrice.pipe'
         ProfileCompComponent,
         HighlightDirective,
         FilterPipe,
-        SettingsCompComponent,
         CategoryPipe,
-        MaxPricePipe
+        MaxPricePipe,
+        ModalPurchaseComponent,
+        SettingsCompComponent,
+        FeedbackCompComponent
     ],
     entryComponents: [NgbdModalContent],
 })
