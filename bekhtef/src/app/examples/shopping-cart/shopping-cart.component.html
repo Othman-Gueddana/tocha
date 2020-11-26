@@ -1,0 +1,40 @@
+<div class="wrap cf">
+  <div class="heading cf">
+    <h1>My Cart</h1>
+  </div>
+  <div class="cart">
+    <ul class="cartWrap">
+      <li class="items odd"  >
+        <div class="infoWrap"*ngFor="let item of products" >
+          <div class="cartSection"  >
+            <img src={{item.image}} alt="" class="itemImg" />
+            <p class="itemNumber">product id :{{item.id}}</p>
+            <h3>{{item.name}}</h3>
+            <p>  <input id={{item.id}} class="form-control" type="number" name="count" min=0 max={{item.quantity}}  #target (change)="changed(target.value,item)"/><strong>total :</strong> {{(target.value * item.newPrice)}} </p>
+          </div>
+          <div class="cartSection removeWrap">
+            <a class="remove" (click)="clear(item.id)">Delete</a>
+            <div>      
+           
+            </div>
+
+          </div>
+        </div> 
+      </li>
+    </ul>
+  </div>
+  <div class="subtotal cf">
+    <ul>
+      <div class="totalRow final">
+        <span class="label">Total :</span>
+        <span class="value">{{total}}</span>
+      </div>
+      <a  class="btn continue" (click)="clearAll()">Clear my purchase</a>
+      <a  class="btn continue" (click)="confirm()">Checkout</a>
+    </ul>
+    <button class="btn btn-outline-danger btn-round" (click)="open(item)">See More
+      About
+  </button>
+ <!--<app-modal-purchase></app-modal-purchase> -->   
+  </div>
+</div>
