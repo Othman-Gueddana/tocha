@@ -22,7 +22,8 @@ import { HighlightDirective } from './highlight.pipe';
 
 //import { ModalPurchaseComponent } from './modal-purchase/modal-purchase.component'
 
-import { SettingsCompComponent } from './settings-comp/settings-comp.component'
+import { SettingsCompComponent } from './settings-comp/settings-comp.component';
+import { FeedbackCompComponent } from './feedback-comp/feedback-comp.component'
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { SettingsCompComponent } from './settings-comp/settings-comp.component'
         HighlightDirective,
         FilterPipe,
       //ModalPurchaseComponent
-        SettingsCompComponent
+        SettingsCompComponent,
+      FeedbackCompComponent
 
     ],
     entryComponents: [NgbdModalContent],
