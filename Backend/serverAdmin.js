@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
-app.use(express.static(''))
+app.use(express.static('../admin-dashboard/dist'))
 // Routes 
 app.use("/clients",require('./Routes/ClientRoute.js'))
 app.use("/companys",require('./Routes/CompanyRoute.js'))
