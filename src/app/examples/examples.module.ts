@@ -49,7 +49,7 @@ import { SettingsCompComponent } from './settings-comp/settings-comp.component'
         ProfileCompComponent,
         HighlightDirective,
         FilterPipe,
-      //ModalPurchaseComponent
+      //  ModalPurchaseComponent,
         SettingsCompComponent
 
     ],
