@@ -20,8 +20,8 @@ import { SigninCompComponent } from './signin-comp/signin-comp.component'
 import { FilterPipe } from './filter.pipe'
 import { HighlightDirective } from './highlight.pipe';
 import { SettingsCompComponent } from './settings-comp/settings-comp.component'
-
-
+import { CategoryPipe}    from  "./category.pipe"
+import { MaxPricePipe} from './maxPrice.pipe'
 @NgModule({
     imports: [
         CommonModule,
@@ -46,7 +46,9 @@ import { SettingsCompComponent } from './settings-comp/settings-comp.component'
         ProfileCompComponent,
         HighlightDirective,
         FilterPipe,
-        SettingsCompComponent
+        SettingsCompComponent,
+        CategoryPipe,
+        MaxPricePipe
     ],
     entryComponents: [NgbdModalContent],
 })
