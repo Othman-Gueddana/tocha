@@ -6,8 +6,10 @@ VerifyClients.init({
   lastName: Sequelize.STRING,
   email: Sequelize.STRING,
   password: Sequelize.STRING,
-  address : Sequelize.STRING,
-  phoneNumber: Sequelize.INTEGER,
+  street : Sequelize.STRING,
+  city : Sequelize.STRING,
+  zipCode : Sequelize.STRING,
+  phoneNumber: Sequelize.STRING,
 }, { sequelize, modelName: 'verifyClients' });
 
 module.exports = VerifyClients;
