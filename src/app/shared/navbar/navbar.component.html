@@ -11,26 +11,26 @@
         </div>
         <div class="collapse navbar-collapse" id="navbarToggler">
             <ul class="navbar-nav ml-auto" >
-                <li class="nav-item"  *ngIf="!loggedIn" >
+                <li class="nav-item"  *ngIf="status === ''" >
                     <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/Bekhteff1" target="_blank">
                         <i class="fa fa-twitter"></i>
                         <p class="d-lg-none">{{'Twitter' | translate}}</p>
                     </a>
                 </li>
-                <li class="nav-item"  *ngIf="!loggedIn" >
+                <li class="nav-item"  *ngIf="status === ''" >
                     <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.facebook.com/bekh.teff.5/" target="_blank">
                         <i class="fa fa-facebook-square"></i>
                         <p class="d-lg-none">{{'Facebook' | translate}}</p>
                     </a>
                 </li>
-                <li class="nav-item" *ngIf="!loggedIn" >
+                <li class="nav-item" *ngIf="status === ''" >
                     <a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom" href="https://www.instagram.com/be5teff/" target="_blank">
                         <i class="fa fa-instagram"></i>
                         <p class="d-lg-none">{{'Instagram' | translate}}</p>
                     </a>
                 </li>
                
-             <li class="nav-item" *ngIf="!loggedIn" >
+             <li class="nav-item" *ngIf="status === ''" >
                     <span class="select">
                         <select class="btn btn-danger btn-round" #selectedLang (change)="switchLang(selectedLang.value)">
                             <option class="dropdown-item " *ngFor="let language of translate.getLangs()" [value]="language"
@@ -42,7 +42,7 @@
                 </li> 
               
 
-                 <li class="nav-item"  *ngIf="!loggedIn">
+                 <li class="nav-item"  *ngIf="status === ''">
                     <div ngbDropdown class="d-inline-block dropdown">
                         <a class="btn btn-danger btn-round" id="dropdownBasic1" ngbDropdownToggle>Register</a>
                         <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-primary">
@@ -52,7 +52,7 @@
                         </div>
                     </div>
                 </li>
-                <li class="nav-item" *ngIf="!loggedIn">
+                <li class="nav-item" *ngIf="status === ''">
                     <div ngbDropdown class="d-inline-block dropdown">
                         <a class="btn btn-danger btn-round" id="dropdownBasic2" ngbDropdownToggle>Log In</a>
                         <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-primary">
@@ -61,17 +61,25 @@
                         </div>
                     </div>
                 </li>  
-                <li class="nav-item" *ngIf="loggedIn" >
+                <li class="nav-item" *ngIf="status === 'loggedClient'" >
                     <a [routerLink]="['/cart']" class="btn btn-danger btn-round"> My Cart </a>
                 </li>
-                <li class="nav-item" *ngIf="loggedIn" >
+                <li class="nav-item" *ngIf="status === 'loggedClient'" >
                     <a [routerLink]="['/user-profile']" class="btn btn-danger btn-round"> Profile </a>
-                    <a [routerLink]="['/profileComp']" class="btn btn-danger btn-round"> Profile </a>
                 </li>
-                <li class="nav-item" *ngIf="loggedIn" >
+                <li class="nav-item" *ngIf="status === 'loggedClient'" >
                     <a [routerLink]="['/feedback']" class="btn btn-danger btn-round"> Feedback </a>
                 </li>
-                <li class="nav-item" *ngIf="loggedIn" >
+                <li class="nav-item" *ngIf="status === 'loggedComp'" >
+                    <a [routerLink]="['/cart']" class="btn btn-danger btn-round"> My Cart comp</a>
+                </li>
+                <li class="nav-item" *ngIf="status === 'loggedComp'" >
+                    <a [routerLink]="['/user-profile']" class="btn btn-danger btn-round"> Profile comp</a>
+                </li>
+                <li class="nav-item" *ngIf="status === 'loggedComp'" >
+                    <a [routerLink]="['/feedback']" class="btn btn-danger btn-round"> Feedback comp</a>
+                </li>
+                <li class="nav-item" *ngIf="status === 'loggedComp' || status === 'loggedClient'" >
                     <a (click)="clearStorage()" class="btn btn-danger btn-round"> log out </a>
                 </li>
             </ul>
