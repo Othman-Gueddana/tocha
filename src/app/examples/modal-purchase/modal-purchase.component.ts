@@ -4,7 +4,7 @@ import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
   selector: 'app-modal-purchase',
   template: ` <div class="test" id="modal-dialog" tabindex="-1" role="dialog" aria-labelledby="modalIdLabel">
   <div class="modal-header" id="modalSocial">
-  <h3 class="modal-title text-center">Puchance Referance</h3>
+  <h3 class="modal-title text-center">Purchanse</h3>
   <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
         </button>      
