@@ -9,8 +9,10 @@
                    <!-- <h3 class="title" style="color:white;"> {{'Welcome' | translate}} </h3>-->   
                         <h3 class="title" style="color:white;"> Welcome </h3> 
                         <form class="register-form" #f="ngForm" (ngSubmit)="onSubmit(f)">
-                          <div class="row">
-                                <div class="col-md-4"> 
+
+
+                          
+                              <div class="col-md-4"> 
                                   <label>Company Name</label>
                                   <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
                                     <div class="input-group-prepend">
@@ -21,9 +23,9 @@
                                       <input type="text" class="form-control" placeholder="Company Name" (focus)="focus=true" (blur)="focus=false" ngModel required  #firstName="ngModel"  name="name"/>
                                   </div>
 
-                                </div>
+                              </div>
 
-                                <div class="col-md-4">
+                              <div class="col-md-4">
                                   <label>Email</label>
                                   <!-- <label>{{'Email' | translate}}</label>-->
                               <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
@@ -34,8 +36,9 @@
                                 </div>
                                   <input type="text" class="form-control" placeholder="Email" (focus)="focus=true" (blur)="focus=false"  ngModel required  #email="ngModel" name="email"/>
                               </div>
-                                </div>
-                                <div class="col-md-4">
+                              </div> 
+
+                              <div class="col-md-4">
                                   <label>Description</label>
                                   <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
                                     <div class="input-group-prepend">
@@ -46,13 +49,9 @@
                                       <input type="text" class="form-control" placeholder="Describe your Company!" (focus)="focus=true" (blur)="focus=false"  ngModel required  #description="ngModel" name="description"/>
                                   </div>
   
-                                </div>
-                                </div>
-                               
-
-                          
-                          <div class="row"> 
-                            <div class="col-md-4">
+                              </div>   
+                                                
+                              <div class="col-md-4">
                             <label>Password</label>
                             <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus1===true}">
                               <div class="input-group-prepend">
@@ -62,9 +61,9 @@
                               </div>
                                 <input type="text" class="form-control" placeholder="Password" (focus)="focus1=true" (blur)="focus1=false" ngModel  required  #password="ngModel" name="password"/>
                             </div>
-                          </div>
+                              </div>
                           
-                            <div class="col-md-4">
+                              <div class="col-md-4">
                                <!--   <label>{{'Password' | translate}}</label>-->
                               <label>Confirm Password</label>
                               <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus1===true}">
@@ -75,23 +74,44 @@
                                 </div>
                                   <input type="text" class="form-control" placeholder="Confirm your Password" (focus)="focus1=true" (blur)="focus1=false" ngModel required  #passwordConf="ngModel" name="passwordConf" />
                               </div>
-                            </div>
-                            <div class="col-md-4">
-                              <label>Address</label>
+                              </div>
+
+                              <div class="col-md-4">
+                              <label>Street</label>
                               <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
                                 <div class="input-group-prepend">
                                   <span class="input-group-text">
                                       <i class="nc-icon nc-map-big"></i>
                                   </span>
                                 </div>
-                                  <input type="text" class="form-control" placeholder="Address" (focus)="focus=true" (blur)="focus=false"  ngModel required  #address="ngModel" name="address"/>
+                                  <input type="text" class="form-control" placeholder="Street" (focus)="focus=true" (blur)="focus=false"  ngModel required  #street="ngModel" name="street"/>
                               </div>
-                            </div>
-                          
+                              </div>
 
+                              <div class="col-md-4">
+                            <label>City</label>
+                              <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text">
+                                      <i class="nc-icon nc-map-big"></i>
+                                  </span>
+                                </div>
+                                  <input type="text" class="form-control" placeholder="City" (focus)="focus=true" (blur)="focus=false"  ngModel required  #city="ngModel" name="city"/>
+                              </div>
+                              </div>
 
-                          </div>
-                           <div class="row"> 
+                              <div class="col-md-4">
+                              <label>Zip Code</label>
+                              <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text">
+                                      <i class="nc-icon nc-map-big"></i>
+                                  </span>
+                                </div>
+                                  <input type="text" class="form-control" placeholder="Zip Code" (focus)="focus=true" (blur)="focus=false"  ngModel required  #zipCode="ngModel" name="zipCode"/>
+                              </div> 
+                              </div>
+
                               <div class="col-md-4">
                                 <label>Phone Number 1 :</label>
                                 <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
@@ -115,6 +135,7 @@
                                   <input type="text" class="form-control" placeholder="Phone Number 1" (focus)="focus=true" (blur)="focus=false"  ngModel  #phoneNumber2="ngModel" name="phoneNumber2"/>
                                   </div>
                               </div>
+
                               <div class="col-md-4">
                                 <label>Patent Number :</label>
                                 <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
@@ -127,7 +148,6 @@
                                 </div>
                               </div>
 
-                           </div>
                             <button type="submit" [disabled]="f.invalid" class="btn btn-danger btn-block btn-round"> Register </button>
                         </form>
                     </div>

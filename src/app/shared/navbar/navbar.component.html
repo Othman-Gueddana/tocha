@@ -74,13 +74,14 @@
                     <a [routerLink]="['/profileComp']" class="btn btn-danger btn-round"> Profile </a>
                 </li>
                 <li class="nav-item" *ngIf="status === 'loggedComp'" >
-                    <a [routerLink]="['/']" class="btn btn-danger btn-round"> Feedback</a>
+
+                    <a [routerLink]="['/feedbackComp']" class="btn btn-danger btn-round"> Feedback</a>
                 </li>
                 <li class="nav-item" *ngIf="status === 'loggedComp' || status === 'loggedClient'" >
                     <a (click)="clearStorage()" class="btn btn-danger btn-round"> log out </a>
                 </li>
             </ul>
             
-        </div>
+        </div>                            
     </div>
 </nav>

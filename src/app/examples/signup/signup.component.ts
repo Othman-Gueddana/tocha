@@ -16,19 +16,26 @@ export class SignupComponent implements OnInit {
     ngOnInit():void {}
     onSubmit(f: NgForm) {
        console.log(f.value)
-       if(f.value.passwordConf === f.value.password ){
-        this.ClientService.createRegister(f.value).subscribe(
-            (res) => {
-              console.log(res);
-            },
-            (error) => {
-              console.log(error);
-            }
-          );
-        alert("your request to create a new account is succsesfuly done , wait for email of acceptation")
-          this.router.navigateByUrl('/signin');
+       const car = /[A-Z]/gi
+       const other = /[@,<,>,?,!,&,|,%,$,£]/
+       if(f.value.password.match(car)!== null && f.value.password.match(other)!==null && f.value.password.length >= 8 ){
+        if(f.value.passwordConf === f.value.password ){
+          this.ClientService.createRegister(f.value).subscribe(
+              (res) => {
+                console.log(res);
+              },
+              (error) => {
+                console.log(error);
+              }
+            );
+          alert("your request to create a new account is succsesfuly done , wait for email of acceptation")
+            this.router.navigateByUrl('/signin');
+         }else {
+          alert("Repeat again please")
+         }
        }else {
-        alert("Repeat again please")
+          alert("your password should contain speciel caractere")
        }
+      
       }
 }
