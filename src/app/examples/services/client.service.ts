@@ -20,7 +20,9 @@ export class ClientService {
       lastName: data.lastName,
       password: data.password,
       email: data.email,
-      address: data.address,
+      street: data.street,
+      city: data.city,
+      zipCode: data.zipCode,
       phoneNumber: data.phoneNumber,
     };
     console.log(obj)
