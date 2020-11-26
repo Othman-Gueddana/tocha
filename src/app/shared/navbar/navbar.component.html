@@ -71,13 +71,10 @@
                     <a [routerLink]="['/feedback']" class="btn btn-danger btn-round"> Feedback </a>
                 </li>
                 <li class="nav-item" *ngIf="status === 'loggedComp'" >
-                    <a [routerLink]="['/cart']" class="btn btn-danger btn-round"> My Cart comp</a>
+                    <a [routerLink]="['/profileComp']" class="btn btn-danger btn-round"> Profile </a>
                 </li>
                 <li class="nav-item" *ngIf="status === 'loggedComp'" >
-                    <a [routerLink]="['/user-profile']" class="btn btn-danger btn-round"> Profile comp</a>
-                </li>
-                <li class="nav-item" *ngIf="status === 'loggedComp'" >
-                    <a [routerLink]="['/feedback']" class="btn btn-danger btn-round"> Feedback comp</a>
+                    <a [routerLink]="['/']" class="btn btn-danger btn-round"> Feedback</a>
                 </li>
                 <li class="nav-item" *ngIf="status === 'loggedComp' || status === 'loggedClient'" >
                     <a (click)="clearStorage()" class="btn btn-danger btn-round"> log out </a>
