@@ -2,6 +2,11 @@ import { Directive, Component, OnInit, Output } from '@angular/core';
 import { PurchaseService } from '../services/purchase.service';
 import { ProductService } from '../services/product.service';
 import { Router } from '@angular/router';
+import { NgbdModalComponent } from '../modal/modal.component';
+import { NgbdModalContent } from '../modal/modal.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalPurchaseComponent } from '../modal-purchase/modal-purchase.component';
+
 @Component({
   selector: 'app-shopping-cart',
   templateUrl: './shopping-cart.component.html',
@@ -17,7 +22,7 @@ export class ShoppingCartComponent implements OnInit {
   // count:number=0;
   total:number=0;
   
-  constructor( private PurchaseService:PurchaseService,private server: ProductService, private router: Router) { }
+  constructor( private PurchaseService:PurchaseService,private server: ProductService, private router: Router,private modalService: NgbModal) { }
  
   ngOnInit(): void {
     this.user = JSON.parse(window.localStorage.getItem('id'));
@@ -82,6 +87,17 @@ export class ShoppingCartComponent implements OnInit {
     this.PurchaseService.deleteAll().subscribe((data: any) => {
       console.log(data)
   })
+  }
+  open(item) {
+    console.log(item)
+    const modalRef = this.modalService.open(ModalPurchaseComponent);
+    modalRef.componentInstance.item = item;
+    modalRef.result.then((result) => {
+      if (result) {
+        console.log(result);
+      }
+    });
+
   }
 }
 
