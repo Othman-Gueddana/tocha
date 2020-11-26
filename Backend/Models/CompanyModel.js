@@ -5,11 +5,13 @@ Companys.init({
   name: Sequelize.STRING,
   email: Sequelize.STRING,
   password: Sequelize.STRING,
-  address : Sequelize.STRING,
+  street : Sequelize.STRING,
+  city : Sequelize.STRING,
+  zipCode : Sequelize.STRING,
   description : Sequelize.STRING,
-  phoneNumber1: Sequelize.INTEGER,
-  phoneNumber2: Sequelize.INTEGER,
-  numberPatent: Sequelize.INTEGER,
+  phoneNumber1: Sequelize.STRING,
+  phoneNumber2: Sequelize.STRING,
+  numberPatent: Sequelize.STRING,
   logo: Sequelize.STRING
 }, { sequelize, modelName: 'companys' });
 

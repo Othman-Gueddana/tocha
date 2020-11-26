@@ -13,10 +13,11 @@ router.get("/:id", async (req, res) => {
 
 router.post("/register", async (req, res) => {
   await Livraisons.create({
-    text: req.body.text,
+    status: req.body.status,
     clientName: req.body.clientName,
     clientId: req.body.clientId,
     productId: req.body.productId,
+    status: req.body.quantity,
   })
 });
 
@@ -24,10 +25,11 @@ router.put("/:id", async (req, res) => {
   Livraisons.findByPk(req.params.id).then((livraisons) => {
     livraisons
       .update({
-        text: req.body.text,
-        clientName: req.body.clientName,
-        clientId: req.body.clientId,
-        productId: req.body.productId,
+        status: req.body.status,
+       clientName: req.body.clientName,
+       clientId: req.body.clientId,
+       productId: req.body.productId,
+       status: req.body.quantity,
       })
       .then((livraisons) => {
         res.json(livraisons);

@@ -6,4 +6,4 @@ Purchases.init({
  clientId: Sequelize.INTEGER,
 }, { sequelize, modelName: 'purchases' });
 
-module.exports = Purchases;
+module.exports = Purchases ;
