@@ -19,9 +19,7 @@ import { ProfileCompComponent } from './profile-comp/profile-comp.component'
 import { SigninCompComponent } from './signin-comp/signin-comp.component'
 import { FilterPipe } from './filter.pipe'
 import { HighlightDirective } from './highlight.pipe';
-
-//import { ModalPurchaseComponent } from './modal-purchase/modal-purchase.component'
-
+import { ModalPurchaseComponent } from './modal-purchase/modal-purchase.component'
 import { SettingsCompComponent } from './settings-comp/settings-comp.component'
 
 
@@ -49,7 +47,7 @@ import { SettingsCompComponent } from './settings-comp/settings-comp.component'
         ProfileCompComponent,
         HighlightDirective,
         FilterPipe,
-      //  ModalPurchaseComponent,
+         ModalPurchaseComponent,
         SettingsCompComponent
 
     ],
