@@ -2,6 +2,11 @@ import { Directive, Component, OnInit, Output } from '@angular/core';
 import { PurchaseService } from '../services/purchase.service';
 import { ProductService } from '../services/product.service';
 import { Router } from '@angular/router';
+import { NgbdModalComponent } from '../modal/modal.component';
+import { NgbdModalContent } from '../modal/modal.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalPurchaseComponent } from '../modal-purchase/modal-purchase.component';
+
 @Component({
   selector: 'app-shopping-cart',
   templateUrl: './shopping-cart.component.html',
@@ -12,12 +17,12 @@ export class ShoppingCartComponent implements OnInit {
   selected: Array<any> =[];
   purchases: Array<any> =[];
   products: Array<any> =[];
-  results: any;
+  results: Array<any> =[];
   user: any;
   // count:number=0;
   total:number=0;
   
-  constructor( private PurchaseService:PurchaseService,private server: ProductService, private router: Router) { }
+  constructor( private PurchaseService:PurchaseService,private server: ProductService, private router: Router,private modalService: NgbModal) { }
  
   ngOnInit(): void {
     this.user = JSON.parse(window.localStorage.getItem('id'));
@@ -51,9 +56,21 @@ export class ShoppingCartComponent implements OnInit {
       let count = value
       let result=this.products[i].newPrice * count
       console.log(result)
+      if(typeof(this.results[i]) === 'number'){
+        this.results[i]=result
+      }else
+      this.results.push(result)
+     this.total = 0 ;
+      console.log(this.results)
     }
   }
+  
+  for(var i=0; i<this.results.length; i++){
+    this.total = this.total + this.results[i]
   }
+}
+ 
+    
   confirm(){
     if(this.total > 0){
       alert("your purchases is succsesfuly confirmed")
@@ -61,4 +78,26 @@ export class ShoppingCartComponent implements OnInit {
       this.router.navigateByUrl('/landing');
     }
   }
+  clear(id){
+    this.PurchaseService.deleteOne(id).subscribe((data: any) => {
+      console.log(data)
+  })
+  }
+  clearAll(){
+    this.PurchaseService.deleteAll().subscribe((data: any) => {
+      console.log(data)
+  })
+  }
+  open(item) {
+    console.log(item)
+    const modalRef = this.modalService.open(ModalPurchaseComponent);
+    modalRef.componentInstance.item = item;
+    modalRef.result.then((result) => {
+      if (result) {
+        console.log(result);
+      }
+    });
+
+  }
 }
+

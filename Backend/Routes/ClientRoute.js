@@ -8,7 +8,7 @@ const verify = require("./VerificationToken.js");
 const nodemailer = require("nodemailer");
 const smtpTransport = require("nodemailer-smtp-transport");
 const { emailAccount, pass } = require("./MyAccountGmail.js");
-const {loginValidation} = require('./ValidationLogin.js')
+// const { loginValidation } = require('./Validation.js')
 dotenv.config();
 
 router.get("/", async (req, res) => {
@@ -29,7 +29,9 @@ router.post("/register", async (req, res) => {
     lastName: req.body.lastName,
     password: hashPassword,
     email: req.body.email,
-    address: req.body.address,
+    street: req.body.street,
+    city: req.body.city,
+    zipCode: req.body.zipCode,
     phoneNumber: req.body.phoneNumber,
   }).then((user) => {
     nodemailer.createTestAccount((err, email) => {
@@ -63,8 +65,8 @@ router.post("/register", async (req, res) => {
   });
 });
 router.post("/login", async (req, res) => {
-  const {error} = loginValidation(req.body)
-  if(error) return res.send(error.details[0].message)
+  // const {error} = loginValidation(req.body)
+  // if(error) return res.send(error.details[0].message)
   const user = await Clients.findOne({ where: { email: req.body.email } });
   if (!user) return res.send({ status: 404 });
   const validPass = await bcrypt.compare(req.body.password, user.password);
@@ -72,14 +74,16 @@ router.post("/login", async (req, res) => {
   const token = jwt.sign({ id: user.id }, process.env.SECRET_TOKEN);
   res
     .header("auth_token", token)
-    .send({ token: token, id: user.id,firstName : user.firstName , lastName : user.lastName, status:"logged" });
+    .send({ token: token, id: user.id, firstName : user.firstName , lastName : user.lastName, status:"loggedClient" });
 });
 
 router.put("/:id", async (req, res) => {
   await Clients.findByPk(req.params.id).then((clients) => {
     clients
     .update({
-        address: req.body.address,
+        street: req.body.street,
+        city: req.body.city,
+        zipCode: req.body.zipCode,
         phoneNumber: req.body.phoneNumber,
       })
       .then((clients) => {

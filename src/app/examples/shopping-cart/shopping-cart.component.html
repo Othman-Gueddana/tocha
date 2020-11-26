@@ -13,7 +13,11 @@
             <p>  <input id={{item.id}} class="form-control" type="number" name="count" min=0 max={{item.quantity}}  #target (change)="changed(target.value,item)"/><strong>total :</strong> {{(target.value * item.newPrice)}} </p>
           </div>
           <div class="cartSection removeWrap">
-            <a href="#" class="remove">Delete</a>
+            <a class="remove" (click)="clear(item.id)">Delete</a>
+            <div>      
+           
+            </div>
+
           </div>
         </div> 
       </li>
@@ -25,7 +29,12 @@
         <span class="label">Total :</span>
         <span class="value">{{total}}</span>
       </div>
+      <a  class="btn continue" (click)="clearAll()">Clear my purchase</a>
       <a  class="btn continue" (click)="confirm()">Checkout</a>
     </ul>
+    <button class="btn btn-outline-danger btn-round" (click)="open(item)">See More
+      About
+  </button>
+ <!--<app-modal-purchase></app-modal-purchase> -->   
   </div>
 </div>
