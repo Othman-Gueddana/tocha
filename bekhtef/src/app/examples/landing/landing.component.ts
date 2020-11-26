@@ -26,10 +26,9 @@ export class LandingComponent implements OnInit {
   title = 'angular-text-search-highlight';
   searchText = '';
 
-
+  selectedPrice: string = "0"
+  selectedCategory: string = "category";
   constructor(private server: ProductService, private modalService: NgbModal, private PurchaseService:PurchaseService) { }
-
-
 
 // this is  a life cycle method ruun after changing text in the search text 
   modelChangeFn(value) {
@@ -84,55 +83,15 @@ export class LandingComponent implements OnInit {
     document.documentElement.scrollTop = 0;
     this.page = Math.ceil(this.endIndex / 9)
   }
-
   getArrayFromNumber(length) {
     return new Array(Math.floor(length / 10))
   }
-// this is where we are filtring categories  
-  getCategoriesdata(value: string) {
-    console.log(this.products)
-    const filtered = this.allProducts.filter(item => item.category === value )
-      this.products = filtered
-      if(value==="category"){
-        this.products = this.allProducts
-      }
-     
-  }
-// this where we are filtring Max price 
-  getPricedata(value: string) {
-    console.log(value)
-    const filtered1 = this.allProducts.filter(item => 
-      item.newPrice <= value
-       );
-     
-          this.products = filtered1
-       if (value ==="Required price"){
-         this.products = this.allProducts
-       }
-  }
+  // this is 
   clickOnMe(item){
     let filter = this.allProducts.filter(data =>  data.name === item.name)
     this.products=filter;
    
   }
-    
 }
 
-//   open(content) {
-//     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-//       this.closeResult = `Closed with: ${result}`;
-//     }, (reason) => {
-//       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-//     });
-//   }
-
-//   private getDismissReason(reason: any): string {
-//     if (reason === ModalDismissReasons.ESC) {
-//       return 'by pressing ESC';
-//     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-//       return 'by clicking on a backdrop';
-//     } else {
-//       return `with: ${reason}`;
-//     }
-//   }
 

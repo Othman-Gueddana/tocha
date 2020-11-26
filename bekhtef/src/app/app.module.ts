@@ -14,7 +14,6 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule,HttpParams } from '@angular/common/http';
 import { AngularFireStorageModule } from '@angular/fire/storage'
 import { AngularFireModule } from '@angular/fire'
-import { FilterPipe } from './examples/filter.pipe';
 @NgModule({
   declarations: [
     AppComponent,
