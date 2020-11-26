@@ -22,10 +22,15 @@ export class NavbarComponent implements OnInit {
     ngAfterContentChecked() {
         const navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
-        if (localStorage.getItem('status') ! == '') {
-            this.status = JSON.parse(JSON.stringify(window.localStorage.getItem('status')));
-          }else 
+        if (localStorage.getItem('status') === 'loggedClient') {
+            this.status = 'loggedClient'
+            console.log(this.status)
+          }else  if (localStorage.getItem('status') === 'loggedComp') {
+            this.status = 'loggedComp'
+            console.log(this.status)
+          }else
             this.status = '' ;
+            console.log(this.status)
     }
 
     clearStorage() {
