@@ -13,7 +13,8 @@
                         <textarea class="form-control" rows="4" placeholder="Tell us your thoughts and feelings..." ngModel required  #text="ngModel"  name="text"></textarea>
                         <div class="row">
                             <div class="col-md-4 mr-auto ml-auto">
-                                <button type='submit' class="btn btn-danger btn-center btn-lg btn-fill" >Send FeedBack</button>
+                                <button type='submit' class="btn btn-danger btn-center btn-lg btn-fill" >
+                                    Send FeedBack</button>
                             </div>
                         </div>
                     </div>
@@ -24,7 +25,8 @@
                         <div class="feedback" *ngFor="let feedback of allFeedback ">
                             <br><br>
                             <div class="feed-body">
-                                <h5 >◙  {{feedback.clientName}}: {{feedback.text}}</h5>
+                                <h4 style='color: #fab830 '>◙ {{feedback.clientName}}:</h4>
+                                <h5>{{feedback.text}}</h5>
                             </div>
                         </div>
                     </div>

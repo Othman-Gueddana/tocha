@@ -6,7 +6,9 @@ Clients.init({
   lastName: Sequelize.STRING,
   email: Sequelize.STRING,
   password: Sequelize.STRING,
-  address : Sequelize.STRING,
+  street : Sequelize.STRING,
+  city : Sequelize.STRING,
+  zipCode : Sequelize.INTEGER,
   phoneNumber: Sequelize.INTEGER,
 }, { sequelize, modelName: 'clients' });
 
