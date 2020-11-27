@@ -10,10 +10,42 @@ import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
         </button>      
 </div>    
 <div class="modal-body"> 
-
-<p>test</p>
-
-<div>
+<table style =" font-family: arial, sans-serif;
+border-collapse: collapse;
+width: 100%;">
+    <tr style=" background-color: #dddddd;">
+      <th style="  border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;"> Quantity </th>
+      <th style="  border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;"> 
+      Product's Name </th>
+      <th style="  border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;">Price</th>
+    </tr>
+    <tr style="background-color: #dddddd;"  >
+      <td style="border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;"> 
+      Quantity
+      </td>
+      <td style="border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;">
+      Product's Name
+      </td>
+      <td style="border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;">
+      Price
+      </td>
+    <tr>
+    
+  </table>
+</div>
+<div class="total"> <h3> Total : </h3></div>
 <div class="modal-footer">
 <div class="left-side">
     <button type="button" class="btn btn-default btn-link" (click)="activeModal.close('Close click')"> Cancel </button>
