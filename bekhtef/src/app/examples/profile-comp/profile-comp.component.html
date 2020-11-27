@@ -2,9 +2,9 @@
 <div class="wrapper">
     <div class="page-header page-header-xs" data-parallax="true"
         style="background-image: url('./assets/img/backHead.PNG');">
-        <div class="filter"></div>
+       
     </div>
-    <div class="section profile-content">
+   <!-- <div class="section profile-content">
         <div class="container">
             <div class="owner">
                 <div class="avatar">
@@ -14,7 +14,7 @@
                 <div class="name">
                     <h4 class="title">{{name}}</h4><br/>
                     
-                    <!-- <h4 class="title">{{lastName}}</h4> -->
+
                 </div>
             </div>
             <div class="row">
@@ -211,5 +211,411 @@
                 </div>
             </div>
         </div>
+    </div>--> 
+    <div class="container">
+    <div class="row" style="margin-top: 29px;">
+        <div class="col-md-4">
+          <div class="card card-user">
+            <div class="image">
+              <img src="" alt="logo">
+            </div>
+            <div class="card-body">
+              <div class="author">
+                <a href="#">
+                  <img class="avatar border-gray" src="assets/img/mike.jpg" alt="...">
+                  <h5 class="title">{{name}}</h5>
+                </a>
+                <p class="description">
+                 description
+                </p>
+              </div>
+              <p class="description text-center">
+                Email
+                <br>
+                <br> 
+              </p>
+            </div>
+            <div class="card-footer">
+              <hr>
+              <div class="button-container">
+                <div class="row">
+                  <div class="">
+                    <button class="btn btn-round" (click)="changeInfo()" style="margin-right:219px;"><i class="fa fa-cog"></i> Settings</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title">Contact the Team </h4>
+            </div>
+            <div class="card-body">
+              <ul class="list-unstyled team-members">
+                <li>
+                  <div class="row">
+                    <div class="col-md-2 col-2">
+                      <div class="avatar">
+                        <img src="../../../assets/img/chimi.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                      </div>
+                    </div>
+                    <div class="col-md-7 col-7">
+                      Tocha team
+                      <br />
+                      <span class="text-success">
+                        <small>Available</small>
+                      </span>
+                    </div>
+                    <div class="col-md-3 col-3 text-right">
+                      <button class="btn btn-sm btn-outline-success btn-round btn-icon"><i class="fa fa-envelope"></i></button>
+                    </div>
+                  </div>
+                </li>
+           
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="card card-user">
+            <div class="card-header">
+              <h5 class="card-title"> Insert your product</h5>
+            </div>
+            <div class="card-body">
+                <ngb-tabset >
+                  <ngb-tab>
+                        <ng-template ngbTabContent>
+                            <form role="form" #f="ngForm" (ngSubmit)="addCategory(f)" *ngIf="status === '' ">
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Category:</label>
+                                    <div class="col-lg-9">
+                                        <select id="product" name="category" class="form-control" ngModel
+                                            #category="ngModel">
+                                            <option value="food">Food</option>
+                                            <option value="clothes">Clothes</option>
+                                            <option value="fourniture">Fourniture</option>
+                                            <option value="electronics">Electronics</option>
+                                            <option value="houseHold">House Hold</option>
+                                            <option value="cleaning">Cleaning Products</option>
+                                            <option value="other">Other</option>
+        
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label"></label>
+                                    <div class="col-lg-9">
+                                        <input type="submit" [disabled]="f.invalid"
+                                            class="btn btn-danger btn-block btn-round" value="Choose category">
+                                    </div>
+                                </div>
+                            </form>
+                            <form role="form" #f="ngForm" (ngSubmit)="onSubmit(f)" *ngIf="status !== '' ">
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Title:</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="text" name="title" ngModel
+                                            #title="ngModel" />
+                                    </div>
+                                </div>
+        
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Description:</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="text" name="description" ngModel
+                                            #description="ngModel" />
+                                    </div>
+                                </div>
+        
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Old Price:</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="text" name="oldPrice" ngModel
+                                            #oldPrice="ngModel" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">New Price:</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="text" name="newPrice" ngModel
+                                            #oldPrice="ngModel" />
+                                    </div>
+                                </div>
+                                <div class="form-group row"
+                                    *ngIf="(category === 'food' || category === 'cleaning')">
+                                    <label class="col-lg-3 col-form-label form-control-label">Expiration
+                                        date:</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="text" name="exppireddate" ngModel
+                                            #exppireddate="ngModel" />
+                                    </div>
+                                </div>
+                                <div class="form-group row"
+                                    *ngIf="(category === 'food' || category === 'cleaning' || category === 'houseHold' || category === 'electronics')">
+                                    <label class="col-lg-3 col-form-label form-control-label">Creation date:</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="text" name="creationDate" ngModel
+                                            #creationDate="ngModel" />
+                                    </div>
+                                </div>
+                                <div class="form-group row"
+                                    *ngIf="( category === 'houseHold' || category === 'electronics')">
+                                    <label class="col-lg-3 col-form-label form-control-label"> Devices:</label>
+                                    <div class="col-lg-9">
+                                        <select id="devices" name="device" class="form-control" ngModel
+                                            #device="ngModel">
+                                            <option value="computer"> Computer </option>
+                                            <option value="printer"> Printer </option>
+                                            <option value="projector"> Projector</option>
+                                            <option value="speaker"> Speaker</option>
+                                            <option value="camera">Camera</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row" *ngIf="category === 'clothes'">
+                                    <label class="col-lg-3 col-form-label form-control-label">Human Kind:</label>
+                                    <div class="col-lg-9">
+                                        <select id="humankind" name="humankind" class="form-control" ngModel
+                                            #humanKind="ngModel">
+                                            <option value="homme">Men </option>
+                                            <option value="woman">Woman </option>
+                                            <option value="kids">Kids</option>
+                                            <option value="other">Other</option>
+        
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row" *ngIf="category === 'fourniture'">
+                                    <label class="col-lg-3 col-form-label form-control-label">Type:</label>
+                                    <div class="col-lg-9">
+                                        <select id="type" name="type" class="form-control" ngModel #type="ngModel">
+                                            <option value="table">Table</option>
+                                            <option value="bed">Beb</option>
+                                            <option value="chair">Chair</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Quantity:</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="number" name="quantity" ngModel
+                                            #quantity="ngModel" min="1" max="100" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <input
+                                    name="img"
+                                    type="file"
+                                    name="filename"
+                                    (change)="selectedFile($event)"
+                                    accept=".png,.jpg"
+                                    required
+                                  />
+                                  <div class="progress">
+                                    <div
+                                      class="progress-bar progress-bar-striped-bg-success"
+                                      role="progressbar"
+                                      [style.width]="(uploadProgress | async) + '%'"
+                                      [attr.aria-valuenow]="(uploadProgress | async) + '%'"
+                                      aria-valuemin="0"
+                                      aria-valuemax="100"
+                                    >
+              
+                                </div>
+                                  </div>
+                                  <a [href]="downloadURL | async" name="download">{{
+                                    downloadURL | async
+                                  }}</a>
+                                  <p></p>
+                                </div>
+                                    <img sref="C:\Users\ASUS\Desktop" />
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label"></label>
+                                    <div class="col-lg-9">
+                                        <input type="submit" [disabled]="f.invalid"
+                                            class="btn btn-danger btn-block btn-round" value="Add">
+                                    </div>
+                                </div>
+                          
+                            </form>
+                        
+                        </ng-template>
+              </ngb-tab>  
+                </ngb-tabset>
+             </div>
+          </div>
+          <div class="card card-user">
+            <div class="card-header">
+              <h5 class="card-title"> Insert your product</h5>
+            </div>
+            <div class="card-body">
+                <ngb-tabset >
+                  <ngb-tab>
+                        <ng-template ngbTabContent>
+                            <form role="form" #f="ngForm" (ngSubmit)="addCategory(f)" *ngIf="status === '' ">
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Category:</label>
+                                    <div class="col-lg-9">
+                                        <select id="product" name="category" class="form-control" ngModel
+                                            #category="ngModel">
+                                            <option value="food">Food</option>
+                                            <option value="clothes">Clothes</option>
+                                            <option value="fourniture">Fourniture</option>
+                                            <option value="electronics">Electronics</option>
+                                            <option value="houseHold">House Hold</option>
+                                            <option value="cleaning">Cleaning Products</option>
+                                            <option value="other">Other</option>
+        
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label"></label>
+                                    <div class="col-lg-9">
+                                        <input type="submit" [disabled]="f.invalid"
+                                            class="btn btn-danger btn-block btn-round" value="Choose category">
+                                    </div>
+                                </div>
+                            </form>
+                            <form role="form" #f="ngForm" (ngSubmit)="onSubmit(f)" *ngIf="status !== '' ">
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Title:</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="text" name="title" ngModel
+                                            #title="ngModel" />
+                                    </div>
+                                </div>
+        
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Description:</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="text" name="description" ngModel
+                                            #description="ngModel" />
+                                    </div>
+                                </div>
+        
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Old Price:</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="text" name="oldPrice" ngModel
+                                            #oldPrice="ngModel" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">New Price:</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="text" name="newPrice" ngModel
+                                            #oldPrice="ngModel" />
+                                    </div>
+                                </div>
+                                <div class="form-group row"
+                                    *ngIf="(category === 'food' || category === 'cleaning')">
+                                    <label class="col-lg-3 col-form-label form-control-label">Expiration
+                                        date:</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="text" name="exppireddate" ngModel
+                                            #exppireddate="ngModel" />
+                                    </div>
+                                </div>
+                                <div class="form-group row"
+                                    *ngIf="(category === 'food' || category === 'cleaning' || category === 'houseHold' || category === 'electronics')">
+                                    <label class="col-lg-3 col-form-label form-control-label">Creation date:</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="text" name="creationDate" ngModel
+                                            #creationDate="ngModel" />
+                                    </div>
+                                </div>
+                                <div class="form-group row"
+                                    *ngIf="( category === 'houseHold' || category === 'electronics')">
+                                    <label class="col-lg-3 col-form-label form-control-label"> Devices:</label>
+                                    <div class="col-lg-9">
+                                        <select id="devices" name="device" class="form-control" ngModel
+                                            #device="ngModel">
+                                            <option value="computer"> Computer </option>
+                                            <option value="printer"> Printer </option>
+                                            <option value="projector"> Projector</option>
+                                            <option value="speaker"> Speaker</option>
+                                            <option value="camera">Camera</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row" *ngIf="category === 'clothes'">
+                                    <label class="col-lg-3 col-form-label form-control-label">Human Kind:</label>
+                                    <div class="col-lg-9">
+                                        <select id="humankind" name="humankind" class="form-control" ngModel
+                                            #humanKind="ngModel">
+                                            <option value="homme">Men </option>
+                                            <option value="woman">Woman </option>
+                                            <option value="kids">Kids</option>
+                                            <option value="other">Other</option>
+        
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row" *ngIf="category === 'fourniture'">
+                                    <label class="col-lg-3 col-form-label form-control-label">Type:</label>
+                                    <div class="col-lg-9">
+                                        <select id="type" name="type" class="form-control" ngModel #type="ngModel">
+                                            <option value="table">Table</option>
+                                            <option value="bed">Beb</option>
+                                            <option value="chair">Chair</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Quantity:</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="number" name="quantity" ngModel
+                                            #quantity="ngModel" min="1" max="100" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <input
+                                    name="img"
+                                    type="file"
+                                    name="filename"
+                                    (change)="selectedFile($event)"
+                                    accept=".png,.jpg"
+                                    required
+                                  />
+                                  <div class="progress">
+                                    <div
+                                      class="progress-bar progress-bar-striped-bg-success"
+                                      role="progressbar"
+                                      [style.width]="(uploadProgress | async) + '%'"
+                                      [attr.aria-valuenow]="(uploadProgress | async) + '%'"
+                                      aria-valuemin="0"
+                                      aria-valuemax="100"
+                                    >
+              
+                                </div>
+                                  </div>
+                                  <a [href]="downloadURL | async" name="download">{{
+                                    downloadURL | async
+                                  }}</a>
+                                  <p></p>
+                                </div>
+                                    <img sref="C:\Users\ASUS\Desktop" />
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label"></label>
+                                    <div class="col-lg-9">
+                                        <input type="submit" [disabled]="f.invalid"
+                                            class="btn btn-danger btn-block btn-round" value="Add">
+                                    </div>
+                                </div>
+                          
+                            </form>
+                        
+                        </ng-template>
+              </ngb-tab>  
+                </ngb-tabset>
+             </div>
+          </div>
+        </div>
+      </div>
     </div>
 </div>
