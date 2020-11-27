@@ -1,3 +1,31 @@
+<!-- 
+       <div class="row" style="margin-top: 37px">
+                <div class="cover">
+                </div>
+
+                <div class="col-md-4"
+                        *ngFor="let item of products | appFilter:searchText  |Category:selectedCategory |maxPrice:selectedPrice| slice:startIndex:endIndex">
+                        <div class="card">
+                                <div class="card-img">
+                                        <img class="img-no-padding" style="max-height:200px;margin-left:8%;"
+                                                src="{{item.image}}">
+                                </div>
+                                <div class="card-body">
+                                        <h3 class="card-title">{{item.name}}</h3>
+                                        <h5 id="red"><del>{{item.oldPrice}}</del></h5>
+                                        <h5>{{item.newPrice}}</h5>
+
+                                        <button class="btn btn-outline-danger btn-round" (click)="open(item)">See More
+                                                About
+                                        </button>
+                                </div>
+                        </div>
+                </div>
+
+                
+        
+</div><br><br><br><br> -->
+
 <div class="row">
   <div class="col-lg-3 col-md-6 col-sm-6">
     <div class="card card-stats">
@@ -12,7 +40,7 @@
             <div class="numbers">
               <p class="card-category">Capacity</p>
               <p class="card-title">150GB
-                <p>
+              <p>
             </div>
           </div>
         </div>
@@ -38,7 +66,7 @@
             <div class="numbers">
               <p class="card-category">Revenue</p>
               <p class="card-title">$ 1,345
-                <p>
+              <p>
             </div>
           </div>
         </div>
@@ -64,7 +92,7 @@
             <div class="numbers">
               <p class="card-category">Errors</p>
               <p class="card-title">23
-                <p>
+              <p>
             </div>
           </div>
         </div>
@@ -90,7 +118,7 @@
             <div class="numbers">
               <p class="card-category">Followers</p>
               <p class="card-title">+45K
-                <p>
+              <p>
             </div>
           </div>
         </div>
@@ -104,7 +132,49 @@
     </div>
   </div>
 </div>
-<div class="row">
+
+<div class="container">
+  <div class="row" style="margin-top: 37px">
+    <div class="cover">
+    </div>
+
+    <div class="col-md-4" *ngFor="let item of products">
+      <div class="card">
+        <div class="card-img">
+          <img class="img-no-padding" style="max-height:200px;margin-left:8%;" src="{{item.image}}">
+        </div>
+        <div class="card-body">
+          <h3 class="card-title"> name: {{item.name}}</h3>
+          <p><strong class="red">id :</strong> {{item.id}} </p>
+          <p><del><strong class="red">Price:</strong> {{item.oldPrice}}</del></p>
+          <p><strong class="red">Price :</strong>{{item.newPrice}}</p>
+          <p><strong class="red">description :</strong>{{item.description}}</p>
+          <p><strong class="red">owner Id :</strong>{{item.ownerId}} </p>
+          <p><strong class="red">expired Date :</strong> {{item.exiredDate}} </p>
+          <p><strong class="red">creation Date :</strong> {{item.creationDate}} </p>
+          <p><strong class="red">quantity :</strong>{{item.quantity}}</p>
+          <p><strong class="red">device :</strong>{{item.device}} </p>
+          <p><strong class="red">humanKind :</strong>{{item.humanKind}} </p>
+          <p><strong class="red">type :</strong>{{item.type}} </p>
+          <p><strong class="red">createdAt :</strong>{{item.createdAt}} </p>
+          <p><strong class="red">updatedAt :</strong>{{item.updatedAt}} </p>
+          <button class="btn btn-outline-danger btn-round" (click)=" addProducts(item)">Confirm
+          </button>
+          <button class="btn btn-outline-danger btn-round" (click)="deleteOneProduct(item)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<!-- ///////////////// -->
+<!-- <div class="row">
   <div class="col-md-12">
     <div class="card ">
       <div class="card-header ">
@@ -161,11 +231,11 @@
           <i class="fa fa-circle text-info"></i> Tesla Model S
           <i class="fa fa-circle text-warning"></i> BMW 5 Series
         </div>
-        <hr/>
+        <hr />
         <div class="card-stats">
           <i class="fa fa-check"></i> Data information certified
         </div>
       </div>
     </div>
   </div>
-</div>
+</div> -->
