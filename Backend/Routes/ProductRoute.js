@@ -233,7 +233,7 @@ router.delete("/", async (req, res) => {
     res.json("cleared")
   );
 });
-router.post("/products", async (req, res) => {
+router.post("/products/", async (req, res) => {
     await Products.create({
       name:req.body.name,
       oldPrice:req.body.oldPrice,

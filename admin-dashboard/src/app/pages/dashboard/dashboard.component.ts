@@ -27,11 +27,12 @@ export class DashboardComponent implements OnInit {
   }
   addProducts(data) {
     this.service.addProducts(data).subscribe((res) => {
-      return console.log(res);
+      console.log(res)
     },
       (error) => {
-        return console.log(error);
+        console.log(error);
       });
+
   }
   deleteOneProduct(data) {
     this.service.deleteOneProduct(data.id).subscribe((res) => {
