@@ -27,8 +27,8 @@
                         <div class="col-md-3 price">
                           <label for="quantity">Price: {{(target.value * item.newPrice)}}</label>
                         </div>
-                        <div class="col-md-2 ">
-                          <a class="btn btn-outline-danger btn-round " (click)="clear(item.id)"> Delete </a>
+                        <div class="col-md-2 " *ngFor="let i of purchases">
+                          <a class="btn btn-outline-danger btn-round " (click)="clear(i.id,item.id)"> Delete </a>
                         </div>
                       </div>
                     </div>

@@ -78,14 +78,26 @@ export class ShoppingCartComponent implements OnInit {
       this.router.navigateByUrl('/landing');
     }
   }
-  clear(id){
+  clear(id,item){
+    console.log(id)
+    console.log(this.purchases)
+    console.log(this.products)
     this.PurchaseService.deleteOne(id).subscribe((data: any) => {
       console.log(data)
+    console.log(item)
   })
+  let length =  this.products.length
+    for (var i = 0; i < length ; i++){
+this.purchases=this.purchases.filter((val,i)=>val.id !== id )
+console.log(this.purchases)
+this.products=this.products.filter((val,i)=>val.id !== item )
+console.log(this.products)
+    }
   }
   clearAll(){
     this.PurchaseService.deleteAll().subscribe((data: any) => {
       console.log(data)
+      this.products = [];
   })
   }
   open(item) {
