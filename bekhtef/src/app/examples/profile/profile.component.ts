@@ -36,7 +36,7 @@ export class ProfileComponent implements OnInit {
        let firstName  =  JSON.parse(JSON.stringify(window.localStorage.getItem('firstName')))
        let status  =  JSON.parse(JSON.stringify(window.localStorage.getItem('status')))
       //  let lastName   =  JSON.parse(window.localStorage.getItem('lastName'));
-       this.clientStatus = status
+       this.clientStatus = status ;
        this.firstName = firstName ;
       //  this.lastName = lastName ;      
        this.user = user ;

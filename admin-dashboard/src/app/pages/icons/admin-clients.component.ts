@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { ClientUsersService } from "../../services/client-users.service"
 @Component({
     selector: 'client-app',
-    moduleId: module.id,
     templateUrl: 'admin-clients.component.html',
     styleUrls: ['./admin-clients.component.scss']
 })
