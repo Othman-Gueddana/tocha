@@ -8,15 +8,34 @@
                      <!-- <h3 class="title" style="color:white;"> {{'Welcome' | translate}} </h3>-->   
                           <h3 class="title" style="color:white;"> Modify Your Info </h3> 
                           <form class="register-form" #f="ngForm" (ngSubmit)="onSubmit(f)">
-                              <label>New Address</label>
-                              <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text">
-                                      <i class="nc-icon nc-map-big"></i>
-                                  </span>
-                                </div>
-                                  <input type="text" class="form-control" placeholder="Address" (focus)="focus=true" (blur)="focus=false"  [(ngModel)]="address" name="address"/>
+                            <label>New Address Street</label>
+                            <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="nc-icon nc-map-big"></i>
+                                </span>
                               </div>
+                                <input type="text" class="form-control" placeholder="Street" (focus)="focus=true" (blur)="focus=false"  [(ngModel)]="street" name="street"/>
+                            </div>
+                            <label>New City</label>
+                            <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="nc-icon nc-map-big"></i>
+                                </span>
+                              </div>
+                                <input type="text" class="form-control" placeholder="City" (focus)="focus=true" (blur)="focus=false"  [(ngModel)]="city" name="city"/>
+                            </div>
+                            <label>New Zip Code </label>
+                            <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="nc-icon nc-map-big"></i>
+                                </span>
+                              </div>
+                                <input type="text" class="form-control" placeholder="Z
+                                ip Code" (focus)="focus=true" (blur)="focus=false"  [(ngModel)]="zipCode" name="zipCode"/>
+                            </div>
                               <label>New Phone Number</label>
                               <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
                                 <div class="input-group-prepend">
