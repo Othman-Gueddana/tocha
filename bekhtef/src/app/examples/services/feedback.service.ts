@@ -23,7 +23,7 @@ export class FeedbackService {
     console.log(data)
     return this.http.post(baseUrl + 'register' , data);
   }
-  deleteFeedback(data): Observable<any> {
-    return this.http.delete(baseUrl + 'feedback' , data)
+  deleteFeedback(id): Observable<any> {
+    return this.http.delete(baseUrl + `${id}`)
   }
 }
