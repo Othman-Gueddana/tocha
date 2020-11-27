@@ -27,14 +27,16 @@ export class ProfileComponent implements OnInit {
     user: any ;
     firstName: any ;
     lastName: any ;
+    clientStatus: string = "";
     constructor( private ProductService: ProductService, private fileStorage: AngularFireStorage,
         private router: Router) { }
 
     ngOnInit() {
        let user = JSON.parse(window.localStorage.getItem('id'));
        let firstName  =  JSON.parse(JSON.stringify(window.localStorage.getItem('firstName')))
+       let status  =  JSON.parse(JSON.stringify(window.localStorage.getItem('status')))
       //  let lastName   =  JSON.parse(window.localStorage.getItem('lastName'));
-      
+       this.clientStatus = status
        this.firstName = firstName ;
       //  this.lastName = lastName ;      
        this.user = user ;
@@ -44,7 +46,7 @@ export class ProfileComponent implements OnInit {
       // console.log(lastName)
       this.ProductService.getProducts().subscribe(( data: any) => {
         for(var i=0 ; i< data.length; i++) {
-           if(data[i].ownerId === user ){
+           if(data[i].ownerId === user && data[i].ownerType === "client"){
              console.log(data[i].ownerId)
              console.log(data[i])
              this.products.push(data[i])
@@ -82,6 +84,7 @@ export class ProfileComponent implements OnInit {
            category:this.category,
            image:imageUrl,
            ownerId:user,
+           ownerType:this.clientStatus,
            expireddate:f.value.expireddate,
            creationDate:f.value.creationDate,
            quantity:f.value.quantity,
