@@ -8,8 +8,8 @@ VerifyClients.init({
   password: Sequelize.STRING,
   street : Sequelize.STRING,
   city : Sequelize.STRING,
-  zipCode : Sequelize.STRING,
-  phoneNumber: Sequelize.STRING,
+  zipCode : Sequelize.INTEGER,
+  phoneNumber: Sequelize.INTEGER,
 }, { sequelize, modelName: 'verifyClients' });
 
 module.exports = VerifyClients;

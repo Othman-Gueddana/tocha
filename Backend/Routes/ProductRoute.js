@@ -20,6 +20,7 @@ router.post("/food", async (req, res) => {
     category:req.body.category,
     image:req.body.image,
     ownerId:req.body.ownerId,
+    ownerType:req.body.ownerType,
     expireddate:req.body.expireddate,
     creationDate:req.body.creationDate,
     quantity:req.body.quantity
@@ -37,6 +38,7 @@ router.put("/food/:id", async (req, res) => {
         category:req.body.category,
         image:req.body.image,
         ownerId:req.body.ownerId,
+        ownerType:req.body.ownerType,
         expireddate:req.body.expireddate,
         creationDate:req.body.creationDate,
         quantity:req.body.quantity
@@ -55,6 +57,7 @@ router.post("/clean", async (req, res) => {
       category:req.body.category,
       image:req.body.image,
       ownerId:req.body.ownerId,
+      ownerType:req.body.ownerType,
       expireddate:req.body.expireddate,
       creationDate:req.body.creationDate,
       quantity:req.body.quantity
@@ -72,6 +75,7 @@ router.post("/clean", async (req, res) => {
           category:req.body.category,
           image:req.body.image,
           ownerId:req.body.ownerId,
+          ownerType:req.body.ownerType,
           expireddate:req.body.expireddate,
           creationDate:req.body.creationDate,
           quantity:req.body.quantity
@@ -90,6 +94,7 @@ router.post("/clean", async (req, res) => {
       category:req.body.category,
       image:req.body.image,
       ownerId:req.body.ownerId,
+      ownerType:req.body.ownerType,
       creationDate:req.body.creationDate,
       device:req.body.device,
       quantity:req.body.quantity
@@ -108,6 +113,7 @@ router.post("/clean", async (req, res) => {
           category:req.body.category,
           image:req.body.image,
           ownerId:req.body.ownerId,
+          ownerType:req.body.ownerType,
           creationDate:req.body.creationDate,
           device:req.body.device,
           quantity:req.body.quantity
@@ -126,6 +132,7 @@ router.post("/clean", async (req, res) => {
       category:req.body.category,
       image:req.body.image,
       ownerId:req.body.ownerId,
+      ownerType:req.body.ownerType,
       creationDate:req.body.creationDate,
       device:req.body.device,
       quantity:req.body.quantity
@@ -143,6 +150,7 @@ router.post("/clean", async (req, res) => {
           category:req.body.category,
           image:req.body.image,
           ownerId:req.body.ownerId,
+          ownerType:req.body.ownerType,
           creationDate:req.body.creationDate,
           device:req.body.device,
           quantity:req.body.quantity
@@ -161,6 +169,7 @@ router.post("/clean", async (req, res) => {
       category:req.body.category,
       image:req.body.image,
       ownerId:req.body.ownerId,
+      ownerType:req.body.ownerType,
       humanKind:req.body.humanKind,
       quantity:req.body.quantity
     })
@@ -177,6 +186,7 @@ router.post("/clean", async (req, res) => {
           category:req.body.category,
           image:req.body.image,
           ownerId:req.body.ownerId,
+          ownerType:req.body.ownerType,
           humanKind:req.body.humanKind,
           quantity:req.body.quantity
         })
@@ -194,6 +204,7 @@ router.post("/clean", async (req, res) => {
       category:req.body.category,
       image:req.body.image,
       ownerId:req.body.ownerId,
+      ownerType:req.body.ownerType,
       type:req.body.type,
       quantity:req.body.quantity
     })
@@ -210,6 +221,7 @@ router.post("/clean", async (req, res) => {
           category:req.body.category,
           image:req.body.image,
           ownerId:req.body.ownerId,
+          ownerType:req.body.ownerType,
           type:req.body.type,
           quantity:req.body.quantity
         })
@@ -233,5 +245,23 @@ router.delete("/", async (req, res) => {
     res.json("cleared")
   );
 });
+router.post("/products/", async (req, res) => {
+    await Products.create({
+      name:req.body.name,
+      oldPrice:req.body.oldPrice,
+      newPrice:req.body.newPrice,
+      description:req.body.description,
+      category:req.body.category,
+      image:req.body.image,
+      ownerId:req.body.ownerId,
+      expireddate:req.body.expireddate,
+      creationDate:req.body.creationDate,
+      quantity:req.body.quantity,
+      device: req.body.device,
+      humanKind: req.body.humanKind,
+      type: req.body.type
+    })
+  });
+  
 
 module.exports = router;
