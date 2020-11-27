@@ -10,7 +10,9 @@ export class SettingsComponent implements OnInit {
   focus: any;
   focus1: any;
   phoneNumber: string = '';
-  address: string = '';
+  street: string = '';
+  city: string = '';
+  codeZip: string = '';
   constructor(private ClientService: ClientService,
     private router: Router) { }
 
@@ -20,7 +22,9 @@ export class SettingsComponent implements OnInit {
     const id = JSON.parse(window.localStorage.getItem('id'));
     const obj = {
       phoneNumber:this.phoneNumber,
-      address:this.address
+      street:this.street,
+      city:this.city,
+      codeZip:this.codeZip,
     };
     this.ClientService.modifyInfo(obj,id).subscribe(
       (res) => {

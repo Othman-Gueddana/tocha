@@ -33,9 +33,11 @@ export class CompServiceService {
     return this.http.post(baseUrl2 + 'register', data);
   }
   modifyInfo(data,id): Observable<any> {
-    let obj = {
-      address: data.address,
-      phoneNumber1: data.phoneNumber1,
+    const obj = {
+      phoneNumber1:data.phoneNumber1,
+      street:data.street,
+      city:data.city,
+      codeZip:data.codeZip,
     };
     console.log(obj)
     console.log(baseUrl2 + 'register');
