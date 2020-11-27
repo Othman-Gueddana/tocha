@@ -12,7 +12,7 @@ const url = 'http://localhost:8080/products/'
 @Injectable({
   providedIn: 'root'
 })
-export class ClientproductService {
+export class ProductsService {
 
   constructor(private http: HttpClient) { }
 
