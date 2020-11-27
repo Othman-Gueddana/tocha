@@ -20,7 +20,7 @@ export class FeedbackComponent implements OnInit {
 
   ngOnInit(): void {
     this.server.getFeedback().subscribe((data: any) => {
-      this.allFeedback = data
+      this.allFeedback = data.reverse()
       console.log(this.allFeedback)
     })
   }
@@ -38,7 +38,7 @@ export class FeedbackComponent implements OnInit {
     console.log(obj);
     this.server.addFeedback(obj).subscribe((res)=>{
       
-      console.log(res);
+      console.log(res,'hiiii');
     },
     (error) => {
     console.log(error);
