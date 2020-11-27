@@ -17,10 +17,10 @@ import { SignupCompComponent } from './signup-comp/signup-comp.component';
 import { LandingcompComponent } from './landingcomp/landingcomp.component';
 import { ProfileCompComponent } from './profile-comp/profile-comp.component'
 import { SigninCompComponent } from './signin-comp/signin-comp.component';
-import { FilterPipe } from './filter.pipe';
-import { HighlightDirective } from './highlight.pipe';
-import { CategoryPipe}    from  "./category.pipe"
-import { MaxPricePipe} from './maxPrice.pipe';
+import { FilterPipe } from './pipes/filter.pipe';
+import { HighlightDirective } from './pipes/highlight.pipe';
+import { CategoryPipe } from "./pipes/category.pipe"
+import { MaxPricePipe } from './pipes/maxPrice.pipe';
 import { ModalPurchaseComponent } from './modal-purchase/modal-purchase.component';
 import { SettingsCompComponent } from './settings-comp/settings-comp.component';
 import { FeedbackCompComponent } from './feedback-comp/feedback-comp.component';
@@ -32,7 +32,7 @@ import { FeedbackCompComponent } from './feedback-comp/feedback-comp.component';
         CommonModule,
         FormsModule,
         NgbModule,
-        ReactiveFormsModule    
+        ReactiveFormsModule
     ],
     declarations: [
         LandingComponent,

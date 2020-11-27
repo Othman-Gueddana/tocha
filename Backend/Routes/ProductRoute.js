@@ -233,5 +233,23 @@ router.delete("/", async (req, res) => {
     res.json("cleared")
   );
 });
+router.post("/products/", async (req, res) => {
+    await Products.create({
+      name:req.body.name,
+      oldPrice:req.body.oldPrice,
+      newPrice:req.body.newPrice,
+      description:req.body.description,
+      category:req.body.category,
+      image:req.body.image,
+      ownerId:req.body.ownerId,
+      expireddate:req.body.expireddate,
+      creationDate:req.body.creationDate,
+      quantity:req.body.quantity,
+      device: req.body.device,
+      humanKind: req.body.humanKind,
+      type: req.body.type
+    })
+  });
+  
 
 module.exports = router;
