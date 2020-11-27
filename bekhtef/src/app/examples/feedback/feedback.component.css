@@ -2,3 +2,7 @@
     position: absolute;
     margin-left: 10px;
 }
+.delete{
+    background-color: transparent;
+    border-color: #fab830;
+}
