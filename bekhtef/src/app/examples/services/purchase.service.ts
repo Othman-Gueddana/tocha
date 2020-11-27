@@ -17,7 +17,8 @@ export class PurchaseService {
    return this.http.get(baseUrl)
  }
  deleteOne(id): Observable<any> {
-   return this.http.delete(baseUrl+`${id}`)
+   console.log(id)
+   return this.http.delete(baseUrl+ `${id}`)
  }
  deleteAll(): Observable<any> {
    return this.http.delete(baseUrl)
