@@ -14,7 +14,7 @@
             <div class="card-body">
               <div class="author">
                 <a href="#">
-                  <img class="avatar border-gray" src="assets/img/mike.jpg" alt="...">
+                  <img class="avatar border-gray" src={{user.logo}} alt="...">
                   <h5 class="title">{{name}}</h5>
                 </a>
                 <p class="description">
@@ -196,16 +196,17 @@
                                             #quantity="ngModel" min="1" max="100" />
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                            <div class="form-group row">
                                     <input
                                     name="img"
                                     type="file"
                                     name="filename"
-                                    (change)="selectedFile($event)"
+                                    (change)="selectedFile($event.target.files)"
                                     accept=".png,.jpg"
                                     required
+                                    class="btn btn-danger btn-block btn-round"
                                   />
-                                  <div class="progress">
+                              <div class="progress">
                                     <div
                                       class="progress-bar progress-bar-striped-bg-success"
                                       role="progressbar"
@@ -217,9 +218,9 @@
               
                                 </div>
                                   </div>
-                                  <a [href]="downloadURL | async" name="download">{{
+                                <a [href]="downloadURL | async" name="download">{{
                                     downloadURL | async
-                                  }}</a>
+                                  }}</a>  
                                   <p></p>
                                 </div>
                                     <img sref="C:\Users\ASUS\Desktop" />
@@ -230,11 +231,9 @@
                                             class="btn btn-danger btn-block btn-round" value="Add">
                                     </div>
                                 </div>
-                          
                             </form>
-                        
                         </ng-template>
-              </ngb-tab>  
+                     </ngb-tab>  
                 </ngb-tabset>
              </div>
           </div>

@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { CompanyUsersService } from "../../services/company-users.service"
 
 @Component({
-    selector: 'maps-cmp',
-    templateUrl: 'maps.component.html',
-    styleUrls: ['./maps.component.scss']
+    selector: 'company-app',
+    templateUrl: 'admin-company.component.html',
+    styleUrls: ['./admin-company.component.scss']
 })
 
-export class MapsComponent implements OnInit {
+export class CompanyComponent implements OnInit {
 
 
     allCompanyUsers: Array<any> = [];
@@ -26,7 +26,11 @@ export class MapsComponent implements OnInit {
             (error) => {
                 console.log(error);
             });
+        this.deleteUser(data);
+        location.reload()
+
     }
+
     deleteUser(data) {
         this.service.deleteCompanyUser(data.id).subscribe((res) => {
             // document.getElementById("myText").innerHTML = res;
@@ -35,6 +39,7 @@ export class MapsComponent implements OnInit {
             (error) => {
                 console.log(error);
             });
+        location.reload()
     }
 }
 

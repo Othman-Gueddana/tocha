@@ -6,7 +6,7 @@ import {
   HttpErrorResponse,
   HttpParams,
 } from '@angular/common/http';
-
+const baseUrl2 = 'http://localhost:8080/Products/'
 const baseUrl = 'http://localhost:8080/verifyProducts/'
 const url = 'http://localhost:8080/products/'
 @Injectable({
@@ -32,6 +32,10 @@ export class ProductsService {
   getProducts(): Observable<any> {
     return this.http
       .get(baseUrl).pipe(retry(3), catchError(this.handleError));
+  }
+  getInsertedProducts(): Observable<any> {
+    return this.http
+      .get(baseUrl2).pipe(retry(3), catchError(this.handleError));
   }
   addProducts(data): Observable<any> {
 
