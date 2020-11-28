@@ -22,13 +22,13 @@
                    
                         <div class="col-md-3 quantity">
                           <label for="quantity">Quantity:</label>
-                          <input id={{item.id}} class="form-control quantity-input" type="number" name="count" min=0 max={{item.quantity}}  #target (change)="changed(target.value,item)"/>
+                          <input id={{item.id}} class="form-control quantity-input" type="number" name="count" min=1 max={{item.quantity}}  #target (change)="changed(target.value,item)"/>
                         </div>
                         <div class="col-md-3 price">
                           <label for="quantity">Price: {{(target.value * item.newPrice)}}</label>
                         </div>
-                        <div class="col-md-2 " *ngFor="let i of purchases">
-                          <a class="btn btn-outline-danger btn-round " (click)="clear(i.id,item.id)"> Delete </a>
+                        <div class="col-md-2 ">
+                          <a class="btn btn-outline-danger btn-round " (click)="clear(item.id)"> Delete </a>
                         </div>
                       </div>
                     </div>
@@ -45,7 +45,7 @@
             <div class="summary-item"><span class="text">Discount</span><span class="price">0 DT </span></div>
             <div class="summary-item"><span class="text">Shipping</span><span class="price">0 DT</span></div>
             <div class="summary-item"><span class="text">Total</span><span class="price">Total :{{total}} DT</span></div>
-            <button class="btn btn-outline-danger btn-round" (click)="open(item)"> Checkout </button>
+            <button class="btn btn-outline-danger btn-round" (click)="open()"> Checkout </button>
             <a  class="btn btn-outline-danger btn-round " (click)="clearAll()">Clear my purchase</a>
           </div>
         </div>

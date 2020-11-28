@@ -18,10 +18,11 @@ export class ShoppingCartComponent implements OnInit {
   purchases: Array<any> =[];
   products: Array<any> =[];
   results: Array<any> =[];
+  livraisons: Array<any> =[];
   user: any;
   // count:number=0;
   total:number=0;
-  
+  item : any ;
   constructor( private PurchaseService:PurchaseService,private server: ProductService, private router: Router,private modalService: NgbModal) { }
  
   ngOnInit(): void {
@@ -46,6 +47,8 @@ export class ShoppingCartComponent implements OnInit {
     }
     console.log(this.products)
     })
+    
+
   }
   changed(value,item){
     console.log(item)
@@ -68,6 +71,10 @@ export class ShoppingCartComponent implements OnInit {
   for(var i=0; i<this.results.length; i++){
     this.total = this.total + this.results[i]
   }
+  console.log(this.purchases)
+  console.log(this.products)
+  console.log(this.results)
+  console.log(this.total)
 }
  
     
@@ -78,38 +85,52 @@ export class ShoppingCartComponent implements OnInit {
       this.router.navigateByUrl('/landing');
     }
   }
-  clear(id,item){
-    console.log(id)
-    console.log(this.purchases)
-    console.log(this.products)
-    this.PurchaseService.deleteOne(id).subscribe((data: any) => {
-      console.log(data)
-    console.log(item)
-  })
-  let length =  this.products.length
-    for (var i = 0; i < length ; i++){
-this.purchases=this.purchases.filter((val,i)=>val.id !== id )
-console.log(this.purchases)
-this.products=this.products.filter((val,i)=>val.id !== item )
-console.log(this.products)
+  clear(id){
+    for(var i=0; i<this.purchases.length; i++){
+      if(this.purchases[i].productId===id){
+         this.item = this.purchases[i].id
+      }
     }
+    this.PurchaseService.deleteOne(this.item).subscribe((data: any) => {
+      console.log(data)
+  })
+  this.products = this.products.filter((val,i)=>val.id !== id)
+  console.log(this.products)
   }
   clearAll(){
     this.PurchaseService.deleteAll().subscribe((data: any) => {
       console.log(data)
-      this.products = [];
   })
+  this.products = []
   }
-  open(item) {
-    console.log(item)
-    const modalRef = this.modalService.open(ModalPurchaseComponent);
-    modalRef.componentInstance.item = item;
-    modalRef.result.then((result) => {
-      if (result) {
-        console.log(result);
+  open() { 
+    for (var i=0 ; i<this.products.length ; i++) {
+      let obj = {
+        status:"not yet",
+        clientName:JSON.parse(JSON.stringify(window.localStorage.getItem('firstName')))+' '+JSON.parse(JSON.stringify(window.localStorage.getItem('lastName'))) ,
+        clientId:JSON.parse(window.localStorage.getItem('id')),
+        productId:this.products[i].id,
+        productName:this.products[i].name,
+        price:this.products[i].newPrice,
+        quantity:this.results[i]/this.products[i].newPrice
       }
-    });
-
+      this.livraisons.push(obj)
+    }
+    console.log(this.livraisons)
+    let item = this.livraisons
+    let total = this.total
+    const modalRef = this.modalService.open(ModalPurchaseComponent);
+    console.log(modalRef)
+    modalRef.componentInstance.item = item;
+    modalRef.componentInstance.total = total;
+    // console.log(modalRef.componentInstance.item)
+    // modalRef.result.then((result) => {
+    //   if (result) {
+    //     console.log(result);
+    //   }
+    // });
+     this.livraisons=[] 
   }
+  
 }
 
