@@ -40,7 +40,6 @@ export class ProfileComponent implements OnInit {
        this.firstName = firstName ;
       //  this.lastName = lastName ;      
        this.user = user ;
-
       console.log(user)
       console.log(firstName)
       // console.log(lastName)
@@ -59,6 +58,7 @@ export class ProfileComponent implements OnInit {
       this.category = f.value.category
       this.status = f.value.category
     }
+
     selectedFile(event) {
         const id = Math.random().toString(36).substring(2);
         this.ref = this.fileStorage.ref(id);
@@ -69,6 +69,7 @@ export class ProfileComponent implements OnInit {
           .pipe(finalize(() => (this.downloadURL = this.ref.getDownloadURL())))
           .subscribe();
       }
+      
     onSubmit(f: NgForm) {
         var img = document.getElementsByTagName('a');
         var imageUrl = img[img.length - 1].innerHTML;

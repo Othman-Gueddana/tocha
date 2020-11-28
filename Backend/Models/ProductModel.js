@@ -10,7 +10,7 @@ Products.init({
  image:Sequelize.STRING,
  ownerId:Sequelize.INTEGER,
  ownerType:Sequelize.STRING,
- expireddate:Sequelize.STRING,
+ expiredDate:Sequelize.STRING,
  creationDate:Sequelize.STRING,
  quantity:Sequelize.INTEGER,
  device:Sequelize.STRING,
