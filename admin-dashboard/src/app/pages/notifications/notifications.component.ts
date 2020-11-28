@@ -1,14 +1,43 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ToastrService } from "ngx-toastr";
-
-
+import { CompanyUsersService } from "../../services/company-users.service";
+import { ClientUsersService } from "../../services/client-users.service";
+import { ProductsService } from "../../services/products.service";
 @Component({
   selector: 'notifications-cmp',
-  templateUrl: 'notifications.component.html'
+  templateUrl: 'notifications.component.html',
+  styleUrls: ['./notifications.component.scss']
 })
 
-export class NotificationsComponent {
-  constructor(private toastr: ToastrService) { }
+export class NotificationsComponent implements OnInit {
+  allCompanyUsers: Array<any> = [];
+  allClientUsers: Array<any> = [];
+  allProducts: Array<any> = [];
+  CompanyRequests = 0;
+  ClientRequests = 0;
+  ProductsRequests = 0;
+  constructor(private toastr: ToastrService, private service1: CompanyUsersService, private service2: ClientUsersService, private service3: ProductsService) { }
+
+  ngOnInit(): void {
+    this.service1.getCompanyUsers().subscribe((data: any) => {
+      this.allCompanyUsers = data;
+      this.CompanyRequests = this.allCompanyUsers.length
+    })
+    this.service2.getClientUsers().subscribe((data: any) => {
+      this.allClientUsers = data;
+      this.ClientRequests = this.allClientUsers.length
+    })
+    this.service3.getProducts().subscribe((data: any) => {
+      this.allProducts = data;
+      console.log(data);
+      this.ProductsRequests = this.allProducts.length
+    });
+
+  }
+
+
+
+
   showNotification(from, align) {
     const color = Math.floor(Math.random() * 5 + 1);
 

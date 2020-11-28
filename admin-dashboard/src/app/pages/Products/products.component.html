@@ -27,7 +27,7 @@
 </div><br><br><br><br> -->
 
 <div class="row">
-  <div class="col-lg-3 col-md-6 col-sm-6">
+  <!-- <div class="col-lg-3 col-md-6 col-sm-6">
     <div class="card card-stats">
       <div class="card-body ">
         <div class="row">
@@ -45,14 +45,8 @@
           </div>
         </div>
       </div>
-      <div class="card-footer ">
-        <hr>
-        <div class="stats">
-          <i class="fa fa-refresh"></i> Update Now
-        </div>
-      </div>
     </div>
-  </div>
+  </div> -->
   <div class="col-lg-3 col-md-6 col-sm-6">
     <div class="card card-stats">
       <div class="card-body ">
@@ -64,43 +58,11 @@
           </div>
           <div class="col-7 col-md-8">
             <div class="numbers">
-              <p class="card-category">Revenue</p>
-              <p class="card-title">$ 1,345
+              <p class="card-category">All Products</p>
+              <p class="card-title">{{Productslength}}
               <p>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="card-footer ">
-        <hr>
-        <div class="stats">
-          <i class="fa fa-calendar-o"></i> Last day
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-lg-3 col-md-6 col-sm-6">
-    <div class="card card-stats">
-      <div class="card-body ">
-        <div class="row">
-          <div class="col-5 col-md-4">
-            <div class="icon-big text-center icon-warning">
-              <i class="nc-icon nc-vector text-danger"></i>
-            </div>
-          </div>
-          <div class="col-7 col-md-8">
-            <div class="numbers">
-              <p class="card-category">Errors</p>
-              <p class="card-title">23
-              <p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card-footer ">
-        <hr>
-        <div class="stats">
-          <i class="fa fa-clock-o"></i> In the last hour
         </div>
       </div>
     </div>
@@ -116,17 +78,31 @@
           </div>
           <div class="col-7 col-md-8">
             <div class="numbers">
-              <p class="card-category">Followers</p>
-              <p class="card-title">+45K
+              <p class="card-category">Company Followers</p>
+              <p class="card-title">{{CompanyFollowers}}
               <p>
             </div>
           </div>
         </div>
       </div>
-      <div class="card-footer ">
-        <hr>
-        <div class="stats">
-          <i class="fa fa-refresh"></i> Update now
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-6 col-sm-6">
+    <div class="card card-stats">
+      <div class="card-body ">
+        <div class="row">
+          <div class="col-5 col-md-4">
+            <div class="icon-big text-center icon-warning">
+              <i class="nc-icon nc-favourite-28 text-primary"></i>
+            </div>
+          </div>
+          <div class="col-7 col-md-8">
+            <div class="numbers">
+              <p class="card-category">Clients Followers</p>
+              <p class="card-title">{{ClientsFollowers}}
+              <p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -145,19 +121,22 @@
         </div>
         <div class="card-body">
 
-          <h3 class="card-title"> name: {{item.name}}</h3>
+          <p><strong class="red">Name :</strong>{{item.name}} </p>
           <p><strong class="red">id :</strong> {{item.id}} </p>
           <p><del><strong class="red">Price:</strong> {{item.oldPrice}}</del></p>
           <p><strong class="red">Price :</strong>{{item.newPrice}}</p>
           <p><strong class="red">description :</strong>{{item.description}}</p>
           <p><strong class="red">owner Id :</strong>{{item.ownerId}} </p>
           <p><strong class="red">owner Type :</strong>{{item.ownerType}} </p>
-          <p><strong class="red">expired Date :</strong> {{item.exiredDate}} </p>
-          <p><strong class="red">creation Date :</strong> {{item.creationDate}} </p>
+          <p *ngIf="item.category ==='cleaningProduct' || item.category === 'food' "><strong class="red">expired Date
+              :</strong> {{item.expiredDate}} </p>
+          <p *ngIf="item.category !=='fourniture'|| item.category !== 'clothes'"><strong class="red">creation Date
+              :</strong> {{item.creationDate}}</p>
           <p><strong class="red">quantity :</strong>{{item.quantity}}</p>
-          <p><strong class="red">device :</strong>{{item.device}} </p>
-          <p><strong class="red">humanKind :</strong>{{item.humanKind}} </p>
-          <p><strong class="red">type :</strong>{{item.type}} </p>
+          <p *ngIf="item.category==='electronicDevices'|| item.category==='houseHolds'"><strong
+              class="red">device:</strong>{{item.device}} </p>
+          <p *ngIf="item.category==='clothes'"><strong class="red">humanKind :</strong>{{item.humanKind}} </p>
+          <p *ngIf="item.category==='fourniture'"><strong class="red">type :</strong>{{item.type}} </p>
           <p><strong class="red">createdAt :</strong>{{item.createdAt}} </p>
           <p><strong class="red">updatedAt :</strong>{{item.updatedAt}} </p>
           <button class="btn btn-outline-danger btn-round" (click)=" addProducts(item)">Confirm
