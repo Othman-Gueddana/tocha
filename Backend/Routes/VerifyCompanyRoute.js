@@ -11,8 +11,8 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/register", async (req, res) => {
-  const {error} = registerCompanyValidation(req.body)
-  if(error) return res.send(error.details[0].message)
+  // const {error} = registerCompanyValidation(req.body)
+  // if(error) return res.send(error.details[0].message)
   await VerifyCompanys.create({
     name: req.body.name,
     email: req.body.email,

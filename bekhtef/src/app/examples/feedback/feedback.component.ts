@@ -13,25 +13,35 @@ import { Router } from '@angular/router';
   styleUrls: ['./feedback.component.css']
 })
 export class FeedbackComponent implements OnInit {
-
-  allFeedback: Array<any> = [];
-
+  myFeedback: Array<any> = [];
+  otherFeedback: Array<any> = [];
+  ourData: Array<any> = [];
+  clientName : string = '';
   constructor(private server: FeedbackService, private modalService: NgbModal,private router: Router) { }
 
   ngOnInit(): void {
+    let firstName  =  window.localStorage.getItem('firstName');
+    let lastName  =  window.localStorage.getItem('lastName');
+    this.clientName = firstName + ' ' + lastName ;
     this.server.getFeedback().subscribe((data: any) => {
-      this.allFeedback = data
-      console.log(this.allFeedback)
+       this.ourData = data.reverse()
+      for(var i=0; i<this.ourData.length; i++){
+        if(this.ourData[i].clientName === this.clientName){
+          this.myFeedback.push(this.ourData[i])
+        }else 
+          this.otherFeedback.push(this.ourData[i])
+      }
     })
+    console.log(this.myFeedback)
+    console.log(this.otherFeedback)
   }
   onSubmit(f: NgForm){
     let user= JSON.parse(window.localStorage.getItem('id'));
-    let firstName  =  window.localStorage.getItem('firstName');
-    let lastName  =  window.localStorage.getItem('lastName');
+   
     console.log(user);
     console.log(f.value);
     const obj = {
-      clientName: firstName + ' ' + lastName,
+      clientName: this.clientName,
       clientId: user,
       text: f.value.text,
     }
@@ -43,6 +53,21 @@ export class FeedbackComponent implements OnInit {
     (error) => {
     console.log(error);
     })
+   window.location.reload();
   }
-
+  deleteFeed(id){
+    console.log(id)
+    this.server.deleteFeedback(id).subscribe((res)=>{
+      
+      console.log(res);
+    },
+    (error) => {
+    console.log(error);
+    })
+    for(var i=0 ; i< this.myFeedback.length ; i++){
+      if(this.myFeedback[i].id === id){
+        this.myFeedback=this.myFeedback.filter((val,i)=>val.id !== id )
+      }
+    }
+  }
 }

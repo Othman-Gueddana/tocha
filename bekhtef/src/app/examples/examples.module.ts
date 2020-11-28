@@ -24,6 +24,8 @@ import { MaxPricePipe } from './pipes/maxPrice.pipe';
 import { ModalPurchaseComponent } from './modal-purchase/modal-purchase.component';
 import { SettingsCompComponent } from './settings-comp/settings-comp.component';
 import { FeedbackCompComponent } from './feedback-comp/feedback-comp.component';
+import { AboutClientComponent } from './about-client/about-client.component';
+import { ForgotCompComponent } from './forgot-comp/forgot-comp.component';
 
 
 
@@ -55,7 +57,9 @@ import { FeedbackCompComponent } from './feedback-comp/feedback-comp.component';
         MaxPricePipe,
         ModalPurchaseComponent,
         SettingsCompComponent,
-        FeedbackCompComponent
+        FeedbackCompComponent,
+        AboutClientComponent,
+        ForgotCompComponent
     ],
     entryComponents: [NgbdModalContent],
 })

@@ -6,6 +6,8 @@ Livraisons.init({
  clientName: Sequelize.STRING,
  clientId: Sequelize.INTEGER,
  productId: Sequelize.INTEGER,
+ productName: Sequelize.STRING,
+ price: Sequelize.STRING,
  quantity: Sequelize.INTEGER,
 }, { sequelize, modelName: 'livraisons' });
 

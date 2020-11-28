@@ -10,7 +10,9 @@ export class SettingsCompComponent implements OnInit {
   focus: any;
   focus1: any;
   phoneNumber1: string = '';
-  address: string = '';
+  street: string = '';
+  city: string = '';
+  codeZip: string = '';
   constructor(private CompServiceService:CompServiceService,private router: Router) { }
 
   ngOnInit(): void {
@@ -19,7 +21,9 @@ export class SettingsCompComponent implements OnInit {
     const id = JSON.parse(window.localStorage.getItem('id'));
     const obj = {
       phoneNumber1:this.phoneNumber1,
-      address:this.address
+      street:this.street,
+      city:this.city,
+      codeZip:this.codeZip,
     };
     this.CompServiceService.modifyInfo(obj,id).subscribe(
       (res) => {

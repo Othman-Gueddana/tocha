@@ -12,12 +12,15 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/register", async (req, res) => {
+  console.log(req.body)
   await Livraisons.create({
     status: req.body.status,
     clientName: req.body.clientName,
     clientId: req.body.clientId,
     productId: req.body.productId,
-    status: req.body.quantity,
+    productName: req.body.productName,
+    price: req.body.price,
+    quantity: req.body.quantity,
   })
 });
 
@@ -26,10 +29,12 @@ router.put("/:id", async (req, res) => {
     livraisons
       .update({
         status: req.body.status,
-       clientName: req.body.clientName,
-       clientId: req.body.clientId,
-       productId: req.body.productId,
-       status: req.body.quantity,
+        clientName: req.body.clientName,
+        clientId: req.body.clientId,
+        productId: req.body.productId,
+        productName: req.body.productName,
+        price: req.body.price,
+        quantity: req.body.quantity,
       })
       .then((livraisons) => {
         res.json(livraisons);
