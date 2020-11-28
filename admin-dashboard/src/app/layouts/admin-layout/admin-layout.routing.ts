@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
 
-import { ProductsComponent } from '../../pages/dashboard/products.component';
+import { ProductsComponent } from '../../pages/products/products.component';
 import { UserComponent } from '../../pages/user/user.component';
 import { TableComponent } from '../../pages/table/table.component';
 import { TypographyComponent } from '../../pages/typography/typography.component';
-import { AdminClientsComponent } from '../../pages/icons/admin-clients.component';
-import { MapsComponent } from '../../pages/maps/maps.component';
+import { AdminClientsComponent } from '../../pages/client/admin-clients.component';
+import { CompanyComponent } from '../../pages/company/admin-company.component';
 import { NotificationsComponent } from '../../pages/notifications/notifications.component';
 import { UpgradeComponent } from '../../pages/upgrade/upgrade.component';
 
@@ -15,7 +15,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'table', component: TableComponent },
     { path: 'typography', component: TypographyComponent },
     { path: 'clients', component: AdminClientsComponent },
-    { path: 'maps', component: MapsComponent },
+    { path: 'company', component: CompanyComponent },
     { path: 'notifications', component: NotificationsComponent },
     { path: 'upgrade', component: UpgradeComponent }
 ];
