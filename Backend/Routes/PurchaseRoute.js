@@ -32,9 +32,8 @@ router.put("/:id", async (req, res) => {
 });
 
 router.delete("/:id", async (req, res) => {
-  console.log(req.params.id)
+  
   await Purchases.findByPk(req.params.id).then((purchases) => {
-      console.log(purchases)
       purchases.destroy();
     })
     .then(() => {
