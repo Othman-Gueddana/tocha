@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { retry, catchError } from 'rxjs/operators';
+import { retry, catchError, last } from 'rxjs/operators';
 import { throwError, Observable } from 'rxjs';
 import {
   HttpClient,
@@ -7,14 +7,15 @@ import {
   HttpParams,
 } from '@angular/common/http';
 
-const baseUrl = 'http://localhost:8080/verifyProducts/'
-const url = 'http://localhost:8080/products/'
+const baseUrl = 'http://localhost:8080/companys/';
+const baseUrl2 = 'http://localhost:8080/verifyCompanys/'
 @Injectable({
   providedIn: 'root'
 })
-export class ClientproductService {
+export class CompanyUsersService {
 
   constructor(private http: HttpClient) { }
+
 
   handleError(error: HttpErrorResponse) {
     let errorMessage = 'Unknown error!';
@@ -29,31 +30,29 @@ export class ClientproductService {
     return throwError(errorMessage);
   }
 
-  getProducts(): Observable<any> {
+  getCompanyUsers(): Observable<any> {
     return this.http
-      .get(baseUrl).pipe(retry(3), catchError(this.handleError));
+      .get(baseUrl2).pipe(retry(3), catchError(this.handleError));
   }
-  addProducts(data): Observable<any> {
+  confirmCompanyUser(data): Observable<any> {
 
     let obj = {
       name: data.name,
-      oldPrice: data.oldPrice,
-      newPrice: data.newPrice,
+      email: data.email,
+      password: data.password,
+      street: data.street,
+      city: data.city,
+      zipCode: data.zipCode,
       description: data.description,
-      category: data.category,
-      image: data.image,
-      ownerId: data.ownerId,
-      expireddate: data.expireddate,
-      creationDate: data.creationDate,
-      quantity: data.quantity,
-      device: data.device,
-      humanKind: data.humanKind,
-      type: data.type
+      phoneNumber1: data.phoneNumber1,
+      phoneNumber2: data.phoneNumber2,
+      numberPatent: data.numberPatent,
+      logo: data.logo
     };
     console.log(obj)
-    return this.http.post(url + "products", obj);
+    return this.http.post(baseUrl + "register", obj);
   }
-  deleteOneProduct(id): Observable<any> {
-    return this.http.delete(baseUrl + `${id}`)
+  deleteCompanyUser(id): Observable<any> {
+    return this.http.delete(baseUrl2 + `${id}`)
   }
 }

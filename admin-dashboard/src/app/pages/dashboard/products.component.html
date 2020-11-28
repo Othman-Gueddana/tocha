@@ -144,12 +144,14 @@
           <img class="img-no-padding" style="max-height:200px;margin-left:8%;" src="{{item.image}}">
         </div>
         <div class="card-body">
+
           <h3 class="card-title"> name: {{item.name}}</h3>
           <p><strong class="red">id :</strong> {{item.id}} </p>
           <p><del><strong class="red">Price:</strong> {{item.oldPrice}}</del></p>
           <p><strong class="red">Price :</strong>{{item.newPrice}}</p>
           <p><strong class="red">description :</strong>{{item.description}}</p>
           <p><strong class="red">owner Id :</strong>{{item.ownerId}} </p>
+          <p><strong class="red">owner Type :</strong>{{item.ownerType}} </p>
           <p><strong class="red">expired Date :</strong> {{item.exiredDate}} </p>
           <p><strong class="red">creation Date :</strong> {{item.creationDate}} </p>
           <p><strong class="red">quantity :</strong>{{item.quantity}}</p>
@@ -162,6 +164,7 @@
           </button>
           <button class="btn btn-outline-danger btn-round" (click)="deleteOneProduct(item)">Delete</button>
         </div>
+        <h2 class="red" id="myText" value=""></h2>
       </div>
     </div>
   </div>

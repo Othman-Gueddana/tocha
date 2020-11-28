@@ -1,33 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-import Chart from 'chart.js';
-import { from } from 'rxjs';
-import { ClientproductService } from "../../services/clientproduct.service"
+import { ProductsService } from "../../services/products.service"
 
 @Component({
-  selector: 'dashboard-cmp',
-  moduleId: module.id,
-  templateUrl: 'dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  selector: 'products-app',
+  templateUrl: 'products.component.html',
+  styleUrls: ['./products.component.scss']
 
 })
 
-export class DashboardComponent implements OnInit {
+export class ProductsComponent implements OnInit {
 
-  allProducts: Array<any> = [];
   products: Array<any> = [];
-  constructor(private service: ClientproductService) { }
+  constructor(private service: ProductsService) { }
 
   ngOnInit() {
     this.service.getProducts().subscribe((data: any) => {
-      this.allProducts = data;
+      this.products = data;
       console.log(data);
-      this.products = this.allProducts;
-
     })
   }
   addProducts(data) {
     this.service.addProducts(data).subscribe((res) => {
       console.log(res)
+      this.deleteOneProduct(data.id)
     },
       (error) => {
         console.log(error);
@@ -36,7 +31,8 @@ export class DashboardComponent implements OnInit {
   }
   deleteOneProduct(data) {
     this.service.deleteOneProduct(data.id).subscribe((res) => {
-      console.log(res);
+      document.getElementById("myText").innerHTML = res;
+
     },
       (error) => {
         console.log(error);

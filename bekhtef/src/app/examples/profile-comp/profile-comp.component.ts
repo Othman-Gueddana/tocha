@@ -42,7 +42,7 @@ export class ProfileCompComponent implements OnInit {
        for(var i=0 ; i< data.length; i++) {
           if(data[i].ownerId === user && data[i].ownerType === "company"){
             console.log(data[i].ownerId)
-            console.log(data[i])
+            console.log("type",data[i].ownerType)
             this.products.push(data[i])
        }
      }
