@@ -21,6 +21,9 @@ export class FeedbackService {
       clientId: data.clientId,
     }
     console.log(data)
-    return this.http.post(baseUrl + 'register' , obj);
+    return this.http.post(baseUrl + 'register' , data);
+  }
+  deleteFeedback(id): Observable<any> {
+    return this.http.delete(baseUrl + `${id}`)
   }
 }

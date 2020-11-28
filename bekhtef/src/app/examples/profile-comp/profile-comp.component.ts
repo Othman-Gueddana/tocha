@@ -8,13 +8,19 @@ import {
     AngularFireUploadTask,
   } from '@angular/fire/storage';
   import { Observable } from 'rxjs';
-  import { finalize } from 'rxjs/operators';
+  import { finalize ,map, catchError } from 'rxjs/operators';
+  import { animate } from '@angular/animations';
 @Component({
   selector: 'app-profile-comp',
   templateUrl: './profile-comp.component.html',
-  styleUrls: ['./profile-comp.component.css']
+  styles: [`
+  ngb-progressbar {
+      margin-top: 5rem;
+  }
+  `]
 })
 export class ProfileCompComponent implements OnInit {
+  progress: number;
   ref: AngularFireStorageReference;
   task: AngularFireUploadTask;
   uploadProgress: Observable<number>;
@@ -24,24 +30,27 @@ export class ProfileCompComponent implements OnInit {
   products:any = [];
   user: any ;
   name: any ;
+  compStatus: string = "";
   constructor(private ProductService: ProductService, private fileStorage: AngularFireStorage,
     private router: Router) { }
 
     ngOnInit() {
       let user = JSON.parse(window.localStorage.getItem('id'));
       let name  =  JSON.parse(JSON.stringify(window.localStorage.getItem('name')))
+      let status  =  JSON.parse(JSON.stringify(window.localStorage.getItem('status')))
+      this.compStatus = status
       this.name = name ;     
       this.user = user ;
-
      console.log(user)
      console.log(name)
      this.ProductService.getProducts().subscribe(( data: any) => {
        for(var i=0 ; i< data.length; i++) {
-          if(data[i].ownerId === user ){
+          if(data[i].ownerId === user && data[i].ownerType === "company"){
             console.log(data[i].ownerId)
-            console.log(data[i])
+            console.log("type",data[i].ownerType)
             this.products.push(data[i])
        }
+       
      }
    })
  }
@@ -50,11 +59,13 @@ export class ProfileCompComponent implements OnInit {
      this.category = f.value.category
      this.status = f.value.category
    }
+   
    selectedFile(event) {
        const id = Math.random().toString(36).substring(2);
        this.ref = this.fileStorage.ref(id);
        this.task = this.ref.put(event.target.files[0]);
        this.uploadProgress = this.task.percentageChanges();
+       console.log('progress',this.uploadProgress)
        this.task
          .snapshotChanges()
          .pipe(finalize(() => (this.downloadURL = this.ref.getDownloadURL())))
@@ -75,6 +86,7 @@ export class ProfileCompComponent implements OnInit {
           category:this.category,
           image:imageUrl,
           ownerId:user,
+          ownerType:this.compStatus,
           expireddate:f.value.expireddate,
           creationDate:f.value.creationDate,
           quantity:f.value.quantity,
@@ -135,5 +147,6 @@ export class ProfileCompComponent implements OnInit {
    changeInfo(){
      this.router.navigateByUrl('/seetingsComp');
    }
+   
 
 }

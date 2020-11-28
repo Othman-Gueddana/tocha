@@ -7,7 +7,6 @@ import { TypographyComponent } from '../../pages/typography/typography.component
 import { AdminClientsComponent } from '../../pages/client/admin-clients.component';
 import { CompanyComponent } from '../../pages/company/admin-company.component';
 import { NotificationsComponent } from '../../pages/notifications/notifications.component';
-import { UpgradeComponent } from '../../pages/upgrade/upgrade.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'notifications', component: NotificationsComponent },
@@ -17,5 +16,5 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'typography', component: TypographyComponent },
     { path: 'clients', component: AdminClientsComponent },
     { path: 'company', component: CompanyComponent },
-    { path: 'upgrade', component: UpgradeComponent }
+
 ];

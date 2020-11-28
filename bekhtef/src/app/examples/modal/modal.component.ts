@@ -27,7 +27,7 @@ import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
         </div>
        
     </div>
-    `
+   `
 })
 export class NgbdModalContent {
     @Output() public item;

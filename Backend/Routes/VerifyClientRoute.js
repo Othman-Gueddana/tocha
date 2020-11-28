@@ -12,8 +12,8 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/register", async (req, res) => {
-  const {error} = registerClientValidation(req.body)
-  if(error) return res.send(error.details[0].message)
+  // const {error} = registerClientValidation(req.body)
+  // if(error) return res.send(error.details[0].message)
   await VerifyClients.create({
     firstName: req.body.firstName,
     lastName: req.body.lastName,

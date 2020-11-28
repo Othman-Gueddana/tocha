@@ -32,8 +32,8 @@ router.put("/:id", async (req, res) => {
 });
 
 router.delete("/:id", async (req, res) => {
-  await Purchases.findByPk(req.params.id)
-    .then((purchases) => {
+  
+  await Purchases.findByPk(req.params.id).then((purchases) => {
       purchases.destroy();
     })
     .then(() => {

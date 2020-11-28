@@ -1,7 +1,16 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="500">
     <div class="container">
-        <div class="navbar-translate">
-            <a class="navbar-brand" [routerLink]="['/landing']"> <img src="assets/img/logo.png" style="max-width:200px;
+        <div class="navbar-translate" *ngIf="status === ''">
+            <a class="navbar-brand" > <img src="assets/img/logo.png" style="max-width:200px;
+                max-height: 80px;"></a>
+            <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
+                <span class="navbar-toggler-bar"></span>
+                <span class="navbar-toggler-bar"></span>
+                <span class="navbar-toggler-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-translate" *ngIf="status === 'company' || status === 'client'" >
+            <a class="navbar-brand" [routerLink]="['/about']"> <img src="assets/img/logo.png" style="max-width:200px;
                 max-height: 80px;"></a>
             <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
                 <span class="navbar-toggler-bar"></span>
@@ -61,23 +70,30 @@
                         </div>
                     </div>
                 </li>  
-                <li class="nav-item" *ngIf="status === 'loggedClient'" >
+                <li class="nav-item" *ngIf="status === 'client'" >
+                    <a [routerLink]="['/landing']" class="btn btn-danger btn-round"> My Shop </a>
+                </li>
+                <li class="nav-item" *ngIf="status === 'client'" >
                     <a [routerLink]="['/cart']" class="btn btn-danger btn-round"> My Cart </a>
                 </li>
-                <li class="nav-item" *ngIf="status === 'loggedClient'" >
+                <li class="nav-item" *ngIf="status === 'client'" >
                     <a [routerLink]="['/user-profile']" class="btn btn-danger btn-round"> Profile </a>
                 </li>
-                <li class="nav-item" *ngIf="status === 'loggedClient'" >
+                <li class="nav-item" *ngIf="status === 'client'" >
                     <a [routerLink]="['/feedback']" class="btn btn-danger btn-round"> Feedback </a>
                 </li>
-                <li class="nav-item" *ngIf="status === 'loggedComp'" >
+               
+                <li class="nav-item" *ngIf="status === 'company'" >
+                    <a [routerLink]="['/landingComp']" class="btn btn-danger btn-round"> my Shop </a>
+                </li>
+                <li class="nav-item" *ngIf="status === 'company'" >
                     <a [routerLink]="['/profileComp']" class="btn btn-danger btn-round"> Profile </a>
                 </li>
-                <li class="nav-item" *ngIf="status === 'loggedComp'" >
+                <li class="nav-item" *ngIf="status === 'company'" >
 
                     <a [routerLink]="['/feedbackComp']" class="btn btn-danger btn-round"> Feedback</a>
                 </li>
-                <li class="nav-item" *ngIf="status === 'loggedComp' || status === 'loggedClient'" >
+                <li class="nav-item" *ngIf="status === 'company' || status === 'client'" >
                     <a (click)="clearStorage()" class="btn btn-danger btn-round"> log out </a>
                 </li>
             </ul>

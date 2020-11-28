@@ -21,8 +21,20 @@
                     </form  >
                     <br><br>
                     <div class="feedback-list">
+                        <label>My Feedback :</label>
+                        <div class="feedback" *ngFor="let feedback of myFeedback ">
+                            <br><br>
+                            <div class="feed-body">
+                                <h4 style='color: #fab830 '>◙ {{feedback.clientName}}:</h4>
+                                <h5>{{feedback.text}}</h5>
+                                <button class="delete" (click)="deleteFeed(feedback.id)">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                    <br><br>
+                    <div class="feedback-list">
                         <label>Other member's Feedback:</label>
-                        <div class="feedback" *ngFor="let feedback of allFeedback ">
+                        <div class="feedback" *ngFor="let feedback of otherFeedback ">
                             <br><br>
                             <div class="feed-body">
                                 <h4 style='color: #fab830 '>◙ {{feedback.clientName}}:</h4>

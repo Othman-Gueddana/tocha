@@ -12,7 +12,6 @@ import { TypographyComponent } from '../../pages/typography/typography.component
 import { AdminClientsComponent } from '../../pages/client/admin-clients.component';
 import { CompanyComponent } from '../../pages/company/admin-company.component';
 import { NotificationsComponent } from '../../pages/notifications/notifications.component';
-import { UpgradeComponent } from '../../pages/upgrade/upgrade.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -27,7 +26,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ProductsComponent,
     UserComponent,
     TableComponent,
-    UpgradeComponent,
     TypographyComponent,
     AdminClientsComponent,
     CompanyComponent,
