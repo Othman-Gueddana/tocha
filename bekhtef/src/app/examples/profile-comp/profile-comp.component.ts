@@ -8,13 +8,19 @@ import {
     AngularFireUploadTask,
   } from '@angular/fire/storage';
   import { Observable } from 'rxjs';
-  import { finalize } from 'rxjs/operators';
+  import { finalize ,map, catchError } from 'rxjs/operators';
+  import { animate } from '@angular/animations';
 @Component({
   selector: 'app-profile-comp',
   templateUrl: './profile-comp.component.html',
-  styleUrls: ['./profile-comp.component.css']
+  styles: [`
+  ngb-progressbar {
+      margin-top: 5rem;
+  }
+  `]
 })
 export class ProfileCompComponent implements OnInit {
+  progress: number;
   ref: AngularFireStorageReference;
   task: AngularFireUploadTask;
   uploadProgress: Observable<number>;
@@ -35,7 +41,6 @@ export class ProfileCompComponent implements OnInit {
       this.compStatus = status
       this.name = name ;     
       this.user = user ;
-
      console.log(user)
      console.log(name)
      this.ProductService.getProducts().subscribe(( data: any) => {
@@ -45,6 +50,7 @@ export class ProfileCompComponent implements OnInit {
             console.log("type",data[i].ownerType)
             this.products.push(data[i])
        }
+       
      }
    })
  }
@@ -53,11 +59,13 @@ export class ProfileCompComponent implements OnInit {
      this.category = f.value.category
      this.status = f.value.category
    }
+   
    selectedFile(event) {
        const id = Math.random().toString(36).substring(2);
        this.ref = this.fileStorage.ref(id);
        this.task = this.ref.put(event.target.files[0]);
        this.uploadProgress = this.task.percentageChanges();
+       console.log('progress',this.uploadProgress)
        this.task
          .snapshotChanges()
          .pipe(finalize(() => (this.downloadURL = this.ref.getDownloadURL())))
@@ -139,5 +147,6 @@ export class ProfileCompComponent implements OnInit {
    changeInfo(){
      this.router.navigateByUrl('/seetingsComp');
    }
+   
 
 }

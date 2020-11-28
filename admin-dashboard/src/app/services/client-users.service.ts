@@ -35,6 +35,10 @@ export class ClientUsersService {
     return this.http
       .get(baseUrl2).pipe(retry(3), catchError(this.handleError));
   }
+  getAllClientUsers(): Observable<any> {
+    return this.http
+      .get(baseUrl).pipe(retry(3), catchError(this.handleError));
+  }
   confirmClientUser(data): Observable<any> {
 
     let obj = {
