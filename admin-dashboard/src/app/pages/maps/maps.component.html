@@ -1,5 +1,99 @@
-
 <div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title"> Simple Table</h4>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table" *ngFor="let item of allCompanyUsers">
+            <thead class=" text-primary">
+              <th>
+                Id
+              </th>
+              <th>
+                FirstName
+              </th>
+              <th>
+                LastName
+              </th>
+              <th>
+                Email
+              </th>
+              <th>
+                Street
+              </th>
+              <th>
+                City
+              </th>
+              <th>
+                ZipCode
+              </th>
+              <th>
+                PhoneNumber
+              </th>
+              <th>
+                CreatedAt
+              </th>
+              <!-- <th class="text-right">
+                Salary
+              </th> -->
+              <button type="button" class="btn btn-info" (click)="deleteUser(item)">Delete</button>
+              <button type="button" id="buttonConfirmCompany" class="btn btn-info"
+                (click)="confirmUser(item)">OK</button>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  {{item.id}}
+                </td>
+                <td>
+                  {{item.name}}
+                </td>
+                <td>
+                  {{item.email}}
+                </td>
+                <td>
+                  {{item.street}}
+                </td>
+                <td>
+                  {{item.city}}
+                </td>
+                <td>
+                  {{item.zipCode}}
+                </td>
+                <td>
+                  {{item.description}}
+                </td>
+                <td>
+                  {{item.phoneNumber1}}
+                </td>
+                <td>
+                  {{item.phoneNumber2}}
+                </td>
+                <td>
+                  {{item.numberPatent}}
+                </td>
+                <td>
+                  {{item.logo}}
+                </td>
+                <td>
+                  {{item.createdAt}}
+                </td>
+                <!-- <td class="text-right">
+                  $36,738
+                </td> -->
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- <div class="row">
   <div class="col-md-12">
     <div class="card ">
       <div class="card-header ">
@@ -10,4 +104,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
