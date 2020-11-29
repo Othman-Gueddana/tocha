@@ -24,6 +24,8 @@ export class AdminClientsComponent {
             (error) => {
                 console.log(error);
             });
+        this.deleteUser(data)
+        location.reload();
     }
     deleteUser(data) {
         this.service.deleteClientUser(data.id).subscribe((res) => {
@@ -33,6 +35,7 @@ export class AdminClientsComponent {
             (error) => {
                 console.log(error);
             });
+        location.reload()
     }
 
 }
