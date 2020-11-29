@@ -9,11 +9,12 @@ import { CompanyComponent } from '../../pages/company/admin-company.component';
 import { NotificationsComponent } from '../../pages/notifications/notifications.component';
 
 export const AdminLayoutRoutes: Routes = [
+    { path: 'notifications', component: NotificationsComponent },
     { path: 'products', component: ProductsComponent },
     { path: 'user', component: UserComponent },
     { path: 'table', component: TableComponent },
     { path: 'typography', component: TypographyComponent },
     { path: 'clients', component: AdminClientsComponent },
     { path: 'company', component: CompanyComponent },
-    { path: 'notifications', component: NotificationsComponent },
+
 ];
