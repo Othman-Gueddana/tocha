@@ -28,7 +28,10 @@ export class ProductsService {
     window.alert(errorMessage);
     return throwError(errorMessage);
   }
-
+  getPro(): Observable<any> {
+    return this.http
+      .get(baseUrl2).pipe(retry(3), catchError(this.handleError));
+  }
   getProducts(): Observable<any> {
     return this.http
       .get(baseUrl).pipe(retry(3), catchError(this.handleError));
@@ -47,7 +50,7 @@ export class ProductsService {
       category: data.category,
       image: data.image,
       ownerId: data.ownerId,
-      expireddate: data.expireddate,
+      expiredDate: data.expiredDate,
       creationDate: data.creationDate,
       quantity: data.quantity,
       device: data.device,
@@ -58,6 +61,6 @@ export class ProductsService {
     return this.http.post(url + "products", obj);
   }
   deleteOneProduct(id): Observable<any> {
-    return this.http.delete(baseUrl + `${id}`)
+    return this.http.delete(url + `${id}`)
   }
 }
