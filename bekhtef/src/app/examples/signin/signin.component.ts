@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { ClientService } from '../services/client.service';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
@@ -31,9 +32,9 @@ export class SigninComponent implements OnInit {
     this.ClientService.createLogin(data).subscribe(
       (res) => {
         if (res.status === 404) {
-         alert('your email is not exist')
+          document.getElementById('email-error').innerHTML ='your email does not exist !';
         } else if (res.status === 500) {
-         alert('wrong password')
+          document.getElementById('pass-error').innerHTML ='wrong password, try again !';
         } else {
           console.log(res);
           window.localStorage.setItem('token', res.token);
