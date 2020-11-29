@@ -30,7 +30,12 @@ export class CompanyUsersService {
     return throwError(errorMessage);
   }
 
+
   getCompanyUsers(): Observable<any> {
+    return this.http
+      .get(baseUrl).pipe(retry(3), catchError(this.handleError));
+  }
+  getAllCompanyUsers(): Observable<any> {
     return this.http
       .get(baseUrl2).pipe(retry(3), catchError(this.handleError));
   }

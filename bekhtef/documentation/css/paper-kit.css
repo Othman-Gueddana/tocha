@@ -411,10 +411,6 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
   padding: 2px 0px;
 }
 
-.upgrade-pro .btn {
-  margin-top: 30px;
-}
-
 .btn-link.btn-just-icon {
   padding: 8px;
 }

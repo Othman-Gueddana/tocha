@@ -22,10 +22,8 @@ export class LandingComponent implements OnInit {
   endIndex = 9;
   page = 1
   productSelected: Number
-
   title = 'angular-text-search-highlight';
   searchText = '';
-
   selectedPrice: string = "0"
   selectedCategory: string = "category";
   constructor(private server: ProductService, private modalService: NgbModal, private PurchaseService:PurchaseService) { }
@@ -49,7 +47,7 @@ export class LandingComponent implements OnInit {
     })
      
   }
-  // this is for displaying the more information button  for each product 
+// this is for displaying the more information button  for each product 
   open(item) {
     console.log(item)
     const modalRef = this.modalService.open(NgbdModalContent);
