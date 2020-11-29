@@ -263,6 +263,20 @@ router.post("/products/", async (req, res) => {
       type: req.body.type
     })
   });
-  
+  router.put("/quantity/:id", async (req, res) => {
+    console.log({"req.params.id" :req.params.id})
+    console.log({"req.body.quantity" : req.body.quantity})
+    console.log(req.body.quantity)
+    Products.findByPk(req.params.id).then((products) => {
+      console.log(products)
+      products
+        .update({
+          quantity:req.body.quantity
+        })
+        .then((products) => {
+          res.json(products);
+        }).catch((err) => console.log(err))
+    });
+  });
 
 module.exports = router;
