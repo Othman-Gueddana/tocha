@@ -28,7 +28,6 @@ import { AboutClientComponent } from './about-client/about-client.component';
 import { ForgotCompComponent } from './forgot-comp/forgot-comp.component';
 import { TranslateModule } from '@ngx-translate/core';
 
-
 @NgModule({
     imports: [
         CommonModule,
