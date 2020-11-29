@@ -15,7 +15,7 @@ const baseUrl = 'http://localhost:5000/verifyProducts/';
 })
 export class ProductService {
   constructor(private http: HttpClient) { }
-
+ 
   handleError(error: HttpErrorResponse) {
     let errorMessage = 'Unknown error!';
     if (error.error instanceof ErrorEvent) {
@@ -28,7 +28,16 @@ export class ProductService {
     window.alert(errorMessage);
     return throwError(errorMessage);
   }
-
+  updateQuantity(data,id): Observable<any> {
+    console.log(id)
+    console.log(data)
+    
+    let obj = {
+      quantity:data
+    }
+    const url = 'http://localhost:5000/products/'
+    return this.http.put(url + `quantity/${id}`, obj);
+  }
   getProducts(): Observable<any> {
     const url = 'http://localhost:5000/products/'
     return this.http
@@ -48,12 +57,13 @@ export class ProductService {
       category: data.category,
       image: data.image,
       ownerId: data.ownerId,
-      expireddate: data.expireddate,
+      ownerType: data.ownerType,
+      expiredDate: data.expiredDate,
       creationDate: data.creationDate,
       quantity: data.quantity,
     };
     console.log(obj)
-    return this.http.post(baseUrl + 'food', data);
+    return this.http.post(baseUrl + 'food',  obj);
   }
   addClean(data): Observable<any> {
     let obj = {
@@ -64,13 +74,14 @@ export class ProductService {
       category: data.category,
       image: data.image,
       ownerId: data.ownerId,
-      expireddate: data.expireddate,
+      ownerType: data.ownerType,
+      expiredDate: data.expiredDate,
       creationDate: data.creationDate,
       quantity: data.quantity,
 
     };
     console.log(obj)
-    return this.http.post(baseUrl + 'clean', data);
+    return this.http.post(baseUrl + 'clean',  obj);
   }
   addElec(data): Observable<any> {
     let obj = {
@@ -81,13 +92,14 @@ export class ProductService {
       category: data.category,
       image: data.image,
       ownerId: data.ownerId,
+      ownerType: data.ownerType,
       creationDate: data.creationDate,
       quantity: data.quantity,
       device: data.device,
 
     };
     console.log(obj)
-    return this.http.post(baseUrl + 'elec', data);
+    return this.http.post(baseUrl + 'elec',  obj);
   }
   addHouse(data): Observable<any> {
     let obj = {
@@ -98,13 +110,14 @@ export class ProductService {
       category: data.category,
       image: data.image,
       ownerId: data.ownerId,
+      ownerType: data.ownerType,
       creationDate: data.creationDate,
       quantity: data.quantity,
       device: data.device,
 
     };
     console.log(obj)
-    return this.http.post(baseUrl + 'house', data);
+    return this.http.post(baseUrl + 'house',  obj);
   }
   addClothes(data): Observable<any> {
     let obj = {
@@ -115,11 +128,12 @@ export class ProductService {
       category: data.category,
       image: data.image,
       ownerId: data.ownerId,
+      ownerType: data.ownerType,
       quantity: data.quantity,
       humanKind: data.humanKind,
     };
     console.log(obj)
-    return this.http.post(baseUrl + 'clothes', data);
+    return this.http.post(baseUrl + 'clothes',  obj);
   }
   addFourni(data): Observable<any> {
     let obj = {
@@ -134,7 +148,7 @@ export class ProductService {
       type: data.type
     };
     console.log(obj)
-    return this.http.post(baseUrl + 'fourni', data);
+    return this.http.post(baseUrl + 'fourni',  obj);
   }
 
 }
