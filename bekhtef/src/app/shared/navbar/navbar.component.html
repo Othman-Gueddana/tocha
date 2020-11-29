@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="500">
+<!-- <nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="500">
     <div class="container">
         <div class="navbar-translate" *ngIf="status === ''">
             <a class="navbar-brand"> <img src="assets/img/logo.png" style="max-width:200px;
@@ -119,5 +119,109 @@
             </ul>
 
         </div>
+    </div>
+</nav> -->
+
+<nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="500">
+    <div class="container">
+        <div class="navbar-translate" *ngIf="status === ''">
+            <a class="navbar-brand" > <img src="assets/img/logo.png" style="max-width:200px;
+                max-height: 80px;"></a>
+            <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
+                <span class="navbar-toggler-bar"></span>
+                <span class="navbar-toggler-bar"></span>
+                <span class="navbar-toggler-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-translate" *ngIf="status === 'company' || status === 'client'" >
+            <a class="navbar-brand" [routerLink]="['/about']"> <img src="assets/img/logo.png" style="max-width:200px;
+                max-height: 80px;"></a>
+            <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
+                <span class="navbar-toggler-bar"></span>
+                <span class="navbar-toggler-bar"></span>
+                <span class="navbar-toggler-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarToggler">
+            <ul class="navbar-nav ml-auto" >
+                <li class="nav-item"  *ngIf="status === ''" >
+                    <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/Bekhteff1" target="_blank">
+                        <i class="fa fa-twitter"></i>
+                        <p class="d-lg-none">{{'Twitter' | translate}}</p>
+                    </a>
+                </li>
+                <li class="nav-item"  *ngIf="status === ''" >
+                    <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.facebook.com/bekh.teff.5/" target="_blank">
+                        <i class="fa fa-facebook-square"></i>
+                        <p class="d-lg-none">{{'Facebook' | translate}}</p>
+                    </a>
+                </li>
+                <li class="nav-item" *ngIf="status === ''" >
+                    <a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom" href="https://www.instagram.com/be5teff/" target="_blank">
+                        <i class="fa fa-instagram"></i>
+                        <p class="d-lg-none">{{'Instagram' | translate}}</p>
+                    </a>
+                </li>
+               
+             <li class="nav-item" *ngIf="status === ''" >
+                    <span class="select">
+                        <select class="btn btn-danger btn-round" #selectedLang (change)="switchLang(selectedLang.value)">
+                            <option class="dropdown-item " *ngFor="let language of translate.getLangs()" [value]="language"
+                                [selected]="language === translate.currentLang">
+                                {{ language }}
+                            </option>
+                        </select>
+                    </span>
+                </li> 
+              
+
+                 <li class="nav-item"  *ngIf="status === ''">
+                    <div ngbDropdown class="d-inline-block dropdown">
+                        <a class="btn btn-danger btn-round" id="dropdownBasic1" ngbDropdownToggle>Register</a>
+                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-primary">
+                            <a class="dropdown-item " [routerLink]="['/signup']"> Register as client </a>
+                            <a class="dropdown-item " [routerLink]="['/signupComp']"> Register as company </a>
+                            
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item" *ngIf="status === ''">
+                    <div ngbDropdown class="d-inline-block dropdown">
+                        <a class="btn btn-danger btn-round" id="dropdownBasic2" ngbDropdownToggle>Log In</a>
+                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-primary">
+                            <a class="dropdown-item " [routerLink]="['/signin']"> Log In as client </a>  
+                            <a class="dropdown-item " [routerLink]="['/signinComp']"> Log In as company </a>         
+                        </div>
+                    </div>
+                </li>  
+                <li class="nav-item" *ngIf="status === 'client'" >
+                    <a [routerLink]="['/landing']" class="btn btn-danger btn-round"> My Shop </a>
+                </li>
+                <li class="nav-item" *ngIf="status === 'client'" >
+                    <a [routerLink]="['/cart']" class="btn btn-danger btn-round"> My Cart </a>
+                </li>
+                <li class="nav-item" *ngIf="status === 'client'" >
+                    <a [routerLink]="['/user-profile']" class="btn btn-danger btn-round"> Profile </a>
+                </li>
+                <li class="nav-item" *ngIf="status === 'client'" >
+                    <a [routerLink]="['/feedback']" class="btn btn-danger btn-round"> Feedback </a>
+                </li>
+               
+                <li class="nav-item" *ngIf="status === 'company'" >
+                    <a [routerLink]="['/landingComp']" class="btn btn-danger btn-round"> my Shop </a>
+                </li>
+                <li class="nav-item" *ngIf="status === 'company'" >
+                    <a [routerLink]="['/profileComp']" class="btn btn-danger btn-round"> Profile </a>
+                </li>
+                <li class="nav-item" *ngIf="status === 'company'" >
+
+                    <a [routerLink]="['/feedbackComp']" class="btn btn-danger btn-round"> Feedback</a>
+                </li>
+                <li class="nav-item" *ngIf="status === 'company' || status === 'client'" >
+                    <a (click)="clearStorage()" class="btn btn-danger btn-round"> log out </a>
+                </li>
+            </ul>
+            
+        </div>                            
     </div>
 </nav>

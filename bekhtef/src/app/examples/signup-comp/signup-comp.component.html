@@ -6,8 +6,8 @@
               <div class="row">
                   <div class="col-lg-12" style="background-image: url('../../../assets/img/five.jpg');" >
                     <div class="card card-register-comp">
-                   <!-- <h3 class="title" style="color:white;"> {{'Welcome' | translate}} </h3>-->   
-                        <h3 class="title" style="color:white;"> Welcome </h3> 
+                    <h3 class="title" style="color:white;"> {{'Welcome' | translate}} </h3>  
+                        
                         <form class="register-form" #f="ngForm" (ngSubmit)="onSubmit(f)">
 
 
@@ -26,8 +26,8 @@
                               </div>
 
                                   <div class="col-md-4">
-                                  <label>Email</label>
-                                  <!-- <label>{{'Email' | translate}}</label>-->
+                                  <!-- <label>Email</label> -->
+                                 <label>{{'Email' | translate}}</label>
                               <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
                                 <div class="input-group-prepend">
                                   <span class="input-group-text">
@@ -63,8 +63,8 @@
                             </div>
                               </div>
                               <div class="col-md-4">
-                               <!--   <label>{{'Password' | translate}}</label>-->
-                              <label>Confirm Password</label>
+                              <label>{{'Password' | translate}}</label>
+                              <!-- <label>Confirm Password</label> -->
                               <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus1===true}">
                                 <div class="input-group-prepend">
                                   <span class="input-group-text">
