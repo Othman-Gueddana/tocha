@@ -14,13 +14,10 @@ export class UserComponent implements OnInit {
     ngOnInit() {
         this.DeleveryService.getLivraison().subscribe((data: any) => {
             // this.livraisons = data
-            // console.log(this.livraisons) 
             this.ClientUsersService.getAllClientUsers().subscribe((result: any) => {
-                // this.clients = result
-                for(var i = 0; i < data.length; i++) {
-                    for(var j = 0; j < result.length; j++)
-                }
+                // this.clients = result 
               })
+              console.log(this.clients)
           })    
     }
 }
