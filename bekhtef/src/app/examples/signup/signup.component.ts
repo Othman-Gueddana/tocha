@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { ClientService } from '../services/client.service';
+import Swal from 'sweetalert2';
 @Component({
     selector: 'app-signup',
     templateUrl: './signup.component.html',
@@ -19,7 +20,8 @@ export class SignupComponent implements OnInit {
        const car = /[A-Z]/gi
        const other = /[@,<,>,?,!,&,|,%,$,£]/
        if(f.value.password.match(car)=== null || f.value.password.match(other)===null || f.value.password.length < 8 ){
-            alert("your password should contain speciel caractere")
+        Swal.fire ("your password should contain speciel caractere")
+         
        }else if(f.value.password.match(car)!== null && f.value.password.match(other)!==null && f.value.password.length >= 8 ){
              if(f.value.passwordConf === f.value.password ){
                   this.ClientService.createRegister(f.value).subscribe(
@@ -30,10 +32,10 @@ export class SignupComponent implements OnInit {
                          console.log(error);
                       }
             );
-              alert("your request to create a new account is succsesfuly done , wait for email of acceptation")
+            Swal.fire("your request to create a new account is succsesfuly done , wait for email of acceptation")
               this.router.navigateByUrl('/signin');
              }else {
-                 alert("Repeat again please")
+              Swal.fire("Repeat again please")
             }
       
       }
