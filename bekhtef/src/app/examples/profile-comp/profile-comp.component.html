@@ -196,40 +196,37 @@
                                             #quantity="ngModel" min="1" max="100" />
                                     </div>
                                 </div>
+
                             <div class="form-group row">
                                     <input
                                     name="img"
                                     type="file"
                                     name="filename"
-                                    (change)="selectedFile($event.target.files)"
+                                    (change)="selectedFile($event)"
                                     accept=".png,.jpg"
                                     required
                                     class="btn btn-danger btn-block btn-round"
-                                  />
-                              <div class="progress">
-                                    <div
-                                      class="progress-bar progress-bar-striped-bg-success"
-                                      role="progressbar"
-                                      [style.width]="(uploadProgress | async) + '%'"
-                                      [attr.aria-valuenow]="(uploadProgress | async) + '%'"
-                                      aria-valuemin="0"
-                                      aria-valuemax="100"
-                                    >
-              
-                                </div>
-                                  </div>
-                                <a [href]="downloadURL | async" name="download">{{
-                                    downloadURL | async
-                                  }}</a>  
-                                  <p></p>
-                                </div>
+                                  /> </div>
+                          
+                                <ngb-progressbar  
+                               
+                                    type="warning" 
+                                    [attr.aria-valuenow]="(uploadProgress | async) + '%'"
+                                    [width]="(uploadProgress | async) + '%'"
+                                    [striped]="true" 
+                                    [animated]="true"
+                                    [value]= "(uploadProgress | async)"
+                                    aria-valuemin="0"
+                                    aria-valuemax="100"
+                                     ><i> {{ uploadProgress | async }}%</i></ngb-progressbar><br>
+                                    
+                                   <div>
+                                     <img src="{{downloadURL | async}}" style="max-height: 200px ; max-width: 200p; margin-left: 200px;" />
+                                   </div>
+                                     
                                     <img sref="C:\Users\ASUS\Desktop" />
-                                <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label form-control-label"></label>
-                                    <div class="col-lg-9">
-                                        <input type="submit" [disabled]="f.invalid"
-                                            class="btn btn-danger btn-block btn-round" value="Add">
-                                    </div>
+                                    <div class="form-group row">
+                                    <input type="submit" [disabled]="f.invalid" class="btn btn-danger btn-block btn-round" value="Add">
                                 </div>
                             </form>
                         </ng-template>

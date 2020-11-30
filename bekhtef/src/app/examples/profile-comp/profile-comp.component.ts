@@ -20,6 +20,8 @@ import {
   `]
 })
 export class ProfileCompComponent implements OnInit {
+
+  complete=0
   progress: number;
   ref: AngularFireStorageReference;
   task: AngularFireUploadTask;
@@ -65,12 +67,13 @@ export class ProfileCompComponent implements OnInit {
        this.ref = this.fileStorage.ref(id);
        this.task = this.ref.put(event.target.files[0]);
        this.uploadProgress = this.task.percentageChanges();
-       console.log('progress',this.uploadProgress)
+      
        this.task
          .snapshotChanges()
          .pipe(finalize(() => (this.downloadURL = this.ref.getDownloadURL())))
-         .subscribe();
+         .subscribe(); console.log('progress',this.uploadProgress)
      }
+
    onSubmit(f: NgForm) {
        var img = document.getElementsByTagName('a');
        var imageUrl = img[img.length - 1].innerHTML;
@@ -147,6 +150,5 @@ export class ProfileCompComponent implements OnInit {
    changeInfo(){
      this.router.navigateByUrl('/seetingsComp');
    }
-   
 
 }
