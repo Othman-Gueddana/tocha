@@ -4,5 +4,10 @@
 }
 .delete{
     background-color: transparent;
-    border-color: #fab830;
+    border-color: #EB5E28;
+    margin-left: 186px !important;
+}
+.landing-section {
+    padding: 0px 0;
+    z-index: 1;
 }
