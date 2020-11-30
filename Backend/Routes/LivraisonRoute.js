@@ -4,6 +4,7 @@ const Livraisons = require("../Models/LivraisonModel.js");
 const verify = require("./VerificationToken.js");
 
 router.get("/", async (req, res) => {
+  
   await Livraisons.findAll().then((livraisons) => res.json(livraisons));
 });
 
