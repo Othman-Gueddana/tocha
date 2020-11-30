@@ -4,6 +4,7 @@ const Livraisons = require("../Models/LivraisonModel.js");
 const verify = require("./VerificationToken.js");
 
 router.get("/", async (req, res) => {
+  
   await Livraisons.findAll().then((livraisons) => res.json(livraisons));
 });
 
@@ -17,6 +18,11 @@ router.post("/register", async (req, res) => {
     status: req.body.status,
     clientName: req.body.clientName,
     clientId: req.body.clientId,
+    clientEmail: req.body.clientEmail,
+    clientNumber: req.body.clientNumber,
+    clientStreet: req.body.clientStreet,
+    clientCity: req.body.clientCity,
+    clientZip: req.body.clientZip,
     productId: req.body.productId,
     productName: req.body.productName,
     price: req.body.price,
@@ -31,6 +37,11 @@ router.put("/:id", async (req, res) => {
         status: req.body.status,
         clientName: req.body.clientName,
         clientId: req.body.clientId,
+        clientEmail: req.body.clientEmail,
+        clientNumber: req.body.clientNumber,
+        clientStreet: req.body.clientStreet,
+        clientCity: req.body.clientCity,
+        clientZip: req.body.clientZip,
         productId: req.body.productId,
         productName: req.body.productName,
         price: req.body.price,
