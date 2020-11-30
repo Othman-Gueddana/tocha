@@ -1,63 +1,129 @@
 
 <div class="wrapper">
-    <div class="page-header page-header-xs" data-parallax="true"
-            style="background-image: url('./assets/img/backHead.PNG'); max-height:500px;">
-    </div>
+        <div class="page-header page-header-xs" data-parallax="true"
+                style="background-image: url('../../../assets/img/backHead2.png'); max-height:500px;">
+        </div>
 </div>
-<div id=menu>
-    <select class="btn btn-outline-danger btn-round" #mySelect (change)=getCategoriesdata(mySelect.value)>
-            <option value="category" selected>Category..</option>
-            <option value="food">Food</option>
-            <option value="clothes">Clothes</option>
-            <option value="fourniture">Fourniture</option>
-            <option value="electronicDevices">Electronics</option>
-            <option value="houseHolds">House Hold</option>
-            <option value="cleaningProduct">Cleaning Products</option>
-            <option value="other">Other</option>
-    </select>
-<div class=""> 
-    <select class="btn btn-outline-danger btn-round" id="inputGroupSelect02" #selectedTag (change)=getPricedata(selectedTag.value) >
-            <option value="Required price"  selected>Required price</option>
-            <option value="10,000">[0 - 10,000]dt.</option>
-            <option value="10.000 |50.000">[10,000 - 50,000]dt.</option>
-            <option value="50.000 | 200.000">[50,000 - 200,000]dt.</option>
-            <option value="200.000 | 500.000">[200,000 - 500,000]dt.</option>
-            <option value="500.001">[500,000 & More]dt.</option>
 
-    </select>
-    </div>
-</div>
+
+
+<!-- // this is the search input text , with auto complete finding data -->
 <div class="container">
-<div class="row"  >  
-         <div class='title' style="margin-top: 37px ;">
-                  <h1 style="font-family:'Nerko One',cursive;">Check Our Available Product</h1>
-         </div> 
-</div>
-    <div class="row" style="margin-top: 37px">
-            <div class="col-md-4" *ngFor="let item of products | slice:startIndex:endIndex">
-                    <div class="card">
-                            <div class="card-img">
-                                    <img class="img-no-padding" style="max-height:200px;margin-left:8%;"
-                                            src="{{item.image}}">
-                            </div>
-                            <div class="card-body">
-                                    <h3 class="card-title">{{item.name}}</h3>
-                                    <h5><del>{{item.oldPrice}}</del></h5>
-                                    <h5>{{item.newPrice}}</h5>
-                            </div>
-                    </div>
-            </div>
-            <div class="">
-                    <nav aria-label="...">
-                            <ul class="pagination"
-                                    *ngFor="let item of getArrayFromNumber(products.length) ; let i =index ">
+              <!-- //this is the drop buttons of categories and requirement price -->
 
-                                    <li class="page-item ">
-                                            <a class="page-link " (click)="updateIndex(i)">{{i+1}}</a>
-                                    </li>
-                            </ul>
-                            <h5>Page n°:{{page}}</h5>
-                    </nav>
-            </div>
-    </div>
-</div><br><br><br><br>
+              <nav class="navbar navbar-expand-lg navbar-transparent">
+                <div class="container">
+                    <a class="navbar-brand" href="#">Filtre</a>
+                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar-transparent" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-bar"></span>
+                        <span class="navbar-toggler-bar"></span>
+                        <span class="navbar-toggler-bar"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbar-transparent">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i> Facebook</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Instagram</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>        
+
+            <div id=menu class="row filtre" >
+                <div class="col-lg-4 category">
+                        <label for="search-text" id="grey"><strong>Filtre by product category: </strong></label><br>
+                        <select name="huge" class="form-control" data-role="select-dropdown" [(ngModel)]="selectedCategory">
+                                <option value="category" selected>Category..</option>
+                                <option value="food">Food</option>
+                                <option value="clothes">Clothes</option>
+                                <option value="fourniture">Fourniture</option>
+                                <option value="electronicDevices">Electronics</option>
+                                <option value="houseHolds">House Hold</option>
+                                <option value="cleaningProduct">Cleaning Products</option>
+                                <option value="other">Other</option>
+                        </select>
+                </div>
+        
+                <div class=" col-lg-4 price" >
+                        <div class="form-group">
+                        <label for="search-text" id="grey"><strong>Filtre by maximum Price: </strong></label><br>
+                        <select  id="inputGroupSelect02" [(ngModel)]="selectedPrice" class="form-control" data-role="select-dropdown">
+                                <option value="0" selected>Max Price</option>
+                                <option value="10.000">10 Dt.</option>
+                                <option value="50.000">50 Dt.</option>
+                                <option value="200.000">200Dt.</option>
+                                <option value="500.000"> 500Dt.</option>
+                                <option value="99999999.000">500++Dt</option>
+                        </select>
+                </div>
+                </div>
+                
+                        <div class="col-lg-4 search "> 
+                                <div class="form-group">
+        
+                                       <label for="search-text" id="grey"><strong>Search by product name: </strong></label> 
+                                               
+                                                <input type="email" class="form-control" id="search-text" aria-describedby="search-text"
+                                                [ngModel]="searchText" (ngModelChange)="modelChangeFn($event)"
+                                                placeholder="Enter text to search " value=""  
+                                                 > 
+                                                   
+                                </div>
+                                <ul *ngIf=" searchText.length > 0" class="list-group list-group-flush">
+                                
+                                <li (click)="clickOnMe(item)" class="list-group-item"
+                                                *ngFor="let item of products | appFilter: searchText " appHighlight
+                                                [searchedWord]="searchText" [content]="item.name"
+                                                [classToApply]="'font-weight-bold'" [setTitle]="'true'">
+                                                {{item}}
+                                        </li> 
+                                </ul>
+                        </div>
+               
+        </div>
+        <!-- // this is the title -->
+        <div class="row">
+                <div class='title' style="margin-top: 37px ;">
+                        <h1 style="font-family:'Nerko One',cursive; color: #EB5E28;">Check Our Available Products</h1>
+                </div>
+        </div>
+
+        <!-- //rendering data to our view , using *ngFor injection method of data in html -->
+        <div class="row" style="margin-top: 37px">
+                <div class="cover">
+                </div>
+             
+                        
+                <div class="col-md-4"
+                        *ngFor="let item of products | appFilter:searchText  |Category:selectedCategory |maxPrice:selectedPrice| slice: (page-1) * pageSize : page * pageSize">
+                        <div class="card">
+                                <div class="card-img">
+                                        <img class="img-no-padding" style="max-height:200px;margin-left:8%;"
+                                                src="{{item.image}}">
+                                </div>
+                                <div class="card-body">
+                                        <h3 class="card-title">{{item.name}}</h3>
+                                        <h5 id="red"><del>{{item.oldPrice}}</del></h5>
+                                        <h5>{{item.newPrice}}</h5>
+
+                                </div>
+                        </div>
+                </div>
+
+                <!-- // here where we desplaying pagination buttons and a text of page -->
+
+        </div><br><br><br><br>                     
+      <div class="page" style="margin-left: 200px; color: #EB5E28" >  
+         <ngb-pagination  
+          [(page)]="page"
+         [pageSize]="pageSize"
+         [collectionSize]="products.length">
+        </ngb-pagination>
+       </div> 
+</div>
