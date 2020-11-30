@@ -74,7 +74,7 @@ router.post("/login", async (req, res) => {
   const token = jwt.sign({ id: user.id }, process.env.SECRET_TOKEN);
   res
     .header("auth_token", token)
-    .send({ token: token, id: user.id, firstName : user.firstName , lastName : user.lastName, status:"client" });
+    .send({ token: token, id: user.id, firstName : user.firstName , lastName : user.lastName, status:"client" , email:user.email , phoneNumber:user.phoneNumber , street:user.street , city:user.city , zipCode:user.zipCode});
 });
 
 router.put("/:id", async (req, res) => {

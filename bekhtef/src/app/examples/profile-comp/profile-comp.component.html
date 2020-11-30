@@ -207,7 +207,7 @@
                                     required
                                     class="btn btn-danger btn-block btn-round"
                                   /> </div>
-                          
+                                  <div style="padding:20px" *ngIf="(uploadProgress | async) === 100"> 
                                 <ngb-progressbar  
                                
                                     type="warning" 
@@ -219,7 +219,7 @@
                                     aria-valuemin="0"
                                     aria-valuemax="100"
                                      ><i> {{ uploadProgress | async }}%</i></ngb-progressbar><br>
-                                    
+                                  </div>
                                    <div>
                                      <img src="{{downloadURL | async}}" style="max-height: 200px ; max-width: 200p; margin-left: 200px;" />
                                    </div>

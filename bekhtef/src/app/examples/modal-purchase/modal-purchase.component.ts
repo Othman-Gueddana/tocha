@@ -75,18 +75,22 @@ width: 100%;">
   }
    confirm(item){
      console.log(item)
-    
      for(var i=0 ; i<item.length ; i++ ){
-      
       let data = {
         status: item[i].status,
         clientName: item[i].clientName,
         clientId: item[i].clientId,
+        clientEmail: item[i].clientEmail,
+        clientNumber: item[i].clientNumber,
+        clientStreet: item[i].clientStreet,
+        clientCity: item[i].clientCity,
+        clientZip: item[i].clientZip,
         productId: item[i].productId,
         productName: item[i].productName,
         price: item[i].price,
         quantity: item[i].quantity,
        }
+       
        console.log(data)
       this.LivraisonService.addLivraison(data).subscribe((res)=>{
         console.log(res);
@@ -124,7 +128,7 @@ width: 100%;">
     (error) => {
     console.log(error);
     })
-  //  window.location.reload()
+    window.location.reload()
   }
  }
 

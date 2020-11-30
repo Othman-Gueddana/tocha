@@ -42,6 +42,11 @@ export class SigninComponent implements OnInit {
           window.localStorage.setItem('firstName', res.firstName);
           window.localStorage.setItem('lastName', res.lastName);
           window.localStorage.setItem('status', res.status);
+          window.localStorage.setItem('email', res.email);
+          window.localStorage.setItem('phoneNumber', res.phoneNumber);
+          window.localStorage.setItem('street', res.street);
+          window.localStorage.setItem('city', res.city);
+          window.localStorage.setItem('zipCode', res.zipCode);
           this.router.navigateByUrl('/landing');
         }
       },
