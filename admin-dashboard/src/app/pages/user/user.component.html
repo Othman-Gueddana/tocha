@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-4" *ngFor="let item of realClients">
     <div class="card card-user">
       <div class="card-header">
         <h4 class="card-title">Delevery</h4>
@@ -13,41 +13,39 @@
             <li>
               <div class="row">
                 <div class="col-md-7 col-7">
-                client name
+               Id : {{item.clientId}}
                 </div>
                 <div class="col-md-7 col-7">
-                client id
+               Name :{{item.clientName}}
               </div>
               <div class="col-md-7 col-7">
-                client address
+               Phone Number :{{item.clientNumber}}
               </div>
               <div class="col-md-7 col-7">
-                client Phone number
+               Email : {{item.clientEmail}}
               </div>
               </div>
             </li>
           </ul>
         </div>
       </div>
-    
-    
-    <div class="card">
+    <div class="card" >
       <div class="card-header">
         <h4 class="card-title">Product</h4>
       </div>
       <div class="card-body">
-        <ul class="list-unstyled team-members">
-          <li>
-            <div class="row">
+        <ul class="list-unstyled team-members" *ngFor="let i of products" >
+          <li  *ngIf="i.clientId === item.clientId">
+            <div class="row" >
               <div class="col-md-7 col-7">
-                  Product name
+                  {{i.productId}} : {{i.productName}}
                 <br />
                 <span class="text-success">
-                  <small>Quantity</small>
+                  <small>{{i.quantity}}</small>
                 </span>
               </div>
               <div class="col-md-3 col-3 text-right">
-                <p class=""> price</p>
+                <p class="">{{i.price}}</p>
               </div>
             </div>
           </li>
@@ -55,8 +53,10 @@
       </div>
       <div class="card-footer">
           <div class="row">
-              <p> Total:</p>
+              <p> Total: {{item.total}} </p>
           </div>
+          <button type="button" class="btn btn-info text-right" (click)="delete(item.clientId)">Delete</button>
+          <button type="button" class="btn btn-info text-right" (click)="save()">Accept</button>
         </div>
     </div>
   </div>
