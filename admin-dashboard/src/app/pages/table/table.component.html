@@ -1,31 +1,35 @@
-<div class="row">
-  <div class="col-md-12">
-    <div class="card">
+
+    <div class="card">  
       <div class="card-header">
         <h4 class="card-title">Shop</h4>
       </div>
-      <div class="card-body">
-        <div class="card col-md-4"   style="width: 35rem;">
-          <h5 class="card-title">Card title</h5>
-          <img class="card-img-top" src="..." alt="Card image cap">
+    
+      <div class="row">      
+       
+        <div class="card col-sm-3"   style="width: 25rem;" *ngFor = "let item of products" >
+          <h5 class="card-title">{{item.name}}</h5>
+          <img class="card-img-top" src={{item.image}} alt="Card image cap">
           <div class="card-body">
-            <p class="card-text">Description</p>
-            <p class="card-text">Quantity</p>
-            <p class="card-text">new Price</p>
-            <p class="card-text">old Price</p>
-            <p class="card-text">category</p>
-             <p class="card-text">owner id</p>
-             <p class="card-text">ownerType</p>
-             <p class="card-text">expired date</p>
-             <p class="card-text">creation Date</p>  
-             <p class="card-text"> humanKind</p> 
-             <p class="card-text"> type</p>
-            <a href="#" class="btn btn-primary">Delete</a>
-          </div>
+            <p class="card-text" *ngIf="item.quantity > 0 ">Quantity       : {{item.quantity}}</p>
+            <p class="card-text" *ngIf="item.quantity === 0 || item.quantity === null " style="color:red">Quantity out of stock </p>
+            <p class="card-text">Description    : {{item.description}}</p>          
+            <p class="card-text">new Price      : {{item.newPrice}}</p>
+            <p class="card-text">old Price      : {{item.oldPrice}}</p>
+            <p class="card-text">category       : {{item.category}}</p>
+            <p class="card-text">owner id       : {{item.ownerId}} </p>
+             <p class="card-text">ownerType     : {{item.ownerType}}</p>
+             <p class="card-text" *ngIf="item.category === 'food' || item.category === 'cleaningProduct'">expired date  : {{item.expiredDate}}</p>
+             <p class="card-text" *ngIf="item.category === 'food' || item.category === 'cleaningProduct' || item.category === 'electronicDevices'">creation Date : {{item.creationDate}}</p> 
+             <p class="card-text" *ngIf="item.category === 'houseHolds'"> device         : {{item.device}}</p> 
+             <p class="card-text" *ngIf="item.category === 'clothes'"> humanKind    : {{item.humanKind}}</p> 
+             <p class="card-text" *ngIf="item.category === 'fourniture'"> type         : {{item.type}}</p>
+             
+          
+        </div>
+        <a class="btn btn-primary" (click)="delete(item.id)">Delete</a>
         </div>
       </div>
     </div>
-  </div>
-</div>
+
 
   
