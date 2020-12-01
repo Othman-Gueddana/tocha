@@ -1,11 +1,8 @@
-.btn{
-    position: absolute;
-    margin-left: 10px;
-}
+
 .delete{
-    background-color: transparent;
+    background-color: #EB5E28;
     border-color: #EB5E28;
-    margin-left: 186px !important;
+    margin-left: 56px  !important;
 }
 .landing-section {
     padding: 0px 0;
