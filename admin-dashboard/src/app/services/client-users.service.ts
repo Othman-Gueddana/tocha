@@ -30,10 +30,10 @@ export class ClientUsersService {
     window.alert(errorMessage);
     return throwError(errorMessage);
   }
- getClient():  Observable<any>{
-  return this.http
-  .get(baseUrl).pipe(retry(3), catchError(this.handleError));
- }
+  //  getClient():  Observable<any>{
+  //   return this.http
+  //   .get(baseUrl).pipe(retry(3), catchError(this.handleError));
+  //  }
   getClientUsers(): Observable<any> {
     return this.http
       .get(baseUrl2).pipe(retry(3), catchError(this.handleError));
