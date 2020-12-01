@@ -68,13 +68,12 @@
                         <div class="form-group">
 
                                <label for="search-text" id="grey"><strong>Search by product name: </strong></label> 
-                                       
                                         <input type="email" class="form-control" id="search-text" aria-describedby="search-text"
                                         [ngModel]="searchText" (ngModelChange)="modelChangeFn($event)"
                                         placeholder="Enter text to search " value=""  
                                          > 
                                            
-                        </div>
+                        
                         <ul *ngIf=" searchText.length > 0" class="list-group list-group-flush">
                         
                         <li (click)="clickOnMe(item)" class="list-group-item"
@@ -84,6 +83,7 @@
                                         {{item}}
                                 </li> 
                         </ul>
+                </div>
                 </div>
        
 </div> 
