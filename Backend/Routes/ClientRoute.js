@@ -34,6 +34,7 @@ router.post("/register", async (req, res) => {
     zipCode: req.body.zipCode,
     phoneNumber: req.body.phoneNumber,
   }).then((user) => {
+   
     nodemailer.createTestAccount((err, email) => {
       var transporter = nodemailer.createTransport(
         smtpTransport({
@@ -42,27 +43,30 @@ router.post("/register", async (req, res) => {
           secure: false,
           host: "smtp.gmail.com",
           auth: {
-            user: emailAccount,
-            pass: pass,
+            user: "",
+            pass: "",
           },
           tls: {
             rejectUnauthorized: false,
           },
         })
       );
-
+    
       let mailOptions = {
         from: "",
         to: `${req.body.email}`,
         subject: "Be5tef",
-        text: `Hey Mr/Mrs ${req.body.firstName},text here `,
+        text: `Hey Mr/Mrs ${req.body.lastName} , welcome in our application bekhtef , your account is verified from admin  `,
       };
+    
       transporter.sendMail(mailOptions, (err, info) => {
-        console.log("done");
-        res.json(user);
-      });
-    });
-  });
+        if(err){ 
+          console.log(err)
+        } 
+          res.send(info)
+      })
+    })
+  }).catch((err) => {console.log(err)})
 });
 router.post("/login", async (req, res) => {
   // const {error} = loginValidation(req.body)

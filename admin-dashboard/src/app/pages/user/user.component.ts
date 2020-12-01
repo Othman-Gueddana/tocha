@@ -76,17 +76,20 @@ export class UserComponent implements OnInit {
             for(var i=0; i<this.data.length ; i++){
               if( this.data[i].clientId === id ){
                let item = this.data[i].id
+              
                this.DeleveryService.deleteLivraison(item).subscribe((data: any) => {
-                console.log(data)
+                console.log(data) 
               })
-              this.products = this.products.filter((val,i)=>val.delId !== id)
-              this.realClients=this.realClients.filter((val,i)=>val.delId !== id)
+              this.products = this.products.filter((val,i)=>val.delId !== item)
+              this.realClients=this.realClients.filter((val,i)=>val.delId !== item)
+              this.data=this.data.filter((val,i) =>val.id !== item)
             }
         }   
     }
-    save(){
+    save(name){
+        
     const options = {
-        filename:"Our_awesome_file.pdf",
+        filename:`${name}.pdf`,
         image : {type: 'jpeg'},
         html2canvas:{},
         jsPDF:{orientation:'landscape'}

@@ -21,7 +21,7 @@ export class LandingComponent implements OnInit {
   startIndex = 0;
   endIndex = 9;
   page = 1;
-  pageSize=10;
+  pageSize=9;
   productSelected: Number
   title = 'angular-text-search-highlight';
   searchText = '';
