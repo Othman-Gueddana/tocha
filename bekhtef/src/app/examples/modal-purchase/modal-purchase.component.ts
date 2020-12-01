@@ -123,12 +123,12 @@ width: 100%;">
         }
      }
     this.PurchaseService.delete().subscribe((res)=>{
-      console.log(res);
+      window.location.reload()
     },
     (error) => {
     console.log(error);
     })
-    window.location.reload()
+   
   }
  }
 
