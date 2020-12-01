@@ -8,6 +8,9 @@ const verify = require("./VerificationToken.js");
 const nodemailer = require("nodemailer");
 const smtpTransport = require("nodemailer-smtp-transport");
 const { emailAccount, pass } = require("./MyAccountGmail.js");
+const accountSid = "AC31e0bd470eb9c387f6a24696d31f1271";
+const authToken ="18f04a80b5899112d3e3bfa897cedee8";
+const notification = require('twilio')(accountSid, authToken);
 // const { loginValidation } = require('./Validation.js')
 dotenv.config();
 
@@ -68,6 +71,7 @@ router.post("/register", async (req, res) => {
     })
   }).catch((err) => {console.log(err)})
 });
+
 router.post("/login", async (req, res) => {
   // const {error} = loginValidation(req.body)
   // if(error) return res.send(error.details[0].message)
@@ -126,4 +130,16 @@ router.delete("/", async (req, res) => {
   );
 });
 
+
+router.post("/msg",async (req, res) => {
+  notification
+  .messages 
+      .create({  
+        body: 'Hello sir, your request is acceptable and you will receive your goods within three days. Our representative will contact you before delivery. Thank you for trusting our products. For more inquiries, contact us through our website. bekhtef Team',
+         from: '+14408052512',       
+         to: '+21652570599' 
+       }) 
+      .then(message => console.log(message.sid)) 
+      .done();
+})
 module.exports = router;
