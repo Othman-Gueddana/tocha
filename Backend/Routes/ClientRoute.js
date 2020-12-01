@@ -130,16 +130,17 @@ router.delete("/", async (req, res) => {
   );
 });
 
+// this route for sending sms to the clients
 
-router.post("/msg",async (req, res) => {
-  notification
-  .messages 
-      .create({  
-        body: 'Hello sir, your request is acceptable and you will receive your goods within three days. Our representative will contact you before delivery. Thank you for trusting our products. For more inquiries, contact us through our website. bekhtef Team',
-         from: '+14408052512',       
-         to: '+21652570599' 
-       }) 
-      .then(message => console.log(message.sid)) 
-      .done();
-})
+// router.post("/msg",async (req, res) => {
+//   notification
+//   .messages 
+//       .create({  
+//         body: 'Hello sir, your request is acceptable and you will receive your goods within three days. Our representative will contact you before delivery. Thank you for trusting our products. For more inquiries, contact us through our website. bekhtef Team',
+//          from: '+14408052512',       
+//          to: '+21652570599' 
+//        }) 
+//       .then(message => console.log(message.sid)) 
+//       .done();
+// })
 module.exports = router;
