@@ -1,4 +1,4 @@
-<div class="wrapper">
+<!-- <div class="wrapper">
     <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('./assets/img/feedback.jpg');">
     </div>
     <div class="section landing-section">
@@ -20,4 +20,29 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
+
+<div class="wrapper">
+    <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('../../../assets/img/download\ \(1\).gif');">
+    </div>
+    <div class="section landing-section">
+        <div class="container">
+                <div class="row">
+                    <div class="col-md-8" style="margin-left: 230px;"> 
+                    <div class="card card-feedpro">
+                       <div class="feedback-list">
+                        <h2>Check our client's Feedback:</h2>
+                        <div class="feedback" *ngFor="let i of allFeedback">
+                            <div class="feed-body">
+                                <h4 style='color:#66615b'>{{i.clientName}}:</h4><br>
+                                <h5>{{i.text}}</h5>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+                        </div>
+                   </div>
+                </div>
+            </div>
+        </div>
+   

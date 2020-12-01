@@ -1,18 +1,18 @@
 
 <div class="wrapper">
-  <div class="page-header">
-      <div class="filter"></div>
+  <div class="page-header" style="background-image: url('../../../assets/img/Secondhand-eCommerce.jpg');">
+      <div class="filter" style="background-color: rgb(0 0 0 / 56%);"></div>
           <div class="container">
-              <div class="row">
-                  <div class="col-lg-12" style="background-image: url('../../../assets/img/five.jpg');" >
-                    <div class="card card-register-comp">
-                   <!-- <h3 class="title" style="color:white;"> {{'Welcome' | translate}} </h3>-->   
-                        <h3 class="title" style="color:white;"> Welcome </h3> 
+              <div class="row ">
+                  <div class="col-lg-12 ">
+                    <div class="card card-register-comp" >
+                    <h3 class="title" style="color:white;"> {{'Welcome' | translate}} </h3>  
+                        
                         <form class="register-form" #f="ngForm" (ngSubmit)="onSubmit(f)">
 
 
-                          <div class='row'>
-                                 <div class="col-md-4"> 
+                          <div class='row chaima'>
+                                 <div class="col-md-4 chaima"> 
                                   <label>Company Name</label>
                                   <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
                                     <div class="input-group-prepend">
@@ -25,9 +25,9 @@
 
                               </div>
 
-                                  <div class="col-md-4">
-                                  <label>Email</label>
-                                  <!-- <label>{{'Email' | translate}}</label>-->
+                                  <div class="col-md-4 chaima">
+                                  <!-- <label>Email</label> -->
+                                 <label>{{'Email' | translate}}</label>
                               <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
                                 <div class="input-group-prepend">
                                   <span class="input-group-text">
@@ -38,7 +38,7 @@
                               </div>
                               </div> 
 
-                                  <div class="col-md-4">
+                                  <div class="col-md-4 chaima">
                                   <label>Description</label>
                                   <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
                                     <div class="input-group-prepend">
@@ -50,9 +50,9 @@
                                   </div>
                               </div>  
                           </div>
-                           <div class='row'>
-                             <div class="col-md-4">
-                            <label>Password</label>
+                           <div class='row chaima'>
+                             <div class="col-md-6 chaima">
+                            <label>Password </label>
                             <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus1===true}">
                               <div class="input-group-prepend">
                                 <span class="input-group-text">
@@ -62,9 +62,9 @@
                                 <input type="text" class="form-control" placeholder="Password" (focus)="focus1=true" (blur)="focus1=false" ngModel  required  #password="ngModel" name="password"/>
                             </div>
                               </div>
-                              <div class="col-md-4">
-                               <!--   <label>{{'Password' | translate}}</label>-->
-                              <label>Confirm Password</label>
+                              <div class="col-md-6 chaima" >
+                              <label> Confirm your password</label>
+                              <!-- <label>Confirm Password</label> -->
                               <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus1===true}">
                                 <div class="input-group-prepend">
                                   <span class="input-group-text">
@@ -75,8 +75,8 @@
                               </div>
                               </div>
                                 </div>
-                                <div class='row'>
-                              <div class="col-md-4">
+                                <div class='row chaima'> 
+                              <div class="col-md-4 chaima">
                               <label>Street</label>
                               <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
                                 <div class="input-group-prepend">
@@ -89,7 +89,7 @@
                               </div>
                             
                             
-                              <div class="col-md-4">
+                              <div class="col-md-4 chaima">
                             <label>City</label>
                               <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
                                 <div class="input-group-prepend">
@@ -101,7 +101,7 @@
                               </div>
                               </div>
 
-                              <div class="col-md-4">
+                              <div class="col-md-4 chaima">
                               <label>Zip Code</label>
                               <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
                                 <div class="input-group-prepend">
@@ -113,8 +113,8 @@
                               </div> 
                               </div>
                             </div>
-                            <div class='row'>
-                              <div class="col-md-4">
+                            <div class='row chaima'>
+                              <div class="col-md-4 chaima">
                                 <label>Phone Number 1 :</label>
                                 <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
                                   <div class="input-group-prepend">
@@ -126,7 +126,7 @@
                                 </div>
                               </div>
 
-                              <div class="col-md-4">
+                              <div class="col-md-4 chaima">
                                 <label>Phone Number 2 :</label>
                                 <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
                                   <div class="input-group-prepend">
@@ -138,7 +138,7 @@
                                   </div>
                               </div>
 
-                              <div class="col-md-4">
+                              <div class="col-md-4 chaima">
                                 <label>Patent Number :</label>
                                 <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
                                   <div class="input-group-prepend">
@@ -151,7 +151,8 @@
                               </div>
                             </div>
 
-                               <div class="form-group row">
+                               <div class="col-md-4 chaima">
+                                <label> logo /image :</label>
                                     <input
                                     name="img"
                                     type="file"
@@ -159,11 +160,11 @@
                                     (change)="selectedFile($event)"
                                     accept=".png,.jpg"
                                     required
-                                    class="btn btn-danger btn-block btn-round"
+                                
                                   /> </div>
-                          
-                                <ngb-progressbar  
-                               
+                            <div style="padding:20px" *ngIf="(uploadProgress | async) === 100"> 
+                                 <ngb-progressbar  
+                                    
                                     type="warning" 
                                     [attr.aria-valuenow]="(uploadProgress | async) + '%'"
                                     [width]="(uploadProgress | async) + '%'"
@@ -172,7 +173,8 @@
                                     [value]= "(uploadProgress | async)"
                                     aria-valuemin="0"
                                     aria-valuemax="100"
-                                     ><i> {{ uploadProgress | async }}%</i></ngb-progressbar><br>
+                                     ><i> {{ uploadProgress | async }}%</i></ngb-progressbar><br> </div>
+                              
                                     
                                    <div>
                                      <img src="{{downloadURL | async}}" style="max-height: 200px ; max-width: 200p; margin-left: 200px;" />

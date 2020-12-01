@@ -9,23 +9,16 @@
         <div class="col-md-4">
           <div class="card card-user">
             <div class="image">
-              <img src="" alt="logo">
-            </div>
+              <!-- <img src={{logo}} alt="logo"> -->
+              <h5 class="title">{{name}}</h5>
+            </div> 
             <div class="card-body">
               <div class="author">
-                <a href="#">
-                  <img class="avatar border-gray" src={{user.logo}} alt="...">
+                  <img  style="width: 259px;
+                  height: 300px;
+                  margin-left: 20px;" src={{logo}} alt="...">
                   <h5 class="title">{{name}}</h5>
-                </a>
-                <p class="description">
-                 description
-                </p>
               </div>
-              <p class="description text-center">
-                Email
-                <br>
-                <br> 
-              </p>
             </div>
             <div class="card-footer">
               <hr>
@@ -48,7 +41,7 @@
                   <div class="row">
                     <div class="col-md-2 col-2">
                       <div class="avatar">
-                        <img src="../../../assets/img/chimi.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                        <img src="../../../assets/img/favicon.ico" alt="Circle Image" class="img-circle img-no-padding img-responsive">
                       </div>
                     </div>
                     <div class="col-md-7 col-7">
@@ -207,7 +200,7 @@
                                     required
                                     class="btn btn-danger btn-block btn-round"
                                   /> </div>
-                          
+                                  <div style="padding:20px" *ngIf="(uploadProgress | async) === 100"> 
                                 <ngb-progressbar  
                                
                                     type="warning" 
@@ -219,7 +212,7 @@
                                     aria-valuemin="0"
                                     aria-valuemax="100"
                                      ><i> {{ uploadProgress | async }}%</i></ngb-progressbar><br>
-                                    
+                                  </div>
                                    <div>
                                      <img src="{{downloadURL | async}}" style="max-height: 200px ; max-width: 200p; margin-left: 200px;" />
                                    </div>
