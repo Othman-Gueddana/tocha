@@ -1,17 +1,15 @@
 <div class="row">
-  <div class="col-md-6" id="element-to-export"   *ngFor="let item of realClients">
+  <div class="col-md-6"  *ngFor="let item of realClients">
     <div class="card card-user">
+      <form id="element-to-export">
       <div class="card-header">
         <h4 class="card-title" style="margin-right:20px" >Bekhtef Delevery</h4>
       </div>
-      <div class="card-body">
+      <div class="card-body" >
           <h5 class="card-title">Client Information</h5>
           <ul class="list-unstyled team-members">
             <li>
               <div class="row">
-                <div class="col-md-7 col-7">
-               Id : {{item.clientId}}
-                </div>
                 <div class="col-md-7 col-7">
                Name :{{item.clientName}}
               </div>
@@ -21,6 +19,9 @@
               <div class="col-md-7 col-7">
                Email : {{item.clientEmail}}
               </div>
+              <div class="col-md-7 col-7">
+                Date of the order : {{item.date}}
+               </div>
               </div>
             </li>
           </ul>
@@ -49,14 +50,17 @@
             </div>
           </li>
         </ul>
+        <ul class="list-unstyled team-members">
+          <li>
+            Total: {{item.total}}
+          </li>
+        </ul>
       </div>
       <div class="card-footer">
-          <div class="row">
-              <p> Total: {{item.total}} </p>
-          </div>
           <button type="button" class="btn btn-info text-right" (click)="delete(item.clientId)">Delete</button>
-          <button type="button" class="btn btn-info text-right" (click)="save()">Accept</button>
+          <button type="button" class="btn btn-info text-right" (click)="save(item.clientName)">Accept</button>
         </div>   
+      </form>
     </div>
   </div>
 </div>
