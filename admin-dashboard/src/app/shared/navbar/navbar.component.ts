@@ -29,7 +29,7 @@ export class NavbarComponent implements OnInit {
     var navbar: HTMLElement = this.element.nativeElement;
     this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
     this.router.events.subscribe((event) => {
-      this.sidebarClose();
+      // this.sidebarClose();
     });
   }
   getTitle() {

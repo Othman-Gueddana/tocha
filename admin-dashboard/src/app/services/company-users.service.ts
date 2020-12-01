@@ -33,11 +33,12 @@ export class CompanyUsersService {
 
   getCompanyUsers(): Observable<any> {
     return this.http
-      .get(baseUrl).pipe(retry(3), catchError(this.handleError));
+      .get(baseUrl2).pipe(retry(3), catchError(this.handleError));
   }
+
   getAllCompanyUsers(): Observable<any> {
     return this.http
-      .get(baseUrl2).pipe(retry(3), catchError(this.handleError));
+      .get(baseUrl).pipe(retry(3), catchError(this.handleError));
   }
   confirmCompanyUser(data): Observable<any> {
 
