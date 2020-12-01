@@ -1,14 +1,11 @@
 <div class="row">
-  <div class="col-md-4" *ngFor="let item of realClients">
+  <div class="col-md-6" id="element-to-export"   *ngFor="let item of realClients">
     <div class="card card-user">
       <div class="card-header">
-        <h4 class="card-title">Delevery</h4>
+        <h4 class="card-title" style="margin-right:20px" >Bekhtef Delevery</h4>
       </div>
-      <div class="card">
-        <div class="card-header">
-          <h4 class="card-title">Client Information</h4>
-        </div>
-        <div class="card-body">
+      <div class="card-body">
+          <h5 class="card-title">Client Information</h5>
           <ul class="list-unstyled team-members">
             <li>
               <div class="row">
@@ -27,24 +24,26 @@
               </div>
             </li>
           </ul>
-        </div>
+        <h5 class="card-title">Products</h5>
+       <div class="row">
+        <div class="col-md-3 col-3 text-center" style="font-weight:bold ;padding:10px">Id</div>
+        <div class="col-md-3 col-3 text-center" style="font-weight:bold; padding:10px">Name</div>
+        <div class="col-md-3 col-3 text-center" style="font-weight:bold ;padding:10px">Quantity</div>
+       <div class="col-md-3 col-3 text-center" style="font-weight:bold;padding:10px">Price</div>
       </div>
-    <div class="card" >
-      <div class="card-header">
-        <h4 class="card-title">Product</h4>
-      </div>
-      <div class="card-body">
         <ul class="list-unstyled team-members" *ngFor="let i of products" >
           <li  *ngIf="i.clientId === item.clientId">
             <div class="row" >
-              <div class="col-md-7 col-7">
-                  {{i.productId}} : {{i.productName}}
-                <br />
-                <span class="text-success">
-                  <small>{{i.quantity}}</small>
-                </span>
+              <div class="col-md-3 col-3 text-center">
+                  {{i.productId}} 
               </div>
-              <div class="col-md-3 col-3 text-right">
+              <div class="col-md-3 col-3 text-center">
+                {{i.productName}}
+            </div>
+                <div class="col-md-3 col-3 text-center">
+                  <p>{{i.quantity}}</p>
+                </div>
+              <div class="col-md-3 col-3 text-center">
                 <p class="">{{i.price}}</p>
               </div>
             </div>
@@ -57,8 +56,8 @@
           </div>
           <button type="button" class="btn btn-info text-right" (click)="delete(item.clientId)">Delete</button>
           <button type="button" class="btn btn-info text-right" (click)="save()">Accept</button>
-        </div>
+        </div>   
     </div>
   </div>
 </div>
-</div>
+

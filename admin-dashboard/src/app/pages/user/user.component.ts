@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DeleveryService } from '../../services/delevery.service';
-
+import * as html2pdf from 'html2pdf.js'
 @Component({
     selector: 'user-cmp',
     templateUrl: 'user.component.html'
@@ -83,6 +83,19 @@ export class UserComponent implements OnInit {
               this.realClients=this.realClients.filter((val,i)=>val.delId !== id)
             }
         }   
+    }
+    save(){
+    const options = {
+        filename:"Our_awesome_file.pdf",
+        image : {type: 'jpeg'},
+        html2canvas:{},
+        jsPDF:{orientation:'landscape'}
+    }
+    const content:Element = document.getElementById('element-to-export')
+    html2pdf()
+    .from(content)
+    .set(options)
+    .save();
     }
 
 }
