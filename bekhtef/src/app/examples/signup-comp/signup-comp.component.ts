@@ -9,6 +9,7 @@ import {
 } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-signup-comp',
   templateUrl: './signup-comp.component.html',
@@ -65,13 +66,16 @@ export class SignupCompComponent implements OnInit {
               console.log(error);
             }
           );
-        alert("your request to create a new account is succsesfuly done , wait for email of acceptation")
+          Swal.fire("your request to create a new account is succsesfuly done , wait for email of acceptation")
+        
           this.router.navigateByUrl('/signinComp');
        }else {
-        alert("Repeat again please")
+       
+        Swal.fire('Repeat again please')
           }
       }else {
-        alert("your password should contain special caracter")
+        // alert("your password should contain special caracter")
+        Swal.fire("your password should contain special caracter")
        }
      }
  }

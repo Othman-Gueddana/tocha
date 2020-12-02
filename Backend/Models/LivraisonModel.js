@@ -5,7 +5,14 @@ Livraisons.init({
  status: Sequelize.STRING,
  clientName: Sequelize.STRING,
  clientId: Sequelize.INTEGER,
+ clientEmail: Sequelize.STRING,
+ clientNumber: Sequelize.INTEGER,
+ clientStreet: Sequelize.STRING,
+ clientCity: Sequelize.STRING,
+ clientZip: Sequelize.INTEGER,
  productId: Sequelize.INTEGER,
+ productName: Sequelize.STRING,
+ price: Sequelize.STRING,
  quantity: Sequelize.INTEGER,
 }, { sequelize, modelName: 'livraisons' });
 

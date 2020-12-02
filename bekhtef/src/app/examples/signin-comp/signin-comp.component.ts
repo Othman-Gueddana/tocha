@@ -31,13 +31,14 @@ export class SigninCompComponent implements OnInit {
     this.CompServiceService.createLogin(data).subscribe(
       (res) => {
         if (res.status === 404) {
-         alert('your email is not exist')
+          document.getElementById('email-error').innerHTML ='your email does not exist !';
         } else if (res.status === 500) {
-         alert('wrong password')
+          document.getElementById('pass-error').innerHTML ='wrong password, try again !';
         } else {
           console.log(res);
           window.localStorage.setItem('token', res.token);
           window.localStorage.setItem('id', res.id);
+          window.localStorage.setItem('logo', res.logo);
         //  window.localStorage.setItem('name', res.name);
           window.localStorage.setItem('status', res.status);
           this.router.navigateByUrl('/landingComp');

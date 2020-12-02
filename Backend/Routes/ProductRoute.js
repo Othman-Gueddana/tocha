@@ -21,7 +21,7 @@ router.post("/food", async (req, res) => {
     image:req.body.image,
     ownerId:req.body.ownerId,
     ownerType:req.body.ownerType,
-    expireddate:req.body.expireddate,
+    expiredDate:req.body.expiredDate,
     creationDate:req.body.creationDate,
     quantity:req.body.quantity
   })
@@ -39,7 +39,7 @@ router.put("/food/:id", async (req, res) => {
         image:req.body.image,
         ownerId:req.body.ownerId,
         ownerType:req.body.ownerType,
-        expireddate:req.body.expireddate,
+        expiredDate:req.body.expiredDate,
         creationDate:req.body.creationDate,
         quantity:req.body.quantity
       })
@@ -58,7 +58,7 @@ router.post("/clean", async (req, res) => {
       image:req.body.image,
       ownerId:req.body.ownerId,
       ownerType:req.body.ownerType,
-      expireddate:req.body.expireddate,
+      expiredDate:req.body.expiredDate,
       creationDate:req.body.creationDate,
       quantity:req.body.quantity
     })
@@ -76,7 +76,7 @@ router.post("/clean", async (req, res) => {
           image:req.body.image,
           ownerId:req.body.ownerId,
           ownerType:req.body.ownerType,
-          expireddate:req.body.expireddate,
+          expiredDate:req.body.expiredDate,
           creationDate:req.body.creationDate,
           quantity:req.body.quantity
         })
@@ -230,6 +230,41 @@ router.post("/clean", async (req, res) => {
         });
     });
   });
+  router.post("/labo", async (req, res) => {
+    await Products.create({
+      name:req.body.name,
+      oldPrice:req.body.oldPrice,
+      newPrice:req.body.newPrice,
+      description:req.body.description,
+      category:req.body.category,
+      image:req.body.image,
+      ownerId:req.body.ownerId,
+      ownerType:req.body.ownerType,
+      expiredDate:req.body.expiredDate,
+      quantity:req.body.quantity
+    })
+  });
+  
+  router.put("/labo/:id", async (req, res) => {
+    Products.findByPk(req.params.id).then((products) => {
+      products
+        .update({
+          name:req.body.name,
+          oldPrice:req.body.oldPrice,
+          newPrice:req.body.newPrice,
+          description:req.body.description,
+          category:req.body.category,
+          image:req.body.image,
+          ownerId:req.body.ownerId,
+          ownerType:req.body.ownerType,
+          expiredDate:req.body.expiredDate,
+          quantity:req.body.quantity
+        })
+        .then((products) => {
+          res.json(products);
+        });
+    });
+  });
 router.delete("/:id", async (req, res) => {
   await Products.findByPk(req.params.id)
     .then((products) => {
@@ -254,7 +289,8 @@ router.post("/products/", async (req, res) => {
       category:req.body.category,
       image:req.body.image,
       ownerId:req.body.ownerId,
-      expireddate:req.body.expireddate,
+      ownerType:req.body.ownerType,
+      expiredDate:req.body.expiredDate,
       creationDate:req.body.creationDate,
       quantity:req.body.quantity,
       device: req.body.device,
@@ -262,6 +298,20 @@ router.post("/products/", async (req, res) => {
       type: req.body.type
     })
   });
-  
+  router.put("/quantity/:id", async (req, res) => {
+    console.log({"req.params.id" :req.params.id})
+    console.log({"req.body.quantity" : req.body.quantity})
+    console.log(req.body.quantity)
+    Products.findByPk(req.params.id).then((products) => {
+      console.log(products)
+      products
+        .update({
+          quantity:req.body.quantity
+        })
+        .then((products) => {
+          res.json(products);
+        }).catch((err) => console.log(err))
+    });
+  });
 
 module.exports = router;

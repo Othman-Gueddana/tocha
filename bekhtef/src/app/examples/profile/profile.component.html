@@ -6,12 +6,8 @@
     <div class="section profile-content">
         <div class="container">
             <div class="owner">
-                <div class="avatar">
-                    <img src="./assets/img/giphy.webp" alt="Circle Image"
-                        class="img-circle img-no-padding img-responsive">
-                </div>
                 <div class="name">
-                    <h4 class="title">{{firstName}}</h4><br/>
+                    <h4 class="title" style="color:#EB5E28">{{firstName + ' ' + lastName}} </h4><br/>
                     <!-- <h4 class="title">{{lastName}}</h4> -->
                 </div>
             </div>
@@ -61,6 +57,7 @@
                                                 <option value="electronics">Electronics</option>
                                                 <option value="houseHold">House Hold</option>
                                                 <option value="cleaning">Cleaning Products</option>
+                                                <option value="laboratory">Laboratory Product</option>
                                                 <option value="other">Other</option>
 
                                             </select>
@@ -106,7 +103,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row"
-                                        *ngIf="(category === 'food' || category === 'cleaning')">
+                                        *ngIf="(category === 'food' || category === 'cleaning' || category === 'laboratory')">
                                         <label class="col-lg-3 col-form-label form-control-label">Expiration
                                             date:</label>
                                         <div class="col-lg-9">
@@ -176,22 +173,25 @@
                                         (change)="selectedFile($event)"
                                         accept=".png,.jpg"
                                         required
-                                      />
-                                      <div class="progress">
-                                        <div
-                                          class="progress-bar progress-bar-striped-bg-success"
-                                          role="progressbar"
-                                          [style.width]="(uploadProgress | async) + '%'"
-                                          [attr.aria-valuenow]="(uploadProgress | async) + '%'"
-                                          aria-valuemin="0"
-                                          aria-valuemax="100"
-                                        ></div>
+                                        
+                                      /> </div>
+                                      <div style="padding:20px" *ngIf="(uploadProgress | async) === 100"> 
+                                    <ngb-progressbar  
+                                   
+                                        type="warning" 
+                                        [attr.aria-valuenow]="(uploadProgress | async) + '%'"
+                                        [width]="(uploadProgress | async) + '%'"
+                                        [striped]="true" 
+                                        [animated]="true"
+                                        [value]= "(uploadProgress | async)"
+                                        aria-valuemin="0"
+                                        aria-valuemax="100"
+                                         ><i> {{ uploadProgress | async }}%</i></ngb-progressbar><br>
                                       </div>
-                                      <a [href]="downloadURL | async" name="download">{{
-                                        downloadURL | async
-                                      }}</a>
-                                      <p></p>
-                                    </div>
+                                       <div>
+                                         <img src="{{downloadURL | async}}" style="max-height: 200px ; max-width: 200p; margin-left: 200px;" />
+                                       </div>
+                                         
                                         <img sref="C:\Users\ASUS\Desktop" />
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label"></label>

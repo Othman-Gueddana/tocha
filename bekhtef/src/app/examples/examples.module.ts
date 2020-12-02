@@ -26,15 +26,15 @@ import { SettingsCompComponent } from './settings-comp/settings-comp.component';
 import { FeedbackCompComponent } from './feedback-comp/feedback-comp.component';
 import { AboutClientComponent } from './about-client/about-client.component';
 import { ForgotCompComponent } from './forgot-comp/forgot-comp.component';
-
-
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
         NgbModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        TranslateModule
     ],
     declarations: [
         LandingComponent,

@@ -77,7 +77,7 @@ router.post("/login", async (req, res) => {
   const token = jwt.sign({ id: user.id }, process.env.SECRET_TOKEN);
   res
     .header("auth_token", token)
-    .send({ token: token, id: user.id, name: user.name , status:"company" });
+    .send({ token: token, id: user.id, name: user.name , status:"company" , logo: user.logo});
 });
 
 router.put("/:id", async (req, res) => {
@@ -94,20 +94,21 @@ router.put("/:id", async (req, res) => {
       });
   });
 });
-router.put("/updatePass", async (req, res) => {
-  const user = await Companys.findOne({ where: { email: req.body.email } });
-  if (!user) return res.send({ status: 404 });
-  const validPass = await bcrypt.compare(req.body.password, user.password);
-  if (!validPass) return res.send({ status: 500 });
+router.patch("/updatePass", async (req, res) => {
+  console.log(req)
   const salt = await bcrypt.genSalt(10);
   const hashPassword = await bcrypt.hash(req.body.NewPassword, salt);
-  Companys.update({
-        password:hashPassword,
+  await Companys.findOne({ where: { email: req.body.email } }).then((companys) => {
+    console.log(companys)
+    companys
+    .update({
+       password: hashPassword
       })
       .then((companys) => {
         res.json(companys);
-      });
+      }).catch((err) => console.log(err))
   });
+});
 
 router.delete("/:id", async (req, res) => {
   await Companys.findByPk(req.params.id)

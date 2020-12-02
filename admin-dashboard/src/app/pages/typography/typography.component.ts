@@ -5,7 +5,8 @@ import { Router } from '@angular/router';
 
 @Component({
     selector: 'typography-cmp',
-    templateUrl: 'typography.component.html'
+    templateUrl: 'typography.component.html',
+    styleUrls: ['./typography.component.scss']
 })
 
 export class TypographyComponent implements OnInit{

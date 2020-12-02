@@ -20,6 +20,8 @@ import {
   `]
 })
 export class ProfileCompComponent implements OnInit {
+
+  complete=0
   progress: number;
   ref: AngularFireStorageReference;
   task: AngularFireUploadTask;
@@ -30,6 +32,7 @@ export class ProfileCompComponent implements OnInit {
   products:any = [];
   user: any ;
   name: any ;
+  logo:any;
   compStatus: string = "";
   constructor(private ProductService: ProductService, private fileStorage: AngularFireStorage,
     private router: Router) { }
@@ -38,6 +41,7 @@ export class ProfileCompComponent implements OnInit {
       let user = JSON.parse(window.localStorage.getItem('id'));
       let name  =  JSON.parse(JSON.stringify(window.localStorage.getItem('name')))
       let status  =  JSON.parse(JSON.stringify(window.localStorage.getItem('status')))
+      this.logo  =  JSON.parse(JSON.stringify(window.localStorage.getItem('logo')))
       this.compStatus = status
       this.name = name ;     
       this.user = user ;
@@ -65,12 +69,13 @@ export class ProfileCompComponent implements OnInit {
        this.ref = this.fileStorage.ref(id);
        this.task = this.ref.put(event.target.files[0]);
        this.uploadProgress = this.task.percentageChanges();
-       console.log('progress',this.uploadProgress)
+      
        this.task
          .snapshotChanges()
          .pipe(finalize(() => (this.downloadURL = this.ref.getDownloadURL())))
-         .subscribe();
+         .subscribe(); console.log('progress',this.uploadProgress)
      }
+
    onSubmit(f: NgForm) {
        var img = document.getElementsByTagName('a');
        var imageUrl = img[img.length - 1].innerHTML;
@@ -87,7 +92,7 @@ export class ProfileCompComponent implements OnInit {
           image:imageUrl,
           ownerId:user,
           ownerType:this.compStatus,
-          expireddate:f.value.expireddate,
+          expiredDate:f.value.expiredDate,
           creationDate:f.value.creationDate,
           quantity:f.value.quantity,
           device:f.value.device,
@@ -143,10 +148,17 @@ export class ProfileCompComponent implements OnInit {
                console.log(error)
            })
        }
+       else if(this.category === 'laboratory'){
+        this.ProductService.addLab(obj).subscribe((res)=>{
+            console.log(res);
+          },
+          (error) => {
+            console.log(error)
+        })
+    }
    }
    changeInfo(){
      this.router.navigateByUrl('/seetingsComp');
    }
-   
 
 }

@@ -14,20 +14,27 @@ import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
          <img class="img-no-padding" style="max-height:600px;max-width:300px ; margin-left:8%;margin-right:8%;"
             src="{{item.image}}">
     </div>
-        <div class="card-body">
+        <div class="card-body" *ngIf = "item.quantity > 0 ">
             <h3 class="card-title">{{item.name}}</h3>
-                <h5 style="color:red"><del>{{item.oldPrice}}</del></h5>
-                 <h5 style="color:blue;font-weight: bold;">{{item.newPrice}}</h5>
+                <h5 style="color:red"><del>{{item.oldPrice}} Dt</del></h5>
+                 <h5 style="color:blue;font-weight: bold;">{{item.newPrice}} Dt</h5>
                  <h5>{{item.description}}</h5>
-                 <h5> Quantity:{{item.quantity}}</h5>
+                 <h5 > Quantity:{{item.quantity}}</h5>
     </div>
-    <div class="modal-footer">
+      <div class="card-body" *ngIf = "item.quantity === 0 ">
+    <h3 class="card-title">{{item.name}}</h3>
+        <h5 style="color:red"><del>{{item.oldPrice}} Dt</del></h5>
+         <h5 style="color:blue;font-weight: bold;">{{item.newPrice}} Dt </h5>
+         <h5>{{item.description}}</h5>
+         <h5 style="color:red" > Out Of Stock !!! </h5>
+      </div>
+    <div class="modal-footer" *ngIf = "item.quantity > 0 " >
         <div class="left-side">
             <button type="button" class="btn btn-default btn-link" (click)="activeModal.close(item.id)" > Add to my cart </button>
         </div>
        
     </div>
-    `
+   `
 })
 export class NgbdModalContent {
     @Output() public item;

@@ -20,8 +20,8 @@ router.post("/food", async (req, res) => {
     category:req.body.category,
     image:req.body.image,
     ownerId:req.body.ownerId,
-    ownerType:req.body.ownerType,
-    expireddate:req.body.expireddate,
+    ownerType:Sequelize.STRING,
+    expiredDate:Sequelize.STRING,
     creationDate:req.body.creationDate,
     quantity:req.body.quantity
   })
@@ -38,8 +38,8 @@ router.put("/food/:id", async (req, res) => {
         category:req.body.category,
         image:req.body.image,
         ownerId:req.body.ownerId,
-        ownerType:req.body.ownerType,
-        expireddate:req.body.expireddate,
+        ownerType:Sequelize.STRING,
+        expiredDate:Sequelize.STRING,
         creationDate:req.body.creationDate,
         quantity:req.body.quantity
       })
@@ -58,7 +58,7 @@ router.post("/clean", async (req, res) => {
       image:req.body.image,
       ownerId:req.body.ownerId,
       ownerType:req.body.ownerType,
-      expireddate:req.body.expireddate,
+      expiredDate:req.body.expiredDate,
       creationDate:req.body.creationDate,
       quantity:req.body.quantity
     })
@@ -76,7 +76,7 @@ router.post("/clean", async (req, res) => {
           image:req.body.image,
           ownerId:req.body.ownerId,
           ownerType:req.body.ownerType,
-          expireddate:req.body.expireddate,
+          expiredDate:req.body.expiredDate,
           creationDate:req.body.creationDate,
           quantity:req.body.quantity
         })
@@ -223,6 +223,41 @@ router.post("/clean", async (req, res) => {
           ownerId:req.body.ownerId,
           ownerType:req.body.ownerType,
           type:req.body.type,
+          quantity:req.body.quantity
+        })
+        .then((verifyProducts) => {
+          res.json(verifyProducts);
+        });
+    });
+  });
+  router.post("/labo", async (req, res) => {
+    await VerifyProducts.create({
+      name:req.body.name,
+      oldPrice:req.body.oldPrice,
+      newPrice:req.body.newPrice,
+      description:req.body.description,
+      category:req.body.category,
+      image:req.body.image,
+      ownerId:req.body.ownerId,
+      ownerType:req.body.ownerType,
+      expiredDate:req.body.expiredDate,
+      quantity:req.body.quantity
+    })
+  });
+  
+  router.put("/labo/:id", async (req, res) => {
+    VerifyProducts.findByPk(req.params.id).then((verifyProducts) => {
+      verifyProducts
+        .update({
+          name:req.body.name,
+          oldPrice:req.body.oldPrice,
+          newPrice:req.body.newPrice,
+          description:req.body.description,
+          category:req.body.category,
+          image:req.body.image,
+          ownerId:req.body.ownerId,
+          ownerType:req.body.ownerType,
+          expiredDate:req.body.expiredDate,
           quantity:req.body.quantity
         })
         .then((verifyProducts) => {

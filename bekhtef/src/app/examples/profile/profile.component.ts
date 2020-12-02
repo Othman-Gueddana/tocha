@@ -13,7 +13,11 @@ import {
 @Component({
     selector: 'app-profile',
     templateUrl: './profile.component.html',
-    styleUrls: ['./profile.component.scss']
+    styles: [`
+    ngb-progressbar {
+        margin-top: 5rem;
+    }
+    `]
 })
 
 export class ProfileComponent implements OnInit {
@@ -34,13 +38,13 @@ export class ProfileComponent implements OnInit {
     ngOnInit() {
        let user = JSON.parse(window.localStorage.getItem('id'));
        let firstName  =  JSON.parse(JSON.stringify(window.localStorage.getItem('firstName')))
+       let lastName  =  JSON.parse(JSON.stringify(window.localStorage.getItem('lastName')))
        let status  =  JSON.parse(JSON.stringify(window.localStorage.getItem('status')))
       //  let lastName   =  JSON.parse(window.localStorage.getItem('lastName'));
        this.clientStatus = status ;
        this.firstName = firstName ;
-      //  this.lastName = lastName ;      
+       this.lastName = lastName ;      
        this.user = user ;
-
       console.log(user)
       console.log(firstName)
       // console.log(lastName)
@@ -59,6 +63,7 @@ export class ProfileComponent implements OnInit {
       this.category = f.value.category
       this.status = f.value.category
     }
+
     selectedFile(event) {
         const id = Math.random().toString(36).substring(2);
         this.ref = this.fileStorage.ref(id);
@@ -69,6 +74,7 @@ export class ProfileComponent implements OnInit {
           .pipe(finalize(() => (this.downloadURL = this.ref.getDownloadURL())))
           .subscribe();
       }
+      
     onSubmit(f: NgForm) {
         var img = document.getElementsByTagName('a');
         var imageUrl = img[img.length - 1].innerHTML;
@@ -85,7 +91,7 @@ export class ProfileComponent implements OnInit {
            image:imageUrl,
            ownerId:user,
            ownerType:this.clientStatus,
-           expireddate:f.value.expireddate,
+           expiredDate:f.value.expiredDate,
            creationDate:f.value.creationDate,
            quantity:f.value.quantity,
            device:f.value.device,
@@ -141,6 +147,14 @@ export class ProfileComponent implements OnInit {
                 console.log(error)
             })
         }
+        else if(this.category === 'laboratory'){
+          this.ProductService.addLab(obj).subscribe((res)=>{
+              console.log(res);
+            },
+            (error) => {
+              console.log(error)
+          })
+      }
     }
     changeInfo(){
       this.router.navigateByUrl('/settings');

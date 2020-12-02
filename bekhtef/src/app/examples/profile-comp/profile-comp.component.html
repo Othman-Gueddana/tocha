@@ -9,23 +9,16 @@
         <div class="col-md-4">
           <div class="card card-user">
             <div class="image">
-              <img src="" alt="logo">
-            </div>
+              <!-- <img src={{logo}} alt="logo"> -->
+              <h5 class="title">{{name}}</h5>
+            </div> 
             <div class="card-body">
               <div class="author">
-                <a href="#">
-                  <img class="avatar border-gray" src={{user.logo}} alt="...">
+                  <img  style="width: 259px;
+                  height: 300px;
+                  margin-left: 20px;" src={{logo}} alt="...">
                   <h5 class="title">{{name}}</h5>
-                </a>
-                <p class="description">
-                 description
-                </p>
               </div>
-              <p class="description text-center">
-                Email
-                <br>
-                <br> 
-              </p>
             </div>
             <div class="card-footer">
               <hr>
@@ -48,7 +41,7 @@
                   <div class="row">
                     <div class="col-md-2 col-2">
                       <div class="avatar">
-                        <img src="../../../assets/img/chimi.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                        <img src="../../../assets/img/favicon.ico" alt="Circle Image" class="img-circle img-no-padding img-responsive">
                       </div>
                     </div>
                     <div class="col-md-7 col-7">
@@ -89,6 +82,7 @@
                                             <option value="electronics">Electronics</option>
                                             <option value="houseHold">House Hold</option>
                                             <option value="cleaning">Cleaning Products</option>
+                                            <option value="laboratory">Laboratory Product</option>
                                             <option value="other">Other</option>
         
                                         </select>
@@ -134,7 +128,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row"
-                                    *ngIf="(category === 'food' || category === 'cleaning')">
+                                    *ngIf="(category === 'food' || category === 'cleaning' || category === 'laboratory')">
                                     <label class="col-lg-3 col-form-label form-control-label">Expiration
                                         date:</label>
                                     <div class="col-lg-9">
@@ -196,40 +190,37 @@
                                             #quantity="ngModel" min="1" max="100" />
                                     </div>
                                 </div>
+
                             <div class="form-group row">
                                     <input
                                     name="img"
                                     type="file"
                                     name="filename"
-                                    (change)="selectedFile($event.target.files)"
+                                    (change)="selectedFile($event)"
                                     accept=".png,.jpg"
                                     required
                                     class="btn btn-danger btn-block btn-round"
-                                  />
-                              <div class="progress">
-                                    <div
-                                      class="progress-bar progress-bar-striped-bg-success"
-                                      role="progressbar"
-                                      [style.width]="(uploadProgress | async) + '%'"
-                                      [attr.aria-valuenow]="(uploadProgress | async) + '%'"
-                                      aria-valuemin="0"
-                                      aria-valuemax="100"
-                                    >
-              
-                                </div>
+                                  /> </div>
+                                  <div style="padding:20px" *ngIf="(uploadProgress | async) === 100"> 
+                                <ngb-progressbar  
+                               
+                                    type="warning" 
+                                    [attr.aria-valuenow]="(uploadProgress | async) + '%'"
+                                    [width]="(uploadProgress | async) + '%'"
+                                    [striped]="true" 
+                                    [animated]="true"
+                                    [value]= "(uploadProgress | async)"
+                                    aria-valuemin="0"
+                                    aria-valuemax="100"
+                                     ><i> {{ uploadProgress | async }}%</i></ngb-progressbar><br>
                                   </div>
-                                <a [href]="downloadURL | async" name="download">{{
-                                    downloadURL | async
-                                  }}</a>  
-                                  <p></p>
-                                </div>
+                                   <div>
+                                     <img src="{{downloadURL | async}}" style="max-height: 200px ; max-width: 200p; margin-left: 200px;" />
+                                   </div>
+                                     
                                     <img sref="C:\Users\ASUS\Desktop" />
-                                <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label form-control-label"></label>
-                                    <div class="col-lg-9">
-                                        <input type="submit" [disabled]="f.invalid"
-                                            class="btn btn-danger btn-block btn-round" value="Add">
-                                    </div>
+                                    <div class="form-group row">
+                                    <input type="submit" [disabled]="f.invalid" class="btn btn-danger btn-block btn-round" value="Add">
                                 </div>
                             </form>
                         </ng-template>

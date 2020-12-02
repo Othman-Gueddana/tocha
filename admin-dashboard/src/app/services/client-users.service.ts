@@ -30,7 +30,10 @@ export class ClientUsersService {
     window.alert(errorMessage);
     return throwError(errorMessage);
   }
-
+  //  getClient():  Observable<any>{
+  //   return this.http
+  //   .get(baseUrl).pipe(retry(3), catchError(this.handleError));
+  //  }
   getClientUsers(): Observable<any> {
     return this.http
       .get(baseUrl2).pipe(retry(3), catchError(this.handleError));
@@ -39,6 +42,7 @@ export class ClientUsersService {
     return this.http
       .get(baseUrl).pipe(retry(3), catchError(this.handleError));
   }
+ 
   confirmClientUser(data): Observable<any> {
 
     let obj = {
@@ -57,5 +61,9 @@ export class ClientUsersService {
   deleteClientUser(id): Observable<any> {
     return this.http.delete(baseUrl2 + `${id}`)
   }
+
+  sendMsg(data):  Observable<any>{
+    return this.http.post( baseUrl+ "msg", data).pipe(retry(3), catchError(this.handleError));
+   }
 
 }

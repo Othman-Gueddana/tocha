@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ProductService } from '../services/product.service';
-// import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
 import { NgbdModalComponent } from '../modal/modal.component';
 import { NgbdModalContent } from '../modal/modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -20,12 +20,11 @@ export class LandingComponent implements OnInit {
   selected: Array<any> =[];
   startIndex = 0;
   endIndex = 9;
-  page = 1
+  page = 1;
+  pageSize=9;
   productSelected: Number
-
   title = 'angular-text-search-highlight';
   searchText = '';
-
   selectedPrice: string = "0"
   selectedCategory: string = "category";
   constructor(private server: ProductService, private modalService: NgbModal, private PurchaseService:PurchaseService) { }
@@ -49,7 +48,7 @@ export class LandingComponent implements OnInit {
     })
      
   }
-  // this is for displaying the more information button  for each product 
+// this is for displaying the more information button  for each product 
   open(item) {
     console.log(item)
     const modalRef = this.modalService.open(NgbdModalContent);
