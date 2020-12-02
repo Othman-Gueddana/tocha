@@ -65,6 +65,22 @@ export class ProductService {
     console.log(obj)
     return this.http.post(baseUrl + 'food',  obj);
   }
+  addLab(data): Observable<any> {
+    let obj = {
+      name: data.name,
+      oldPrice: data.oldPrice,
+      newPrice: data.newPrice,
+      description: data.description,
+      category: data.category,
+      image: data.image,
+      ownerId: data.ownerId,
+      ownerType: data.ownerType,
+      expiredDate: data.expiredDate,
+      quantity: data.quantity,
+    };
+    console.log(obj)
+    return this.http.post(baseUrl + 'labo',  obj);
+  }
   addClean(data): Observable<any> {
     let obj = {
       name: data.name,

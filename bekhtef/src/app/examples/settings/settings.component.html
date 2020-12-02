@@ -6,7 +6,7 @@
         <div class="col-lg-4 col-sm-6 mr-auto ml-auto">
           <div class="card card-register">
             <!-- <h3 class="title" style="color:white;"> {{'Welcome' | translate}} </h3>-->
-            <h3 class="title" style="color:white;"> {{'ModifyInfo' | translate}} </h3>
+            <h3 class="title" style="color:white;">{{'ModifyInfo' | translate}} </h3>
             <form class="register-form" #f="ngForm" (ngSubmit)="onSubmit(f)">
               <label>{{'NewStreet' | translate}}</label>
               <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
@@ -28,7 +28,7 @@
                 <input type="text" class="form-control" placeholder="{{'City' | translate}}" (focus)="focus=true"
                   (blur)="focus=false" [(ngModel)]="city" name="city" />
               </div>
-              <label>{{'NewZipCode' | translate}} </label>
+              <label>{{'NewZipCode' | translate}}</label>
               <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
                 <div class="input-group-prepend">
                   <span class="input-group-text">
@@ -49,8 +49,8 @@
                   (blur)="focus=false" [(ngModel)]="phoneNumber" name="phoneNumber" />
               </div>
 
-              <button type="submit" [disabled]="f.invalid" class="btn btn-danger btn-block btn-round">
-                {{'ConfirmInfo' | translate}} </button>
+              <button type="submit" [disabled]="f.invalid"
+                class="btn btn-danger btn-block btn-round">{{'ConfirmInfo' | translate}}</button>
             </form>
           </div>
         </div>

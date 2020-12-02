@@ -83,7 +83,8 @@
                           <option value="electronics">{{'Electronics' | translate}}</option>
                           <option value="houseHold">{{'House Holds' | translate}}</option>
                           <option value="cleaning">{{'Cleaning Products' | translate}}</option>
-                          <option value="other">{{'Other' | translate}}</option>
+                          <option value="laboratory">{{'LaboratoryProduct' | translate}}</option>
+                          <option value="other">{{"Other" | translate}}</option>
 
                         </select>
                       </div>
@@ -92,7 +93,7 @@
                       <label class="col-lg-3 col-form-label form-control-label"></label>
                       <div class="col-lg-9">
                         <input type="submit" [disabled]="f.invalid" class="btn btn-danger btn-block btn-round"
-                          value="{{'ChooseCategory' | translate}}">
+                          value="{{'chooseCategory' | translate }}">
                       </div>
                     </div>
                   </form>
@@ -123,7 +124,8 @@
                         <input class="form-control" type="text" name="newPrice" ngModel #oldPrice="ngModel" />
                       </div>
                     </div>
-                    <div class="form-group row" *ngIf="(category === 'food' || category === 'cleaning')">
+                    <div class="form-group row"
+                      *ngIf="(category === 'food' || category === 'cleaning' || category === 'laboratory')">
                       <label class="col-lg-3 col-form-label form-control-label">{{'ExpirationDate' | translate}}</label>
                       <div class="col-lg-9">
                         <input class="form-control" type="text" name="exppireddate" ngModel #exppireddate="ngModel" />
@@ -137,7 +139,7 @@
                       </div>
                     </div>
                     <div class="form-group row" *ngIf="( category === 'houseHold' || category === 'electronics')">
-                      <label class="col-lg-3 col-form-label form-control-label"> {{'Devices' |translate}}</label>
+                      <label class="col-lg-3 col-form-label form-control-label">{{'Devices' |translate}}</label>
                       <div class="col-lg-9">
                         <select id="devices" name="device" class="form-control" ngModel #device="ngModel">
                           <option value="computer"> {{'Computer' | translate}} </option>
@@ -204,14 +206,9 @@
               </ngb-tab>
             </ngb-tabset>
           </div>
-        </div>
-        <div class="card card-user">
-          <div class="card-header">
-            <h5 class="card-title"> check your product</h5>
-          </div>
           <div class="card-body">
             <ngb-tabset>
-              <ngb-tab title="Your Products">
+              <ngb-tab title="{{'YourProducts' | translate}}">
                 <ng-template ngbTabContent>
                   <div class="row following" id="follows">
                     <div class="col-md-6 ml-auto mr-auto">

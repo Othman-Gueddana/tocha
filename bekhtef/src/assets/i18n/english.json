@@ -74,7 +74,7 @@
     "Clothes": "Clothes",
     "Fourniture": "Fourniture",
     "Electronics": "Electronics",
-    "House Holds": "House Holds",
+    "HouseHolds": "House Holds",
     "Cleaning Products": "Cleaning Products",
     "Other": "Other",
     "MaxPrice": "Max Price",
@@ -145,5 +145,6 @@
     "CurrentPassword": "Current Password",
     "NewPassword": "New Password",
     "EnterSearch": "Enter text to search",
-    "DescribeCompany": "Describe your Company"
+    "DescribeCompany": "Describe your Company",
+    "LaboratoryProduct": "Laboratory Product"
 }

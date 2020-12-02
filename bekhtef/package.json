@@ -45,6 +45,7 @@
     "rxjs": "6.5.4",
     "rxjs-compat": "6.5.4",
     "sweetalert2": "^10.11.0",
+    "twilio": "^3.52.0",
     "zone.js": "0.10.2"
   },
   "devDependencies": {

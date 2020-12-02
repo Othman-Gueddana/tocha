@@ -4,8 +4,6 @@
         </div>
 </div>
 
-
-
 <!-- // this is the search input text , with auto complete finding data -->
 <div class="container">
         <!-- //this is the drop buttons of categories and requirement price -->
@@ -54,6 +52,7 @@
                                 <option value="electronicDevices">{{ 'Electronics' | translate}}</option>
                                 <option value="houseHolds">{{ 'House Holds' | translate}}</option>
                                 <option value="cleaningProduct">{{ 'Cleaning Products' | translate}} </option>
+                                <option value="laboratory">{{'LaboratoryProduct' | translate}}</option>
                                 <option value="other">{{ 'Other' | translate}}</option>
                         </select>
                 </div>
@@ -119,8 +118,8 @@
                                 </div>
                                 <div class="card-body">
                                         <h3 class="card-title">{{item.name}}</h3>
-                                        <h5 id="red"><del>{{item.oldPrice}}</del></h5>
-                                        <h5>{{item.newPrice}}</h5>
+                                        <h5 id="red"><del>{{item.oldPrice}} Dt</del></h5>
+                                        <h5>{{item.newPrice}} Dt</h5>
 
                                         <button class="btn btn-outline-danger btn-round"
                                                 (click)="open(item)">{{'seeMoreAbout' | translate }}

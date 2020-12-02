@@ -142,5 +142,6 @@
     "CurrentPassword": "Mot de passe actuel",
     "NewPassword": "nouveau mot de passe",
     "EnterSearch": "Entrez le texte à rechercher",
-    "DescribeCompany": "Décrivez votre entreprise"
+    "DescribeCompany": "Décrivez votre entreprise",
+    "LaboratoryProduct": "Produit de laboratoire"
 }

@@ -21,7 +21,7 @@
             <div class="nav-tabs-navigation">
                 <div class="nav-tabs-wrapper">
                     <ngb-tabset [justify]="'center'">
-                        <ngb-tab title="{{'Your Products' | translate}}">
+                        <ngb-tab title="{{'YourProducts' | translate}}">
                             <ng-template ngbTabContent>
                                 <div class="row following" id="follows">
                                     <div class="col-md-6 ml-auto mr-auto">
@@ -57,7 +57,8 @@
                                                 <option value="fourniture">{{'Fourniture' | translate}}</option>
                                                 <option value="electronics">{{'Electronics' | translate  }}</option>
                                                 <option value="houseHold">{{'HouseHolds' | translate}}</option>
-                                                <option value="cleaning">{{'Cleaning Products'}}</option>
+                                                <option value="cleaning">{{'Cleaning Products' | translate }}</option>
+                                                <option value="laboratory">{{'LaboratoryProduct' | translate}}</option>
                                                 <option value="other">{{'Other' | translate}}</option>
 
                                             </select>
@@ -68,7 +69,7 @@
                                         <div class="col-lg-9">
                                             <input type="submit" [disabled]="f.invalid"
                                                 class="btn btn-danger btn-block btn-round"
-                                                value="{{'ChooseCategory' | translate}}">
+                                                value="{{'chooseCategory' | translate}}">
                                         </div>
                                     </div>
                                 </form>
@@ -84,7 +85,7 @@
 
                                     <div class="form-group row">
                                         <label
-                                            class="col-lg-3 col-form-label form-control-label">{{'Description' | translate}}</label>
+                                            class="col-lg-3 col-form-label form-control-label">{{'textDescripion' | translate}}</label>
                                         <div class="col-lg-9">
                                             <input class="form-control" type="text" name="description" ngModel
                                                 #description="ngModel" />
@@ -101,15 +102,17 @@
                                     </div>
                                     <div class="form-group row">
                                         <label
-                                            class="col-lg-3 col-form-label form-control-label">{{'NewPrice' | translate}</label>
+                                            class="col-lg-3 col-form-label form-control-label">{{'NewPrice' | translate}}</label>
                                         <div class="col-lg-9">
                                             <input class="form-control" type="text" name="newPrice" ngModel
                                                 #oldPrice="ngModel" />
                                         </div>
                                     </div>
                                     <div class="form-group row"
-                                        *ngIf="(category === 'food' || category === 'cleaning')">
-                                        <label class="col-lg-3 col-form-label form-control-label">{{'ExpirationDate' | translate}}</label>
+                                        *ngIf="(category === 'food' || category === 'cleaning' || category === 'laboratory')">
+                                        <label
+                                            class="col-lg-3 col-form-label form-control-label">{{"ExpirationDate" | translate}}
+                                        </label>
                                         <div class="col-lg-9">
                                             <input class="form-control" type="text" name="exppireddate" ngModel
                                                 #exppireddate="ngModel" />

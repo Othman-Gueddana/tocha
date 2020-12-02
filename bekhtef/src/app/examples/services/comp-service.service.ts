@@ -49,9 +49,12 @@ export class CompServiceService {
       email: data.email,
       newPassword: data.newPassword,
     };
-    console.log(data)
+    console.log(obj)
     console.log(baseUrl);
-    return this.http.patch(baseUrl + 'password', data);
+    return this.http.patch(baseUrl + 'updatePass', obj);
+  }
+  getInfo(): Observable<any> {
+    return this.http.get(baseUrl)
   }
 
 }
