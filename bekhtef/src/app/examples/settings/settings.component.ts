@@ -20,26 +20,26 @@ export class SettingsComponent implements OnInit {
   ngOnInit(): void {
     this.id = JSON.parse(window.localStorage.getItem('id'));
     this.ClientService.getInfo().subscribe((data: any) => {
-      for(var i=0; i<data.length; i++){
-        if(data[i].id === this.id){
-          this.phoneNumber=data[i].phoneNumber;
-          this.street=data[i].street;
-          this.city=data[i].city;
-          this.zipCode=data[i].zipCode;
+      for (var i = 0; i < data.length; i++) {
+        if (data[i].id === this.id) {
+          this.phoneNumber = data[i].phoneNumber;
+          this.street = data[i].street;
+          this.city = data[i].city;
+          this.zipCode = data[i].zipCode;
         }
       }
-      console.log(data) 
+      console.log(data)
     })
   }
   onSubmit() {
-    
+
     const obj = {
-      phoneNumber:this.phoneNumber,
-      street:this.street,
-      city:this.city,
-      zipCode:this.zipCode,
+      phoneNumber: this.phoneNumber,
+      street: this.street,
+      city: this.city,
+      zipCode: this.zipCode,
     };
-    this.ClientService.modifyInfo(obj,this.id).subscribe(
+    this.ClientService.modifyInfo(obj, this.id).subscribe(
       (res) => {
         console.log(res);
       },
@@ -48,6 +48,6 @@ export class SettingsComponent implements OnInit {
       }
     );
     alert("Your info is updated successfuly")
-          this.router.navigateByUrl('/user-profile');
+    this.router.navigateByUrl('/user-profile');
   }
 }
