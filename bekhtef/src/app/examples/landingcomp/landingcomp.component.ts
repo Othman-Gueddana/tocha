@@ -9,65 +9,60 @@ import { ProductService } from '../services/product.service';
   styleUrls: ['./landingcomp.component.css']
 })
 export class LandingcompComponent implements OnInit {
+  user: any;
   focus: any;
   focus1: any;
   allProducts: Array<any> = [];
   products: Array<any> =[];
+  selected: Array<any> =[];
   startIndex = 0;
   endIndex = 9;
   page = 1;
-  productSelected: Number;
-
+  pageSize=9;
+  productSelected: Number
+  title = 'angular-text-search-highlight';
+  searchText = '';
+  selectedPrice: string = "0"
+  selectedCategory: string = "category";
   constructor(private server: ProductService, private modalService: NgbModal) { }
 
-  ngOnInit(): void {
+// this is  a life cycle method ruun after changing text in the search text 
+  modelChangeFn(value) {
+      this.searchText = value
+    if (this.searchText.length < 1){
+        this.products = this.allProducts
+    }
+  }
+// here it runs this life cycle method when  we just refresh this page 
+  ngOnInit() {
     this.server.getProducts().subscribe((data: any) => {
       this.allProducts = data
       console.log(this.products)
       this.products = this.allProducts
-    })
-  }
-  open(item) {
-    console.log(item)
-    const modalRef = this.modalService.open(NgbdModalContent);
-    modalRef.componentInstance.item = item;
-    modalRef.result.then((result) => {
-      if (result) {
-        console.log(result);
-      }
-    });
 
+      this.user = JSON.parse(window.localStorage.getItem('id'))
+
+    })
+     
   }
+
+  
+  // /here we are rendering pagination method
+
   updateIndex(pageIndex) {
     this.startIndex = pageIndex * 9;
     this.endIndex = this.startIndex + 9
     document.documentElement.scrollTop = 0;
     this.page = Math.ceil(this.endIndex / 9)
   }
-
   getArrayFromNumber(length) {
     return new Array(Math.floor(length / 10))
   }
-
-  getCategoriesdata(value: string) {
-    console.log(this.products)
-    let filtered = this.allProducts.filter(item => item.category === value )
-      this.products = filtered
-      if(value==="category"){
-        this.products = this.allProducts
-      }
-     
-  }
-  getPricedata(value: string) {
-    let filtered1 = this.allProducts.filter(item => 
-      console.log(item.newPrice)
-      // item.newPrice <= value
-       );
+  // this is 
+  clickOnMe(item){
+    let filter = this.allProducts.filter(data =>  data.name === item.name)
+    this.products=filter;
    
-          this.products.concat(filtered1)
-       if (value ==="Required price"){
-         this.products = this.allProducts
-       }
   }
 }
 

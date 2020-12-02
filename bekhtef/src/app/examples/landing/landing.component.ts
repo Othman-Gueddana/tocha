@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ProductService } from '../services/product.service';
-import {NgbPagination} from '@ng-bootstrap/ng-bootstrap';
+import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
 import { NgbdModalComponent } from '../modal/modal.component';
 import { NgbdModalContent } from '../modal/modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -21,7 +21,7 @@ export class LandingComponent implements OnInit {
   startIndex = 0;
   endIndex = 9;
   page = 1;
-  pageSize=10;
+  pageSize=9;
   productSelected: Number
   title = 'angular-text-search-highlight';
   searchText = '';

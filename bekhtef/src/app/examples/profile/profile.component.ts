@@ -13,7 +13,11 @@ import {
 @Component({
     selector: 'app-profile',
     templateUrl: './profile.component.html',
-    styleUrls: ['./profile.component.scss']
+    styles: [`
+    ngb-progressbar {
+        margin-top: 5rem;
+    }
+    `]
 })
 
 export class ProfileComponent implements OnInit {
@@ -34,11 +38,12 @@ export class ProfileComponent implements OnInit {
     ngOnInit() {
        let user = JSON.parse(window.localStorage.getItem('id'));
        let firstName  =  JSON.parse(JSON.stringify(window.localStorage.getItem('firstName')))
+       let lastName  =  JSON.parse(JSON.stringify(window.localStorage.getItem('lastName')))
        let status  =  JSON.parse(JSON.stringify(window.localStorage.getItem('status')))
       //  let lastName   =  JSON.parse(window.localStorage.getItem('lastName'));
        this.clientStatus = status ;
        this.firstName = firstName ;
-      //  this.lastName = lastName ;      
+       this.lastName = lastName ;      
        this.user = user ;
       console.log(user)
       console.log(firstName)
@@ -86,7 +91,7 @@ export class ProfileComponent implements OnInit {
            image:imageUrl,
            ownerId:user,
            ownerType:this.clientStatus,
-           expireddate:f.value.expireddate,
+           expiredDate:f.value.expiredDate,
            creationDate:f.value.creationDate,
            quantity:f.value.quantity,
            device:f.value.device,
@@ -142,6 +147,14 @@ export class ProfileComponent implements OnInit {
                 console.log(error)
             })
         }
+        else if(this.category === 'laboratory'){
+          this.ProductService.addLab(obj).subscribe((res)=>{
+              console.log(res);
+            },
+            (error) => {
+              console.log(error)
+          })
+      }
     }
     changeInfo(){
       this.router.navigateByUrl('/settings');

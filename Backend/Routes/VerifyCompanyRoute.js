@@ -17,7 +17,6 @@ router.post("/register", async (req, res) => {
     name: req.body.name,
     email: req.body.email,
     password: req.body.password,
-    email: req.body.email,
     street: req.body.street,
     city: req.body.city,
     zipCode: req.body.zipCode,

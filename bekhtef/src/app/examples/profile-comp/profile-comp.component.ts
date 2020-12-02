@@ -32,6 +32,7 @@ export class ProfileCompComponent implements OnInit {
   products:any = [];
   user: any ;
   name: any ;
+  logo:any;
   compStatus: string = "";
   constructor(private ProductService: ProductService, private fileStorage: AngularFireStorage,
     private router: Router) { }
@@ -40,6 +41,7 @@ export class ProfileCompComponent implements OnInit {
       let user = JSON.parse(window.localStorage.getItem('id'));
       let name  =  JSON.parse(JSON.stringify(window.localStorage.getItem('name')))
       let status  =  JSON.parse(JSON.stringify(window.localStorage.getItem('status')))
+      this.logo  =  JSON.parse(JSON.stringify(window.localStorage.getItem('logo')))
       this.compStatus = status
       this.name = name ;     
       this.user = user ;
@@ -90,7 +92,7 @@ export class ProfileCompComponent implements OnInit {
           image:imageUrl,
           ownerId:user,
           ownerType:this.compStatus,
-          expireddate:f.value.expireddate,
+          expiredDate:f.value.expiredDate,
           creationDate:f.value.creationDate,
           quantity:f.value.quantity,
           device:f.value.device,
@@ -146,6 +148,14 @@ export class ProfileCompComponent implements OnInit {
                console.log(error)
            })
        }
+       else if(this.category === 'laboratory'){
+        this.ProductService.addLab(obj).subscribe((res)=>{
+            console.log(res);
+          },
+          (error) => {
+            console.log(error)
+        })
+    }
    }
    changeInfo(){
      this.router.navigateByUrl('/seetingsComp');
