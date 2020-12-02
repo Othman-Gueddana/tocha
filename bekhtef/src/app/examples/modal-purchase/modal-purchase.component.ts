@@ -42,13 +42,13 @@ width: 100%;">
       <td style="border: 1px solid #dddddd;
       text-align: left;
       padding: 8px;">
-      {{i.price}} 
+      {{i.price}} Dt
       </td>
     <tr>
     
   </table>
 </div>
-<div class="total"> <h3> Total : {{total}} </h3></div>
+<div class="total"> <h3> Total : {{total}} Dt</h3></div>
 <div class="modal-footer">
 <div class="left-side">
     <button type="button" class="btn btn-default btn-link" (click)="activeModal.close('Close click')"> Cancel </button>
@@ -123,12 +123,12 @@ width: 100%;">
         }
      }
     this.PurchaseService.delete().subscribe((res)=>{
-      console.log(res);
+      window.location.reload()
     },
     (error) => {
     console.log(error);
     })
-    window.location.reload()
+   
   }
  }
 
