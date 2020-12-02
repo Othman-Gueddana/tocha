@@ -76,6 +76,7 @@
                 <div class="col-lg-4 search ">
                         <div class="form-group">
 
+
                                 <label for="search-text"
                                         id="grey"><strong>{{ 'searchProductname' | translate}}</strong></label>
 
@@ -84,6 +85,7 @@
                                         placeholder="{{'EnterSearch' | translate }}" value="">
 
                         </div>
+
                         <ul *ngIf=" searchText.length > 0" class="list-group list-group-flush">
 
                                 <li (click)="clickOnMe(item)" class="list-group-item"
