@@ -45,8 +45,8 @@ router.post("/register", async (req, res) => {
           secure: false,
           host: "smtp.gmail.com",
           auth: {
-            user: emailAccount,
-            pass: pass,
+            user: process.env.GMAIL_USER,
+            pass:  process.env.GMAIL_PASS,
           },
           tls: {
             rejectUnauthorized: false,
@@ -55,10 +55,10 @@ router.post("/register", async (req, res) => {
       );
 
       let mailOptions = {
-        from: "",
+        from: process.env.GMAIL_USER,
         to: `${req.body.email}`,
         subject: "Be5tef",
-        text: `Hey Mr/Mrs ${req.body.firstName},text here `,
+        text: `Hey Mr/Mrs ${req.body.lastName} , thank you for checking out Bekhtef ,your request to join bekhtef's community has been accepted , we are looking forward a win-win cooperation  `,
       };
       transporter.sendMail(mailOptions, (err, info) => {
         console.log("done");

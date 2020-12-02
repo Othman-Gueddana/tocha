@@ -1,26 +1,26 @@
 <div class="wrapper">
     <div class="page-header page-header-xs" data-parallax="true"
-        style="background-image: url('./assets/img/backHead.jpg');">
-        <div class="filter"></div>
+        style="background-image: url('../../../assets/img/download\ \(1\).gif');">
     </div>
     <div class="section profile-content">
         <div class="container">
             <div class="owner">
                 <div class="name">
-                    <h4 class="title" style="color:#EB5E28">{{firstName + ' ' + lastName}} </h4><br/>
+                    <h4 class="title" style="color:#EB5E28">{{firstName + ' ' + lastName}} </h4><br />
                     <!-- <h4 class="title">{{lastName}}</h4> -->
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6 ml-auto mr-auto text-center">
-                    <button class="btn btn-outline-default btn-round" (click)="changeInfo()"><i class="fa fa-cog"></i> Settings</button>
+                    <button class="btn btn-outline-default btn-round" (click)="changeInfo()"><i class="fa fa-cog"></i>
+                        {{'Settings' | translate}}</button>
                 </div>
             </div>
             <br />
             <div class="nav-tabs-navigation">
                 <div class="nav-tabs-wrapper">
                     <ngb-tabset [justify]="'center'">
-                        <ngb-tab title="Your Products">
+                        <ngb-tab title="{{'YourProducts' | translate}}">
                             <ng-template ngbTabContent>
                                 <div class="row following" id="follows">
                                     <div class="col-md-6 ml-auto mr-auto">
@@ -28,8 +28,7 @@
                                             <li>
                                                 <div class="row" *ngFor="let item of products ">
                                                     <div class="col-md-2 col-sm-2 ml-auto mr-auto">
-                                                        <img  src="{{item.image}}"
-                                                            alt="Circle Image"
+                                                        <img src="{{item.image}}" alt="Circle Image"
                                                             class="img-circle img-no-padding img-responsive">
                                                     </div>
                                                     <div class="col-md-7 col-sm-4 ml-auto">
@@ -43,22 +42,23 @@
                                 </div>
                             </ng-template>
                         </ngb-tab>
-                        <ngb-tab title="Add a product">
+                        <ngb-tab title="{{'AddProduct'| translate}}">
                             <ng-template ngbTabContent>
                                 <form role="form" #f="ngForm" (ngSubmit)="addCategory(f)" *ngIf="status === '' ">
                                     <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label">Category:</label>
+                                        <label
+                                            class="col-lg-3 col-form-label form-control-label">{{'Category' | translate}}:</label>
                                         <div class="col-lg-9">
                                             <select id="product" name="category" class="form-control" ngModel
                                                 #category="ngModel">
-                                                <option value="food">Food</option>
-                                                <option value="clothes">Clothes</option>
-                                                <option value="fourniture">Fourniture</option>
-                                                <option value="electronics">Electronics</option>
-                                                <option value="houseHold">House Hold</option>
-                                                <option value="cleaning">Cleaning Products</option>
-                                                <option value="laboratory">Laboratory Product</option>
-                                                <option value="other">Other</option>
+                                                <option value="food">{{'Food' | translate}}</option>
+                                                <option value="clothes">{{'Clothes' | translate}}</option>
+                                                <option value="fourniture">{{'Fourniture' | translate}}</option>
+                                                <option value="electronics">{{'Electronics' | translate  }}</option>
+                                                <option value="houseHold">{{'HouseHolds' | translate}}</option>
+                                                <option value="cleaning">{{'Cleaning Products' | translate }}</option>
+                                                <option value="laboratory">{{'LaboratoryProduct' | translate}}</option>
+                                                <option value="other">{{'Other' | translate}}</option>
 
                                             </select>
                                         </div>
@@ -67,13 +67,15 @@
                                         <label class="col-lg-3 col-form-label form-control-label"></label>
                                         <div class="col-lg-9">
                                             <input type="submit" [disabled]="f.invalid"
-                                                class="btn btn-danger btn-block btn-round" value="Choose category">
+                                                class="btn btn-danger btn-block btn-round"
+                                                value="{{'chooseCategory' | translate}}">
                                         </div>
                                     </div>
                                 </form>
                                 <form role="form" #f="ngForm" (ngSubmit)="onSubmit(f)" *ngIf="status !== '' ">
                                     <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label">Title:</label>
+                                        <label
+                                            class="col-lg-3 col-form-label form-control-label">{{'Title' | translate}}</label>
                                         <div class="col-lg-9">
                                             <input class="form-control" type="text" name="title" ngModel
                                                 #title="ngModel" />
@@ -81,7 +83,8 @@
                                     </div>
 
                                     <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label">Description:</label>
+                                        <label
+                                            class="col-lg-3 col-form-label form-control-label">{{'textDescripion' | translate}}</label>
                                         <div class="col-lg-9">
                                             <input class="form-control" type="text" name="description" ngModel
                                                 #description="ngModel" />
@@ -89,14 +92,16 @@
                                     </div>
 
                                     <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label">Old Price:</label>
+                                        <label
+                                            class="col-lg-3 col-form-label form-control-label">{{'OldPrice' | translate}}</label>
                                         <div class="col-lg-9">
                                             <input class="form-control" type="text" name="oldPrice" ngModel
                                                 #oldPrice="ngModel" />
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label">New Price:</label>
+                                        <label
+                                            class="col-lg-3 col-form-label form-control-label">{{'NewPrice' | translate}}</label>
                                         <div class="col-lg-9">
                                             <input class="form-control" type="text" name="newPrice" ngModel
                                                 #oldPrice="ngModel" />
@@ -104,8 +109,9 @@
                                     </div>
                                     <div class="form-group row"
                                         *ngIf="(category === 'food' || category === 'cleaning' || category === 'laboratory')">
-                                        <label class="col-lg-3 col-form-label form-control-label">Expiration
-                                            date:</label>
+                                        <label
+                                            class="col-lg-3 col-form-label form-control-label">{{"ExpirationDate" | translate}}
+                                        </label>
                                         <div class="col-lg-9">
                                             <input class="form-control" type="text" name="exppireddate" ngModel
                                                 #exppireddate="ngModel" />
@@ -113,7 +119,8 @@
                                     </div>
                                     <div class="form-group row"
                                         *ngIf="(category === 'food' || category === 'cleaning' || category === 'houseHold' || category === 'electronics')">
-                                        <label class="col-lg-3 col-form-label form-control-label">Creation date:</label>
+                                        <label
+                                            class="col-lg-3 col-form-label form-control-label">{{'CreationDate' | translate}}</label>
                                         <div class="col-lg-9">
                                             <input class="form-control" type="text" name="creationDate" ngModel
                                                 #creationDate="ngModel" />
@@ -121,51 +128,56 @@
                                     </div>
                                     <div class="form-group row"
                                         *ngIf="( category === 'houseHold' || category === 'electronics')">
-                                        <label class="col-lg-3 col-form-label form-control-label"> Devices:</label>
+                                        <label class="col-lg-3 col-form-label form-control-label">
+                                            {{'Devices' | translate}}</label>
                                         <div class="col-lg-9">
                                             <select id="devices" name="device" class="form-control" ngModel
                                                 #device="ngModel">
-                                                <option value="computer"> Computer </option>
-                                                <option value="printer"> Printer </option>
-                                                <option value="projector"> Projector</option>
-                                                <option value="speaker"> Speaker</option>
-                                                <option value="camera">Camera</option>
-                                                <option value="other">Other</option>
+                                                <option value="computer">{{'Computer' | translate}} </option>
+                                                <option value="printer">{{'Printer' | translate}} </option>
+                                                <option value="projector"> {{'Projector' | translate}}</option>
+                                                <option value="speaker">{{'Speaker' | translate}} </option>
+                                                <option value="camera">{{'Camera' | translate}}</option>
+                                                <option value="other">{{'Other' | translate}}Other</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group row" *ngIf="category === 'clothes'">
-                                        <label class="col-lg-3 col-form-label form-control-label">Human Kind:</label>
+                                        <label
+                                            class="col-lg-3 col-form-label form-control-label">{{'HumanKind' | translate}}</label>
                                         <div class="col-lg-9">
                                             <select id="humankind" name="humankind" class="form-control" ngModel
                                                 #humanKind="ngModel">
-                                                <option value="homme">Men </option>
-                                                <option value="woman">Woman </option>
-                                                <option value="kids">Kids</option>
-                                                <option value="other">Other</option>
+                                                <option value="homme">{{'Men' | translate}} </option>
+                                                <option value="woman">{{'Woman' | translate}} </option>
+                                                <option value="kids">{{'Kids' | translate}}</option>
+                                                <option value="other">{{'Other' | translate}}</option>
 
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group row" *ngIf="category === 'fourniture'">
-                                        <label class="col-lg-3 col-form-label form-control-label">Type:</label>
+                                        <label
+                                            class="col-lg-3 col-form-label form-control-label">{{'Type' | translate}}</label>
                                         <div class="col-lg-9">
                                             <select id="type" name="type" class="form-control" ngModel #type="ngModel">
-                                                <option value="table">Table</option>
-                                                <option value="bed">Beb</option>
-                                                <option value="chair">Chair</option>
-                                                <option value="other">Other</option>
+                                                <option value="table">{{'Table' | translate}}</option>
+                                                <option value="bed">{{'Bed' | translate}}</option>
+                                                <option value="chair">{{'Chair' | translate}}</option>
+                                                <option value="other">{{'Other' | translate}}</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label">Quantity:</label>
+                                        <label
+                                            class="col-lg-3 col-form-label form-control-label">{{'Quantity' | translate}}</label>
                                         <div class="col-lg-9">
                                             <input class="form-control" type="number" name="quantity" ngModel
                                                 #quantity="ngModel" min="1" max="100" />
                                         </div>
                                     </div>
                                     <div class="form-group row">
+
                                         <input
                                         name="img"
                                         type="file"
@@ -195,6 +207,7 @@
                                         </div>
                                          
                                         <img sref="C:\Users\ASUS\Desktop" />
+
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label"></label>
                                         <div class="col-lg-9">
@@ -202,9 +215,9 @@
                                                 class="btn btn-danger btn-block btn-round" value="Add">
                                         </div>
                                     </div>
-                              
+
                                 </form>
-                            
+
                             </ng-template>
                         </ngb-tab>
                     </ngb-tabset>
