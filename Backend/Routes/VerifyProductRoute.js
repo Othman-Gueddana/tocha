@@ -230,6 +230,41 @@ router.post("/clean", async (req, res) => {
         });
     });
   });
+  router.post("/labo", async (req, res) => {
+    await VerifyProducts.create({
+      name:req.body.name,
+      oldPrice:req.body.oldPrice,
+      newPrice:req.body.newPrice,
+      description:req.body.description,
+      category:req.body.category,
+      image:req.body.image,
+      ownerId:req.body.ownerId,
+      ownerType:req.body.ownerType,
+      expiredDate:req.body.expiredDate,
+      quantity:req.body.quantity
+    })
+  });
+  
+  router.put("/labo/:id", async (req, res) => {
+    VerifyProducts.findByPk(req.params.id).then((verifyProducts) => {
+      verifyProducts
+        .update({
+          name:req.body.name,
+          oldPrice:req.body.oldPrice,
+          newPrice:req.body.newPrice,
+          description:req.body.description,
+          category:req.body.category,
+          image:req.body.image,
+          ownerId:req.body.ownerId,
+          ownerType:req.body.ownerType,
+          expiredDate:req.body.expiredDate,
+          quantity:req.body.quantity
+        })
+        .then((verifyProducts) => {
+          res.json(verifyProducts);
+        });
+    });
+  });
 router.delete("/:id", async (req, res) => {
   await VerifyProducts.findByPk(req.params.id)
     .then((verifyProducts) => {

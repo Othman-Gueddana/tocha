@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DeleveryService } from '../../services/delevery.service';
+import { ClientUsersService } from "../../services/client-users.service"
 import * as html2pdf from 'html2pdf.js'
 @Component({
     selector: 'user-cmp',
@@ -12,7 +13,7 @@ export class UserComponent implements OnInit {
     clients: Array<any> =[];
     products: Array<any> =[];
     data: Array<any> =[];
-    constructor(private DeleveryService: DeleveryService) { }
+    constructor(private DeleveryService: DeleveryService , private service :ClientUsersService) { }
     ngOnInit() {
         this.DeleveryService.getLivraison().subscribe((data: any) => {
             this.data=data 
@@ -86,7 +87,7 @@ export class UserComponent implements OnInit {
             }
         }   
     }
-    save(name){
+    save(name,number){
         
     const options = {
         filename:`${name}.pdf`,
@@ -99,6 +100,11 @@ export class UserComponent implements OnInit {
     .from(content)
     .set(options)
     .save();
+    
+    // function to send SMS to client 
+    // this.service.sendMsg(number).subscribe((data: any) => {
+    //     console.log(data) 
+    //   })
     }
-
+    
 }
