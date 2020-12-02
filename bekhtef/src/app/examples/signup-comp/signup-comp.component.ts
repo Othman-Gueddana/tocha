@@ -39,12 +39,14 @@ export class SignupCompComponent implements OnInit {
     onSubmit(f: NgForm) {
        console.log(f.value)
        var img = document.getElementsByTagName('a');
+     
        var imageUrl = img[img.length - 1].innerHTML;
-
+      
        const car = /[A-Z]/gi
        const other = /[@,<,>,?,!,&,|,%,$,£]/
        if(f.value.password.match(car)!== null && f.value.password.match(other)!==null ){
              if(f.value.passwordConf === f.value.password ){
+               
                const obj ={
                name:f.value.name,
                email:f.value.email,
@@ -58,6 +60,7 @@ export class SignupCompComponent implements OnInit {
                numberPatent:f.value.numberPatent,
                logo:imageUrl
                }
+               
                 this.CompServiceService.createRegister(obj).subscribe(
             (res) => {
               console.log(res);

@@ -188,9 +188,11 @@
                                         aria-valuemax="100"
                                          ><i> {{ uploadProgress | async }}%</i></ngb-progressbar><br>
                                       </div>
-                                       <div>
-                                         <img src="{{downloadURL | async}}" style="max-height: 200px ; max-width: 200p; margin-left: 200px;" />
-                                       </div>
+                                      <div>
+                                        <a [href]="downloadURL | async" name="download">{{
+                                         downloadURL | async
+                                       }}</a>
+                                        </div>
                                          
                                         <img sref="C:\Users\ASUS\Desktop" />
                                     <div class="form-group row">
