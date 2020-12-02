@@ -1,59 +1,62 @@
 <div class="wrapper">
-    <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('../../../assets/img/download\ \(1\).gif');">
+    <div class="page-header page-header-xs" data-parallax="true"
+        style="background-image: url('../../../assets/img/download\ \(1\).gif');">
     </div>
     <div class="section landing-section">
         <div class="container">
             <div class="row">
                 <div class="col-md-8" style="margin-left: 230px;">
-                    <h2 class="text-center"><i class="nc-icon nc-send"> </i> Send us your feedback </h2>
-                    <p class="text-center"> It can help us to improve our website </p>
+                    <h2 class="text-center"><i class="nc-icon nc-send"> </i> {{'send us feedback' |translate}}</h2>
+                    <p class="text-center">{{'improve our website' | translate}} </p>
                     <form class="contact-form" #f="ngForm" (ngSubmit)="onSubmit(f)">
                         <div class="row">
-                        <textarea class="form-control" rows="4" placeholder="Tell us your thoughts ..." ngModel required  #text="ngModel"  name="text"></textarea>
-                        <div class="row">
-                            <div class="col-md-8" style="margin-left: 250px;">
-                                <button class="delete" type='submit' class="btn btn-danger btn-center " >
-                                    Send FeedBack</button>
+                            <textarea class="form-control" rows="4" placeholder="{{ 'TellUsThoughts' | translate}}"
+                                ngModel required #text="ngModel" name="text"></textarea>
+                            <div class="row">
+                                <div class="col-md-8" style="margin-left: 250px;">
+                                    <button class="delete" type='submit' class="btn btn-danger btn-center ">
+                                        {{'Send FeedBack' |translate}} </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     </form>
                 </div>
             </div>
-                <div class="row">
-                    
-                    <div class="col-md-6">
-                        <div class="card card-feed">
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="card card-feed">
                         <div class="feedback-list">
-                        <h2>My Feedback :</h2>
-                        <div class="feedback" *ngFor="let feedback of myFeedback ">
-                            <div class="feed-body">
-                                <h4 style='color: #66615b;'> Me :</h4>
-                                <div class='feedborder'>
-                                <h5>{{feedback.text}}</h5>
-                                
-                                <button class="btn btn-danger btn-round"  style='color: #EB5E28; margin-left: 186px ' (click)="deleteFeed(feedback.id)"> Delete </button>
+                            <h2>{{'My Feedback' |translate}}</h2>
+                            <div class="feedback" *ngFor="let feedback of myFeedback ">
+                                <div class="feed-body">
+                                    <h4 style='color: #66615b;'>{{'Me' |translate}}</h4>
+                                    <div class='feedborder'>
+                                        <h5>{{feedback.text}}</h5>
+
+                                        <button class="btn btn-danger btn-round"
+                                            style='color: #EB5E28; margin-left: 186px '
+                                            (click)="deleteFeed(feedback.id)">{{'Delete' |translate}}</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-                    </div>
-                    <div class="col-md-6"> 
+                <div class="col-md-6">
                     <div class="card card-feed">
-                       <div class="feedback-list">
-                        <h2>Other's Feedback:</h2>
-                        <div class="feedback" *ngFor="let feedback of otherFeedback ">
-                            <div class="feed-body">
-                                <h4 style='color:  #66615b '>{{feedback.clientName}}:</h4>
-                                <h5>{{feedback.text}}</h5>
+                        <div class="feedback-list">
+                            <h2> {{"Other's Feedback" |translate}}</h2>
+                            <div class="feedback" *ngFor="let feedback of otherFeedback ">
+                                <div class="feed-body">
+                                    <h4 style='color:  #66615b '>{{feedback.clientName}}:</h4>
+                                    <h5>{{feedback.text}}</h5>
+                                </div>
                             </div>
                         </div>
                     </div>
-                 </div>
-                        </div>
-                   </div>
                 </div>
             </div>
         </div>
-   
+    </div>
+</div>

@@ -18,15 +18,15 @@ export class SettingsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  onSubmit() {
+  onSubmit(f) {
     const id = JSON.parse(window.localStorage.getItem('id'));
     const obj = {
-      phoneNumber:this.phoneNumber,
-      street:this.street,
-      city:this.city,
-      codeZip:this.codeZip,
+      phoneNumber: this.phoneNumber,
+      street: this.street,
+      city: this.city,
+      codeZip: this.codeZip,
     };
-    this.ClientService.modifyInfo(obj,id).subscribe(
+    this.ClientService.modifyInfo(obj, id).subscribe(
       (res) => {
         console.log(res);
       },
@@ -35,6 +35,6 @@ export class SettingsComponent implements OnInit {
       }
     );
     alert("Your info is updated successfuly")
-          this.router.navigateByUrl('/user-profile');
+    this.router.navigateByUrl('/user-profile');
   }
 }
