@@ -16,15 +16,15 @@ import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
     </div>
         <div class="card-body" *ngIf = "item.quantity > 0 ">
             <h3 class="card-title">{{item.name}}</h3>
-                <h5 style="color:red"><del>{{item.oldPrice}}</del></h5>
-                 <h5 style="color:blue;font-weight: bold;">{{item.newPrice}}</h5>
+                <h5 style="color:red"><del>{{item.oldPrice}} Dt</del></h5>
+                 <h5 style="color:blue;font-weight: bold;">{{item.newPrice}} Dt</h5>
                  <h5>{{item.description}}</h5>
                  <h5 > Quantity:{{item.quantity}}</h5>
     </div>
       <div class="card-body" *ngIf = "item.quantity === 0 ">
     <h3 class="card-title">{{item.name}}</h3>
-        <h5 style="color:red"><del>{{item.oldPrice}}</del></h5>
-         <h5 style="color:blue;font-weight: bold;">{{item.newPrice}}</h5>
+        <h5 style="color:red"><del>{{item.oldPrice}} Dt</del></h5>
+         <h5 style="color:blue;font-weight: bold;">{{item.newPrice}} Dt </h5>
          <h5>{{item.description}}</h5>
          <h5 style="color:red" > Out Of Stock !!! </h5>
       </div>

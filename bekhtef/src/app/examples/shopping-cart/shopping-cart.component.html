@@ -2,8 +2,8 @@
   <section class="shopping-cart dark">
     <div class="container">
       <div class="block-heading">
-        <h2>Shopping Cart</h2>
-        <p>verify you cart item , price and quantity.</p>
+        <h2>{{'ShoppingCart' | translate }}</h2>
+        <p>{{'verifyCart' | translate}}</p>
       </div>
       <div class="content">
         <div class="row">
@@ -20,15 +20,16 @@
                       <div class="row infoo">
 
                         <div class="col-md-3 quantity">
-                          <label for="quantity">Quantity:</label>
+                          <label for="quantity">{{'Quantity' | translate}}</label>
                           <input id={{item.id}} class="form-control quantity-input" type="number" name="count" min=1
                             max={{item.quantity}} #target (change)="changed(target.value,item)" />
                         </div>
                         <div class="col-md-3 price">
-                          <label for="quantity">Price: {{(target.value * item.newPrice)}}</label>
+                          <label for="quantity">{{'Price' | translate }} {{(target.value * item.newPrice)}}</label>
                         </div>
                         <div class="col-md-2 ">
-                          <a class="btn btn-outline-danger btn-round " (click)="clear(item.id)"> Delete </a>
+                          <a class="btn btn-outline-danger btn-round " (click)="clear(item.id)">
+                            {{'Delete' | translate}} </a>
                         </div>
                       </div>
                     </div>
@@ -40,14 +41,18 @@
 
           <div class="col-md-12 col-lg-4">
             <div class="summary">
-              <h3>Summary</h3>
-              <div class="summary-item"><span class="text"> Subtotal :{{total}} DT</span></div>
-              <div class="summary-item"><span class="text">Discount</span><span class="price">0 DT </span></div>
-              <div class="summary-item"><span class="text">Shipping</span><span class="price">0 DT</span></div>
-              <div class="summary-item"><span class="text">Total</span><span class="price">Total :{{total}} DT</span>
+              <h3>{{'Summary' | translate}}</h3>
+              <div class="summary-item"><span class="text">{{'SubTotal' | translate}} :{{total}}
+                  {{'Dt' | translate}}</span></div>
+              <div class="summary-item"><span class="text">{{'Discount' | translate}}</span><span class="price">0
+                  {{'Dt' | translate}} </span></div>
+              <div class="summary-item"><span class="text">{{'Shipping' | translate}}</span><span class="price">0
+                  {{'Dt' | translate}}</span></div>
+              <div class="summary-item"><span class="text">{{'Total' | translate}}</span><span
+                  class="price">{{'Total' | translate}} :{{total}} {{'Dt' | translate}}</span>
               </div>
-              <button class="btn btn-outline-danger btn-round" (click)="open()"> Checkout </button>
-              <a class="btn btn-outline-danger btn-round " (click)="clearAll()">Clear my purchase</a>
+              <button class="btn btn-outline-danger btn-round" (click)="open()"> {{'Checkout' | translate}} </button>
+              <a class="btn btn-outline-danger btn-round " (click)="clearAll()">{{'ClearPurchase' | translate }}</a>
             </div>
           </div>
         </div>

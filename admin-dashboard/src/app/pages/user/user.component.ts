@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DeleveryService } from '../../services/delevery.service';
+import { ClientUsersService } from "../../services/client-users.service"
 import * as html2pdf from 'html2pdf.js'
 @Component({
     selector: 'user-cmp',
@@ -12,7 +13,7 @@ export class UserComponent implements OnInit {
     clients: Array<any> =[];
     products: Array<any> =[];
     data: Array<any> =[];
-    constructor(private DeleveryService: DeleveryService) { }
+    constructor(private DeleveryService: DeleveryService , private service :ClientUsersService) { }
     ngOnInit() {
         this.DeleveryService.getLivraison().subscribe((data: any) => {
             this.data=data 
@@ -76,17 +77,20 @@ export class UserComponent implements OnInit {
             for(var i=0; i<this.data.length ; i++){
               if( this.data[i].clientId === id ){
                let item = this.data[i].id
+              
                this.DeleveryService.deleteLivraison(item).subscribe((data: any) => {
-                console.log(data)
+                console.log(data) 
               })
-              this.products = this.products.filter((val,i)=>val.delId !== id)
-              this.realClients=this.realClients.filter((val,i)=>val.delId !== id)
+              this.products = this.products.filter((val,i)=>val.delId !== item)
+              this.realClients=this.realClients.filter((val,i)=>val.delId !== item)
+              this.data=this.data.filter((val,i) =>val.id !== item)
             }
         }   
     }
-    save(){
+    save(name,number){
+        
     const options = {
-        filename:"Our_awesome_file.pdf",
+        filename:`${name}.pdf`,
         image : {type: 'jpeg'},
         html2canvas:{},
         jsPDF:{orientation:'landscape'}
@@ -96,6 +100,11 @@ export class UserComponent implements OnInit {
     .from(content)
     .set(options)
     .save();
+    
+    // function to send SMS to client 
+    // this.service.sendMsg(number).subscribe((data: any) => {
+    //     console.log(data) 
+    //   })
     }
-
+    
 }
