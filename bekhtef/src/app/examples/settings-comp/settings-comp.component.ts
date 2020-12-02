@@ -14,30 +14,30 @@ export class SettingsCompComponent implements OnInit {
   city: string = '';
   zipCode: string = '';
   id: number = 0;
-  constructor(private CompServiceService:CompServiceService,private router: Router) { }
+  constructor(private CompServiceService: CompServiceService, private router: Router) { }
 
   ngOnInit(): void {
     this.id = JSON.parse(window.localStorage.getItem('id'));
     this.CompServiceService.getInfo().subscribe((data: any) => {
-     for(var i=0 ; data.length > 0 ; i++) {
-       if(data[i].id === this.id){
-        this.phoneNumber1=data[i].phoneNumber;
-        this.street=data[i].street;
-        this.city=data[i].city;
-        this.zipCode=data[i].zipCode;
-       }
-     }
+      for (var i = 0; data.length > 0; i++) {
+        if (data[i].id === this.id) {
+          this.phoneNumber1 = data[i].phoneNumber;
+          this.street = data[i].street;
+          this.city = data[i].city;
+          this.zipCode = data[i].zipCode;
+        }
+      }
     })
   }
-  onSubmit() {
-    
+  onSubmit(f) {
+
     const obj = {
-      phoneNumber1:this.phoneNumber1,
-      street:this.street,
-      city:this.city,
-      zipCode:this.zipCode,
+      phoneNumber1: this.phoneNumber1,
+      street: this.street,
+      city: this.city,
+      zipCode: this.zipCode,
     };
-    this.CompServiceService.modifyInfo(obj,this.id).subscribe(
+    this.CompServiceService.modifyInfo(obj, this.id).subscribe(
       (res) => {
         console.log(res);
       },
@@ -46,7 +46,7 @@ export class SettingsCompComponent implements OnInit {
       }
     );
     alert("Your info is updated successfuly")
-          this.router.navigateByUrl('/profileComp');
+    this.router.navigateByUrl('/profileComp');
   }
 }
 

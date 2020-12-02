@@ -78,7 +78,7 @@
 
 
                                 <label for="search-text"
-                                        id="grey"><strong>{{ 'searchProductname' | translate}}</strong></label>
+                                        id="grey"><strong>{{'searchProductname'| translate}}</strong></label>
 
                                 <input type="email" class="form-control" id="search-text" aria-describedby="search-text"
                                         [ngModel]="searchText" (ngModelChange)="modelChangeFn($event)"
@@ -113,12 +113,14 @@
 
                 <div class="col-md-4"
                         *ngFor="let item of products | appFilter:searchText  |Category:selectedCategory |maxPrice:selectedPrice| slice: (page-1) * pageSize : page * pageSize">
+                        <!-- <h3 *ngIf="!item">No such product available for now </h3> -->
                         <div class="card">
                                 <div class="card-img">
                                         <img class="img-no-padding" style="max-height:200px;margin-left:8%;"
                                                 src="{{item.image}}">
                                 </div>
                                 <div class="card-body">
+
                                         <h3 class="card-title">{{item.name}}</h3>
                                         <h5 id="red"><del>{{item.oldPrice}} Dt</del></h5>
                                         <h5>{{item.newPrice}} Dt</h5>

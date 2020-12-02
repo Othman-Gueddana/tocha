@@ -31,7 +31,7 @@ export class SettingsComponent implements OnInit {
       console.log(data)
     })
   }
-  onSubmit() {
+  onSubmit(f) {
 
     const obj = {
       phoneNumber: this.phoneNumber,
