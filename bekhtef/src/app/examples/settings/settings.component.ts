@@ -12,21 +12,34 @@ export class SettingsComponent implements OnInit {
   phoneNumber: string = '';
   street: string = '';
   city: string = '';
-  codeZip: string = '';
+  zipCode: string = '';
+  id: number = 0;
   constructor(private ClientService: ClientService,
     private router: Router) { }
 
   ngOnInit(): void {
+    this.id = JSON.parse(window.localStorage.getItem('id'));
+    this.ClientService.getInfo().subscribe((data: any) => {
+      for(var i=0; i<data.length; i++){
+        if(data[i].id === this.id){
+          this.phoneNumber=data[i].phoneNumber;
+          this.street=data[i].street;
+          this.city=data[i].city;
+          this.zipCode=data[i].zipCode;
+        }
+      }
+      console.log(data) 
+    })
   }
   onSubmit() {
-    const id = JSON.parse(window.localStorage.getItem('id'));
+    
     const obj = {
       phoneNumber:this.phoneNumber,
       street:this.street,
       city:this.city,
-      codeZip:this.codeZip,
+      zipCode:this.zipCode,
     };
-    this.ClientService.modifyInfo(obj,id).subscribe(
+    this.ClientService.modifyInfo(obj,this.id).subscribe(
       (res) => {
         console.log(res);
       },
