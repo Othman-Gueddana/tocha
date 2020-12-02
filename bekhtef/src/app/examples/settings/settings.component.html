@@ -6,7 +6,7 @@
                   <div class="col-lg-4 col-sm-6 mr-auto ml-auto">
                     <div class="card card-register">
                    <!-- <h3 class="title" style="color:white;"> {{'Welcome' | translate}} </h3>-->   
-                        <h3 class="title" style="color:white;"> Modify Your Info </h3> 
+                        <h3 class="title" style="color:white;"> Modify Your Information </h3> 
                         <form class="register-form" #f="ngForm" (ngSubmit)="onSubmit(f)">
                             <label>New Address Street</label>
                             <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
@@ -33,8 +33,7 @@
                                     <i class="nc-icon nc-map-big"></i>
                                 </span>
                               </div>
-                                <input type="text" class="form-control" placeholder="Z
-                                ip Code" (focus)="focus=true" (blur)="focus=false"  [(ngModel)]="zipCode" name="zipCode"/>
+                                <input type="text" class="form-control" placeholder="Zip Code" (focus)="focus=true" (blur)="focus=false"  [(ngModel)]="zipCode" name="zipCode"/>
                             </div>
                             <label>New Phone Number</label>
                             <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
@@ -46,7 +45,7 @@
                                 <input type="text" class="form-control" placeholder="Phone Number" (focus)="focus=true" (blur)="focus=false"  [(ngModel)]="phoneNumber" name="phoneNumber"/>
                             </div>
 
-                            <button type="submit" [disabled]="f.invalid" class="btn btn-danger btn-block btn-round"> Confirm new info </button>
+                            <button type="submit" [disabled]="f.invalid" class="btn btn-danger btn-block btn-round"> Confirm new information </button>
                         </form>
                     </div>
                   </div>

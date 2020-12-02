@@ -91,7 +91,7 @@ export class ProfileComponent implements OnInit {
            image:imageUrl,
            ownerId:user,
            ownerType:this.clientStatus,
-           expireddate:f.value.expireddate,
+           expiredDate:f.value.expiredDate,
            creationDate:f.value.creationDate,
            quantity:f.value.quantity,
            device:f.value.device,
@@ -147,6 +147,14 @@ export class ProfileComponent implements OnInit {
                 console.log(error)
             })
         }
+        else if(this.category === 'laboratory'){
+          this.ProductService.addLab(obj).subscribe((res)=>{
+              console.log(res);
+            },
+            (error) => {
+              console.log(error)
+          })
+      }
     }
     changeInfo(){
       this.router.navigateByUrl('/settings');

@@ -49,4 +49,7 @@ export class ClientService {
     console.log(baseUrl);
     return this.http.patch(baseUrl + 'password', data);
   }
+  getInfo(): Observable<any> {
+    return this.http.get(baseUrl)
+  }
 }

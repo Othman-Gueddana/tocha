@@ -12,20 +12,32 @@ export class SettingsCompComponent implements OnInit {
   phoneNumber1: string = '';
   street: string = '';
   city: string = '';
-  codeZip: string = '';
+  zipCode: string = '';
+  id: number = 0;
   constructor(private CompServiceService:CompServiceService,private router: Router) { }
 
   ngOnInit(): void {
+    this.id = JSON.parse(window.localStorage.getItem('id'));
+    this.CompServiceService.getInfo().subscribe((data: any) => {
+     for(var i=0 ; data.length > 0 ; i++) {
+       if(data[i].id === this.id){
+        this.phoneNumber1=data[i].phoneNumber;
+        this.street=data[i].street;
+        this.city=data[i].city;
+        this.zipCode=data[i].zipCode;
+       }
+     }
+    })
   }
   onSubmit() {
-    const id = JSON.parse(window.localStorage.getItem('id'));
+    
     const obj = {
       phoneNumber1:this.phoneNumber1,
       street:this.street,
       city:this.city,
-      codeZip:this.codeZip,
+      zipCode:this.zipCode,
     };
-    this.CompServiceService.modifyInfo(obj,id).subscribe(
+    this.CompServiceService.modifyInfo(obj,this.id).subscribe(
       (res) => {
         console.log(res);
       },
