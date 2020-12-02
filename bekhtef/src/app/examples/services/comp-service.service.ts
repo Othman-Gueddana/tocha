@@ -16,6 +16,7 @@ export class CompServiceService {
   }
   
   createRegister(data): Observable<any> {
+    console.log(data.logo)
     let obj = {
     name: data.name,
     email: data.email,
@@ -31,7 +32,7 @@ export class CompServiceService {
     };
     console.log(obj)
     console.log(baseUrl2 + 'register');
-    return this.http.post(baseUrl2 + 'register', data);
+    return this.http.post(baseUrl2 + 'register', obj);
   }
   modifyInfo(data,id): Observable<any> {
     const obj = {

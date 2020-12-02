@@ -1,137 +1,151 @@
 <div class="wrapper">
-    <div class="page-header" style="background-image: url('../../../assets/img/Secondhand-eCommerce.jpg');">
-        <div class="filter" ></div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-sm-6 mr-auto ml-auto">
-                      <div class="card card-register-comp"style="margin: 120px -249px 70px;">
-                     <!-- <h3 class="title" style="color:white;"> {{'Welcome' | translate}} </h3>-->   
-                          <h2 class="title" style="color:white;"> Welcome </h2> 
-                          <form class="register-form" #f="ngForm" (ngSubmit)="onSubmit(f)">
-                            <div class="row">
-                              <div class=col-md-6>
-                              <label>First Name</label>
-                            <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    <i class=" nc-icon nc-single-02"></i>
-                                </span>
-                              </div>
-                                <input type="text" class="form-control" placeholder="First Name" (focus)="focus=true" (blur)="focus=false" ngModel required  #firstName="ngModel"  name="firstName"/>
-                            </div>
-                            </div>
-                            <div class=col-md-6>
-                            <label>Last Name</label>
-                            <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    <i class="nc-icon nc-single-02"></i>
-                                </span>
-                              </div>
-                                <input type="text" class="form-control" placeholder="Last Name" (focus)="focus=true" (blur)="focus=false"  ngModel required  #lastName="ngModel" name="lastName" />
-                            </div>
-                              </div>
-                            </div> 
-                           
-
-                           <div class="row">
-                             <div class="col-md-6">
-                               <label>Email</label>
-                                  <!-- <label>{{'Email' | translate}}</label>-->
-                              <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text">
-                                      <i class="nc-icon nc-email-85"></i>
-                                  </span>
-                                </div>
-                                  <input type="text" class="form-control" placeholder="Email" (focus)="focus=true" (blur)="focus=false"  ngModel required  #email="ngModel" name="email"/>
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <label>Phone Number</label>
-                              <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text">
-                                      <i class=" nc-icon nc-mobile"></i>
-                                  </span>
-                                </div>
-                                  <input type="text" class="form-control" placeholder="Phone Number" (focus)="focus=true" (blur)="focus=false"  ngModel  #phoneNumber="ngModel" name="phoneNumber"/>
-                              </div>
-                              </div>
-                            </div>
-                              
-                            <div class="row">
-                              <div class="col-md-6">
-                              <!--   <label>{{'Password' | translate}}</label>-->
-                              <label>Password</label>
-
-                         
-                              <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus1===true}">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text">
-                                      <i class="nc-icon nc-key-25"></i>
-                                  </span>
-                                </div>
-                                  <input type="text" class="form-control" placeholder="Password" (focus)="focus1=true" (blur)="focus1=false" ngModel  required  #password="ngModel" name="password"/>
-                              </div>
-                              </div>
-                              
-                                <div class="col-md-6">
-                              <label>Confirm Password</label>
-                              <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus1===true}">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text">
-                                      <i class="nc-icon nc-key-25"></i>
-                                  </span>
-                                </div>
-                                  <input type="text" class="form-control" placeholder="Confirm your Password" (focus)="focus1=true" (blur)="focus1=false" ngModel required  #passwordConf="ngModel" name="passwordConf" />
-                              </div>
-                              </div>
-                              </div>
-
-                              <div class="row">
-                                <div class="col-md-4">
-                              <label>Street</label>
-                              <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text">
-                                      <i class="nc-icon nc-map-big"></i>
-                                  </span>
-                                </div>
-                                  <input type="text" class="form-control" placeholder="Street" (focus)="focus=true" (blur)="focus=false"  ngModel required  #street="ngModel" name="street"/>
-                              </div>
-                              </div>
-                              
-                                <div class="col-md-4">
-                              <label>City</label>
-                              <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text">
-                                      <i class="nc-icon nc-map-big"></i>
-                                  </span>
-                                </div>
-                                  <input type="text" class="form-control" placeholder="City" (focus)="focus=true" (blur)="focus=false"  ngModel required  #city="ngModel" name="city"/>
-                              </div>
-                                </div>
-                                
-                                  <div class="col-md-4">
-                              <label>Zip Code</label>
-                              <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text">
-                                      <i class="nc-icon nc-map-big"></i>
-                                  </span>
-                                </div>
-                                  <input type="text" class="form-control" placeholder="Zip Code" (focus)="focus=true" (blur)="focus=false"  ngModel required  #zipCode="ngModel" name="zipCode"/>
-                              </div>
-                            </div></div>
-
-                              <button style ="margin:20px"type="submit" [disabled]="f.invalid" class="btn btn-danger btn-block btn-round"> Register </button>
-                          </form>
-                      </div>
+  <div class="page-header" style="background-image: url('../../../assets/img/Secondhand-eCommerce.jpg');">
+    <div class="filter"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-sm-6 mr-auto ml-auto">
+          <div class="card card-register-comp" style="margin: 120px -249px 70px;">
+            <!-- <h3 class="title" style="color:white;"> {{'Welcome' | translate}} </h3>-->
+            <h2 class="title" style="color:white;">{{'Welcome' | translate}}</h2>
+            <form class="register-form" #f="ngForm" (ngSubmit)="onSubmit(f)">
+              <div class="row">
+                <div class=col-md-6>
+                  <label>{{'FirstName' | translate }}</label>
+                  <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class=" nc-icon nc-single-02"></i>
+                      </span>
                     </div>
+                    <input type="text" class="form-control" placeholder="{{'FirstName' | translate}}"
+                      (focus)="focus=true" (blur)="focus=false" ngModel required #firstName="ngModel"
+                      name="firstName" />
+                  </div>
                 </div>
-              
-            </div>
+                <div class=col-md-6>
+                  <label>{{'LastName' |translate}}</label>
+                  <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="nc-icon nc-single-02"></i>
+                      </span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="{{'LastName' | translate}}"
+                      (focus)="focus=true" (blur)="focus=false" ngModel required #lastName="ngModel" name="lastName" />
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col-md-6">
+                  <label>{{'Email' | translate}}</label>
+                  <!-- <label>{{'Email' | translate}}</label>-->
+                  <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="nc-icon nc-email-85"></i>
+                      </span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="{{'Email' | translate}}" (focus)="focus=true"
+                      (blur)="focus=false" ngModel required #email="ngModel" name="email" />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label>{{'PhoneNumber' | translate }}</label>
+                  <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class=" nc-icon nc-mobile"></i>
+                      </span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="{{'PhoneNumber' | translate}}"
+                      (focus)="focus=true" (blur)="focus=false" ngModel #phoneNumber="ngModel" name="phoneNumber" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <!--   <label>{{'Password' | translate}}</label>-->
+                  <label>{{'Password' | translate}}</label>
+
+
+                  <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus1===true}">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="nc-icon nc-key-25"></i>
+                      </span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="{{'Password' | translate}}"
+                      (focus)="focus1=true" (blur)="focus1=false" ngModel required #password="ngModel"
+                      name="password" />
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <label>{{'ConfirmPassword' | translate }}</label>
+                  <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus1===true}">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="nc-icon nc-key-25"></i>
+                      </span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="{{'ConfirmPassword' | translate}}"
+                      (focus)="focus1=true" (blur)="focus1=false" ngModel required #passwordConf="ngModel"
+                      name="passwordConf" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-4">
+                  <label>{{'Street' | translate}}</label>
+                  <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="nc-icon nc-map-big"></i>
+                      </span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="{{'Street' | translate}}" (focus)="focus=true"
+                      (blur)="focus=false" ngModel required #street="ngModel" name="street" />
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <label>{{'City' | translate}}</label>
+                  <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="nc-icon nc-map-big"></i>
+                      </span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="{{'City' | translate}}" (focus)="focus=true"
+                      (blur)="focus=false" ngModel required #city="ngModel" name="city" />
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <label>{{'ZipCode' | translate}}</label>
+                  <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="nc-icon nc-map-big"></i>
+                      </span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="{{'ZipCode' | translate}}" (focus)="focus=true"
+                      (blur)="focus=false" ngModel required #zipCode="ngModel" name="zipCode" />
+                  </div>
+                </div>
+              </div>
+
+              <button style="margin:20px" type="submit" [disabled]="f.invalid"
+                class="btn btn-danger btn-block btn-round"> {{'Register' | translate}} </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
     </div>
+  </div>
 </div>
