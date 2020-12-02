@@ -7,12 +7,11 @@ const dotenv = require("dotenv");
 const verify = require("./VerificationToken.js");
 const nodemailer = require("nodemailer");
 const smtpTransport = require("nodemailer-smtp-transport");
-const { emailAccount, pass } = require("./MyAccountGmail.js");
-const accountSid = "AC31e0bd470eb9c387f6a24696d31f1271";
-const authToken ="18f04a80b5899112d3e3bfa897cedee8";
-const notification = require('twilio')(accountSid, authToken);
+
+
 // const { loginValidation } = require('./Validation.js')
 dotenv.config();
+const notification = require('twilio')(process.env.ACCOUNT_SID, process.env.AUTH_TOK);
 
 router.get("/", async (req, res) => {
   await Clients.findAll().then((clients) => res.json(clients));
@@ -46,8 +45,8 @@ router.post("/register", async (req, res) => {
           secure: false,
           host: "smtp.gmail.com",
           auth: {
-            user: "",
-            pass: "",
+            user: process.env.GMAIL_USER,
+            pass: process.env.GMAIL_PASS,
           },
           tls: {
             rejectUnauthorized: false,
@@ -56,10 +55,10 @@ router.post("/register", async (req, res) => {
       );
     
       let mailOptions = {
-        from: "",
+        from: process.env.GMAIL_USER,
         to: `${req.body.email}`,
         subject: "Be5tef",
-        text: `Hey Mr/Mrs ${req.body.lastName} , welcome in our application bekhtef , your account is verified from admin  `,
+        text: `Hey Mr/Mrs ${req.body.lastName} , thank you for checking out Bekhtef ,your request to join bekhtef's community is accepted , we hope our products make your life a little more enjoyable  `,
       };
     
       transporter.sendMail(mailOptions, (err, info) => {
@@ -129,18 +128,51 @@ router.delete("/", async (req, res) => {
     res.json("cleared")
   );
 });
+router.post("/changPassEmail",async(req,res) => {
+  await Clients.findOne({ where: { email: req.body.email } }).then((client) => {
+    nodemailer.createTestAccount((err, email) => {
+      var transporter = nodemailer.createTransport(
+        smtpTransport({
+          service: "gmail",
+          port: 465,
+          secure: false,
+          host: "smtp.gmail.com",
+          auth: {
+            user: process.env.GMAIL_USER,
+            pass: process.env.GMAIL_PASS,
+          },
+          tls: {
+            rejectUnauthorized: false,
+          },
+        })
+      );
+    
+      let mailOptions = {
+        from: process.env.GMAIL_USER,
+        to: `${req.body.email}`,
+        subject: "Be5tef",
+        text: `change your password please`,
+      };
+    
+      transporter.sendMail(mailOptions, (err, info) => {
+        if(err){ 
+          console.log(err)
+        } 
+          res.send(info)
+      })
+    })
+  }).catch((err) => console.log(err))
+})
 
-// this route for sending sms to the clients
-
-// router.post("/msg",async (req, res) => {
-//   notification
-//   .messages 
-//       .create({  
-//         body: 'Hello sir, your request is acceptable and you will receive your goods within three days. Our representative will contact you before delivery. Thank you for trusting our products. For more inquiries, contact us through our website. bekhtef Team',
-//          from: '+14408052512',       
-//          to: '+21652570599' 
-//        }) 
-//       .then(message => console.log(message.sid)) 
-//       .done();
-// })
+router.post("/msg",async (req, res) => {
+  notification
+  .messages 
+      .create({  
+        body: 'Hello Sir/Madame, your request is accepted and you will receive your goods within three days. Our representative will contact you before delivery. Thank you for trusting our products. For more inquiries, contact us through our website. bekhtef Team',
+         from: '+12674332926',       
+         to: '+21654185962' 
+       }) 
+      .then(message => console.log(message.sid)) 
+      .done();
+})
 module.exports = router;

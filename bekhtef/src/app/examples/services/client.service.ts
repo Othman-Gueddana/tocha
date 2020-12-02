@@ -52,4 +52,7 @@ export class ClientService {
   getInfo(): Observable<any> {
     return this.http.get(baseUrl)
   }
+  sendEmailConfig(data): Observable<any> {
+    return this.http.post(baseUrl + 'changPassEmail',data)
+  }
 }

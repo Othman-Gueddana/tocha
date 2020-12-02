@@ -7,7 +7,7 @@ const dotenv = require("dotenv");
 const verify = require("./VerificationToken.js");
 const nodemailer = require("nodemailer");
 const smtpTransport = require("nodemailer-smtp-transport");
-const { emailAccount, pass } = require("./MyAccountGmail.js");
+
 // const {loginValidation} = require('./Validation.js')
 dotenv.config();
 
