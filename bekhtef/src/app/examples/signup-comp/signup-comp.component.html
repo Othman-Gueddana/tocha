@@ -158,7 +158,7 @@
                                     type="file"
                                     name="filename"
                                     (change)="selectedFile($event)"
-                                    accept=".png,.jpg"
+                                    accept=".png,.jpg,.jpeg"
                                     required
                                 
                                   /> </div>
@@ -175,12 +175,12 @@
                                     aria-valuemax="100"
                                      ><i> {{ uploadProgress | async }}%</i></ngb-progressbar><br> </div>
                               
-                                    
-                                   <div>
-                                     <img src="{{downloadURL | async}}" style="max-height: 200px ; max-width: 200p; margin-left: 200px;" />
-                                   </div>
-                                     
-                                    <img sref="C:\Users\ASUS\Desktop" />
+                                    <div>
+                                     <a [href]="downloadURL | async" name="download">{{
+                                      downloadURL | async
+                                    }}</a>
+                                     </div>
+                                    <img sref="C:\Users\ASUS" />
 
                             <button type="submit" [disabled]="f.invalid" class="btn btn-danger btn-block btn-round"> Register </button>
                         </form>

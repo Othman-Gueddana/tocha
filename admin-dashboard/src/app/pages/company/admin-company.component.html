@@ -47,9 +47,7 @@
               <!-- <th class="text-right">
                 Salary
               </th> -->
-              <button type="button" class="btn btn-info text-right" (click)="deleteUser(item)">Delete</button>
-              <button class="text-right" type="button" id="buttonConfirmCompany" class="btn btn-info"
-                (click)="confirmUser(item)">OK</button>
+
             </thead>
             <tbody>
               <tr>
@@ -89,6 +87,9 @@
                 <td>
                   {{item.createdAt}}
                 </td>
+                <button type="button" class="btn btn-info text-right" (click)="deleteUser(item)">Delete</button>
+                <button class="text-right" type="button" id="buttonConfirmCompany" class="btn btn-info"
+                  (click)="confirmUser(item)">OK</button>
               </tr>
             </tbody>
           </table>
@@ -97,17 +98,3 @@
     </div>
   </div>
 </div>
-
-
-<!-- <div class="row">
-  <div class="col-md-12">
-    <div class="card ">
-      <div class="card-header ">
-        Google Maps
-      </div>
-      <div class="card-body ">
-        <div id="map" class="map"></div>
-      </div>
-    </div>
-  </div>
-</div> -->
