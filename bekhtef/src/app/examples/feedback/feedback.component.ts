@@ -36,24 +36,26 @@ export class FeedbackComponent implements OnInit {
     console.log(this.otherFeedback)
   }
   onSubmit(f: NgForm){
-    let user= JSON.parse(window.localStorage.getItem('id'));
+    if(f.value.text !== ""){
+      let user= JSON.parse(window.localStorage.getItem('id'));
    
-    console.log(user);
-    console.log(f.value);
-    const obj = {
-      clientName: this.clientName,
-      clientId: user,
-      text: f.value.text,
+      console.log(user);
+      console.log(f.value);
+      const obj = {
+        clientName: this.clientName,
+        clientId: user,
+        text: f.value.text,
+      }
+      console.log(obj);
+      this.server.addFeedback(obj).subscribe((res)=>{
+        
+        console.log(res);
+      },
+      (error) => {
+      console.log(error);
+      })
+     window.location.reload();
     }
-    console.log(obj);
-    this.server.addFeedback(obj).subscribe((res)=>{
-      
-      console.log(res);
-    },
-    (error) => {
-    console.log(error);
-    })
-   window.location.reload();
   }
   deleteFeed(id){
     console.log(id)

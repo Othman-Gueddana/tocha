@@ -10,6 +10,7 @@ export class SettingsCompComponent implements OnInit {
   focus: any;
   focus1: any;
   phoneNumber1: string = '';
+  phoneNumber2: string = '';
   street: string = '';
   city: string = '';
   zipCode: string = '';
@@ -21,7 +22,8 @@ export class SettingsCompComponent implements OnInit {
     this.CompServiceService.getInfo().subscribe((data: any) => {
      for(var i=0 ; data.length > 0 ; i++) {
        if(data[i].id === this.id){
-        this.phoneNumber1=data[i].phoneNumber;
+        this.phoneNumber1=data[i].phoneNumber1;
+        this.phoneNumber2=data[i].phoneNumber2;
         this.street=data[i].street;
         this.city=data[i].city;
         this.zipCode=data[i].zipCode;

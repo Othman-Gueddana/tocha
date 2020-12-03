@@ -62,6 +62,7 @@ export class ProfileCompComponent implements OnInit {
    addCategory(f:NgForm) {
      this.category = f.value.category
      this.status = f.value.category
+    
    }
    
    selectedFile(event) {
@@ -78,13 +79,14 @@ export class ProfileCompComponent implements OnInit {
 
    onSubmit(f: NgForm) {
        var img = document.getElementsByTagName('a');
-       var imageUrl = img[img.length - 1].innerHTML;
-   
+       var imageUrl = img[img.length - 2].innerHTML;
+        console.log(img)
+        console.log(imageUrl)
        let user = JSON.parse(window.localStorage.getItem('id'));
        console.log(user)
        console.log(f.value)
        const obj = {
-          name:f.value.name,
+          name:this.name,
           oldPrice:f.value.oldPrice,
           newPrice:f.value.newPrice,
           description:f.value.description,
@@ -156,6 +158,7 @@ export class ProfileCompComponent implements OnInit {
             console.log(error)
         })
     }
+    window.location.reload()
    }
    changeInfo(){
      this.router.navigateByUrl('/seetingsComp');
