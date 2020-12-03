@@ -101,10 +101,9 @@ export class UserComponent implements OnInit {
     .set(options)
     .save();
     
-    // function to send SMS to client 
-    // this.service.sendMsg(number).subscribe((data: any) => {
-    //     console.log(data) 
-    //   })
+    this.service.sendMsg(number).subscribe((data: any) => {
+        console.log(data) 
+      })
     }
     
 }

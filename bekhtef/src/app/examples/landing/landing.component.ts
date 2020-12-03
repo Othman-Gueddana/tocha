@@ -29,13 +29,18 @@ export class LandingComponent implements OnInit {
   selectedCategory: string = "category";
   constructor(private server: ProductService, private modalService: NgbModal, private PurchaseService:PurchaseService) { }
 
-// this is  a life cycle method ruun after changing text in the search text 
+// this is  a life cycle method run after changing text in the search text 
   modelChangeFn(value) {
       this.searchText = value
     if (this.searchText.length < 1){
         this.products = this.allProducts
     }
   }
+  // ngAfterContentChecked() {
+  //   console.log('selectedPrice', this.selectedPrice)
+  //   console.log('selectedCategory',this.selectedCategory)
+  //   console.log('searchText',this.searchText)
+  //   }
 // here it runs this life cycle method when  we just refresh this page 
   ngOnInit() {
     this.server.getProducts().subscribe((data: any) => {
@@ -87,10 +92,13 @@ export class LandingComponent implements OnInit {
   }
   // this is 
   clickOnMe(item){
-    let filter = this.allProducts.filter(data =>  data.name === item.name)
-    this.products=filter;
-   
+    const filter = this.allProducts.filter(data =>  data.name === item.name)
+    if(filter.length===0){
+      return ["not found"]
   }
+    this.products=filter; 
+  }
+    
 }
 
 

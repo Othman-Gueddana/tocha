@@ -20,8 +20,8 @@ router.post("/food", async (req, res) => {
     category:req.body.category,
     image:req.body.image,
     ownerId:req.body.ownerId,
-    ownerType:Sequelize.STRING,
-    expiredDate:Sequelize.STRING,
+    ownerType:req.body.ownerType,
+    expiredDate:req.body.expiredDate,
     creationDate:req.body.creationDate,
     quantity:req.body.quantity
   })
@@ -38,8 +38,8 @@ router.put("/food/:id", async (req, res) => {
         category:req.body.category,
         image:req.body.image,
         ownerId:req.body.ownerId,
-        ownerType:Sequelize.STRING,
-        expiredDate:Sequelize.STRING,
+        ownerType:req.body.ownerType,
+        expiredDate:req.body.expiredDate,
         creationDate:req.body.creationDate,
         quantity:req.body.quantity
       })
@@ -266,8 +266,10 @@ router.post("/clean", async (req, res) => {
     });
   });
 router.delete("/:id", async (req, res) => {
+  console.log(req.params.id)
   await VerifyProducts.findByPk(req.params.id)
     .then((verifyProducts) => {
+      console.log(verifyProducts)
       verifyProducts.destroy();
     })
     .then(() => {
