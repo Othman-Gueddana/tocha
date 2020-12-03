@@ -8,8 +8,8 @@
   },
   "scripts": {
     "heroku-prebuild": " cd ./bekhtef && export NPM_CONFIG_PRODUCTION=false",
-    "heroku-postbuild": "cd ./bekhtef && ng build --prod",
-    "start": "cd ./bekhtef && nodemon Backend/server.js ",
+    "heroku-postbuild": "cd ./bekhtef && ng build ",
+    "start": "cd ./backend && nodemon server.js ",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -35,6 +35,7 @@
     "bootstrap": "4.1.2",
     "core-js": "3.6.4",
     "firebase": "^8.1.1",
+    "jquery": "^3.5.1",
     "jw-bootstrap-switch-ng2": "2.0.1",
     "lodash-es": "^4.17.15",
     "ng2-translate": "^5.0.0",

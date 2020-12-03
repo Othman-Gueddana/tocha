@@ -9,7 +9,7 @@
   "scripts": {
     "heroku-prebuild": "export NPM_CONFIG_PRODUCTION=false",
     "heroku-postbuild": "ng build --prod",
-    "start": "nodemon Backend/server.js ",
+    "start": "nodemon server.js ",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
