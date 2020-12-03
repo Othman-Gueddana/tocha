@@ -11,15 +11,15 @@ import { ComponentsModule } from './components/components.module';
 import { ExamplesModule } from './examples/examples.module';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HttpClient, HttpClientModule,HttpParams } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HttpParams } from '@angular/common/http';
 import { AngularFireStorageModule } from '@angular/fire/storage'
-import { AngularFireModule } from '@angular/fire'
+import { AngularFireModule } from '@angular/fire';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     FooterComponent,
-   
+
   ],
   imports: [
     AngularFireModule.initializeApp({
@@ -49,7 +49,8 @@ import { AngularFireModule } from '@angular/fire'
       }
     }),
     TranslateModule,
- 
+    NgbModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
