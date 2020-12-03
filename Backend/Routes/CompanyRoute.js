@@ -45,8 +45,8 @@ router.post("/register", async (req, res) => {
           secure: false,
           host: "smtp.gmail.com",
           auth: {
-            user: emailAccount,
-            pass: pass,
+            user: process.env.GMAIL_USER,
+            pass:  process.env.GMAIL_PASS,
           },
           tls: {
             rejectUnauthorized: false,
@@ -55,10 +55,10 @@ router.post("/register", async (req, res) => {
       );
 
       let mailOptions = {
-        from: "",
+        from: process.env.GMAIL_USER,
         to: `${req.body.email}`,
         subject: "Be5tef",
-        text: `Hey Mr/Mrs ${req.body.firstName},text here `,
+        text: `Hey Mr/Mrs ${req.body.lastName} , thank you for checking out Bekhtef ,your request to join bekhtef's community has been accepted , we are looking forward a win-win cooperation  `,
       };
       transporter.sendMail(mailOptions, (err, info) => {
         console.log("done");
@@ -77,7 +77,7 @@ router.post("/login", async (req, res) => {
   const token = jwt.sign({ id: user.id }, process.env.SECRET_TOKEN);
   res
     .header("auth_token", token)
-    .send({ token: token, id: user.id, name: user.name , status:"company" , logo: user.logo});
+    .send({ token: token, id: user.id, name:user.name , status:"company" , logo: user.logo});
 });
 
 router.put("/:id", async (req, res) => {

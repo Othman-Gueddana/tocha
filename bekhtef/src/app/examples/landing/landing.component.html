@@ -1,6 +1,6 @@
 <div class="wrapper">
         <div class="page-header page-header-xs" data-parallax="true"
-                style="background-image: url('../../../assets/img/download\ \(1\).gif'); max-height:500px;">
+                style="background-image: url('../../../assets/img/backHead2.png'); max-height:500px;">
         </div>
 </div>
 
@@ -8,38 +8,8 @@
 <div class="container">
         <!-- //this is the drop buttons of categories and requirement price -->
 
-        <nav class="navbar navbar-expand-lg navbar-transparent">
-                <div class="container">
-                        <a class="navbar-brand" href="#">Filtre</a>
-                        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                                data-target="#navbar-transparent" aria-controls="navbarNav" aria-expanded="false"
-                                aria-label="Toggle navigation">
-                                <span class="navbar-toggler-bar"></span>
-                                <span class="navbar-toggler-bar"></span>
-                                <span class="navbar-toggler-bar"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbar-transparent">
-                                <ul class="navbar-nav ml-auto">
-                                        <li class="nav-item">
-                                                <a class="nav-link" href="#"><i class="fa fa-facebook-official"
-                                                                aria-hidden="true"></i>{{ 'Facebook' | translate}} </a>
-                                        </li>
-                                        <li class="nav-item">
-                                                <a class="nav-link" href="#"><i class="fa fa-twitter"
-                                                                aria-hidden="true"></i>
-                                                        {{ 'Twitter' | translate}}</a>
-                                        </li>
-                                        <li class="nav-item">
-                                                <a class="nav-link" href="#"><i class="fa fa-instagram"
-                                                                aria-hidden="true"></i>{{ 'Instagram' | translate}}
-                                                </a>
-                                        </li>
-                                </ul>
-                        </div>
-                </div>
-        </nav>
 
-        <div id=menu class="row filtre">
+        <div id=menu class="row filtre" style="margin-top: 20px ;">
                 <div class="col-lg-4 category">
                         <label for="search-text" id="grey"><strong>
                                         {{ 'filterCategory' | translate}}</strong></label><br>
@@ -98,22 +68,19 @@
                 </div>
 
         </div>
-        <!-- // this is the title -->
-        <div class="row">
-                <div class='title' style="margin-top: 37px ;">
-                        <h1 style="font-family:'Nerko One',cursive;"> {{ 'availableProducts' | translate}}</h1>
-                </div>
-        </div>
 
-        <!-- //rendering data to our view , using *ngFor injection method of data in html -->
         <div class="row" style="margin-top: 37px">
                 <div class="cover">
                 </div>
-
-
                 <div class="col-md-4"
                         *ngFor="let item of products | appFilter:searchText  |Category:selectedCategory |maxPrice:selectedPrice| slice: (page-1) * pageSize : page * pageSize">
-                        <div class="card">
+                        <div *ngIf="item === 'not found'"><h2 style="font-family:'Nerko One',cursive;">No Product Found ...</h2></div>
+                        <!-- <div class="row" *ngIf="item !== 'not found'">
+                                <div class='title' style="margin-top: 37px ;">
+                                        <h1 style="font-family:'Nerko One',cursive;"> {{ 'availableProducts' | translate}}</h1>
+                                </div>
+                        </div> -->
+                        <div *ngIf="item !== 'not found'" class="card">
                                 <div class="card-img">
                                         <img class="img-no-padding" style="max-height:200px;margin-left:8%;"
                                                 src="{{item.image}}">
@@ -130,7 +97,7 @@
                                 </div>
                         </div>
                 </div>
-
+               
                 <!-- // here where we desplaying pagination buttons and a text of page -->
 
         </div><br><br><br><br>

@@ -10,7 +10,10 @@ export class CategoryPipe implements PipeTransform {
             return items
         }
 
-        return items.filter(item=>item["category"]===selectedCategory)
-            
+       const result = items.filter(item=>item["category"]===selectedCategory)
+       if(result.length===0){
+        return ["not found"]
+    }
+        return result
     }
 }

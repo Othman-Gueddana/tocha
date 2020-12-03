@@ -63,7 +63,8 @@ export class ClientUsersService {
   }
 
   sendMsg(data):  Observable<any>{
-    return this.http.post( baseUrl+ "msg", data).pipe(retry(3), catchError(this.handleError));
+    console.log(data)
+    return this.http.post( baseUrl+ "msg", data)
    }
 
 }
