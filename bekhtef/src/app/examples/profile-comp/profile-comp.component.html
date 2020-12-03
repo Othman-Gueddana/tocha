@@ -16,7 +16,6 @@
               <img style="width: 259px;
                   height: 300px;
                   margin-left: 20px;" src={{logo}} alt="...">
-              <h5 class="title">{{name}}</h5>
             </div>
           </div>
           <div class="card-footer">
@@ -128,7 +127,7 @@
                       *ngIf="(category === 'food' || category === 'cleaning' || category === 'laboratory')">
                       <label class="col-lg-3 col-form-label form-control-label">{{'ExpirationDate' | translate}}</label>
                       <div class="col-lg-9">
-                        <input class="form-control" type="text" name="exppireddate" ngModel #exppireddate="ngModel" />
+                        <input class="form-control" type="text" name="expiredDate" ngModel #expiredDate="ngModel" />
                       </div>
                     </div>
                     <div class="form-group row"
@@ -181,23 +180,36 @@
                           max="100" />
                       </div>
                     </div>
-
-                    <div class="form-group row">
-                      <input name="img" type="file" name="filename" (change)="selectedFile($event)" accept=".png,.jpg"
-                        required class="btn btn-danger btn-block btn-round" /> </div>
-                    <div style="padding:20px" *ngIf="(uploadProgress | async) === 100">
-                      <ngb-progressbar type="warning" [attr.aria-valuenow]="(uploadProgress | async) + '%'"
-                        [width]="(uploadProgress | async) + '%'" [striped]="true" [animated]="true"
-                        [value]="(uploadProgress | async)" aria-valuemin="0" aria-valuemax="100"><i>
-                          {{ uploadProgress | async }}%</i></ngb-progressbar><br>
-                    </div>
-                    <div>
-                      <a [href]="downloadURL | async" name="download">{{
-                        downloadURL | async
-                      }}</a>
-                    </div>
-
-                    <img sref="C:\Users\ASUS\Desktop" />
+                    <div class="col-md-4 chaima">
+                      <label> image :</label>
+                          <input
+                          name="img"
+                          type="file"
+                          name="filename"
+                          (change)="selectedFile($event)"
+                          accept=".png,.jpg,.jpeg"
+                          required
+                      
+                        /> </div>
+                  <div style="padding:20px" *ngIf="(uploadProgress | async) === 100"> 
+                       <ngb-progressbar  
+                          
+                          type="warning" 
+                          [attr.aria-valuenow]="(uploadProgress | async) + '%'"
+                          [width]="(uploadProgress | async) + '%'"
+                          [striped]="true" 
+                          [animated]="true"
+                          [value]= "(uploadProgress | async)"
+                          aria-valuemin="0"
+                          aria-valuemax="100"
+                           ><i> {{ uploadProgress | async }}%</i></ngb-progressbar><br> </div>
+                    
+                          
+                           <a [href]="downloadURL | async" name="download">{{
+                            downloadURL | async
+                          }}</a>
+                           
+                          <img sref="C:\Users\ASUS" />
                     <div class="form-group row">
                       <input type="submit" [disabled]="f.invalid" class="btn btn-danger btn-block btn-round"
                         value="Add">

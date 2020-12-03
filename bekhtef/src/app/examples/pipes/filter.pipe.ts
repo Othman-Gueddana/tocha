@@ -7,7 +7,7 @@ export class FilterPipe implements PipeTransform {
      *
      * @param {any[]} items
      * @param {string} searchText
-     * @returns {any[]}
+     * @returns {string} status
      */
     transform(items: any[], searchText: string): any[] {
         if (!items) {
@@ -18,6 +18,10 @@ export class FilterPipe implements PipeTransform {
         }
         searchText = searchText.toLowerCase();
 
-        return items.filter(it => it.name.toLowerCase().includes(searchText));
+        const result = items.filter(it => it.name.toLowerCase().includes(searchText));
+        if(result.length===0){
+            return ["not found"]
+        }
+        return result
     }
 }

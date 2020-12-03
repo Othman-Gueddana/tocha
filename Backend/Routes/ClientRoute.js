@@ -165,9 +165,9 @@ router.post("/changPassEmail",async(req,res) => {
 })
 
 router.post("/msg",async (req, res) => {
+  console.log(req)
   notification
-  .messages 
-      .create({  
+  .messages.create({  
         body: 'Hello Sir/Madame, your request is accepted and you will receive your goods within three days. Our representative will contact you before delivery. Thank you for trusting our products. For more inquiries, contact us through our website. bekhtef Team',
          from: '+12674332926',       
          to: '+21654185962' 
