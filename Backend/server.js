@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.static('../bekhtef/dist/bekhteff'))
 
 app.get("/*", function (req, res) {
-  res.sendFile(path.join(__dirname + "../bekhtef/dist/bekhteff/index.html"));
+  res.sendFile(path.join("../bekhtef/dist/bekhteff/index.html"));
 });
 // Routes 
 app.use("/clients",require('./Routes/ClientRoute.js'))
