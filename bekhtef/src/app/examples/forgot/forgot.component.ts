@@ -16,37 +16,26 @@ export class ForgotComponent implements OnInit {
   ngOnInit(): void {
   }
   onSubmit(f: NgForm) {
-
-  this.ClientService.sendEmailConfig(f.value).subscribe(
+    const car = /[A-Z]/gi
+    const other = /[@,<,>,?,!,&,|,%,$,£]/
+    if(f.value.newPassword.match(car)=== null || f.value.newPassword.match(other)===null || f.value.newPassword.length < 8 ){
+     Swal.fire ("your newPassword should contain special caracter")  
+        
+        }else if(f.value.newPassword.match(car)!== null && f.value.newPassword.match(other)!==null && f.value.newPassword.length >= 8 ){
+          if(f.value.passwordConf === f.value.newPassword ){
+           this.ClientService.changePass(f.value).subscribe(
                  (res) => {
                      console.log(res);
                    },
-                  (error) => {
-                       console.log(error);
-                     }
-                   );
-
-  //      const car = /[A-Z]/gi
-  //      const other = /[@,<,>,?,!,&,|,%,$,£]/
-  //      if(f.value.newPassword.match(car)=== null || f.value.newPassword.match(other)===null || f.value.newPassword.length < 8 ){
-  //       Swal.fire ("your newPassword should contain special caracter")
-         
-  //      }else if(f.value.newPassword.match(car)!== null && f.value.newPassword.match(other)!==null && f.value.newPassword.length >= 8 ){
-  //            if(f.value.passwordConf === f.value.newPassword ){
-  //             this.ClientService.changePass(f.value).subscribe(
-  //                   (res) => {
-  //                       console.log(res);
-  //                     },
-  //                   (error) => {
-  //                        console.log(error);
-  //                     }
-  //                  );
-  //           Swal.fire("your new password is updated succsessfuly")
-  //             this.router.navigateByUrl('/signin');
-  //            }else {
-  //             Swal.fire("reset new password again")
-  //           }
-
-  //     }
+                 (error) => {
+                      console.log(error);
+                   }
+                );
+         Swal.fire("your new password is updated succsessfuly")
+           this.router.navigateByUrl('/signinComp');
+          }else {
+           Swal.fire("reset new password again")
+         }
+       }
   }
 }
