@@ -7,7 +7,7 @@
     "url": "https://github.com/creativetimofficial/pk2-angular.git"
   },
   "scripts": {
-    "heroku-postbuild": "cd ./bekhtef && ng build --prod ",
+    "heroku-postbuild": "cd ./bekhtef && npm install && ng build --prod ",
     "start": "cd ./backend && nodemon server.js ",
     "build": "ng build",
     "test": "ng test",
