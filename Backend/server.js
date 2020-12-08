@@ -10,7 +10,7 @@ app.use(cors());
 
 app.use(express.static( __dirname +'../../tocha/bekhtef/dist/bekhteff'))
 
-app.get("/*", function (req, res) {
+app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname + "../../tocha/bekhtef/src/index.html"));
 });
 // Routes 
