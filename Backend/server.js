@@ -8,10 +8,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
-app.use(express.static( __dirname +'../bekhtef/dist/bekhteff'))
+app.use(express.static('../bekhtef/dist/bekhteff'))
 
 app.get("/*", function (req, res) {
-  res.sendFile(path.join(__dirname + "../bekhtef/src/index.html"));
+  res.sendFile(path.join("../bekhtef/src/index.html"));
 });
 // Routes 
 app.use("/clients",require('./Routes/ClientRoute.js'))
