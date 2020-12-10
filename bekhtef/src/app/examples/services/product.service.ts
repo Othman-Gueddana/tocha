@@ -8,14 +8,14 @@ import {
   HttpParams,
 } from '@angular/common/http';
 
-const baseUrl = 'http://localhost:5000/verifyProducts/';
+const baseUrl = 'http://localhost:3306/verifyProducts/';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
   constructor(private http: HttpClient) { }
- 
+
   handleError(error: HttpErrorResponse) {
     let errorMessage = 'Unknown error!';
     if (error.error instanceof ErrorEvent) {
@@ -28,23 +28,24 @@ export class ProductService {
     window.alert(errorMessage);
     return throwError(errorMessage);
   }
-  updateQuantity(data,id): Observable<any> {
+
+  updateQuantity(data, id): Observable<any> {
     console.log(id)
     console.log(data)
-    
+
     let obj = {
-      quantity:data
+      quantity: data
     }
     const url = 'http://localhost:5000/products/'
     return this.http.put(url + `quantity/${id}`, obj);
   }
   getProducts(): Observable<any> {
-    const url = 'http://localhost:5000/products/'
+    const url = 'https://be5tef.herokuapp.com/#/landing'
     return this.http
       .get(url).pipe(retry(3), catchError(this.handleError));
   }
   getById(id) {
-    const url = 'http://localhost:5000/products/'
+    const url = 'https://be5tef.herokuapp.com/#/landing'
     return this.http
       .get(url + `${id}`).pipe(retry(3), catchError(this.handleError));
   }
@@ -63,7 +64,7 @@ export class ProductService {
       quantity: data.quantity,
     };
     console.log(obj)
-    return this.http.post(baseUrl + 'food',  obj);
+    return this.http.post(baseUrl + 'food', obj);
   }
   addLab(data): Observable<any> {
     let obj = {
@@ -79,7 +80,7 @@ export class ProductService {
       quantity: data.quantity,
     };
     console.log(obj)
-    return this.http.post(baseUrl + 'labo',  obj);
+    return this.http.post(baseUrl + 'labo', obj);
   }
   addClean(data): Observable<any> {
     let obj = {
@@ -97,7 +98,7 @@ export class ProductService {
 
     };
     console.log(obj)
-    return this.http.post(baseUrl + 'clean',  obj);
+    return this.http.post(baseUrl + 'clean', obj);
   }
   addElec(data): Observable<any> {
     let obj = {
@@ -115,7 +116,7 @@ export class ProductService {
 
     };
     console.log(obj)
-    return this.http.post(baseUrl + 'elec',  obj);
+    return this.http.post(baseUrl + 'elec', obj);
   }
   addHouse(data): Observable<any> {
     let obj = {
@@ -133,7 +134,7 @@ export class ProductService {
 
     };
     console.log(obj)
-    return this.http.post(baseUrl + 'house',  obj);
+    return this.http.post(baseUrl + 'house', obj);
   }
   addClothes(data): Observable<any> {
     let obj = {
@@ -149,7 +150,7 @@ export class ProductService {
       humanKind: data.humanKind,
     };
     console.log(obj)
-    return this.http.post(baseUrl + 'clothes',  obj);
+    return this.http.post(baseUrl + 'clothes', obj);
   }
   addFourni(data): Observable<any> {
     let obj = {
@@ -164,7 +165,7 @@ export class ProductService {
       type: data.type
     };
     console.log(obj)
-    return this.http.post(baseUrl + 'fourni',  obj);
+    return this.http.post(baseUrl + 'fourni', obj);
   }
 
 }
