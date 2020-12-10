@@ -36,7 +36,7 @@ export class ProductService {
     let obj = {
       quantity: data
     }
-    const url = 'http://localhost:5000/products/'
+    const url = 'https://be5tef.herokuapp.com/#/landing'
     return this.http.put(url + `quantity/${id}`, obj);
   }
   getProducts(): Observable<any> {
