@@ -8,7 +8,7 @@ import {
   HttpParams,
 } from '@angular/common/http';
 
-const baseUrl = 'http://localhost:3306/verifyProducts/';
+const baseUrl = 'http://localhost:5000/verifyProducts/'
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +28,6 @@ export class ProductService {
     window.alert(errorMessage);
     return throwError(errorMessage);
   }
-
   updateQuantity(data, id): Observable<any> {
     console.log(id)
     console.log(data)
@@ -36,16 +35,16 @@ export class ProductService {
     let obj = {
       quantity: data
     }
-    const url = 'https://be5tef.herokuapp.com/#/landing'
+    const url = 'http://localhost:5000/products/'
     return this.http.put(url + `quantity/${id}`, obj);
   }
   getProducts(): Observable<any> {
-    const url = 'https://be5tef.herokuapp.com/#/landing'
+    const url = 'http://localhost:5000/products/'
     return this.http
       .get(url).pipe(retry(3), catchError(this.handleError));
   }
   getById(id) {
-    const url = 'https://be5tef.herokuapp.com/#/landing'
+    const url = 'http://localhost:5000/products/'
     return this.http
       .get(url + `${id}`).pipe(retry(3), catchError(this.handleError));
   }
@@ -161,6 +160,7 @@ export class ProductService {
       category: data.category,
       image: data.image,
       ownerId: data.ownerId,
+      ownerType: data.ownerType,
       quantity: data.quantity,
       type: data.type
     };
