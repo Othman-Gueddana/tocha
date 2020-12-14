@@ -10,6 +10,7 @@ import {
   } from '@angular/fire/storage';
   import { Observable } from 'rxjs';
   import { finalize } from 'rxjs/operators';
+import Swal from 'sweetalert2';
 @Component({
     selector: 'app-profile',
     templateUrl: './profile.component.html',
@@ -39,9 +40,8 @@ export class ProfileComponent implements OnInit {
        let user = JSON.parse(window.localStorage.getItem('id'));
        let firstName  =  JSON.parse(JSON.stringify(window.localStorage.getItem('firstName')))
        let lastName  =  JSON.parse(JSON.stringify(window.localStorage.getItem('lastName')))
-       let status  =  JSON.parse(JSON.stringify(window.localStorage.getItem('status')))
-      //  let lastName   =  JSON.parse(window.localStorage.getItem('lastName'));
-       this.clientStatus = status ;
+       this.clientStatus  =  JSON.parse(JSON.stringify(window.localStorage.getItem('status')))
+         console.log(this.clientStatus)
        this.firstName = firstName ;
        this.lastName = lastName ;      
        this.user = user ;
@@ -83,7 +83,7 @@ export class ProfileComponent implements OnInit {
         console.log(user)
         console.log(f.value)
         const obj = {
-           name:f.value.name,
+           name:f.value.title,
            oldPrice:f.value.oldPrice,
            newPrice:f.value.newPrice,
            description:f.value.description,
@@ -155,6 +155,16 @@ export class ProfileComponent implements OnInit {
               console.log(error)
           })
       }
+      Swal.fire({
+        text: "your product will be soon added , after being verified by the admin!",
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        },
+        confirmButtonColor: '#fbc658',
+      }).then(()=> window.location.reload())
     }
     changeInfo(){
       this.router.navigateByUrl('/settings');

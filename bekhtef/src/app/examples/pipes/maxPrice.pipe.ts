@@ -11,7 +11,10 @@ export class MaxPricePipe implements PipeTransform {
             return items
         }
 
-        return items.filter(item => JSON.parse(item["newPrice"]) <= JSON.parse(selectedPrice))
-
+        const result = items.filter(item => JSON.parse(item["newPrice"]) <= JSON.parse(selectedPrice))
+        if(result.length===0){
+            return ["not found"]
+        }
+        return result
     }
 }

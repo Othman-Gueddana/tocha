@@ -45,8 +45,8 @@ router.post("/register", async (req, res) => {
           secure: false,
           host: "smtp.gmail.com",
           auth: {
-            user: emailAccount,
-            pass: pass,
+            user: process.env.GMAIL_USER,
+            pass:  process.env.GMAIL_PASS,
           },
           tls: {
             rejectUnauthorized: false,
@@ -55,10 +55,10 @@ router.post("/register", async (req, res) => {
       );
 
       let mailOptions = {
-        from: "",
+        from: process.env.GMAIL_USER,
         to: `${req.body.email}`,
         subject: "Be5tef",
-        text: `Hey Mr/Mrs ${req.body.firstName},text here `,
+        text: `Hey Mr/Mrs ${req.body.lastName} , thank you for checking out Bekhtef ,your request to join bekhtef's community has been accepted , we are looking forward a win-win cooperation  `,
       };
       transporter.sendMail(mailOptions, (err, info) => {
         console.log("done");
@@ -77,7 +77,7 @@ router.post("/login", async (req, res) => {
   const token = jwt.sign({ id: user.id }, process.env.SECRET_TOKEN);
   res
     .header("auth_token", token)
-    .send({ token: token, id: user.id, name: user.name , status:"company" , logo: user.logo});
+    .send({ token: token, id: user.id, name:user.name , status:"company" , logo: user.logo});
 });
 
 router.put("/:id", async (req, res) => {
@@ -92,21 +92,6 @@ router.put("/:id", async (req, res) => {
       .then((companys) => {
         res.json(companys);
       });
-  });
-});
-router.patch("/updatePass", async (req, res) => {
-  console.log(req)
-  const salt = await bcrypt.genSalt(10);
-  const hashPassword = await bcrypt.hash(req.body.NewPassword, salt);
-  await Companys.findOne({ where: { email: req.body.email } }).then((companys) => {
-    console.log(companys)
-    companys
-    .update({
-       password: hashPassword
-      })
-      .then((companys) => {
-        res.json(companys);
-      }).catch((err) => console.log(err))
   });
 });
 
@@ -124,6 +109,49 @@ router.delete("/", async (req, res) => {
   await Companys.destroy({ where: {}, truncate: true }).then(() =>
     res.json("cleared")
   );
+});
+router.post("/changPass",async(req,res) => {
+  const hashPassword = await bcrypt.hash(req.body.email, 0);
+  let transporter = nodemailer.createTransport({
+          service: "Gmail",
+          auth: {
+            user: process.env.GMAIL_USER,
+            pass: process.env.GMAIL_PASS,
+          },
+          tls: {
+            rejectUnauthorized: false,
+          },
+        })
+      let mailOptions = {
+        from: process.env.GMAIL_USER,
+        to: `${req.body.email}`,
+        subject: "Reset password",
+        text:hashPassword,
+      };
+      transporter.sendMail(mailOptions).then(() => {
+        res.send({ status: 200 });
+      });
+    });
+router.post("/checkCode", async (req, res)=>{
+  console.log(req.body.email)
+  console.log(req.body.code)
+  const validCode = await bcrypt.compare(req.body.email, req.body.code);
+  if(validCode) return res.send({ status: 200 })
+  if(!validCode) return res.send({ status: 500 })
+})
+router.patch("/password", async (req, res) => {
+  console.log(req.body)
+  const salt = await bcrypt.genSalt(10);
+  const hashPassword = await bcrypt.hash(req.body.password, salt);
+  await Companys.findOne({ where: { email: req.body.email } }).then((companys) => {
+    companys
+    .update({
+       password: hashPassword
+      })
+      .then((companys) => {
+        res.json(companys);
+      }).catch((err) => console.log(err))
+  });
 });
 
 module.exports = router;

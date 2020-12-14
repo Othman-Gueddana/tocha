@@ -10,6 +10,8 @@ import {
   import { Observable } from 'rxjs';
   import { finalize ,map, catchError } from 'rxjs/operators';
   import { animate } from '@angular/animations';
+import { MessagesService } from '../services/messages.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-profile-comp',
   templateUrl: './profile-comp.component.html',
@@ -34,15 +36,15 @@ export class ProfileCompComponent implements OnInit {
   name: any ;
   logo:any;
   compStatus: string = "";
-  constructor(private ProductService: ProductService, private fileStorage: AngularFireStorage,
+  constructor(private ProductService: ProductService, private fileStorage: AngularFireStorage,private msgServer: MessagesService ,
     private router: Router) { }
 
     ngOnInit() {
       let user = JSON.parse(window.localStorage.getItem('id'));
       let name  =  JSON.parse(JSON.stringify(window.localStorage.getItem('name')))
-      let status  =  JSON.parse(JSON.stringify(window.localStorage.getItem('status')))
+      this.compStatus  =  JSON.parse(JSON.stringify(window.localStorage.getItem('status')))
       this.logo  =  JSON.parse(JSON.stringify(window.localStorage.getItem('logo')))
-      this.compStatus = status
+     
       this.name = name ;     
       this.user = user ;
      console.log(user)
@@ -62,6 +64,7 @@ export class ProfileCompComponent implements OnInit {
    addCategory(f:NgForm) {
      this.category = f.value.category
      this.status = f.value.category
+    
    }
    
    selectedFile(event) {
@@ -78,13 +81,14 @@ export class ProfileCompComponent implements OnInit {
 
    onSubmit(f: NgForm) {
        var img = document.getElementsByTagName('a');
-       var imageUrl = img[img.length - 1].innerHTML;
-   
+       var imageUrl = img[img.length - 2].innerHTML;
+        console.log(img)
+        console.log(imageUrl)
        let user = JSON.parse(window.localStorage.getItem('id'));
        console.log(user)
        console.log(f.value)
        const obj = {
-          name:f.value.name,
+          name:f.value.title,
           oldPrice:f.value.oldPrice,
           newPrice:f.value.newPrice,
           description:f.value.description,
@@ -156,9 +160,41 @@ export class ProfileCompComponent implements OnInit {
             console.log(error)
         })
     }
+
+    Swal.fire({
+      text: "your product will be soon added , after being verified by the admin!",
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp'
+      },
+      confirmButtonColor: '#fbc658',
+    }).then(()=> window.location.reload())
+
+    
    }
    changeInfo(){
      this.router.navigateByUrl('/seetingsComp');
    }
 
+   onSend(msg: NgForm){
+    if(msg.value.text !== ""){
+      let user= JSON.parse(window.localStorage.getItem('id'));
+      const obj = {
+        receiverId: user,
+        messageSent: msg.value.text,
+      }
+      console.log(obj);
+      this.msgServer.addMessages(obj).subscribe((res)=>{
+        console.log('msg',res);
+      },
+      (error) => {
+      console.log(error);
+      })
+     window.location.reload();
+    }
+  }
+
+   
 }

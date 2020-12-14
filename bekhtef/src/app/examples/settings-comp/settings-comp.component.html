@@ -48,6 +48,16 @@
                 <input type="text" class="form-control" placeholder="{{'PhoneNumber' | translate}}" (focus)="focus=true"
                   (blur)="focus=false" [(ngModel)]="phoneNumber1" name="phoneNumber1" />
               </div>
+              <label>{{'NewPhoneNumber' | translate}}</label>
+              <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class=" nc-icon nc-mobile"></i>
+                  </span>
+                </div>
+                <input type="text" class="form-control" placeholder="{{'PhoneNumber' | translate}}" (focus)="focus=true"
+                  (blur)="focus=false" [(ngModel)]="phoneNumber2" name="phoneNumber2" />
+              </div>
 
               <button type="submit" [disabled]="f.invalid"
                 class="btn btn-danger btn-block btn-round">{{'ConfirmInfo' | translate}} </button>

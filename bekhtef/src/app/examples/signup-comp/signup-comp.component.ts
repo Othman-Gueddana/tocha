@@ -18,6 +18,7 @@ import Swal from 'sweetalert2';
 export class SignupCompComponent implements OnInit {
   focus: any;
   focus1: any;
+  fieldTextType: boolean;
   ref: AngularFireStorageReference;
   task: AngularFireUploadTask;
   uploadProgress: Observable<number>;
@@ -71,17 +72,50 @@ export class SignupCompComponent implements OnInit {
             console.log(error);
           }
         );
-        Swal.fire("your request to create a new account is succsesfuly done , wait for email of acceptation")
+        Swal.fire({
+          title: "your request to create a new account is succsesfuly done , wait for email of acceptation",
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          },
+          confirmButtonColor: '#fbc658',
+        })
+        //   Swal.fire("your request to create a new account is succsesfuly done , wait for email of acceptation")
 
         this.router.navigateByUrl('/signinComp');
       } else {
+        Swal.fire({
+          text: "Repeat again please",
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          },
+          confirmButtonColor: '#fbc658',
+        })
 
-        Swal.fire('Repeat again please')
+        //  Swal.fire('Repeat again please')
       }
     } else {
-      // alert("your password should contain special caracter")
-      Swal.fire("your password should contain special caracter")
+      Swal.fire({
+        text: "your password should contain special caracter",
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        },
+        confirmButtonColor: '#fbc658',
+      })
+
+      //   Swal.fire("your password should contain special caracter")
     }
+  }
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
   }
 }
 

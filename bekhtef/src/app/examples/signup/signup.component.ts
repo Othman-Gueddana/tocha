@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
+  fieldTextType: boolean;
   focus: any;
   focus1: any;
   constructor(private ClientService: ClientService,
@@ -20,7 +21,17 @@ export class SignupComponent implements OnInit {
     const car = /[A-Z]/gi
     const other = /[@,<,>,?,!,&,|,%,$,£]/
     if (f.value.password.match(car) === null || f.value.password.match(other) === null || f.value.password.length < 8) {
-      Swal.fire("your password should contain speciel caractere")
+      Swal.fire({
+        text: "your password should contain speciel caractere",
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        },
+        confirmButtonColor: '#fbc658',
+      })
+      // Swal.fire ("your password should contain speciel caractere")
 
     } else if (f.value.password.match(car) !== null && f.value.password.match(other) !== null && f.value.password.length >= 8) {
       if (f.value.passwordConf === f.value.password) {
@@ -32,12 +43,36 @@ export class SignupComponent implements OnInit {
             console.log(error);
           }
         );
-        Swal.fire("your request to create a new account is succsesfuly done , wait for email of acceptation")
+        Swal.fire({
+          text: "your request to create a new account is succsesfuly done , wait for email of acceptation",
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          },
+          confirmButtonColor: '#fbc658',
+        })
+        //  Swal.fire("your request to create a new account is succsesfuly done , wait for email of acceptation")
         this.router.navigateByUrl('/signin');
       } else {
-        Swal.fire("Repeat again please")
+        Swal.fire({
+          text: "Repeat again please",
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          },
+          confirmButtonColor: '#fbc658',
+          background: '#FFFFFF'
+        })
+        // Swal.fire("Repeat again please")
       }
 
     }
+  }
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
   }
 }
